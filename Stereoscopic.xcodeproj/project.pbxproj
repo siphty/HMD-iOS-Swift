@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A24BBF301E56840300EBF428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF2F1E56840300EBF428 /* AppDelegate.swift */; };
+		A24BBF321E56840300EBF428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF311E56840300EBF428 /* ViewController.swift */; };
+		A24BBF351E56840300EBF428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF331E56840300EBF428 /* Main.storyboard */; };
+		A24BBF381E56840300EBF428 /* Stereoscopic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */; };
+		A24BBF3A1E56840300EBF428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF391E56840300EBF428 /* Assets.xcassets */; };
+		A24BBF3D1E56840300EBF428 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */; };
+		A24BBF481E56840300EBF428 /* StereoscopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF471E56840300EBF428 /* StereoscopicTests.swift */; };
+		A24BBF531E56840300EBF428 /* StereoscopicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A24BBF441E56840300EBF428 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A24BBF241E56840300EBF428 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A24BBF2B1E56840300EBF428;
+			remoteInfo = Stereoscopic;
+		};
+		A24BBF4F1E56840300EBF428 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A24BBF241E56840300EBF428 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A24BBF2B1E56840300EBF428;
+			remoteInfo = Stereoscopic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A24BBF2C1E56840300EBF428 /* Stereoscopic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscopic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24BBF2F1E56840300EBF428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A24BBF311E56840300EBF428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A24BBF341E56840300EBF428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A24BBF371E56840300EBF428 /* Stereoscopic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stereoscopic.xcdatamodel; sourceTree = "<group>"; };
+		A24BBF391E56840300EBF428 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A24BBF3C1E56840300EBF428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A24BBF3E1E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A24BBF431E56840300EBF428 /* StereoscopicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StereoscopicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24BBF471E56840300EBF428 /* StereoscopicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StereoscopicTests.swift; sourceTree = "<group>"; };
+		A24BBF491E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A24BBF4E1E56840300EBF428 /* StereoscopicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StereoscopicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StereoscopicUITests.swift; sourceTree = "<group>"; };
+		A24BBF541E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A24BBF291E56840300EBF428 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24BBF401E56840300EBF428 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24BBF4B1E56840300EBF428 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A24BBF231E56840300EBF428 = {
+			isa = PBXGroup;
+			children = (
+				A24BBF2E1E56840300EBF428 /* Stereoscopic */,
+				A24BBF461E56840300EBF428 /* StereoscopicTests */,
+				A24BBF511E56840300EBF428 /* StereoscopicUITests */,
+				A24BBF2D1E56840300EBF428 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A24BBF2D1E56840300EBF428 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A24BBF2C1E56840300EBF428 /* Stereoscopic.app */,
+				A24BBF431E56840300EBF428 /* StereoscopicTests.xctest */,
+				A24BBF4E1E56840300EBF428 /* StereoscopicUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A24BBF2E1E56840300EBF428 /* Stereoscopic */ = {
+			isa = PBXGroup;
+			children = (
+				A24BBF2F1E56840300EBF428 /* AppDelegate.swift */,
+				A24BBF311E56840300EBF428 /* ViewController.swift */,
+				A24BBF331E56840300EBF428 /* Main.storyboard */,
+				A24BBF391E56840300EBF428 /* Assets.xcassets */,
+				A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */,
+				A24BBF3E1E56840300EBF428 /* Info.plist */,
+				A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */,
+			);
+			path = Stereoscopic;
+			sourceTree = "<group>";
+		};
+		A24BBF461E56840300EBF428 /* StereoscopicTests */ = {
+			isa = PBXGroup;
+			children = (
+				A24BBF471E56840300EBF428 /* StereoscopicTests.swift */,
+				A24BBF491E56840300EBF428 /* Info.plist */,
+			);
+			path = StereoscopicTests;
+			sourceTree = "<group>";
+		};
+		A24BBF511E56840300EBF428 /* StereoscopicUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */,
+				A24BBF541E56840300EBF428 /* Info.plist */,
+			);
+			path = StereoscopicUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A24BBF2B1E56840300EBF428 /* Stereoscopic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A24BBF571E56840300EBF428 /* Build configuration list for PBXNativeTarget "Stereoscopic" */;
+			buildPhases = (
+				A24BBF281E56840300EBF428 /* Sources */,
+				A24BBF291E56840300EBF428 /* Frameworks */,
+				A24BBF2A1E56840300EBF428 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stereoscopic;
+			productName = Stereoscopic;
+			productReference = A24BBF2C1E56840300EBF428 /* Stereoscopic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A24BBF421E56840300EBF428 /* StereoscopicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicTests" */;
+			buildPhases = (
+				A24BBF3F1E56840300EBF428 /* Sources */,
+				A24BBF401E56840300EBF428 /* Frameworks */,
+				A24BBF411E56840300EBF428 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A24BBF451E56840300EBF428 /* PBXTargetDependency */,
+			);
+			name = StereoscopicTests;
+			productName = StereoscopicTests;
+			productReference = A24BBF431E56840300EBF428 /* StereoscopicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A24BBF4D1E56840300EBF428 /* StereoscopicUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicUITests" */;
+			buildPhases = (
+				A24BBF4A1E56840300EBF428 /* Sources */,
+				A24BBF4B1E56840300EBF428 /* Frameworks */,
+				A24BBF4C1E56840300EBF428 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A24BBF501E56840300EBF428 /* PBXTargetDependency */,
+			);
+			name = StereoscopicUITests;
+			productName = StereoscopicUITests;
+			productReference = A24BBF4E1E56840300EBF428 /* StereoscopicUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A24BBF241E56840300EBF428 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = RobertYiJiang;
+				TargetAttributes = {
+					A24BBF2B1E56840300EBF428 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = DQK83PW4RV;
+						ProvisioningStyle = Automatic;
+					};
+					A24BBF421E56840300EBF428 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = DQK83PW4RV;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A24BBF2B1E56840300EBF428;
+					};
+					A24BBF4D1E56840300EBF428 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = DQK83PW4RV;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A24BBF2B1E56840300EBF428;
+					};
+				};
+			};
+			buildConfigurationList = A24BBF271E56840300EBF428 /* Build configuration list for PBXProject "Stereoscopic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A24BBF231E56840300EBF428;
+			productRefGroup = A24BBF2D1E56840300EBF428 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A24BBF2B1E56840300EBF428 /* Stereoscopic */,
+				A24BBF421E56840300EBF428 /* StereoscopicTests */,
+				A24BBF4D1E56840300EBF428 /* StereoscopicUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A24BBF2A1E56840300EBF428 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24BBF3D1E56840300EBF428 /* LaunchScreen.storyboard in Resources */,
+				A24BBF3A1E56840300EBF428 /* Assets.xcassets in Resources */,
+				A24BBF351E56840300EBF428 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24BBF411E56840300EBF428 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24BBF4C1E56840300EBF428 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A24BBF281E56840300EBF428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24BBF321E56840300EBF428 /* ViewController.swift in Sources */,
+				A24BBF301E56840300EBF428 /* AppDelegate.swift in Sources */,
+				A24BBF381E56840300EBF428 /* Stereoscopic.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24BBF3F1E56840300EBF428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24BBF481E56840300EBF428 /* StereoscopicTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A24BBF4A1E56840300EBF428 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24BBF531E56840300EBF428 /* StereoscopicUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A24BBF451E56840300EBF428 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A24BBF2B1E56840300EBF428 /* Stereoscopic */;
+			targetProxy = A24BBF441E56840300EBF428 /* PBXContainerItemProxy */;
+		};
+		A24BBF501E56840300EBF428 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A24BBF2B1E56840300EBF428 /* Stereoscopic */;
+			targetProxy = A24BBF4F1E56840300EBF428 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A24BBF331E56840300EBF428 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A24BBF341E56840300EBF428 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A24BBF3C1E56840300EBF428 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A24BBF551E56840300EBF428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A24BBF561E56840300EBF428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A24BBF581E56840300EBF428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DQK83PW4RV;
+				INFOPLIST_FILE = Stereoscopic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.Stereoscopic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A24BBF591E56840300EBF428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DQK83PW4RV;
+				INFOPLIST_FILE = Stereoscopic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.Stereoscopic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A24BBF5B1E56840300EBF428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DQK83PW4RV;
+				INFOPLIST_FILE = StereoscopicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stereoscopic.app/Stereoscopic";
+			};
+			name = Debug;
+		};
+		A24BBF5C1E56840300EBF428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DQK83PW4RV;
+				INFOPLIST_FILE = StereoscopicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stereoscopic.app/Stereoscopic";
+			};
+			name = Release;
+		};
+		A24BBF5E1E56840300EBF428 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = DQK83PW4RV;
+				INFOPLIST_FILE = StereoscopicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Stereoscopic;
+			};
+			name = Debug;
+		};
+		A24BBF5F1E56840300EBF428 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = DQK83PW4RV;
+				INFOPLIST_FILE = StereoscopicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Stereoscopic;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A24BBF271E56840300EBF428 /* Build configuration list for PBXProject "Stereoscopic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A24BBF551E56840300EBF428 /* Debug */,
+				A24BBF561E56840300EBF428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A24BBF571E56840300EBF428 /* Build configuration list for PBXNativeTarget "Stereoscopic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A24BBF581E56840300EBF428 /* Debug */,
+				A24BBF591E56840300EBF428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A24BBF5B1E56840300EBF428 /* Debug */,
+				A24BBF5C1E56840300EBF428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A24BBF5E1E56840300EBF428 /* Debug */,
+				A24BBF5F1E56840300EBF428 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A24BBF371E56840300EBF428 /* Stereoscopic.xcdatamodel */,
+			);
+			currentVersion = A24BBF371E56840300EBF428 /* Stereoscopic.xcdatamodel */;
+			path = Stereoscopic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A24BBF241E56840300EBF428 /* Project object */;
+}
