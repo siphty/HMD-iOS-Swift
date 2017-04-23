@@ -15,6 +15,12 @@
 		A24BBF3D1E56840300EBF428 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */; };
 		A24BBF481E56840300EBF428 /* StereoscopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF471E56840300EBF428 /* StereoscopicTests.swift */; };
 		A24BBF531E56840300EBF428 /* StereoscopicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */; };
+		A254BEFC1EA8D55D005E70D9 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */; };
+		A254BEFF1EA976EB005E70D9 /* HMDCommScaleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */; };
+		A254BF011EA977A5005E70D9 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */; };
+		A254BF071EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF061EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift */; };
+		A254BF091EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF081EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift */; };
+		A2B567F31EA4DD6C00ED7ACD /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,12 @@
 		A24BBF4E1E56840300EBF428 /* StereoscopicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StereoscopicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StereoscopicUITests.swift; sourceTree = "<group>"; };
 		A24BBF541E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDLayer.swift; sourceTree = "<group>"; };
+		A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDCommScaleRenderer.swift; sourceTree = "<group>"; };
+		A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHeadingRenderer.swift; sourceTree = "<group>"; };
+		A254BF061EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARRulerScaleLayerRenderer.swift; sourceTree = "<group>"; };
+		A254BF081EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARRulerCursorLayerRenderer.swift; sourceTree = "<group>"; };
+		A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +115,11 @@
 				A24BBF311E56840300EBF428 /* ViewController.swift */,
 				A24BBF331E56840300EBF428 /* Main.storyboard */,
 				A24BBF391E56840300EBF428 /* Assets.xcassets */,
+				A254BF051EAA2785005E70D9 /* AugmentedReality */,
 				A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */,
 				A24BBF3E1E56840300EBF428 /* Info.plist */,
 				A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */,
+				A254BF0B1EAAE431005E70D9 /* useless */,
 			);
 			path = Stereoscopic;
 			sourceTree = "<group>";
@@ -126,6 +140,50 @@
 				A24BBF541E56840300EBF428 /* Info.plist */,
 			);
 			path = StereoscopicUITests;
+			sourceTree = "<group>";
+		};
+		A254BEFD1EA8DDE6005E70D9 /* HMD */ = {
+			isa = PBXGroup;
+			children = (
+				A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */,
+				A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */,
+				A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */,
+			);
+			name = HMD;
+			sourceTree = "<group>";
+		};
+		A254BF041EAA276C005E70D9 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
+		A254BF051EAA2785005E70D9 /* AugmentedReality */ = {
+			isa = PBXGroup;
+			children = (
+				A254BF0A1EAA4794005E70D9 /* HeadTrack */,
+				A254BF041EAA276C005E70D9 /* HUD */,
+				A254BEFD1EA8DDE6005E70D9 /* HMD */,
+				A254BF061EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift */,
+				A254BF081EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift */,
+			);
+			name = AugmentedReality;
+			sourceTree = "<group>";
+		};
+		A254BF0A1EAA4794005E70D9 /* HeadTrack */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = HeadTrack;
+			sourceTree = "<group>";
+		};
+		A254BF0B1EAAE431005E70D9 /* useless */ = {
+			isa = PBXGroup;
+			children = (
+				A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */,
+			);
+			name = useless;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +324,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A24BBF321E56840300EBF428 /* ViewController.swift in Sources */,
+				A254BEFC1EA8D55D005E70D9 /* HMDLayer.swift in Sources */,
+				A254BF011EA977A5005E70D9 /* HMDHeadingRenderer.swift in Sources */,
+				A254BF071EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift in Sources */,
+				A254BF091EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift in Sources */,
 				A24BBF301E56840300EBF428 /* AppDelegate.swift in Sources */,
 				A24BBF381E56840300EBF428 /* Stereoscopic.xcdatamodeld in Sources */,
+				A254BEFF1EA976EB005E70D9 /* HMDCommScaleRenderer.swift in Sources */,
+				A2B567F31EA4DD6C00ED7ACD /* HUDViewRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +580,7 @@
 				A24BBF591E56840300EBF428 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +589,7 @@
 				A24BBF5C1E56840300EBF428 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +598,7 @@
 				A24BBF5F1E56840300EBF428 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

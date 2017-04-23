@@ -10,13 +10,12 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var vrView: UIView!
     
     var captureSession = AVCaptureSession()
     var sessionOutput = AVCapturePhotoOutput()
     var sessionOutputSetting = AVCapturePhotoSettings(format: [AVVideoCodecKey:AVVideoCodecJPEG])
     var previewLayer = AVCaptureVideoPreviewLayer()
+    var hmdLayer = HMDLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +23,12 @@ class ViewController: UIViewController {
         
 //        self.loadCamera()
         //        self.startCamera(notifyLocationFailure: true)
-        let deviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceType.builtInDuoCamera, AVCaptureDeviceType.builtInTelephotoCamera,AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.unspecified)
+        let deviceDiscoverySession = AVCaptureDeviceDiscoverySession(
+                                            deviceTypes: [AVCaptureDeviceType.builtInDualCamera,
+                                                          AVCaptureDeviceType.builtInTelephotoCamera,
+                                                          AVCaptureDeviceType.builtInWideAngleCamera],
+                                            mediaType: AVMediaTypeVideo,
+                                            position: AVCaptureDevicePosition.unspecified)
         for device in (deviceDiscoverySession?.devices)! {
             if(device.position == AVCaptureDevicePosition.back){
                 do{
@@ -33,20 +37,31 @@ class ViewController: UIViewController {
                         captureSession.addInput(input)
                         
                         if(captureSession.canAddOutput(sessionOutput)){
-                            captureSession.addOutput(sessionOutput)
-                            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-                            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-                            previewLayer.connection.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
-                            previewLayer.frame = vrView.bounds
-                            
                             let replicatorInstances = 2
+                            
                             let replicatorViewWidth = (self.view.bounds.size.width / CGFloat(replicatorInstances))
                             let replicatorLayer = CAReplicatorLayer()
-                            replicatorLayer.frame = CGRect.init(x: 0.0, y: 0.0, width: replicatorViewWidth, height: self.view.bounds.height)
+                            replicatorLayer.frame = CGRect.init(x: 0.0,
+                                                                y: 0.0,
+                                                                width: replicatorViewWidth,
+                                                                height: self.view.bounds.height)
                             replicatorLayer.instanceCount = replicatorInstances
                             replicatorLayer.instanceTransform = CATransform3DMakeTranslation(replicatorViewWidth, 0.0, 0.0)
+                            
+                            captureSession.addOutput(sessionOutput)
+                            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+//                            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                            previewLayer.connection.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
+                            previewLayer.frame = replicatorLayer.frame
+                            
+                            hmdLayer.frame = previewLayer.bounds
+                            hmdLayer.borderWidth = 1
+                            hmdLayer.borderColor = UIColor.yellow.cgColor
+                            previewLayer.addSublayer(hmdLayer)
+                            hmdLayer.position = previewLayer.position
                             replicatorLayer.addSublayer(previewLayer)
-                            vrView.layer.addSublayer(replicatorLayer)
+                            view.layer.addSublayer(replicatorLayer)
                         }
                     }
                 }
