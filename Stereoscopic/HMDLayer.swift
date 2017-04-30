@@ -11,7 +11,7 @@ import UIKit
 class HMDLayer: CALayer, CALayerDelegate {
     
     var didSetup = false
-    
+    var isDroneView = true
     public override init(){
         super.init()
         print("init HMDLayer")
@@ -49,11 +49,37 @@ class HMDLayer: CALayer, CALayerDelegate {
         let headingTap = HMDHeadingRenderer()
 //        let headingTap = CALayer()
         headingTap.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 - 175, width: 250, height: 50)
-        headingTap.borderColor = UIColor.orange.cgColor
-        headingTap.borderWidth = 3
+        headingTap.borderColor = UIColor.lightGray.cgColor
+        headingTap.borderWidth = 1
         addSublayer(headingTap)
         
         
+//        //Heading 2
+//        let headingTap2 = HMDHeadingRenderer()
+//        //        let headingTap = CALayer()
+//        headingTap2.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 - 75, width: 250, height: 50)
+//        headingTap2.borderColor = UIColor.lightGray.cgColor
+//        headingTap2.borderWidth = 1
+//        addSublayer(headingTap2)
+//        
+//        //Heading 2
+//        let headingTap4 = HMDHeadingRenderer()
+//        //        let headingTap = CALayer()
+//        headingTap4.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 + 175, width: 250, height: 50)
+//        headingTap4.borderColor = UIColor.lightGray.cgColor
+//        headingTap4.borderWidth = 1
+//        addSublayer(headingTap4)
+//        
+//        
+//        
+//        //Heading 2
+//        let headingTap3 = HMDHeadingRenderer()
+//        //        let headingTap = CALayer()
+//        headingTap3.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 + 75, width: 250, height: 50)
+//        headingTap3.borderColor = UIColor.lightGray.cgColor
+//        headingTap3.borderWidth = 1
+//        addSublayer(headingTap3)
+//        
         //Fixed Reticle
         let reticle = CALayer()
         reticle.frame = CGRect(x: frame.width / 2 - 20, y: frame.height / 2 - 20, width: 40, height: 40)

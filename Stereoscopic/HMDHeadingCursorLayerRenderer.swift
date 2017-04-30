@@ -1,5 +1,5 @@
 //
-//  ARRulerCursorLayerRenderer.swift
+//  HMDRulerCursorLayerRenderer.swift
 //  Stereoscopic
 //
 //  Created by Yi JIANG on 21/4/17.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ARRulerCursorLayerRenderer: CALayer {
+class HMDHeadingCursorLayerRenderer: CALayer {
+    
+    var didSetup = false
+//    var 
     
     public override init(){
         super.init()
@@ -25,6 +28,13 @@ class ARRulerCursorLayerRenderer: CALayer {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func setup () {
+        print("setup HMDHeadingScaleLayerRenderer")
+//        frame = CGRect(x: 0, y: 0, width: Int(pixelPerUnit * 360.0), height: Int(frame.height))
+        
     }
 
 }

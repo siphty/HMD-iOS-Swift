@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A22560C91EB59675001B6B56 /* miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22560C81EB59675001B6B56 /* miscellaneous.swift */; };
 		A24BBF301E56840300EBF428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF2F1E56840300EBF428 /* AppDelegate.swift */; };
 		A24BBF321E56840300EBF428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF311E56840300EBF428 /* ViewController.swift */; };
 		A24BBF351E56840300EBF428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF331E56840300EBF428 /* Main.storyboard */; };
@@ -18,8 +19,8 @@
 		A254BEFC1EA8D55D005E70D9 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */; };
 		A254BEFF1EA976EB005E70D9 /* HMDCommScaleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */; };
 		A254BF011EA977A5005E70D9 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */; };
-		A254BF071EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF061EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift */; };
-		A254BF091EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF081EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift */; };
+		A254BF071EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF061EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift */; };
+		A254BF091EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF081EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift */; };
 		A2B567F31EA4DD6C00ED7ACD /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A22560C81EB59675001B6B56 /* miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = miscellaneous.swift; sourceTree = "<group>"; };
 		A24BBF2C1E56840300EBF428 /* Stereoscopic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscopic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24BBF2F1E56840300EBF428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A24BBF311E56840300EBF428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +60,8 @@
 		A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDLayer.swift; sourceTree = "<group>"; };
 		A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDCommScaleRenderer.swift; sourceTree = "<group>"; };
 		A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHeadingRenderer.swift; sourceTree = "<group>"; };
-		A254BF061EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARRulerScaleLayerRenderer.swift; sourceTree = "<group>"; };
-		A254BF081EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARRulerCursorLayerRenderer.swift; sourceTree = "<group>"; };
+		A254BF061EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHeadingScaleLayerRenderer.swift; sourceTree = "<group>"; };
+		A254BF081EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHeadingCursorLayerRenderer.swift; sourceTree = "<group>"; };
 		A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */,
-				A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */,
+				A28BF8EB1EB05F200097EB4D /* HMDHeading */,
 				A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */,
 			);
 			name = HMD;
@@ -162,20 +164,11 @@
 		A254BF051EAA2785005E70D9 /* AugmentedReality */ = {
 			isa = PBXGroup;
 			children = (
-				A254BF0A1EAA4794005E70D9 /* HeadTrack */,
 				A254BF041EAA276C005E70D9 /* HUD */,
 				A254BEFD1EA8DDE6005E70D9 /* HMD */,
-				A254BF061EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift */,
-				A254BF081EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift */,
+				A22560C81EB59675001B6B56 /* miscellaneous.swift */,
 			);
 			name = AugmentedReality;
-			sourceTree = "<group>";
-		};
-		A254BF0A1EAA4794005E70D9 /* HeadTrack */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = HeadTrack;
 			sourceTree = "<group>";
 		};
 		A254BF0B1EAAE431005E70D9 /* useless */ = {
@@ -184,6 +177,16 @@
 				A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */,
 			);
 			name = useless;
+			sourceTree = "<group>";
+		};
+		A28BF8EB1EB05F200097EB4D /* HMDHeading */ = {
+			isa = PBXGroup;
+			children = (
+				A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */,
+				A254BF061EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift */,
+				A254BF081EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift */,
+			);
+			name = HMDHeading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,9 +328,10 @@
 			files = (
 				A24BBF321E56840300EBF428 /* ViewController.swift in Sources */,
 				A254BEFC1EA8D55D005E70D9 /* HMDLayer.swift in Sources */,
+				A22560C91EB59675001B6B56 /* miscellaneous.swift in Sources */,
 				A254BF011EA977A5005E70D9 /* HMDHeadingRenderer.swift in Sources */,
-				A254BF071EAA2DEE005E70D9 /* ARRulerScaleLayerRenderer.swift in Sources */,
-				A254BF091EAA2F3F005E70D9 /* ARRulerCursorLayerRenderer.swift in Sources */,
+				A254BF071EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift in Sources */,
+				A254BF091EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift in Sources */,
 				A24BBF301E56840300EBF428 /* AppDelegate.swift in Sources */,
 				A24BBF381E56840300EBF428 /* Stereoscopic.xcdatamodeld in Sources */,
 				A254BEFF1EA976EB005E70D9 /* HMDCommScaleRenderer.swift in Sources */,
