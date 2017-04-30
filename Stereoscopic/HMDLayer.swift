@@ -46,40 +46,13 @@ class HMDLayer: CALayer, CALayerDelegate {
         
         
         //Heading
-        let headingTap = HMDHeadingRenderer()
+        let headingTape = HMDHeadingRenderer()
 //        let headingTap = CALayer()
-        headingTap.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 - 175, width: 250, height: 50)
-        headingTap.borderColor = UIColor.lightGray.cgColor
-        headingTap.borderWidth = 1
-        addSublayer(headingTap)
+        headingTape.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 - 175, width: 250, height: 40)
+//        headingTape.borderColor = UIColor.lightGray.cgColor
+//        headingTape.borderWidth = 1
+        addSublayer(headingTape)
         
-        
-//        //Heading 2
-//        let headingTap2 = HMDHeadingRenderer()
-//        //        let headingTap = CALayer()
-//        headingTap2.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 - 75, width: 250, height: 50)
-//        headingTap2.borderColor = UIColor.lightGray.cgColor
-//        headingTap2.borderWidth = 1
-//        addSublayer(headingTap2)
-//        
-//        //Heading 2
-//        let headingTap4 = HMDHeadingRenderer()
-//        //        let headingTap = CALayer()
-//        headingTap4.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 + 175, width: 250, height: 50)
-//        headingTap4.borderColor = UIColor.lightGray.cgColor
-//        headingTap4.borderWidth = 1
-//        addSublayer(headingTap4)
-//        
-//        
-//        
-//        //Heading 2
-//        let headingTap3 = HMDHeadingRenderer()
-//        //        let headingTap = CALayer()
-//        headingTap3.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 + 75, width: 250, height: 50)
-//        headingTap3.borderColor = UIColor.lightGray.cgColor
-//        headingTap3.borderWidth = 1
-//        addSublayer(headingTap3)
-//        
         //Fixed Reticle
         let reticle = CALayer()
         reticle.frame = CGRect(x: frame.width / 2 - 20, y: frame.height / 2 - 20, width: 40, height: 40)

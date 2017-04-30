@@ -15,6 +15,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
     var translation: CGFloat = 0.0
     var locationManager = CLLocationManager()
     var scrollLayer = CAScrollLayer()
+    var cursorScrollLayer = CAScrollLayer()
     var lastScrollLayerPostion: CGPoint = CGPoint(x: 0, y: 0)
     var lastHeadingDegree: CLLocationDirection = 0.0
     var enableLoop: Bool = true
@@ -47,7 +48,6 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        scrollLayer = CAScrollLayer()
         super.init(coder: aDecoder)
         //        fatalError("init(coder:) has not been implemented")
     }
@@ -82,26 +82,23 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
     func setup () {
         print("setup HMDHeadingRenderer")
         let middleLayer = CALayer()
-        middleLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height)
-        middleLayer.borderWidth = 1
-        middleLayer.borderColor = UIColor.blue.cgColor
+        middleLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: 31)
+
+        
+        //TODO: I might need two scrollLyaers to make heading tape loop.
         scrollLayer = {
             let scrollLayer = CAScrollLayer()
-            scrollLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height)
-            scrollLayer.borderColor = UIColor.green.cgColor
-            scrollLayer.borderWidth = 1.0
+            scrollLayer.frame = middleLayer.frame
             
-            print(frame.debugDescription)
-            print(scrollLayer.frame.debugDescription)
-            
-//            headingScaleNorth = HMDHeadingScaleLayerRenderer()
             headingScaleNorth.isFacingNorth = true
-            headingScaleNorth.backgroundColor = UIColor.blue.cgColor
+            headingScaleNorth.backgroundColor = UIColor.clear.cgColor
+            headingScaleNorth.frame = scrollLayer.frame
             headingScaleNorth.setup()
             scrollLayer.addSublayer(headingScaleNorth)
             
             headingScaleSouth.isFacingNorth = false
-            headingScaleSouth.backgroundColor = UIColor.green.cgColor
+            headingScaleSouth.backgroundColor = UIColor.clear.cgColor
+            headingScaleSouth.frame = scrollLayer.frame
             headingScaleSouth.setup()
             scrollLayer.addSublayer(headingScaleSouth)
             
@@ -113,10 +110,12 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
         }()
         middleLayer.addSublayer(scrollLayer)
         addSublayer(middleLayer)
-//        masksToBounds = false
         
         //Draw Heading Number Lable
-        let headingNumberFrame = CGRect(x: (frame.width - headingNumberWidth) / 2, y: 0, width: headingNumberWidth, height: 14)
+        let headingNumberFrame = CGRect(x: (frame.width - headingNumberWidth) / 2,
+                                        y: 0,
+                                        width: headingNumberWidth,
+                                        height: 14)
         middleLayer.doMask(withRect: headingNumberFrame, inverse: true)
         label.font = "Tahoma" as CFTypeRef
         label.fontSize = 12
@@ -127,11 +126,19 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
         label.alignmentMode = kCAAlignmentCenter
         label.foregroundColor = UIColor.green.cgColor
         addSublayer(label)
+        
+        //Draw current view heading line
+        let startPoint = CGPoint(x: frame.width / 2, y: middleLayer.frame.height)
+        let endPoint = CGPoint(x: frame.width / 2, y: frame.height)
+        drawLine(fromPoint: startPoint, toPoint: endPoint, width: 2)
+        
+        //Draw aircraft heading
+        
     }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        let headingDegree = newHeading.trueHeading
+        let headingDegree = CGFloat(newHeading.trueHeading)
         print("Heading : \(headingDegree)")
         if !didInitCompass {
             
@@ -144,7 +151,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
                 headingScaleSouth.isHidden = true
                 let headingPointX = ((headingDegree + 180.0).truncatingRemainder(dividingBy: 360.0)) * headingScaleNorth.pixelPerUnit
                 CALayer.performWithoutAnimation {
-                    scrollLayer.scroll(to: CGPoint(x: headingPointX - Double(frame.width) / 2 ,
+                    scrollLayer.scroll(to: CGPoint(x: headingPointX - frame.width / 2 ,
                                                    y: 20.0))
                 }
             case 90 ... 270:
@@ -152,7 +159,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
                 headingScaleSouth.isHidden = false
                 let headingPointX = headingDegree * headingScaleSouth.pixelPerUnit
                 CALayer.performWithoutAnimation {
-                    scrollLayer.scroll(to: CGPoint(x: headingPointX - Double(frame.width) / 2 ,
+                    scrollLayer.scroll(to: CGPoint(x: headingPointX - frame.width / 2 ,
                                                    y: 20.0))
                 }
             default:
@@ -176,7 +183,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
             }
             
 //            var headingPointX =  headingDegree * headingScaleSouth.pixelPerUnit
-            var headingPointX = 0.0
+            var headingPointX: CGFloat = 0.0
             if headingScaleSouth.isHidden {
                 if 150.0 ... 210.0 ~= headingDegree  {
                     headingPointX = headingDegree * headingScaleSouth.pixelPerUnit
@@ -195,7 +202,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
                 }
             }
 //            CALayer.performWithoutAnimation {
-                scrollLayer.scroll(to: CGPoint(x: headingPointX - Double(frame.width) / 2,
+                scrollLayer.scroll(to: CGPoint(x: headingPointX - frame.width / 2,
                                                y: 20.0))
 //            }
             
@@ -203,6 +210,20 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
      }
     
     
+    
+    func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
+        let line = CAShapeLayer()
+        let linePath = UIBezierPath()
+        
+        linePath.move(to: start)
+        linePath.addLine(to: end)
+        line.path = linePath.cgPath
+        line.fillColor = nil
+        line.opacity = 1.0
+        line.lineWidth = CGFloat(width)
+        line.strokeColor = UIColor.green.cgColor
+        addSublayer(line)
+    }
 }
 
 

@@ -10,13 +10,13 @@ import UIKit
 
 class HMDHeadingScaleLayerRenderer: CALayer {
     var didSetup = false
-    var shortScalePixels: Int = 10
-    var longScalePixels: Int = 16
-    var pixelPerUnit: Double = 10.48
+    var shortScalePixels: CGFloat = 10.0
+    var longScalePixels: CGFloat = 16.0
+    var pixelPerUnit: CGFloat = 10.48
     var unitPerShortScale: Int = 1
     var unitPerLongScale: Int = 10
     var unitPerLabel: Int = 10
-    var labelSpaceHight: Int = 14
+    var labelHeight: CGFloat = 14.0
     var unitPerCardinal: Int = 90
     var hasUnderline: Bool = true
     var hasTopline: Bool = true
@@ -28,40 +28,15 @@ class HMDHeadingScaleLayerRenderer: CALayer {
         case west
     }
     
-    public override func display() {
-        print("needsLayout ARRulerScaleLayerRenderer")
-//        setup()
-
-        super.display()
-    }
-
-    
-    
     public override init(){
         super.init()
         print("init HMDHeadingRenderer")
-//        if !didSetup {
-//            didSetup = true
-//            setup()
-//        }
         
     }
     
-    public func setupWithUnit(_: String, range: ClosedRange<Int>, pixelsToUnit pixels: Int){
-        print("init ARRulerScaleLayerRenderer")
-//        if !didSetup {
-//            didSetup = true
-            setup()
-//        }
-        
-    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        if !didSetup {
-//            didSetup = true
-//            setup()
-//        }
     }
     
     
@@ -73,34 +48,38 @@ class HMDHeadingScaleLayerRenderer: CALayer {
     
     func setup () {
         print("setup HMDHeadingScaleLayerRenderer")
-        frame = CGRect(x: 0, y: 0, width: Int(pixelPerUnit * 360.0), height: Int(frame.height))
+        frame = CGRect(x: 0.0, y: 0.0, width: pixelPerUnit * 360.0, height: frame.height)
         sublayers?.forEach { $0.removeFromSuperlayer() }
+        let extraHeight = (frame.height - (labelHeight + 1.0 + longScalePixels))
+        longScalePixels = longScalePixels + extraHeight
+        shortScalePixels = shortScalePixels + extraHeight
+        let longShortDif = (longScalePixels - shortScalePixels) / 2
         for i in 0 ... 360 {
             // Draw scale lines (both long and short lines)
             if (i % unitPerLongScale) == 0 {
                 let n = i / unitPerLongScale
-                let scalePositionX = Int(Double(n * unitPerLongScale) * pixelPerUnit)
-                let startPoint = CGPoint(x: scalePositionX, y: labelSpaceHight + 1)
-                let endPoint = CGPoint(x: scalePositionX, y: labelSpaceHight + 1 + longScalePixels)
-                drawLine(fromPoint: startPoint, toPoint: endPoint, withLength: longScalePixels, width: 1)
+                let scalePositionX = CGFloat(n * unitPerLongScale) * pixelPerUnit
+                let startPoint = CGPoint(x: scalePositionX, y: labelHeight + 1)
+                let endPoint = CGPoint(x: scalePositionX, y: labelHeight + 1.0 + longScalePixels)
+                drawLine(fromPoint: startPoint, toPoint: endPoint, width: 1)
                 
             } else if (i % unitPerShortScale) == 0 {
                 
-                let scalePositionX = Int(Double(i * unitPerShortScale) * pixelPerUnit)
-                let startPoint = CGPoint(x: scalePositionX, y: labelSpaceHight + 4)
-                let endPoint = CGPoint(x: scalePositionX, y: labelSpaceHight + 4 + shortScalePixels)
-                drawLine(fromPoint: startPoint, toPoint: endPoint, withLength: shortScalePixels, width: 1)
+                let scalePositionX = CGFloat(i * unitPerShortScale) * pixelPerUnit
+                let startPoint = CGPoint(x: scalePositionX, y: labelHeight + 1 + longShortDif)
+                let endPoint = CGPoint(x: scalePositionX, y: labelHeight + 1 + longShortDif + shortScalePixels)
+                drawLine(fromPoint: startPoint, toPoint: endPoint, width: 1)
             }
             
-            // Draw number label and cardinal label
+            // Draw degree label and cardinal label
             if (i % unitPerCardinal) == 0 {
                 let n = i / unitPerCardinal
-                let positionX = Int(Double(n * unitPerCardinal) * pixelPerUnit)
+                let positionX = CGFloat(n * unitPerCardinal) * pixelPerUnit
                 let label = CATextLayer()
                 label.font = "Tahoma" as CFTypeRef
                 label.fontSize = 12
                 label.contentsScale = UIScreen.main.scale
-                label.frame = CGRect(x: positionX - 10, y: 1, width: 20, height: labelSpaceHight)
+                label.frame = CGRect(x: positionX - 10, y: 1, width: 20, height: labelHeight)
                 switch n % 4{
                 case 0:
                     if isFacingNorth == true {
@@ -136,13 +115,13 @@ class HMDHeadingScaleLayerRenderer: CALayer {
             } else if (i % unitPerLabel) == 0 {
                 
                 let n = i / unitPerLongScale
-                let positionX = Int(Double(n * unitPerLongScale) * pixelPerUnit)
-                //                let positionY = labelSpaceHight / 2
+                let positionX = CGFloat(n * unitPerLongScale) * pixelPerUnit
+                //                let positionY = labelHeight / 2
                 let label = CATextLayer()
                 label.font = "Tahoma" as CFTypeRef
                 label.fontSize = 12
                 label.contentsScale = UIScreen.main.scale
-                label.frame = CGRect(x: positionX - 10, y: 1, width: 20, height: labelSpaceHight)
+                label.frame = CGRect(x: positionX - 10, y: 1, width: 20, height: labelHeight)
                 if isFacingNorth == true {
                     var scaleNumber: Int
                     if i < 180 {
@@ -164,7 +143,7 @@ class HMDHeadingScaleLayerRenderer: CALayer {
 
     }
     
-    func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, withLength length: Int, width: Int){
+    func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
         let line = CAShapeLayer()
         let linePath = UIBezierPath()
         linePath.move(to: start)
@@ -173,11 +152,11 @@ class HMDHeadingScaleLayerRenderer: CALayer {
         line.fillColor = nil
         line.opacity = 1.0
         line.lineWidth = CGFloat(width)
-        if isFacingNorth {
+//        if isFacingNorth {
             line.strokeColor = UIColor.green.cgColor
-        } else {
-            line.strokeColor = UIColor.yellow.cgColor
-        }
+//        } else {
+//            line.strokeColor = UIColor.yellow.cgColor
+//        }
         addSublayer(line)
     }
     
