@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stereoscopic/HMDHeadingRenderer.swift"
-            timestampString = "515251516.089369"
+            timestampString = "515506530.120667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "setup()"
             landmarkType = "7">
             <Locations>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stereoscopic/HMDHeadingRenderer.swift"
-            timestampString = "515251762.212984"
+            timestampString = "515506530.120667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "locationManager(_:didUpdateHeading:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,27 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stereoscopic/HMDHeadingRenderer.swift"
-            timestampString = "515251762.212984"
+            timestampString = "515506530.120667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "locationManager(_:didUpdateHeading:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Stereoscopic/HMDHeadingRenderer.swift"
-            timestampString = "515251287.235885"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "setup()"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,13 +394,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stereoscopic/HMDHeadingRenderer.swift"
-            timestampString = "515251287.235885"
+            timestampString = "515506530.120667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "orientation"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stereoscopic/HMDHeadingRenderer.swift"
+            timestampString = "515506530.120667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "locationManager(_:didUpdateHeading:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -426,11 +426,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stereoscopic/HMDHeadingRenderer.swift"
-            timestampString = "515251762.212984"
+            timestampString = "515506530.120667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "locationManager(_:didUpdateHeading:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stereoscopic/HMDHeadingRenderer.swift"
+            timestampString = "515506530.120667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "locationManager(_:didUpdateHeading:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stereoscopic/HMDHeadingRenderer.swift"
+            timestampString = "515506530.120667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "locationManager(_:didUpdateHeading:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stereoscopic/HMDHeadingRenderer.swift"
+            timestampString = "515506530.120667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "performWithoutAnimation(_:handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stereoscopic/HMDHeadingRenderer.swift"
+            timestampString = "515506530.120667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "locationManager(_:didUpdateHeading:)"
             landmarkType = "7">
          </BreakpointContent>

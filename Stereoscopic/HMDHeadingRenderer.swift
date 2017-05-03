@@ -24,7 +24,12 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
     var headingScaleSouth = HMDHeadingScaleLayerRenderer() // I need change this someway somehow
     var didInitCompass = false
     var headingNumberWidth: CGFloat = 30.0
+    var scrollLock = false
+    let concurrentQueue = DispatchQueue(label: "updateHeading", attributes: .concurrent)
+    
     let label = CATextLayer()
+    let scaleColor = UIColor.init(red: 35.0 / 255.0, green: 210.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
+    
     
     internal var orientation: CLDeviceOrientation = CLDeviceOrientation.landscapeRight
     {
@@ -45,6 +50,8 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
         locationManager.headingOrientation =  CLDeviceOrientation.landscapeRight
         locationManager.startUpdatingHeading()
         locationManager.delegate = self
+        
+//        scrollLayer.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -121,10 +128,10 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
         label.fontSize = 12
         label.contentsScale = UIScreen.main.scale
         label.frame = headingNumberFrame
-        label.borderColor = UIColor.green.cgColor
+        label.borderColor = scaleColor
         label.borderWidth = 1
         label.alignmentMode = kCAAlignmentCenter
-        label.foregroundColor = UIColor.green.cgColor
+        label.foregroundColor = scaleColor
         addSublayer(label)
         
         //Draw current view heading line
@@ -139,77 +146,95 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         let headingDegree = CGFloat(newHeading.trueHeading)
-        print("Heading : \(headingDegree)")
-        if !didInitCompass {
-            
-            locationManager.requestWhenInUseAuthorization()
-            switch headingDegree {
-            case 0 ... 90:
-                fallthrough
-            case 270 ... 360:
-                headingScaleNorth.isHidden = false
-                headingScaleSouth.isHidden = true
-                let headingPointX = ((headingDegree + 180.0).truncatingRemainder(dividingBy: 360.0)) * headingScaleNorth.pixelPerUnit
-                CALayer.performWithoutAnimation {
-                    scrollLayer.scroll(to: CGPoint(x: headingPointX - frame.width / 2 ,
-                                                   y: 20.0))
-                }
-            case 90 ... 270:
-                headingScaleNorth.isHidden = true
-                headingScaleSouth.isHidden = false
-                let headingPointX = headingDegree * headingScaleSouth.pixelPerUnit
-                CALayer.performWithoutAnimation {
-                    scrollLayer.scroll(to: CGPoint(x: headingPointX - frame.width / 2 ,
-                                                   y: 20.0))
-                }
-            default:
-                print("Something is wrong")
+
+        DispatchQueue.main.async(execute: {
+            print("Heading : \(headingDegree)")
+            if self.scrollLock {
+                return
             }
-            didInitCompass = true
-        } else {
-            switch headingDegree {
-            case 0 ... 2 :
-                fallthrough
-            case 358 ... 360:
-                label.string = "N"
-            case 88 ... 92:
-                label.string = "E"
-            case 178 ... 182:
-                label.string = "S"
-            case 268 ... 272:
-                label.string = "W"
-            default:
-                label.string = String(Int(floor(newHeading.trueHeading)))
-            }
-            
-//            var headingPointX =  headingDegree * headingScaleSouth.pixelPerUnit
-            var headingPointX: CGFloat = 0.0
-            if headingScaleSouth.isHidden {
-                if 150.0 ... 210.0 ~= headingDegree  {
-                    headingPointX = headingDegree * headingScaleSouth.pixelPerUnit
-                    headingScaleNorth.isHidden = true
-                    headingScaleSouth.isHidden = false
-                } else {
-                    headingPointX = ((headingDegree + 180.0).truncatingRemainder(dividingBy: 360.0)) * headingScaleNorth.pixelPerUnit
+            self.scrollLock = true
+            if !self.didInitCompass {
+                
+                self.locationManager.requestWhenInUseAuthorization()
+                switch headingDegree {
+                case 0 ... 90:
+                    fallthrough
+                case 270 ... 360:
+                    self.headingScaleNorth.isHidden = false
+                    self.headingScaleSouth.isHidden = true
+                    let headingPointX = ((headingDegree + 180.0).truncatingRemainder(dividingBy: 360.0)) * self.headingScaleNorth.pixelPerUnit
+                    CALayer.performWithoutAnimation ({self.scrollLayer.scroll(to: CGPoint(x: headingPointX - self.frame.width / 2 ,
+                                                                                          y: 20.0))},
+                                                     completionHandler: { self.scrollLock = false })
+                case 90 ... 270:
+                    self.headingScaleNorth.isHidden = true
+                    self.headingScaleSouth.isHidden = false
+                    let headingPointX = headingDegree * self.headingScaleSouth.pixelPerUnit
+                    CALayer.performWithoutAnimation ({self.scrollLayer.scroll(to: CGPoint(x: headingPointX - self.frame.width / 2 ,
+                                                                                          y: 20.0))},
+                                                     completionHandler: { self.scrollLock = false })
+                default:
+                    print("Something is wrong")
                 }
+                self.didInitCompass = true
             } else {
-                if 0.0 ... 30.0 ~= headingDegree || 330.0 ... 360.0 ~= headingDegree {
-                    headingPointX = ((headingDegree + 180.0).truncatingRemainder(dividingBy: 360.0)) * headingScaleNorth.pixelPerUnit
-                    headingScaleNorth.isHidden = false
-                    headingScaleSouth.isHidden = true
-                } else {
-                    headingPointX = headingDegree * headingScaleSouth.pixelPerUnit
+                
+                //Draw 
+                switch headingDegree {
+                case 0 ... 2 :
+                    fallthrough
+                case 358 ... 360:
+                    self.label.string = "N"
+                case 88 ... 92:
+                    self.label.string = "E"
+                case 178 ... 182:
+                    self.label.string = "S"
+                case 268 ... 272:
+                    self.label.string = "W"
+                default:
+                    self.label.string = String(Int(floor(newHeading.trueHeading)))
                 }
+                
+    //            var headingPointX =  headingDegree * headingScaleSouth.pixelPerUnit
+                var headingPointX: CGFloat = 0.0
+                if self.headingScaleSouth.isHidden {
+                    if 150.0 ... 210.0 ~= headingDegree  {
+                        headingPointX = headingDegree * self.headingScaleSouth.pixelPerUnit
+                        self.headingScaleNorth.isHidden = true
+                        self.headingScaleSouth.isHidden = false
+                    } else {
+                        headingPointX = ((headingDegree + 180.0).truncatingRemainder(dividingBy: 360.0)) * self.headingScaleNorth.pixelPerUnit
+                    }
+                } else {
+                    if 0.0 ... 30.0 ~= headingDegree || 330.0 ... 360.0 ~= headingDegree {
+                        headingPointX = ((headingDegree + 180.0).truncatingRemainder(dividingBy: 360.0)) * self.headingScaleNorth.pixelPerUnit
+                        self.headingScaleNorth.isHidden = false
+                        self.headingScaleSouth.isHidden = true
+                    } else {
+                        headingPointX = headingDegree * self.headingScaleSouth.pixelPerUnit
+                    }
+                }
+                CALayer.performWithoutAnimation ({
+                print(self.scrollLayer.animationKeys() ?? "")
+//                    self.scrollLayer.scroll(to: CGRect(x: (headingPointX - self.frame.width / 2),
+//                                                       y: 0,
+//                                                       width: self.frame.width,
+//                                                       height: 40))
+//                    self.scrollLayer.scroll(to: CGPoint(x: headingPointX - self.frame.width / 2,
+//                                                        y: 20.0))
+                    self.scrollLayer.bounds =  CGRect(x: (headingPointX - self.frame.width / 2) - self,
+                                                      y: 0,
+                                                      width: headingPointX - self.frame.width / 2,
+                                                      height: 40)
+                }, completionHandler: {
+                    self.scrollLock = false
+                })
+                
             }
-//            CALayer.performWithoutAnimation {
-                scrollLayer.scroll(to: CGPoint(x: headingPointX - frame.width / 2,
-                                               y: 20.0))
-//            }
             
-        }
+//            self.scrollLock = false
+        })
      }
-    
-    
     
     func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
         let line = CAShapeLayer()
@@ -221,7 +246,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
         line.fillColor = nil
         line.opacity = 1.0
         line.lineWidth = CGFloat(width)
-        line.strokeColor = UIColor.green.cgColor
+        line.strokeColor = scaleColor
         addSublayer(line)
     }
 }
@@ -229,8 +254,12 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
 
 extension CALayer {
     
-    class func performWithoutAnimation(_ actionsWithoutAnimation: () -> Void){
+    class func performWithoutAnimation(_ actionsWithoutAnimation: () -> Void,
+                                       completionHandler handler: @escaping() -> Void){
         CATransaction.begin()
+        CATransaction.setCompletionBlock({
+            handler()
+        })
         CATransaction.setValue(true, forKey: kCATransactionDisableActions)
         actionsWithoutAnimation()
         CATransaction.commit()

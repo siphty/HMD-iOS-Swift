@@ -21,6 +21,7 @@ class HMDHeadingScaleLayerRenderer: CALayer {
     var hasUnderline: Bool = true
     var hasTopline: Bool = true
     var isFacingNorth: Bool = true
+    let scaleColor = UIColor.init(red: 35.0 / 255.0, green: 255.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
     enum Cardinal: Int {
         case north = 0
         case east
@@ -109,7 +110,7 @@ class HMDHeadingScaleLayerRenderer: CALayer {
                     label.string = ""
                 }
                 label.alignmentMode = kCAAlignmentCenter
-                label.foregroundColor = UIColor.green.cgColor
+                label.foregroundColor = scaleColor
                 addSublayer(label)
                 
             } else if (i % unitPerLabel) == 0 {
@@ -134,7 +135,7 @@ class HMDHeadingScaleLayerRenderer: CALayer {
                     label.string = String(i)
                 }
                 label.alignmentMode = kCAAlignmentCenter
-                label.foregroundColor = UIColor.green.cgColor
+                label.foregroundColor = scaleColor
                 addSublayer(label)
                 
             }
@@ -153,7 +154,7 @@ class HMDHeadingScaleLayerRenderer: CALayer {
         line.opacity = 1.0
         line.lineWidth = CGFloat(width)
 //        if isFacingNorth {
-            line.strokeColor = UIColor.green.cgColor
+            line.strokeColor = scaleColor
 //        } else {
 //            line.strokeColor = UIColor.yellow.cgColor
 //        }
