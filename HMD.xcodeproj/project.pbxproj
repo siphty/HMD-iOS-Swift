@@ -7,61 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A22560C91EB59675001B6B56 /* miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22560C81EB59675001B6B56 /* miscellaneous.swift */; };
-		A24BBF301E56840300EBF428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF2F1E56840300EBF428 /* AppDelegate.swift */; };
-		A24BBF321E56840300EBF428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF311E56840300EBF428 /* ViewController.swift */; };
-		A24BBF351E56840300EBF428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF331E56840300EBF428 /* Main.storyboard */; };
-		A24BBF381E56840300EBF428 /* Stereoscopic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */; };
-		A24BBF3A1E56840300EBF428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF391E56840300EBF428 /* Assets.xcassets */; };
-		A24BBF3D1E56840300EBF428 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */; };
-		A24BBF481E56840300EBF428 /* HMDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF471E56840300EBF428 /* HMDTests.swift */; };
-		A24BBF531E56840300EBF428 /* HMDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF521E56840300EBF428 /* HMDUITests.swift */; };
-		A254BEFC1EA8D55D005E70D9 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */; };
-		A254BEFF1EA976EB005E70D9 /* HMDCommScaleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */; };
-		A254BF011EA977A5005E70D9 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */; };
-		A254BF071EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF061EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift */; };
-		A254BF091EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF081EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift */; };
-		A2B567F31EA4DD6C00ED7ACD /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */; };
+		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
+		A2A1AA501EBA1C2A006970E1 /* HMDCommScaleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA451EBA1C2A006970E1 /* HMDCommScaleRenderer.swift */; };
+		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayerRenderer.swift */; };
+		A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */; };
+		A2A1AA531EBA1C2A006970E1 /* HMDHeadingScaleLayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA481EBA1C2A006970E1 /* HMDHeadingScaleLayerRenderer.swift */; };
+		A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */; };
+		A2A1AA551EBA1C2A006970E1 /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */; };
+		A2A1AA561EBA1C2A006970E1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA4B1EBA1C2A006970E1 /* Info.plist */; };
+		A2A1AA571EBA1C2A006970E1 /* miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4C1EBA1C2A006970E1 /* miscellaneous.swift */; };
+		A2A1AA581EBA1C2A006970E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */; };
+		A2A1AA5A1EBA1C39006970E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA591EBA1C39006970E1 /* Assets.xcassets */; };
+		A2A1AA5F1EBA1C5C006970E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */; };
+		A2A1AA601EBA1C5C006970E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */; };
+		A2A1AA631EBA1C78006970E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA611EBA1C78006970E1 /* Main.storyboard */; };
+		A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */; };
+		A2A1AA831EBA1E2C006970E1 /* HMDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA821EBA1E2C006970E1 /* HMDUITests.swift */; };
+		A2A1AA911EBA1E36006970E1 /* HMDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA901EBA1E36006970E1 /* HMDTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A24BBF441E56840300EBF428 /* PBXContainerItemProxy */ = {
+		A2A1AA851EBA1E2C006970E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A24BBF241E56840300EBF428 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A24BBF2B1E56840300EBF428;
-			remoteInfo = Stereoscopic;
+			remoteInfo = HMD;
 		};
-		A24BBF4F1E56840300EBF428 /* PBXContainerItemProxy */ = {
+		A2A1AA931EBA1E36006970E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A24BBF241E56840300EBF428 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A24BBF2B1E56840300EBF428;
-			remoteInfo = Stereoscopic;
+			remoteInfo = HMD;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A22560C81EB59675001B6B56 /* miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = miscellaneous.swift; sourceTree = "<group>"; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A24BBF2F1E56840300EBF428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A24BBF311E56840300EBF428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A24BBF341E56840300EBF428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A24BBF371E56840300EBF428 /* Stereoscopic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stereoscopic.xcdatamodel; sourceTree = "<group>"; };
-		A24BBF391E56840300EBF428 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A24BBF3C1E56840300EBF428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A24BBF3E1E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A24BBF431E56840300EBF428 /* HMDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A24BBF471E56840300EBF428 /* HMDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDTests.swift; sourceTree = "<group>"; };
-		A24BBF491E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A24BBF4E1E56840300EBF428 /* HMDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A24BBF521E56840300EBF428 /* HMDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDUITests.swift; sourceTree = "<group>"; };
-		A24BBF541E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDLayer.swift; sourceTree = "<group>"; };
-		A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDCommScaleRenderer.swift; sourceTree = "<group>"; };
-		A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHeadingRenderer.swift; sourceTree = "<group>"; };
-		A254BF061EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHeadingScaleLayerRenderer.swift; sourceTree = "<group>"; };
-		A254BF081EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHeadingCursorLayerRenderer.swift; sourceTree = "<group>"; };
+		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA451EBA1C2A006970E1 /* HMDCommScaleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDCommScaleRenderer.swift; path = HMD/HMDCommScaleRenderer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayerRenderer.swift; path = HMD/HMDHeadingCursorLayerRenderer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingRenderer.swift; path = HMD/HMDHeadingRenderer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA481EBA1C2A006970E1 /* HMDHeadingScaleLayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingScaleLayerRenderer.swift; path = HMD/HMDHeadingScaleLayerRenderer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDLayer.swift; path = HMD/HMDLayer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HUDViewRenderer.swift; path = HMD/HUDViewRenderer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA4B1EBA1C2A006970E1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HMD/Info.plist; sourceTree = SOURCE_ROOT; };
+		A2A1AA4C1EBA1C2A006970E1 /* miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = miscellaneous.swift; path = HMD/miscellaneous.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = HMD/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AA591EBA1C39006970E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HMD/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		A2A1AA5C1EBA1C5C006970E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		A2A1AA5E1EBA1C5C006970E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		A2A1AA621EBA1C78006970E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		A2A1AA801EBA1E2C006970E1 /* HMDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2A1AA821EBA1E2C006970E1 /* HMDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDUITests.swift; sourceTree = "<group>"; };
+		A2A1AA841EBA1E2C006970E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2A1AA8E1EBA1E36006970E1 /* HMDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2A1AA901EBA1E36006970E1 /* HMDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDTests.swift; sourceTree = "<group>"; };
+		A2A1AA921EBA1E36006970E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,14 +76,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A24BBF401E56840300EBF428 /* Frameworks */ = {
+		A2A1AA7D1EBA1E2C006970E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A24BBF4B1E56840300EBF428 /* Frameworks */ = {
+		A2A1AA8B1EBA1E36006970E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -94,8 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				A24BBF2E1E56840300EBF428 /* HMD */,
-				A24BBF461E56840300EBF428 /* HMDTests */,
-				A24BBF511E56840300EBF428 /* HMDUITests */,
+				A2A1AA811EBA1E2C006970E1 /* HMDUITests */,
+				A2A1AA8F1EBA1E36006970E1 /* HMDTests */,
 				A24BBF2D1E56840300EBF428 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				A24BBF2C1E56840300EBF428 /* HMD.app */,
-				A24BBF431E56840300EBF428 /* HMDTests.xctest */,
-				A24BBF4E1E56840300EBF428 /* HMDUITests.xctest */,
+				A2A1AA801EBA1E2C006970E1 /* HMDUITests.xctest */,
+				A2A1AA8E1EBA1E36006970E1 /* HMDTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,46 +116,26 @@
 		A24BBF2E1E56840300EBF428 /* HMD */ = {
 			isa = PBXGroup;
 			children = (
-				A24BBF2F1E56840300EBF428 /* AppDelegate.swift */,
-				A24BBF311E56840300EBF428 /* ViewController.swift */,
-				A24BBF331E56840300EBF428 /* Main.storyboard */,
-				A24BBF391E56840300EBF428 /* Assets.xcassets */,
+				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
+				A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */,
+				A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */,
+				A2A1AA611EBA1C78006970E1 /* Main.storyboard */,
+				A2A1AA591EBA1C39006970E1 /* Assets.xcassets */,
+				A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */,
 				A254BF051EAA2785005E70D9 /* AugmentedReality */,
-				A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */,
-				A24BBF3E1E56840300EBF428 /* Info.plist */,
-				A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */,
+				A2A1AA4B1EBA1C2A006970E1 /* Info.plist */,
 				A254BF0B1EAAE431005E70D9 /* useless */,
 			);
 			name = HMD;
 			path = Stereoscopic;
 			sourceTree = "<group>";
 		};
-		A24BBF461E56840300EBF428 /* HMDTests */ = {
-			isa = PBXGroup;
-			children = (
-				A24BBF471E56840300EBF428 /* HMDTests.swift */,
-				A24BBF491E56840300EBF428 /* Info.plist */,
-			);
-			name = HMDTests;
-			path = StereoscopicTests;
-			sourceTree = "<group>";
-		};
-		A24BBF511E56840300EBF428 /* HMDUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A24BBF521E56840300EBF428 /* HMDUITests.swift */,
-				A24BBF541E56840300EBF428 /* Info.plist */,
-			);
-			name = HMDUITests;
-			path = StereoscopicUITests;
-			sourceTree = "<group>";
-		};
 		A254BEFD1EA8DDE6005E70D9 /* HMD */ = {
 			isa = PBXGroup;
 			children = (
-				A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */,
+				A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */,
 				A28BF8EB1EB05F200097EB4D /* HMDHeading */,
-				A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */,
+				A2A1AA451EBA1C2A006970E1 /* HMDCommScaleRenderer.swift */,
 			);
 			name = HMD;
 			sourceTree = "<group>";
@@ -167,9 +150,11 @@
 		A254BF051EAA2785005E70D9 /* AugmentedReality */ = {
 			isa = PBXGroup;
 			children = (
+				A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */,
+				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
 				A254BF041EAA276C005E70D9 /* HUD */,
 				A254BEFD1EA8DDE6005E70D9 /* HMD */,
-				A22560C81EB59675001B6B56 /* miscellaneous.swift */,
+				A2A1AA4C1EBA1C2A006970E1 /* miscellaneous.swift */,
 			);
 			name = AugmentedReality;
 			sourceTree = "<group>";
@@ -185,11 +170,29 @@
 		A28BF8EB1EB05F200097EB4D /* HMDHeading */ = {
 			isa = PBXGroup;
 			children = (
-				A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */,
-				A254BF061EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift */,
-				A254BF081EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift */,
+				A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */,
+				A2A1AA481EBA1C2A006970E1 /* HMDHeadingScaleLayerRenderer.swift */,
+				A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayerRenderer.swift */,
 			);
 			name = HMDHeading;
+			sourceTree = "<group>";
+		};
+		A2A1AA811EBA1E2C006970E1 /* HMDUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A2A1AA821EBA1E2C006970E1 /* HMDUITests.swift */,
+				A2A1AA841EBA1E2C006970E1 /* Info.plist */,
+			);
+			path = HMDUITests;
+			sourceTree = "<group>";
+		};
+		A2A1AA8F1EBA1E36006970E1 /* HMDTests */ = {
+			isa = PBXGroup;
+			children = (
+				A2A1AA901EBA1E36006970E1 /* HMDTests.swift */,
+				A2A1AA921EBA1E36006970E1 /* Info.plist */,
+			);
+			path = HMDTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,41 +215,41 @@
 			productReference = A24BBF2C1E56840300EBF428 /* HMD.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A24BBF421E56840300EBF428 /* HMDTests */ = {
+		A2A1AA7F1EBA1E2C006970E1 /* HMDUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDTests" */;
+			buildConfigurationList = A2A1AA871EBA1E2C006970E1 /* Build configuration list for PBXNativeTarget "HMDUITests" */;
 			buildPhases = (
-				A24BBF3F1E56840300EBF428 /* Sources */,
-				A24BBF401E56840300EBF428 /* Frameworks */,
-				A24BBF411E56840300EBF428 /* Resources */,
+				A2A1AA7C1EBA1E2C006970E1 /* Sources */,
+				A2A1AA7D1EBA1E2C006970E1 /* Frameworks */,
+				A2A1AA7E1EBA1E2C006970E1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A24BBF451E56840300EBF428 /* PBXTargetDependency */,
-			);
-			name = HMDTests;
-			productName = StereoscopicTests;
-			productReference = A24BBF431E56840300EBF428 /* HMDTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A24BBF4D1E56840300EBF428 /* HMDUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDUITests" */;
-			buildPhases = (
-				A24BBF4A1E56840300EBF428 /* Sources */,
-				A24BBF4B1E56840300EBF428 /* Frameworks */,
-				A24BBF4C1E56840300EBF428 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A24BBF501E56840300EBF428 /* PBXTargetDependency */,
+				A2A1AA861EBA1E2C006970E1 /* PBXTargetDependency */,
 			);
 			name = HMDUITests;
-			productName = StereoscopicUITests;
-			productReference = A24BBF4E1E56840300EBF428 /* HMDUITests.xctest */;
+			productName = HMDUITests;
+			productReference = A2A1AA801EBA1E2C006970E1 /* HMDUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A2A1AA8D1EBA1E36006970E1 /* HMDTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2A1AA951EBA1E36006970E1 /* Build configuration list for PBXNativeTarget "HMDTests" */;
+			buildPhases = (
+				A2A1AA8A1EBA1E36006970E1 /* Sources */,
+				A2A1AA8B1EBA1E36006970E1 /* Frameworks */,
+				A2A1AA8C1EBA1E36006970E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2A1AA941EBA1E36006970E1 /* PBXTargetDependency */,
+			);
+			name = HMDTests;
+			productName = HMDTests;
+			productReference = A2A1AA8E1EBA1E36006970E1 /* HMDTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -254,7 +257,7 @@
 		A24BBF241E56840300EBF428 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = RobertYiJiang;
 				TargetAttributes = {
@@ -263,14 +266,14 @@
 						DevelopmentTeam = DQK83PW4RV;
 						ProvisioningStyle = Automatic;
 					};
-					A24BBF421E56840300EBF428 = {
-						CreatedOnToolsVersion = 8.2.1;
+					A2A1AA7F1EBA1E2C006970E1 = {
+						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DQK83PW4RV;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A24BBF2B1E56840300EBF428;
 					};
-					A24BBF4D1E56840300EBF428 = {
-						CreatedOnToolsVersion = 8.2.1;
+					A2A1AA8D1EBA1E36006970E1 = {
+						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DQK83PW4RV;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A24BBF2B1E56840300EBF428;
@@ -291,8 +294,8 @@
 			projectRoot = "";
 			targets = (
 				A24BBF2B1E56840300EBF428 /* HMD */,
-				A24BBF421E56840300EBF428 /* HMDTests */,
-				A24BBF4D1E56840300EBF428 /* HMDUITests */,
+				A2A1AA7F1EBA1E2C006970E1 /* HMDUITests */,
+				A2A1AA8D1EBA1E36006970E1 /* HMDTests */,
 			);
 		};
 /* End PBXProject section */
@@ -302,20 +305,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A24BBF3D1E56840300EBF428 /* LaunchScreen.storyboard in Resources */,
-				A24BBF3A1E56840300EBF428 /* Assets.xcassets in Resources */,
-				A24BBF351E56840300EBF428 /* Main.storyboard in Resources */,
+				A2A1AA561EBA1C2A006970E1 /* Info.plist in Resources */,
+				A2A1AA601EBA1C5C006970E1 /* Main.storyboard in Resources */,
+				A2A1AA631EBA1C78006970E1 /* Main.storyboard in Resources */,
+				A2A1AA5F1EBA1C5C006970E1 /* LaunchScreen.storyboard in Resources */,
+				A2A1AA5A1EBA1C39006970E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A24BBF411E56840300EBF428 /* Resources */ = {
+		A2A1AA7E1EBA1E2C006970E1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A24BBF4C1E56840300EBF428 /* Resources */ = {
+		A2A1AA8C1EBA1E36006970E1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,65 +334,73 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A24BBF321E56840300EBF428 /* ViewController.swift in Sources */,
-				A254BEFC1EA8D55D005E70D9 /* HMDLayer.swift in Sources */,
-				A22560C91EB59675001B6B56 /* miscellaneous.swift in Sources */,
-				A254BF011EA977A5005E70D9 /* HMDHeadingRenderer.swift in Sources */,
-				A254BF071EAA2DEE005E70D9 /* HMDHeadingScaleLayerRenderer.swift in Sources */,
-				A254BF091EAA2F3F005E70D9 /* HMDHeadingCursorLayerRenderer.swift in Sources */,
-				A24BBF301E56840300EBF428 /* AppDelegate.swift in Sources */,
-				A24BBF381E56840300EBF428 /* Stereoscopic.xcdatamodeld in Sources */,
-				A254BEFF1EA976EB005E70D9 /* HMDCommScaleRenderer.swift in Sources */,
-				A2B567F31EA4DD6C00ED7ACD /* HUDViewRenderer.swift in Sources */,
+				A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */,
+				A2A1AA581EBA1C2A006970E1 /* ViewController.swift in Sources */,
+				A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayerRenderer.swift in Sources */,
+				A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */,
+				A2A1AA571EBA1C2A006970E1 /* miscellaneous.swift in Sources */,
+				A2A1AA501EBA1C2A006970E1 /* HMDCommScaleRenderer.swift in Sources */,
+				A2A1AA531EBA1C2A006970E1 /* HMDHeadingScaleLayerRenderer.swift in Sources */,
+				A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */,
+				A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */,
+				A2A1AA551EBA1C2A006970E1 /* HUDViewRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A24BBF3F1E56840300EBF428 /* Sources */ = {
+		A2A1AA7C1EBA1E2C006970E1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A24BBF481E56840300EBF428 /* HMDTests.swift in Sources */,
+				A2A1AA831EBA1E2C006970E1 /* HMDUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A24BBF4A1E56840300EBF428 /* Sources */ = {
+		A2A1AA8A1EBA1E36006970E1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A24BBF531E56840300EBF428 /* HMDUITests.swift in Sources */,
+				A2A1AA911EBA1E36006970E1 /* HMDTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A24BBF451E56840300EBF428 /* PBXTargetDependency */ = {
+		A2A1AA861EBA1E2C006970E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A24BBF2B1E56840300EBF428 /* HMD */;
-			targetProxy = A24BBF441E56840300EBF428 /* PBXContainerItemProxy */;
+			targetProxy = A2A1AA851EBA1E2C006970E1 /* PBXContainerItemProxy */;
 		};
-		A24BBF501E56840300EBF428 /* PBXTargetDependency */ = {
+		A2A1AA941EBA1E36006970E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A24BBF2B1E56840300EBF428 /* HMD */;
-			targetProxy = A24BBF4F1E56840300EBF428 /* PBXContainerItemProxy */;
+			targetProxy = A2A1AA931EBA1E36006970E1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A24BBF331E56840300EBF428 /* Main.storyboard */ = {
+		A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A24BBF341E56840300EBF428 /* Base */,
+				A2A1AA5C1EBA1C5C006970E1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2A1AA5E1EBA1C5C006970E1 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */ = {
+		A2A1AA611EBA1C78006970E1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A24BBF3C1E56840300EBF428 /* Base */,
+				A2A1AA621EBA1C78006970E1 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -510,61 +523,65 @@
 			};
 			name = Release;
 		};
-		A24BBF5B1E56840300EBF428 /* Debug */ = {
+		A2A1AA881EBA1E2C006970E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = HMDTests/Info.plist;
+				INFOPLIST_FILE = HMDUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDTests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HMD.app/HMD";
+				TEST_TARGET_NAME = HMD;
 			};
 			name = Debug;
 		};
-		A24BBF5C1E56840300EBF428 /* Release */ = {
+		A2A1AA891EBA1E2C006970E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = HMDTests/Info.plist;
+				INFOPLIST_FILE = HMDUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDTests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HMD.app/HMD";
+				TEST_TARGET_NAME = HMD;
 			};
 			name = Release;
 		};
-		A24BBF5E1E56840300EBF428 /* Debug */ = {
+		A2A1AA961EBA1E36006970E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = HMDUITests/Info.plist;
+				INFOPLIST_FILE = HMDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = HMD;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HMD.app/HMD";
 			};
 			name = Debug;
 		};
-		A24BBF5F1E56840300EBF428 /* Release */ = {
+		A2A1AA971EBA1E36006970E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = HMDUITests/Info.plist;
+				INFOPLIST_FILE = HMDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = HMD;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HMD.app/HMD";
 			};
 			name = Release;
 		};
@@ -589,34 +606,31 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDTests" */ = {
+		A2A1AA871EBA1E2C006970E1 /* Build configuration list for PBXNativeTarget "HMDUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A24BBF5B1E56840300EBF428 /* Debug */,
-				A24BBF5C1E56840300EBF428 /* Release */,
+				A2A1AA881EBA1E2C006970E1 /* Debug */,
+				A2A1AA891EBA1E2C006970E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDUITests" */ = {
+		A2A1AA951EBA1E36006970E1 /* Build configuration list for PBXNativeTarget "HMDTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A24BBF5E1E56840300EBF428 /* Debug */,
-				A24BBF5F1E56840300EBF428 /* Release */,
+				A2A1AA961EBA1E36006970E1 /* Debug */,
+				A2A1AA971EBA1E36006970E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */ = {
+		A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A24BBF371E56840300EBF428 /* Stereoscopic.xcdatamodel */,
 			);
-			currentVersion = A24BBF371E56840300EBF428 /* Stereoscopic.xcdatamodel */;
-			path = Stereoscopic.xcdatamodeld;
+			name = HMD.xcdatamodeld;
+			path = ../HMD/HMD.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

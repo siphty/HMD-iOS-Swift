@@ -2,7 +2,7 @@
 //  HMDUITests.swift
 //  HMDUITests
 //
-//  Created by Yi JIANG on 17/2/17.
+//  Created by Yi JIANG on 4/5/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.
 //
 
