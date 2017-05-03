@@ -274,7 +274,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A24BBF271E56840300EBF428 /* Build configuration list for PBXProject "Stereoscopic" */;
+			buildConfigurationList = A24BBF271E56840300EBF428 /* Build configuration list for PBXProject "HMD" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -568,7 +568,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A24BBF271E56840300EBF428 /* Build configuration list for PBXProject "Stereoscopic" */ = {
+		A24BBF271E56840300EBF428 /* Build configuration list for PBXProject "HMD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A24BBF551E56840300EBF428 /* Debug */,

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Stereoscopic.xcodeproj">
+      location = "self:/Users/yijiang/ARVR/Stereoscopic/HMD.xcodeproj">
    </FileRef>
 </Workspace>

@@ -17,7 +17,7 @@
                BlueprintIdentifier = "A24BBF2B1E56840300EBF428"
                BuildableName = "Stereoscopic.app"
                BlueprintName = "Stereoscopic"
-               ReferencedContainer = "container:Stereoscopic.xcodeproj">
+               ReferencedContainer = "container:HMD.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "A24BBF421E56840300EBF428"
                BuildableName = "StereoscopicTests.xctest"
                BlueprintName = "StereoscopicTests"
-               ReferencedContainer = "container:Stereoscopic.xcodeproj">
+               ReferencedContainer = "container:HMD.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "A24BBF4D1E56840300EBF428"
                BuildableName = "StereoscopicUITests.xctest"
                BlueprintName = "StereoscopicUITests"
-               ReferencedContainer = "container:Stereoscopic.xcodeproj">
+               ReferencedContainer = "container:HMD.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "A24BBF2B1E56840300EBF428"
             BuildableName = "Stereoscopic.app"
             BlueprintName = "Stereoscopic"
-            ReferencedContainer = "container:Stereoscopic.xcodeproj">
+            ReferencedContainer = "container:HMD.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "A24BBF2B1E56840300EBF428"
             BuildableName = "Stereoscopic.app"
             BlueprintName = "Stereoscopic"
-            ReferencedContainer = "container:Stereoscopic.xcodeproj">
+            ReferencedContainer = "container:HMD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "A24BBF2B1E56840300EBF428"
             BuildableName = "Stereoscopic.app"
             BlueprintName = "Stereoscopic"
-            ReferencedContainer = "container:Stereoscopic.xcodeproj">
+            ReferencedContainer = "container:HMD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
