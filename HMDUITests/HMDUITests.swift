@@ -1,6 +1,6 @@
 //
-//  StereoscopicUITests.swift
-//  StereoscopicUITests
+//  HMDUITests.swift
+//  HMDUITests
 //
 //  Created by Yi JIANG on 17/2/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class StereoscopicUITests: XCTestCase {
+class HMDUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

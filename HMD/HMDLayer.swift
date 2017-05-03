@@ -1,6 +1,6 @@
 //
 //  HMDLayer.swift
-//  Stereoscopic
+//  HMD
 //
 //  Created by Yi JIANG on 20/4/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  HMDCommScaleRenderer.swift
-//  Stereoscopic
+//  HMD
 //
 //  Created by Yi JIANG on 21/4/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.

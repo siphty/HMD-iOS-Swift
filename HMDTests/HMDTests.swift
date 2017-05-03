@@ -1,15 +1,15 @@
 //
-//  StereoscopicTests.swift
-//  StereoscopicTests
+//  HMDTests.swift
+//  HMDTests
 //
 //  Created by Yi JIANG on 17/2/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.
 //
 
 import XCTest
-@testable import Stereoscopic
+@testable import HMD
 
-class StereoscopicTests: XCTestCase {
+class HMDTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Stereoscopic
+//  HMD
 //
 //  Created by Yi JIANG on 17/2/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.

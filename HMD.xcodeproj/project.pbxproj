@@ -14,8 +14,8 @@
 		A24BBF381E56840300EBF428 /* Stereoscopic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */; };
 		A24BBF3A1E56840300EBF428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF391E56840300EBF428 /* Assets.xcassets */; };
 		A24BBF3D1E56840300EBF428 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A24BBF3B1E56840300EBF428 /* LaunchScreen.storyboard */; };
-		A24BBF481E56840300EBF428 /* StereoscopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF471E56840300EBF428 /* StereoscopicTests.swift */; };
-		A24BBF531E56840300EBF428 /* StereoscopicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */; };
+		A24BBF481E56840300EBF428 /* HMDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF471E56840300EBF428 /* HMDTests.swift */; };
+		A24BBF531E56840300EBF428 /* HMDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24BBF521E56840300EBF428 /* HMDUITests.swift */; };
 		A254BEFC1EA8D55D005E70D9 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */; };
 		A254BEFF1EA976EB005E70D9 /* HMDCommScaleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */; };
 		A254BF011EA977A5005E70D9 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A254BF001EA977A5005E70D9 /* HMDHeadingRenderer.swift */; };
@@ -43,7 +43,7 @@
 
 /* Begin PBXFileReference section */
 		A22560C81EB59675001B6B56 /* miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = miscellaneous.swift; sourceTree = "<group>"; };
-		A24BBF2C1E56840300EBF428 /* Stereoscopic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stereoscopic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24BBF2F1E56840300EBF428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A24BBF311E56840300EBF428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A24BBF341E56840300EBF428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,11 +51,11 @@
 		A24BBF391E56840300EBF428 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A24BBF3C1E56840300EBF428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A24BBF3E1E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A24BBF431E56840300EBF428 /* StereoscopicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StereoscopicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A24BBF471E56840300EBF428 /* StereoscopicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StereoscopicTests.swift; sourceTree = "<group>"; };
+		A24BBF431E56840300EBF428 /* HMDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24BBF471E56840300EBF428 /* HMDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDTests.swift; sourceTree = "<group>"; };
 		A24BBF491E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A24BBF4E1E56840300EBF428 /* StereoscopicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StereoscopicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StereoscopicUITests.swift; sourceTree = "<group>"; };
+		A24BBF4E1E56840300EBF428 /* HMDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24BBF521E56840300EBF428 /* HMDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDUITests.swift; sourceTree = "<group>"; };
 		A24BBF541E56840300EBF428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A254BEFB1EA8D55D005E70D9 /* HMDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDLayer.swift; sourceTree = "<group>"; };
 		A254BEFE1EA976EB005E70D9 /* HMDCommScaleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDCommScaleRenderer.swift; sourceTree = "<group>"; };
@@ -93,9 +93,9 @@
 		A24BBF231E56840300EBF428 = {
 			isa = PBXGroup;
 			children = (
-				A24BBF2E1E56840300EBF428 /* Stereoscopic */,
-				A24BBF461E56840300EBF428 /* StereoscopicTests */,
-				A24BBF511E56840300EBF428 /* StereoscopicUITests */,
+				A24BBF2E1E56840300EBF428 /* HMD */,
+				A24BBF461E56840300EBF428 /* HMDTests */,
+				A24BBF511E56840300EBF428 /* HMDUITests */,
 				A24BBF2D1E56840300EBF428 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,14 +103,14 @@
 		A24BBF2D1E56840300EBF428 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A24BBF2C1E56840300EBF428 /* Stereoscopic.app */,
-				A24BBF431E56840300EBF428 /* StereoscopicTests.xctest */,
-				A24BBF4E1E56840300EBF428 /* StereoscopicUITests.xctest */,
+				A24BBF2C1E56840300EBF428 /* HMD.app */,
+				A24BBF431E56840300EBF428 /* HMDTests.xctest */,
+				A24BBF4E1E56840300EBF428 /* HMDUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A24BBF2E1E56840300EBF428 /* Stereoscopic */ = {
+		A24BBF2E1E56840300EBF428 /* HMD */ = {
 			isa = PBXGroup;
 			children = (
 				A24BBF2F1E56840300EBF428 /* AppDelegate.swift */,
@@ -123,24 +123,27 @@
 				A24BBF361E56840300EBF428 /* Stereoscopic.xcdatamodeld */,
 				A254BF0B1EAAE431005E70D9 /* useless */,
 			);
+			name = HMD;
 			path = Stereoscopic;
 			sourceTree = "<group>";
 		};
-		A24BBF461E56840300EBF428 /* StereoscopicTests */ = {
+		A24BBF461E56840300EBF428 /* HMDTests */ = {
 			isa = PBXGroup;
 			children = (
-				A24BBF471E56840300EBF428 /* StereoscopicTests.swift */,
+				A24BBF471E56840300EBF428 /* HMDTests.swift */,
 				A24BBF491E56840300EBF428 /* Info.plist */,
 			);
+			name = HMDTests;
 			path = StereoscopicTests;
 			sourceTree = "<group>";
 		};
-		A24BBF511E56840300EBF428 /* StereoscopicUITests */ = {
+		A24BBF511E56840300EBF428 /* HMDUITests */ = {
 			isa = PBXGroup;
 			children = (
-				A24BBF521E56840300EBF428 /* StereoscopicUITests.swift */,
+				A24BBF521E56840300EBF428 /* HMDUITests.swift */,
 				A24BBF541E56840300EBF428 /* Info.plist */,
 			);
+			name = HMDUITests;
 			path = StereoscopicUITests;
 			sourceTree = "<group>";
 		};
@@ -192,9 +195,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A24BBF2B1E56840300EBF428 /* Stereoscopic */ = {
+		A24BBF2B1E56840300EBF428 /* HMD */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A24BBF571E56840300EBF428 /* Build configuration list for PBXNativeTarget "Stereoscopic" */;
+			buildConfigurationList = A24BBF571E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMD" */;
 			buildPhases = (
 				A24BBF281E56840300EBF428 /* Sources */,
 				A24BBF291E56840300EBF428 /* Frameworks */,
@@ -204,14 +207,14 @@
 			);
 			dependencies = (
 			);
-			name = Stereoscopic;
+			name = HMD;
 			productName = Stereoscopic;
-			productReference = A24BBF2C1E56840300EBF428 /* Stereoscopic.app */;
+			productReference = A24BBF2C1E56840300EBF428 /* HMD.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A24BBF421E56840300EBF428 /* StereoscopicTests */ = {
+		A24BBF421E56840300EBF428 /* HMDTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicTests" */;
+			buildConfigurationList = A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDTests" */;
 			buildPhases = (
 				A24BBF3F1E56840300EBF428 /* Sources */,
 				A24BBF401E56840300EBF428 /* Frameworks */,
@@ -222,14 +225,14 @@
 			dependencies = (
 				A24BBF451E56840300EBF428 /* PBXTargetDependency */,
 			);
-			name = StereoscopicTests;
+			name = HMDTests;
 			productName = StereoscopicTests;
-			productReference = A24BBF431E56840300EBF428 /* StereoscopicTests.xctest */;
+			productReference = A24BBF431E56840300EBF428 /* HMDTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A24BBF4D1E56840300EBF428 /* StereoscopicUITests */ = {
+		A24BBF4D1E56840300EBF428 /* HMDUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicUITests" */;
+			buildConfigurationList = A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDUITests" */;
 			buildPhases = (
 				A24BBF4A1E56840300EBF428 /* Sources */,
 				A24BBF4B1E56840300EBF428 /* Frameworks */,
@@ -240,9 +243,9 @@
 			dependencies = (
 				A24BBF501E56840300EBF428 /* PBXTargetDependency */,
 			);
-			name = StereoscopicUITests;
+			name = HMDUITests;
 			productName = StereoscopicUITests;
-			productReference = A24BBF4E1E56840300EBF428 /* StereoscopicUITests.xctest */;
+			productReference = A24BBF4E1E56840300EBF428 /* HMDUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -287,9 +290,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A24BBF2B1E56840300EBF428 /* Stereoscopic */,
-				A24BBF421E56840300EBF428 /* StereoscopicTests */,
-				A24BBF4D1E56840300EBF428 /* StereoscopicUITests */,
+				A24BBF2B1E56840300EBF428 /* HMD */,
+				A24BBF421E56840300EBF428 /* HMDTests */,
+				A24BBF4D1E56840300EBF428 /* HMDUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -343,7 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A24BBF481E56840300EBF428 /* StereoscopicTests.swift in Sources */,
+				A24BBF481E56840300EBF428 /* HMDTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A24BBF531E56840300EBF428 /* StereoscopicUITests.swift in Sources */,
+				A24BBF531E56840300EBF428 /* HMDUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,12 +363,12 @@
 /* Begin PBXTargetDependency section */
 		A24BBF451E56840300EBF428 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A24BBF2B1E56840300EBF428 /* Stereoscopic */;
+			target = A24BBF2B1E56840300EBF428 /* HMD */;
 			targetProxy = A24BBF441E56840300EBF428 /* PBXContainerItemProxy */;
 		};
 		A24BBF501E56840300EBF428 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A24BBF2B1E56840300EBF428 /* Stereoscopic */;
+			target = A24BBF2B1E56840300EBF428 /* HMD */;
 			targetProxy = A24BBF4F1E56840300EBF428 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -486,9 +489,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = Stereoscopic/Info.plist;
+				INFOPLIST_FILE = HMD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.Stereoscopic;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -499,9 +502,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = Stereoscopic/Info.plist;
+				INFOPLIST_FILE = HMD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.Stereoscopic;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -513,12 +516,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = StereoscopicTests/Info.plist;
+				INFOPLIST_FILE = HMDTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicTests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stereoscopic.app/Stereoscopic";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HMD.app/HMD";
 			};
 			name = Debug;
 		};
@@ -528,12 +531,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = StereoscopicTests/Info.plist;
+				INFOPLIST_FILE = HMDTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicTests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stereoscopic.app/Stereoscopic";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HMD.app/HMD";
 			};
 			name = Release;
 		};
@@ -542,12 +545,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = StereoscopicUITests/Info.plist;
+				INFOPLIST_FILE = HMDUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Stereoscopic;
+				TEST_TARGET_NAME = HMD;
 			};
 			name = Debug;
 		};
@@ -556,12 +559,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
-				INFOPLIST_FILE = StereoscopicUITests/Info.plist;
+				INFOPLIST_FILE = HMDUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.StereoscopicUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMDUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Stereoscopic;
+				TEST_TARGET_NAME = HMD;
 			};
 			name = Release;
 		};
@@ -577,7 +580,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A24BBF571E56840300EBF428 /* Build configuration list for PBXNativeTarget "Stereoscopic" */ = {
+		A24BBF571E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A24BBF581E56840300EBF428 /* Debug */,
@@ -586,7 +589,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicTests" */ = {
+		A24BBF5A1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A24BBF5B1E56840300EBF428 /* Debug */,
@@ -595,7 +598,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "StereoscopicUITests" */ = {
+		A24BBF5D1E56840300EBF428 /* Build configuration list for PBXNativeTarget "HMDUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A24BBF5E1E56840300EBF428 /* Debug */,

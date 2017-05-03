@@ -1,6 +1,6 @@
 //
 //  HMDHeadingRenderer.swift
-//  Stereoscopic
+//  HMD
 //
 //  Created by Yi JIANG on 21/4/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.
@@ -216,16 +216,16 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
                 }
                 CALayer.performWithoutAnimation ({
                 print(self.scrollLayer.animationKeys() ?? "")
-//                    self.scrollLayer.scroll(to: CGRect(x: (headingPointX - self.frame.width / 2),
-//                                                       y: 0,
-//                                                       width: self.frame.width,
-//                                                       height: 40))
+                    self.scrollLayer.scroll(to: CGRect(x: (headingPointX - self.frame.width / 2),
+                                                       y: 0,
+                                                       width: self.frame.width,
+                                                       height: 40))
 //                    self.scrollLayer.scroll(to: CGPoint(x: headingPointX - self.frame.width / 2,
 //                                                        y: 20.0))
-                    self.scrollLayer.bounds =  CGRect(x: (headingPointX - self.frame.width / 2) - self,
-                                                      y: 0,
-                                                      width: headingPointX - self.frame.width / 2,
-                                                      height: 40)
+//                    self.scrollLayer.bounds =  CGRect(x: (headingPointX - self.frame.width / 2) - self,
+//                                                      y: 0,
+//                                                      width: headingPointX - self.frame.width / 2,
+//                                                      height: 40)
                 }, completionHandler: {
                     self.scrollLock = false
                 })
