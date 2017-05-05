@@ -140,19 +140,11 @@
 			name = HMD;
 			sourceTree = "<group>";
 		};
-		A254BF041EAA276C005E70D9 /* HUD */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = HUD;
-			sourceTree = "<group>";
-		};
 		A254BF051EAA2785005E70D9 /* AugmentedReality */ = {
 			isa = PBXGroup;
 			children = (
 				A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */,
 				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
-				A254BF041EAA276C005E70D9 /* HUD */,
 				A254BEFD1EA8DDE6005E70D9 /* HMD */,
 				A2A1AA4C1EBA1C2A006970E1 /* miscellaneous.swift */,
 			);
@@ -613,6 +605,7 @@
 				A2A1AA891EBA1E2C006970E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2A1AA951EBA1E36006970E1 /* Build configuration list for PBXNativeTarget "HMDTests" */ = {
 			isa = XCConfigurationList;
@@ -621,6 +614,7 @@
 				A2A1AA971EBA1E36006970E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

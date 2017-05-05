@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A24BBF421E56840300EBF428"
+               BlueprintIdentifier = "A2A1AA8D1EBA1E36006970E1"
                BuildableName = "HMDTests.xctest"
                BlueprintName = "HMDTests"
                ReferencedContainer = "container:HMD.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A24BBF4D1E56840300EBF428"
+               BlueprintIdentifier = "A2A1AA7F1EBA1E2C006970E1"
                BuildableName = "HMDUITests.xctest"
                BlueprintName = "HMDUITests"
                ReferencedContainer = "container:HMD.xcodeproj">

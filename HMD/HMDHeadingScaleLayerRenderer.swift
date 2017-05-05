@@ -12,7 +12,7 @@ class HMDHeadingScaleLayerRenderer: CALayer {
     var didSetup = false
     var shortScalePixels: CGFloat = 10.0
     var longScalePixels: CGFloat = 16.0
-    var pixelPerUnit: CGFloat = 10.48
+    public var pixelPerUnit: CGFloat = 10.48
     var unitPerShortScale: Int = 1
     var unitPerLongScale: Int = 10
     var unitPerLabel: Int = 10
@@ -140,8 +140,6 @@ class HMDHeadingScaleLayerRenderer: CALayer {
                 
             }
         }
-//        masksToBounds = true
-
     }
     
     func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
@@ -153,11 +151,11 @@ class HMDHeadingScaleLayerRenderer: CALayer {
         line.fillColor = nil
         line.opacity = 1.0
         line.lineWidth = CGFloat(width)
-//        if isFacingNorth {
+        if isFacingNorth {
             line.strokeColor = scaleColor
-//        } else {
-//            line.strokeColor = UIColor.yellow.cgColor
-//        }
+        } else {
+            line.strokeColor = UIColor.yellow.cgColor
+        }
         addSublayer(line)
     }
     
