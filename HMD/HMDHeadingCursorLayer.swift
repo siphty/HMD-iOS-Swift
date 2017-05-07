@@ -1,5 +1,5 @@
 //
-//  HMDRulerCursorLayerRenderer.swift
+//  HMDRulerCursorLayer.swift
 //  HMD
 //
 //  Created by Yi JIANG on 21/4/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HMDHeadingCursorLayerRenderer: CALayer {
+class HMDHeadingCursorLayer: CALayer {
     
     var didSetup = false
 //    var 

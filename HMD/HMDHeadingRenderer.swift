@@ -9,9 +9,10 @@
 import UIKit
 import CoreLocation
 
-class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
+class HMDHeadingRenderer: CALayer {
     
     var didSetup = false
+    var operationMode = misc.operationMode.Home
     var translation: CGFloat = 0.0
     var locationManager = CLLocationManager()
     var pixelPerUnit: CGFloat = 10.48
@@ -22,14 +23,15 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
     var lastHeadingDegree: CLLocationDirection = 0.0
     var enableLoop: Bool = true
     var enableVertical: Bool = false
-    var headingScaleNorth = HMDHeadingScaleLayerRenderer()
-    var headingScaleSouth = HMDHeadingScaleLayerRenderer() // I need change this someway somehow
+    var headingScaleNorth = HMDHeadingScaleLayer()
+    var headingScaleSouth = HMDHeadingScaleLayer() // I need change this someway somehow
     var didInitCompass = false
     var headingNumberWidth: CGFloat = 30.0
     var scrollLock = false
     let concurrentQueue = DispatchQueue(label: "updateHeading", attributes: .concurrent)
     
     let label = CATextLayer()
+    internal var labelFontSize = CGFloat(12.0)
     let scaleColor = UIColor.init(red: 35.0 / 255.0, green: 210.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
     
     
@@ -99,12 +101,14 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
             headingScaleNorth.isFacingNorth = true
             headingScaleNorth.backgroundColor = UIColor.clear.cgColor
             headingScaleNorth.frame = scrollLayer.frame
+            headingScaleNorth.labelFontSize = labelFontSize
             headingScaleNorth.setup()
             scrollLayer.addSublayer(headingScaleNorth)
             
             headingScaleSouth.isFacingNorth = false
             headingScaleSouth.backgroundColor = UIColor.clear.cgColor
             headingScaleSouth.frame = scrollLayer.frame
+            headingScaleNorth.labelFontSize = labelFontSize
             headingScaleSouth.setup()
             scrollLayer.addSublayer(headingScaleSouth)
             
@@ -124,7 +128,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
                                         height: 14)
         middleLayer.doMask(withRect: headingNumberFrame, inverse: true)
         label.font = "Tahoma" as CFTypeRef
-        label.fontSize = 12
+        label.fontSize = labelFontSize
         label.contentsScale = UIScreen.main.scale
         label.frame = headingNumberFrame
         label.borderColor = scaleColor
@@ -142,122 +146,7 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
         
     }
     
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        let headingDegree = CGFloat(newHeading.trueHeading)
-        var headingPointX: CGFloat = 0.0
-//        DispatchQueue.main.async(execute: {
-//            print("Heading : \(headingDegree)")
-            if self.scrollLock {
-                return
-            }
-            self.scrollLock = true
-            if !self.didInitCompass {
-                
-                self.locationManager.requestWhenInUseAuthorization()
-                switch headingDegree {
-                case 0 ... 90:
-                    fallthrough
-                case 270 ... 360:
-                    
-                    //Facing North//
-                    self.headingScaleNorth.isHidden = false
-                    self.headingScaleSouth.isHidden = true
-                    headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                    CALayer.performWithoutAnimation ({
-                        let animation = CABasicAnimation(keyPath: "position")
-                        animation.fillMode = kCAFillModeForwards
-                        animation.isRemovedOnCompletion = true
-                        animation.fromValue = self.scrollLayer.frame
-                        animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
-                        self.scrollLayer.add(animation, forKey: "position")
-                        print("Facing North")
-                    },completionHandler: {
-                        self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
-                        self.scrollLock = false
-                    })
-                case 90 ... 270:
-                    
-                    //Facing South//
-                    self.headingScaleSouth.isHidden = false
-                    self.headingScaleNorth.isHidden = true
-                    headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                    CALayer.performWithoutAnimation ({
-                        let animation = CABasicAnimation(keyPath: "position")
-                        animation.fillMode = kCAFillModeForwards
-                        animation.isRemovedOnCompletion = true
-                        animation.fromValue = self.scrollLayer.frame
-                        animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
-                        self.scrollLayer.add(animation, forKey: "position")
-                        print("Facing South")
-                    },completionHandler: {
-                        self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
-                        self.scrollLock = false
-                    })
-                default:
-                    print("Something is wrong")
-                }
-                self.didInitCompass = true
-            } else {
-                
-                //Draw 
-                switch headingDegree {
-                case 0 ... 2 :
-                    fallthrough
-                case 358 ... 360:
-                    self.label.string = "N"
-                case 88 ... 92:
-                    self.label.string = "E"
-                case 178 ... 182:
-                    self.label.string = "S"
-                case 268 ... 272:
-                    self.label.string = "W"
-                default:
-                    self.label.string = String(Int(floor(newHeading.trueHeading)))
-                }
-                if self.headingScaleSouth.isHidden {
-                    //Facing North
-                    if 150.0 ... 210.0 ~= headingDegree  {
-                        //But, turning to South
-                        headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                        self.headingScaleNorth.isHidden = true
-                        self.headingScaleSouth.isHidden = false
-                    } else {
-                        //Still facing North
-                        self.headingScaleNorth.isHidden = false
-                        self.headingScaleSouth.isHidden = true
-                        headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                    }
-                } else {
-                    //Facing South
-                    if 0.0 ... 30.0 ~= headingDegree || 330.0 ... 360.0 ~= headingDegree {
-                        //But, turning to North
-                        headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                        self.headingScaleNorth.isHidden = false
-                        self.headingScaleSouth.isHidden = true
-                    } else {
-                        //Still facing South
-                        self.headingScaleNorth.isHidden = true
-                        self.headingScaleSouth.isHidden = false
-                        headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                    }
-                }
-                CALayer.performWithAnimation({
-                    let animation = CABasicAnimation(keyPath: "frame")
-                    animation.fillMode = kCAFillModeForwards
-                    animation.isRemovedOnCompletion = true
-                    animation.fromValue = self.scrollLayer.frame
-                    animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
-                    
-                    self.scrollLayer.add(animation, forKey: "frame")
-                },completionHandler: {
-                    self.scrollLayer.frame = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
-                    self.scrollLock = false
-                })
-                
-            }
-        
-     }
+ 
     
     func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
         let line = CAShapeLayer()
@@ -275,58 +164,127 @@ class HMDHeadingRenderer: CALayer, CLLocationManagerDelegate {
     
 }
 
-
-extension CALayer {
-    class func performWithAnimation(_ actionsWithoutAnimation: () -> Void,
-                                    completionHandler handler: @escaping() -> Void){
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(0.01)
-        CATransaction.setDisableActions(false)
-        CATransaction.setCompletionBlock({
-            handler()
-        })
-        actionsWithoutAnimation()
-        CATransaction.commit()
-    }
+extension HMDHeadingRenderer: CLLocationManagerDelegate{
     
-    class func performWithoutAnimation(_ actionsWithoutAnimation: () -> Void,
-                                       completionHandler handler: @escaping() -> Void){
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(0)
-        CATransaction.setDisableActions(true)
-        CATransaction.setCompletionBlock({
-            handler()
-        })
-        CATransaction.setValue(true, forKey: kCATransactionDisableActions)
-        actionsWithoutAnimation()
-        CATransaction.commit()
-    }
-    
-    func doMask(withRect rect: CGRect, inverse: Bool = false) {
-        let path = UIBezierPath(rect: rect)
-        let maskLayer = CAShapeLayer()
-        
-        if inverse {
-            path.append(UIBezierPath(rect: self.bounds))
-            maskLayer.fillRule = kCAFillRuleEvenOdd
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        let headingDegree = CGFloat(newHeading.trueHeading)
+        var headingPointX: CGFloat = 0.0
+        //        DispatchQueue.main.async(execute: {
+        //            print("Heading : \(headingDegree)")
+        if self.scrollLock {
+            return
+        }
+        self.scrollLock = true
+        if !self.didInitCompass {
+            
+            self.locationManager.requestWhenInUseAuthorization()
+            switch headingDegree {
+            case 0 ... 90:
+                fallthrough
+            case 270 ... 360:
+                
+                //Facing North//
+                self.headingScaleNorth.isHidden = false
+                self.headingScaleSouth.isHidden = true
+                headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
+                CALayer.performWithoutAnimation ({
+                    let animation = CABasicAnimation(keyPath: "position")
+                    animation.fillMode = kCAFillModeForwards
+                    animation.isRemovedOnCompletion = true
+                    animation.fromValue = self.scrollLayer.frame
+                    animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                    self.scrollLayer.add(animation, forKey: "position")
+                    print("Facing North")
+                },completionHandler: {
+                    self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
+                    self.scrollLock = false
+                })
+            case 90 ... 270:
+                
+                //Facing South//
+                self.headingScaleSouth.isHidden = false
+                self.headingScaleNorth.isHidden = true
+                headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
+                CALayer.performWithoutAnimation ({
+                    let animation = CABasicAnimation(keyPath: "position")
+                    animation.fillMode = kCAFillModeForwards
+                    animation.isRemovedOnCompletion = true
+                    animation.fromValue = self.scrollLayer.frame
+                    animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                    self.scrollLayer.add(animation, forKey: "position")
+                    print("Facing South")
+                },completionHandler: {
+                    self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
+                    self.scrollLock = false
+                })
+            default:
+                print("Something is wrong")
+            }
+            self.didInitCompass = true
+        } else {
+            
+            //Draw
+            switch headingDegree {
+            case 0 ... 2 :
+                fallthrough
+            case 358 ... 360:
+                self.label.string = "N"
+            case 88 ... 92:
+                self.label.string = "E"
+            case 178 ... 182:
+                self.label.string = "S"
+            case 268 ... 272:
+                self.label.string = "W"
+            default:
+                self.label.string = String(Int(floor(newHeading.trueHeading)))
+            }
+            if self.headingScaleSouth.isHidden {
+                //Facing North
+                if 150.0 ... 210.0 ~= headingDegree  {
+                    //But, turning to South
+                    headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
+                    self.headingScaleNorth.isHidden = true
+                    self.headingScaleSouth.isHidden = false
+                } else {
+                    //Still facing North
+                    self.headingScaleNorth.isHidden = false
+                    self.headingScaleSouth.isHidden = true
+                    headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
+                }
+            } else {
+                //Facing South
+                if 0.0 ... 30.0 ~= headingDegree || 330.0 ... 360.0 ~= headingDegree {
+                    //But, turning to North
+                    headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
+                    self.headingScaleNorth.isHidden = false
+                    self.headingScaleSouth.isHidden = true
+                } else {
+                    //Still facing South
+                    self.headingScaleNorth.isHidden = true
+                    self.headingScaleSouth.isHidden = false
+                    headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
+                }
+            }
+            CALayer.performWithAnimation({
+                let animation = CABasicAnimation(keyPath: "frame")
+                animation.fillMode = kCAFillModeForwards
+                animation.isRemovedOnCompletion = true
+                animation.fromValue = self.scrollLayer.frame
+                animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                
+                self.scrollLayer.add(animation, forKey: "frame")
+            },completionHandler: {
+                self.scrollLayer.frame = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                self.scrollLock = false
+            })
+            
         }
         
-        maskLayer.path = path.cgPath
-        
-        mask = maskLayer
     }
     
-    func doMask(withPath path: UIBezierPath, inverse: Bool = false) {
-        let maskLayer = CAShapeLayer()
-        
-        if inverse {
-            path.append(UIBezierPath(rect: self.bounds))
-            maskLayer.fillRule = kCAFillRuleEvenOdd
-        }
-        
-        maskLayer.path = path.cgPath
-        
-        mask = maskLayer
-    }
+    
 }
+
+
+
 

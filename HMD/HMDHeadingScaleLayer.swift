@@ -1,5 +1,5 @@
 //
-//  HMDHeadingScaleLayerRenderer.swift
+//  HMDHeadingScaleLayer.swift
 //  HMD
 //
 //  Created by Yi JIANG on 21/4/17.
@@ -8,15 +8,16 @@
 
 import UIKit
 
-class HMDHeadingScaleLayerRenderer: CALayer {
+class HMDHeadingScaleLayer: CALayer {
     var didSetup = false
     var shortScalePixels: CGFloat = 10.0
     var longScalePixels: CGFloat = 16.0
-    public var pixelPerUnit: CGFloat = 10.48
+    var pixelPerUnit: CGFloat = 10.48
     var unitPerShortScale: Int = 1
     var unitPerLongScale: Int = 10
     var unitPerLabel: Int = 10
     var labelHeight: CGFloat = 14.0
+    var labelFontSize: CGFloat = 12.0
     var unitPerCardinal: Int = 90
     var hasUnderline: Bool = true
     var hasTopline: Bool = true
@@ -78,7 +79,7 @@ class HMDHeadingScaleLayerRenderer: CALayer {
                 let positionX = CGFloat(n * unitPerCardinal) * pixelPerUnit
                 let label = CATextLayer()
                 label.font = "Tahoma" as CFTypeRef
-                label.fontSize = 12
+                label.fontSize = labelFontSize
                 label.contentsScale = UIScreen.main.scale
                 label.frame = CGRect(x: positionX - 10, y: 1, width: 20, height: labelHeight)
                 switch n % 4{
