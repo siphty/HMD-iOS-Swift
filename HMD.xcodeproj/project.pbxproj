@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F24541EC19AE400653846 /* CGRect+Resize.swift */; };
+		A272BC7E1EC2F74300577941 /* HMDCentreDatumLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */; };
 		A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */; };
 		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
@@ -136,6 +137,7 @@
 /* Begin PBXFileReference section */
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26F24541EC19AE400653846 /* CGRect+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Resize.swift"; sourceTree = SOURCE_ROOT; };
+		A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDCentreDatumLayer.swift; sourceTree = SOURCE_ROOT; };
 		A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Frame.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayer.swift; path = HMD/HMDHeadingCursorLayer.swift; sourceTree = SOURCE_ROOT; };
@@ -223,6 +225,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A2048AF31EC3339600C2413C /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */,
+				A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */,
+			);
+			name = UIColor;
+			sourceTree = "<group>";
+		};
+		A2048AF41EC333B300C2413C /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		A2048AF51EC333C800C2413C /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */,
+				A26F24541EC19AE400653846 /* CGRect+Resize.swift */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
 		A24BBF231E56840300EBF428 = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +402,7 @@
 				A2A1AACE1EBDD56D006970E1 /* HMDPitchLadderLayer.swift */,
 				A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */,
 				A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */,
+				A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */,
 			);
 			name = HMDAttitude;
 			sourceTree = "<group>";
@@ -398,14 +427,12 @@
 		A2A1AAAD1EBD6DBD006970E1 /* HMDMiscellaneous */ = {
 			isa = PBXGroup;
 			children = (
-				A275B6861EC1E85B0034A0E9 /* CALayer */,
 				A2A1AA4C1EBA1C2A006970E1 /* HMDMisc.swift */,
 				A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */,
-				A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */,
-				A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */,
-				A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */,
-				A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */,
-				A26F24541EC19AE400653846 /* CGRect+Resize.swift */,
+				A2048AF31EC3339600C2413C /* UIColor */,
+				A275B6861EC1E85B0034A0E9 /* CALayer */,
+				A2048AF41EC333B300C2413C /* Swift */,
+				A2048AF51EC333C800C2413C /* UIKit */,
 			);
 			name = HMDMiscellaneous;
 			sourceTree = "<group>";
@@ -584,6 +611,7 @@
 				A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */,
 				A2A1AAA61EBC9AE3006970E1 /* OrientationEKF.mm in Sources */,
+				A272BC7E1EC2F74300577941 /* HMDCentreDatumLayer.swift in Sources */,
 				A2A1AADF1EBF3177006970E1 /* HMDAltitudeStickLayer.swift in Sources */,
 				A2A1AA571EBA1C2A006970E1 /* HMDMisc.swift in Sources */,
 				A2A1AA531EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift in Sources */,

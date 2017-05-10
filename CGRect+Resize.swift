@@ -13,8 +13,8 @@ extension CGRect {
     mutating func getScale(by rate: CGFloat) -> CGRect{
         var rect = CGRect()
         if rate <= 1.0 {
-            rect.origin.x = size.width.half() * (1 - rate)
-            rect.origin.y = size.height.half() * (1 - rate)
+            rect.origin.x = size.width.half() * (1 - rate) / 2
+            rect.origin.y = size.height.half() * (1 - rate) / 2
             rect.size.width = size.width * rate
             rect.size.height = size.height * rate
         }

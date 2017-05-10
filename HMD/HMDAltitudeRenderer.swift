@@ -32,7 +32,7 @@ class HMDAltitudeRenderer: CALayer{
     //Default values
     var baroAltiLabelHeight = CGFloat(18)
     var baroAltiLabelFontSize = CGFloat(14)
-    var radarAltiLabelHeight = CGFloat(23)
+    var radarAltiLabelHeight = CGFloat(18)
     var radarAltiLabelFontSize = CGFloat(15)
     var homeAltiLabelHeight = CGFloat(18)
     var homeAltiLabelFontSize = CGFloat(14)
@@ -97,12 +97,14 @@ class HMDAltitudeRenderer: CALayer{
         baroAltitudeLabel.foregroundColor = StateColor.Normal
         addSublayer(baroAltitudeLabel)
         
-        radarAltitudeLabel.frame = CGRect(x: 0,
+        radarAltitudeLabel.frame = CGRect(x: 0 + 10,
                                           y: (frame.height - radarAltiLabelHeight) / 2,
-                                          width: frame.width.half(),
+                                          width: frame.width.half() - 5,
                                           height: radarAltiLabelHeight)
+        radarAltitudeLabel.borderColor = UIColor.hmdGreen.cgColor
+        radarAltitudeLabel.borderWidth = 1
         radarAltitudeLabel.contentsScale = UIScreen.main.scale
-        radarAltitudeLabel.alignmentMode = kCAAlignmentRight
+        radarAltitudeLabel.alignmentMode = kCAAlignmentCenter
         radarAltitudeLabel.font = "Tahoma" as CFTypeRef
         radarAltitudeLabel.fontSize = radarAltiLabelFontSize
         radarAltitudeLabel.foregroundColor = StateColor.Normal

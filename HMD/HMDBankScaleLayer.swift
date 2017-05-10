@@ -10,8 +10,8 @@ import UIKit
 
 class HMDBankScaleLayer: CALayer {
     //Configuration
-    var degreesPerLongScale: CGFloat = 5.0
-    var degreesPerShortScale: CGFloat = 1.0
+    var pixelsForLongScale: CGFloat = 12
+    var pixelsForShoreScale: CGFloat = 8
     var rangeForDegrees: ClosedRange = -20 ... 20
     var rangeForAccuracyDegrees: ClosedRange = -5 ... 5
     
@@ -20,17 +20,37 @@ class HMDBankScaleLayer: CALayer {
     let instanceLayer = CALayer()
     
     func setup(){
-        replicateLongScales.frame = bounds
-        replicateLongScales.instanceCount = 40
-        replicateLongScales.instanceColor = UIColor.hmdGreen.cgColor
-        let tenDegreeAngle = Float(Double.pi * 2.0 / 36) /// Float(rangeForDegrees.count)
-        replicateLongScales.instanceTransform = CATransform3DMakeRotation(CGFloat(tenDegreeAngle * (-1)), 0.0, 0.0, 1.0)
-
+        
+        drawCircleScale(number: 1,
+                        angle: 0.0,
+                        length: pixelsForLongScale + 4,
+                        color: UIColor.green.cgColor)
+        drawCircleScale(number: 7,
+                        angle: 10.0,
+                        length: pixelsForLongScale,
+                        color: UIColor.green.cgColor)
+        drawCircleScale(number: 13,
+                        angle: 5.0,
+                        length: pixelsForShoreScale,
+                        color: UIColor.green.cgColor)
+    }
+    
+    func drawCircleScale(number count: Int, angle degree: CGFloat, length lenth: CGFloat, color: CGColor) {
+        let replicateScales = CAReplicatorLayer()
+        replicateScales.frame = bounds
+        replicateScales.instanceCount = count
+        replicateScales.instanceColor = UIColor.green.cgColor
+        let degreeAngle = CGFloat(Double.pi * 2.0) * (degree/360.0)
+        replicateScales.instanceTransform = CATransform3DMakeRotation(degreeAngle, 0.0, 0.0, 1.0)
+        
         let midX = bounds.midX - 1 / 2.0
-        instanceLayer.frame = CGRect(x: midX, y: 10, width: 1, height: 5)
+        let instanceLayer = CALayer()
+        instanceLayer.frame = CGRect(x: midX, y: 0, width: 1, height: lenth)
         instanceLayer.backgroundColor = UIColor.white.cgColor
-        replicateLongScales.addSublayer(instanceLayer)
-        addSublayer(replicateLongScales)
+        replicateScales.addSublayer(instanceLayer)
+        let spanAngle = CGFloat(count - 1) * (degree/360.0) * CGFloat(Double.pi * 2.0) * -1/2
+        replicateScales.transform = CATransform3DMakeRotation(spanAngle , 0, 0, 1.0)
+        addSublayer(replicateScales)
     }
     
 }

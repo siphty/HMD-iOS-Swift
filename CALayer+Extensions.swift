@@ -23,6 +23,22 @@ extension CALayer {
         addSublayer(line)
     }
     
+    func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int, isDash: Bool){
+        let line = CAShapeLayer()
+        let linePath = UIBezierPath()
+        linePath.move(to: start)
+        linePath.addLine(to: end)
+        line.path = linePath.cgPath
+        line.fillColor = nil
+        line.opacity = 1.0
+        line.lineWidth = CGFloat(width)
+        line.strokeColor = UIColor.green.cgColor
+        if isDash {
+            line.lineDashPattern = [4, 4]
+        }
+        addSublayer(line)
+    }
+    
     func withCircleFrame(){
         let circleLayer = CAShapeLayer()
         circleLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height / 2).cgPath
