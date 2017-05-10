@@ -19,4 +19,11 @@ class HMDAltitudeStickLayer: CALayer {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    func setup(){
+    }
+    
+    func update(_ alti:CGFloat){
+        
+    }
 }

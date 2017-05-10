@@ -11,26 +11,32 @@ import CoreLocation
 
 class HMDHeadingRenderer: CALayer {
     
+    //Configuration
     var didSetup = false
     var operationMode = misc.operationMode.Home
     var translation: CGFloat = 0.0
     var locationManager = CLLocationManager()
     var pixelPerUnit: CGFloat = 10.48
+    
+    //Layers
     let middleLayer = CALayer()
     var scrollLayer = CALayer()
-    var cursorScrollLayer = CAScrollLayer()
     var lastScrollLayerPostion: CGPoint = CGPoint(x: 0, y: 0)
     var lastHeadingDegree: CLLocationDirection = 0.0
     var enableLoop: Bool = true
     var enableVertical: Bool = false
     var headingScaleNorth = HMDHeadingScaleLayer()
     var headingScaleSouth = HMDHeadingScaleLayer() // I need change this someway somehow
+    var bodyHeadingCursor = HMDHeadingCursorLayer()
+    let headingLabel = CATextLayer()
+    var aircraftCursor = CATextLayer()
+    var homeCursor = CATextLayer()
+    
     var didInitCompass = false
     var headingNumberWidth: CGFloat = 30.0
     var scrollLock = false
     let concurrentQueue = DispatchQueue(label: "updateHeading", attributes: .concurrent)
     
-    let label = CATextLayer()
     internal var labelFontSize = CGFloat(12.0)
     let scaleColor = UIColor.init(red: 35.0 / 255.0, green: 210.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
     
@@ -49,10 +55,9 @@ class HMDHeadingRenderer: CALayer {
         print("init HMDHeadingRenderer")
         locationManager.requestWhenInUseAuthorization()
         orientation = getCLDeviceOrientation(by: UIDevice.current.orientation)
+        locationManager.headingOrientation =  orientation
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.headingFilter = 0.1
-//        locationManager.headingOrientation =  CLDeviceOrientation.landscapeRight
-        locationManager.headingOrientation =  orientation
         locationManager.startUpdatingHeading()
         locationManager.delegate = self
         
@@ -100,14 +105,14 @@ class HMDHeadingRenderer: CALayer {
             
             headingScaleNorth.isFacingNorth = true
             headingScaleNorth.backgroundColor = UIColor.clear.cgColor
-            headingScaleNorth.frame = scrollLayer.frame
+            headingScaleNorth.frame = scrollLayer.bounds
             headingScaleNorth.labelFontSize = labelFontSize
             headingScaleNorth.setup()
             scrollLayer.addSublayer(headingScaleNorth)
             
             headingScaleSouth.isFacingNorth = false
             headingScaleSouth.backgroundColor = UIColor.clear.cgColor
-            headingScaleSouth.frame = scrollLayer.frame
+            headingScaleSouth.frame = scrollLayer.bounds
             headingScaleNorth.labelFontSize = labelFontSize
             headingScaleSouth.setup()
             scrollLayer.addSublayer(headingScaleSouth)
@@ -127,15 +132,15 @@ class HMDHeadingRenderer: CALayer {
                                         width: headingNumberWidth,
                                         height: 14)
         middleLayer.doMask(withRect: headingNumberFrame, inverse: true)
-        label.font = "Tahoma" as CFTypeRef
-        label.fontSize = labelFontSize
-        label.contentsScale = UIScreen.main.scale
-        label.frame = headingNumberFrame
-        label.borderColor = scaleColor
-        label.borderWidth = 1
-        label.alignmentMode = kCAAlignmentCenter
-        label.foregroundColor = scaleColor
-        addSublayer(label)
+        headingLabel.font = "Tahoma" as CFTypeRef
+        headingLabel.fontSize = labelFontSize
+        headingLabel.contentsScale = UIScreen.main.scale
+        headingLabel.frame = headingNumberFrame
+        headingLabel.borderColor = scaleColor
+        headingLabel.borderWidth = 1
+        headingLabel.alignmentMode = kCAAlignmentCenter
+        headingLabel.foregroundColor = scaleColor
+        addSublayer(headingLabel)
         
         //Draw current view heading line
         let startPoint = CGPoint(x: frame.width / 2, y: middleLayer.frame.height)
@@ -143,24 +148,50 @@ class HMDHeadingRenderer: CALayer {
         drawLine(fromPoint: startPoint, toPoint: endPoint, width: 2)
         
         //Draw aircraft heading
+        bodyHeadingCursor.frame = CGRect(x: 0, y: middleLayer.frame.height, width: frame.width, height: frame.height - middleLayer.frame.height)
+        bodyHeadingCursor.setup()
+        addSublayer(bodyHeadingCursor)
         
+        //Draw Home / aircraft direction cursor
+        homeCursor.frame = CGRect(x: 0, y: middleLayer.frame.height, width: frame.height - middleLayer.frame.height, height: frame.height - middleLayer.frame.height)
+        homeCursor.font = "Tahoma" as CFTypeRef
+        homeCursor.fontSize = 9
+        homeCursor.contentsScale = UIScreen.main.scale
+        homeCursor.alignmentMode = kCAAlignmentCenter
+        homeCursor.foregroundColor = scaleColor
+        homeCursor.string = "H"
+        homeCursor.withCircleFrame()
+        
+        aircraftCursor.frame = CGRect(x: 30, y: middleLayer.frame.height, width: frame.height - middleLayer.frame.height, height: frame.height - middleLayer.frame.height)
+        aircraftCursor.font = "Tahoma" as CFTypeRef
+        aircraftCursor.fontSize = 9
+        aircraftCursor.contentsScale = UIScreen.main.scale
+        aircraftCursor.alignmentMode = kCAAlignmentCenter
+        aircraftCursor.foregroundColor = scaleColor
+        aircraftCursor.string = "A"
+        aircraftCursor.withCircleFrame()
+        
+        addSublayer(homeCursor)
+        addSublayer(aircraftCursor)
+//        switch operationMode {
+//        case .Home:
+//            addSublayer(aircraftCursor)
+//            homeCursor.removeFromSuperlayer()
+//        case .Cruise:
+//            addSublayer(homeCursor)
+//            aircraftCursor.removeFromSuperlayer()
+//        case .Hover:
+//            addSublayer(homeCursor)
+//            aircraftCursor.removeFromSuperlayer()
+//        case .Trans:
+//            addSublayer(homeCursor)
+//            aircraftCursor.removeFromSuperlayer()
+//        default:
+//            homeCursor.removeFromSuperlayer()
+//            aircraftCursor.removeFromSuperlayer()
+//        }
     }
     
- 
-    
-    func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
-        let line = CAShapeLayer()
-        let linePath = UIBezierPath()
-        
-        linePath.move(to: start)
-        linePath.addLine(to: end)
-        line.path = linePath.cgPath
-        line.fillColor = nil
-        line.opacity = 1.0
-        line.lineWidth = CGFloat(width)
-        line.strokeColor = scaleColor
-        addSublayer(line)
-    }
     
 }
 
@@ -210,7 +241,10 @@ extension HMDHeadingRenderer: CLLocationManagerDelegate{
                     animation.fillMode = kCAFillModeForwards
                     animation.isRemovedOnCompletion = true
                     animation.fromValue = self.scrollLayer.frame
-                    animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                    animation.toValue = CGRect(x: headingPointX,
+                                               y : 0,
+                                               width: self.scrollLayer.frame.width,
+                                               height: self.scrollLayer.frame.height)
                     self.scrollLayer.add(animation, forKey: "position")
                     print("Facing South")
                 },completionHandler: {
@@ -228,15 +262,15 @@ extension HMDHeadingRenderer: CLLocationManagerDelegate{
             case 0 ... 2 :
                 fallthrough
             case 358 ... 360:
-                self.label.string = "N"
+                self.headingLabel.string = "N"
             case 88 ... 92:
-                self.label.string = "E"
+                self.headingLabel.string = "E"
             case 178 ... 182:
-                self.label.string = "S"
+                self.headingLabel.string = "S"
             case 268 ... 272:
-                self.label.string = "W"
+                self.headingLabel.string = "W"
             default:
-                self.label.string = String(Int(floor(newHeading.trueHeading)))
+                self.headingLabel.string = String(Int(floor(newHeading.trueHeading)))
             }
             if self.headingScaleSouth.isHidden {
                 //Facing North

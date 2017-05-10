@@ -9,27 +9,36 @@
 import UIKit
 
 class HMDBarometricAltitudeLabelLayer: CATextLayer {
-    override var string: Any?{
-        didSet{
-            super.string = string
-            if let strNumber = Int(string as! String) {
-                switch strNumber {
-                case AltitudeState.ServiceCeiling.rawValue ... 99999:
-                    foregroundColor = stateColor.Danger
-                case AltitudeState.MaxAltitude.rawValue ... AltitudeState.ServiceCeiling.rawValue:
-                    foregroundColor = stateColor.Alert
-                case AltitudeState.LegalAltitude.rawValue ... AltitudeState.MaxAltitude.rawValue:
-                    foregroundColor = stateColor.Caution
-                case AltitudeState.LowAltitude.rawValue ... AltitudeState.LegalAltitude.rawValue:
-                    foregroundColor = stateColor.Normal
-                case 0 ... AltitudeState.LowAltitude.rawValue:
-                    foregroundColor = stateColor.Caution
-                default:
-                    foregroundColor = stateColor.Normal
-                }
-            }
-        }
-    }
+    //TODO: When I implement didSet, it will get fetal crash. Fix it!
+    
+//    override var foregroundColor: CGColor?{
+//        didSet{
+//            super.foregroundColor = foregroundColor
+//        }
+//    }
+//    override var string: Any?{
+//        didSet{
+//            super.string = string
+////            self.set
+//            super.foregroundColor = StateColor.Danger
+//            if let strNumber = Int(string as! String) {
+//                switch strNumber {
+//                case AltitudeState.ServiceCeiling.rawValue ... 99999:
+//                    foregroundColor = StateColor.Danger
+//                case AltitudeState.MaxAltitude.rawValue ... AltitudeState.ServiceCeiling.rawValue:
+//                    foregroundColor = StateColor.Alert
+//                case AltitudeState.LegalAltitude.rawValue ... AltitudeState.MaxAltitude.rawValue:
+//                    foregroundColor = StateColor.Caution
+//                case AltitudeState.LowAltitude.rawValue ... AltitudeState.LegalAltitude.rawValue:
+//                    foregroundColor = StateColor.Normal
+//                case 0 ... AltitudeState.LowAltitude.rawValue:
+//                    foregroundColor = StateColor.Caution
+//                default:
+//                    foregroundColor = StateColor.Normal
+//                }
+//            }
+//        }
+//    }
 
     public override init(){
         super.init()
@@ -37,7 +46,9 @@ class HMDBarometricAltitudeLabelLayer: CATextLayer {
         
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+ 
 }

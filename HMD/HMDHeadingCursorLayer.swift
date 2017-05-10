@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HMDHeadingCursorLayer: CALayer {
+class HMDHeadingCursorLayer: CAShapeLayer {
     
     var didSetup = false
 //    var 
@@ -31,10 +31,27 @@ class HMDHeadingCursorLayer: CALayer {
     }
     
     
-    func setup () {
-        print("setup HMDHeadingScaleLayerRenderer")
-//        frame = CGRect(x: 0, y: 0, width: Int(pixelPerUnit * 360.0), height: Int(frame.height))
-        
+    
+    func setup(){
+        path = makeIndicatorPath().cgPath
+        lineWidth = 2
+        lineJoin = kCALineJoinMiter
+        strokeColor = UIColor.hmdGreen.cgColor
+    }
+    
+    func makeIndicatorPath() -> UIBezierPath{
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: frame.width.half() - frame.height,
+                              y: frame.height))
+        path.addLine(to: CGPoint(x: frame.width.half(),
+                                 y: 0))
+        path.addLine(to: CGPoint(x: frame.width.half() + frame.height,
+                                 y: frame.height))
+        path.addLine(to: CGPoint(x: frame.width.half(),
+                                 y: 0))
+        path.close()
+        //        path.apply(<#T##transform: CGAffineTransform##CGAffineTransform#>)
+        return path
     }
 
 }

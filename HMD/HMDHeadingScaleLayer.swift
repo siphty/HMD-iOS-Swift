@@ -127,13 +127,13 @@ class HMDHeadingScaleLayer: CALayer {
                 if isFacingNorth == true {
                     var scaleNumber: Int
                     if i < 180 {
-                        scaleNumber = 180 + i
+                        scaleNumber = (180 + i) / 10
                     } else {
-                        scaleNumber = i - 180
+                        scaleNumber = (i - 180) / 10
                     }
                     label.string = String(scaleNumber)
                 } else {
-                    label.string = String(i)
+                    label.string = String(i / 10)
                 }
                 label.alignmentMode = kCAAlignmentCenter
                 label.foregroundColor = scaleColor
@@ -141,23 +141,6 @@ class HMDHeadingScaleLayer: CALayer {
                 
             }
         }
-    }
-    
-    func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
-        let line = CAShapeLayer()
-        let linePath = UIBezierPath()
-        linePath.move(to: start)
-        linePath.addLine(to: end)
-        line.path = linePath.cgPath
-        line.fillColor = nil
-        line.opacity = 1.0
-        line.lineWidth = CGFloat(width)
-        if isFacingNorth {
-            line.strokeColor = scaleColor
-        } else {
-            line.strokeColor = UIColor.yellow.cgColor
-        }
-        addSublayer(line)
     }
     
 

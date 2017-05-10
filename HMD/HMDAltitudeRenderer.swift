@@ -16,20 +16,25 @@ class HMDAltitudeRenderer: CALayer{
     var didSetup = false
     var zoom = 1
     var locationManager = CLLocationManager()
+    
+    //Fixed layers
     var baroAltitudeLabel = HMDBarometricAltitudeLabelLayer()
     var radarAltitudeLabel = HMDRadarAltitudeLabelLayer()
     var homeAltitudeLabel = CATextLayer()
     var lowAltitudeScale = HMDLowAltitudeScaleLayer()
     var highAltitudeScale = HMDHighAltitudeScaleLayer()
-    var altitudeStick = HMDAltitudeStickLayer()
     
-    var verticalSpeedIndicator = HMDVerticalSpeedIndicatoerLayer()
+    //Layers with animation
+//    var altitudeStick = HMDAltitudeStickLayer()
+    var altitudeStick = CALayer()
+    var verticalSpeedIndicator = HMDVerticalSpeedIndicatorLayer()
     
-    var baroAltiLabelHeight = CGFloat(20)
+    //Default values
+    var baroAltiLabelHeight = CGFloat(18)
     var baroAltiLabelFontSize = CGFloat(14)
-    var radarAltiLabelHeight = CGFloat(30)
-    var radarAltiLabelFontSize = CGFloat(16)
-    var homeAltiLabelHeight = CGFloat(20)
+    var radarAltiLabelHeight = CGFloat(23)
+    var radarAltiLabelFontSize = CGFloat(15)
+    var homeAltiLabelHeight = CGFloat(18)
     var homeAltiLabelFontSize = CGFloat(14)
     
     internal var orientation: CLDeviceOrientation = CLDeviceOrientation.landscapeRight
@@ -43,10 +48,10 @@ class HMDAltitudeRenderer: CALayer{
     
     public override init() {
         super.init()
-        if !didSetup {
-            didSetup = true
-            setup()
-        }
+//        if !didSetup {
+//            didSetup = true
+//            setup()
+//        }
         //TODO: I might need move all location manager to a single class
         locationManager.requestWhenInUseAuthorization()
         orientation = misc.getCLDeviceOrientation(by: UIDevice.current.orientation)
@@ -73,20 +78,10 @@ class HMDAltitudeRenderer: CALayer{
     }
     
     func setup() {
-        drawAltitudeScale()
+        drawAltitudeScales()
         drawAltitudeLabels()
-        
-    }
-    
-    func drawAltitudeScale(){
-        let altitudeScale = CALayer()
-        altitudeScale.frame = CGRect(x: frame.width.middle(),
-                                     y: 0,
-                                     width: frame.width.half(),
-                                     height: frame.height)
-        altitudeScale.borderColor = UIColor.red.cgColor
-        altitudeScale.borderWidth = 1
-        
+        drawVerticalSpeed()
+        initAltitudeStick()
     }
     
     
@@ -96,10 +91,10 @@ class HMDAltitudeRenderer: CALayer{
                                          width: frame.width.half(),
                                          height: baroAltiLabelHeight)
         baroAltitudeLabel.contentsScale = UIScreen.main.scale
+        baroAltitudeLabel.alignmentMode = kCAAlignmentRight
         baroAltitudeLabel.font = "Tahoma" as CFTypeRef
         baroAltitudeLabel.fontSize = baroAltiLabelFontSize
-        baroAltitudeLabel.borderWidth = 1
-        baroAltitudeLabel.borderColor = UIColor.yellow.cgColor
+        baroAltitudeLabel.foregroundColor = StateColor.Normal
         addSublayer(baroAltitudeLabel)
         
         radarAltitudeLabel.frame = CGRect(x: 0,
@@ -107,10 +102,10 @@ class HMDAltitudeRenderer: CALayer{
                                           width: frame.width.half(),
                                           height: radarAltiLabelHeight)
         radarAltitudeLabel.contentsScale = UIScreen.main.scale
+        radarAltitudeLabel.alignmentMode = kCAAlignmentRight
         radarAltitudeLabel.font = "Tahoma" as CFTypeRef
         radarAltitudeLabel.fontSize = radarAltiLabelFontSize
-        radarAltitudeLabel.borderWidth = 1
-        radarAltitudeLabel.borderColor = UIColor.magenta.cgColor
+        radarAltitudeLabel.foregroundColor = StateColor.Normal
         radarAltitudeLabel.string = "0"
         addSublayer(radarAltitudeLabel)
         
@@ -119,13 +114,90 @@ class HMDAltitudeRenderer: CALayer{
                                          width: frame.width.half(),
                                          height: homeAltiLabelHeight)
         homeAltitudeLabel.contentsScale = UIScreen.main.scale
+        homeAltitudeLabel.alignmentMode = kCAAlignmentRight
         homeAltitudeLabel.fontSize = homeAltiLabelFontSize
-        homeAltitudeLabel.foregroundColor = stateColor.Normal
-        homeAltitudeLabel.borderWidth = 1
-        homeAltitudeLabel.borderColor = UIColor.orange.cgColor
+        homeAltitudeLabel.foregroundColor = StateColor.Normal
         addSublayer(homeAltitudeLabel)
     }
+    
+    func drawAltitudeScales(){
+        let altitudeScale = CALayer()
+        altitudeScale.frame = CGRect(x: frame.width * 2/3 ,
+                                     y: 0,
+                                     width: frame.width * 1/3,
+                                     height: frame.height)
+        
+        highAltitudeScale.frame = CGRect(x: 0.0,
+                                         y: 0.0,
+                                         width: altitudeScale.frame.width * 3/8,
+                                         height: altitudeScale.frame.height)
+        highAltitudeScale.setup()
+        altitudeScale.addSublayer(highAltitudeScale)
+        
+        altitudeStick.frame = CGRect(x: altitudeScale.frame.width * 3/8,
+                                     y: 0.0,
+                                     width: altitudeScale.frame.width * 2/8,
+                                     height: altitudeScale.frame.height)
+        altitudeStick.borderColor = UIColor.green.cgColor
+        altitudeStick.borderWidth = 1
+        altitudeScale.addSublayer(altitudeStick)
+        
+        lowAltitudeScale.frame = CGRect(x: altitudeScale.frame.width * 5/8,
+                                         y: 0.0,
+                                         width: altitudeScale.frame.width * 3/8,
+                                         height: altitudeScale.frame.height)
+        lowAltitudeScale.setup()
+        altitudeScale.addSublayer(lowAltitudeScale)
+                
+        addSublayer(altitudeScale)
+        
+        altitudeScale.masksToBounds = true
+    }
+    
+    func drawVerticalSpeed(){
+        verticalSpeedIndicator.frame = CGRect(x: frame.width * (1 - 1/3 - 1/9),
+                                              y: 0.0,
+                                              width: frame.width * 1/9,
+                                              height: frame.height)
+        verticalSpeedIndicator.setup()
+        addSublayer(verticalSpeedIndicator)
+    }
 
+    func initAltitudeStick(){
+        altitudeStick.backgroundColor = UIColor.hmdGreen.cgColor
+        CALayer.performAnimation(within: 10.0,
+                                 action: {
+//                                    let altFrame = self.altitudeStick.frame
+//                                    self.altitudeStick.frame = CGRect(x: altFrame.origin.x,
+//                                                                      y: altFrame.height - 10,
+//                                                                      width: altFrame.width,
+//                                                                      height: 10)
+                                    
+                                    let animation = CABasicAnimation(keyPath: "transform")
+                                    animation.duration = 5
+                                    animation.fromValue = CATransform3DIdentity
+                                    animation.toValue = CATransform3DMakeScale(1.0, 0.5, 1.0)
+                                    animation.isRemovedOnCompletion = false
+                                    self.altitudeStick.add(animation, forKey: "transform")
+                                    
+//                                    animation.fillMode = kCAFillModeForwards
+//                                    animation.isRemovedOnCompletion = true
+//                                    let altFrame = self.altitudeStick.frame
+//                                    animation.fromValue = self.altitudeStick.frame//position
+//                                    animation.toValue = CGRect(x: altFrame.origin.x,
+//                                                               y: altFrame.height - 10,
+//                                                               width: altFrame.width,
+//                                                               height: 10)
+//                                    animation.toValue = CGPoint(x: 0.0,
+//                                                                y: self.altitudeStick.frame.height + self.altitudeStick.position.y)
+//                                    animation.isRemovedOnCompletion = false
+//                                    self.altitudeStick.add(animation, forKey: "transform")
+        },completionHandler: {
+//            self.altitudeStick.position = CGPoint(x: 0.0,
+//                                                  y: self.altitudeStick.frame.height + self.altitudeStick.position.y)
+            print("animation finished")
+        })
+    }
 }
 
 extension HMDAltitudeRenderer: CLLocationManagerDelegate{
@@ -134,9 +206,11 @@ extension HMDAltitudeRenderer: CLLocationManagerDelegate{
         if !didSetup {
             return
         }
+        //Initial ground altitude
         let alt = locations[0].altitude
         homeAltitudeLabel.string = String(Int(alt.rounded()))
         baroAltitudeLabel.string = String(Int(alt.rounded()))
         locationManager.stopUpdatingLocation()
+        
     }
 }

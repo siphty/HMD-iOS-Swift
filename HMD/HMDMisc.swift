@@ -11,9 +11,7 @@ import CoreLocation
 import UIKit
 
 class misc {
-    
-    
-    /// Transform UIDeviceOrientation to CLDeviceOrientation
+      /// Transform UIDeviceOrientation to CLDeviceOrientation
     ///
     /// - Parameter uiDeviceOrientation: UIDeviceOrientation enum
     /// - Returns: CLDeviceOrientation enum
@@ -43,6 +41,13 @@ class misc {
         case Trans
     }
 }
+
+public struct  HMDColor {
+    static let scale = UIColor.init(red: 35.0 / 255.0, green: 255.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
+    static let normalIndicator = UIColor.init(red: 35.0 / 255.0, green: 255.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
+}
+
+
 
 
 

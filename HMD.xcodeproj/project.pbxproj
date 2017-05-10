@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F24541EC19AE400653846 /* CGRect+Resize.swift */; };
+		A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */; };
 		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
 		A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */; };
@@ -44,14 +46,13 @@
 		A2A1AACB1EBDD266006970E1 /* HMDAttitudeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AACA1EBDD266006970E1 /* HMDAttitudeRenderer.swift */; };
 		A2A1AACD1EBDD2A9006970E1 /* HMDBankScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AACC1EBDD2A9006970E1 /* HMDBankScaleLayer.swift */; };
 		A2A1AACF1EBDD56D006970E1 /* HMDPitchLadderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AACE1EBDD56D006970E1 /* HMDPitchLadderLayer.swift */; };
-		A2A1AAD11EBDE340006970E1 /* HMDSlideslipLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD01EBDE340006970E1 /* HMDSlideslipLayer.swift */; };
+		A2A1AAD11EBDE340006970E1 /* HMDSideslipLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */; };
 		A2A1AAD31EBDE3C6006970E1 /* HMDSpeedRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD21EBDE3C6006970E1 /* HMDSpeedRenderer.swift */; };
 		A2A1AAD51EBDE4D2006970E1 /* HMDAirspeedLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD41EBDE4D2006970E1 /* HMDAirspeedLabelLayer.swift */; };
 		A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD71EBDE6E3006970E1 /* HMDGroundSpeedLayer.swift */; };
 		A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */; };
-		A2A1AADD1EBF2D53006970E1 /* HMDClimbRateMarkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AADC1EBF2D53006970E1 /* HMDClimbRateMarkLayer.swift */; };
 		A2A1AADF1EBF3177006970E1 /* HMDAltitudeStickLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */; };
-		A2A1AAE11EBF3CE5006970E1 /* HMDVerticalSpeedIndicatoerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatoerLayer.swift */; };
+		A2A1AAE11EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift */; };
 		A2A1AAE31EBF401F006970E1 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */; };
 		A2A1AAE51EBF49DD006970E1 /* HMDRadarAltitudeLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */; };
 		A2A1AAE71EBF5066006970E1 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */; };
@@ -59,6 +60,60 @@
 		A2A1AAEB1EBF5FC9006970E1 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */; };
 		A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */; };
 		A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */; };
+		A2AD7CCB1EC045D600E687B6 /* HMDLowAltitudeScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB21EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift */; };
+		A2AD7CCC1EC045D700E687B6 /* HMDLowAltitudeScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB21EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift */; };
+		A2AD7CCD1EC045DA00E687B6 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift */; };
+		A2AD7CCE1EC045DB00E687B6 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift */; };
+		A2AD7CCF1EC045DD00E687B6 /* HMDAltitudeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB01EBD6EF0006970E1 /* HMDAltitudeRenderer.swift */; };
+		A2AD7CD01EC045DD00E687B6 /* HMDAltitudeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB01EBD6EF0006970E1 /* HMDAltitudeRenderer.swift */; };
+		A2AD7CD11EC045E100E687B6 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */; };
+		A2AD7CD21EC045E200E687B6 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */; };
+		A2AD7CD31EC045E600E687B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
+		A2AD7CD41EC045E600E687B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
+		A2AD7CD51EC045E900E687B6 /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */; };
+		A2AD7CD61EC045E900E687B6 /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */; };
+		A2AD7CD71EC045EC00E687B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */; };
+		A2AD7CD81EC045EC00E687B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */; };
+		A2AD7CD91EC045F500E687B6 /* HMDHighAltitudeScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB41EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift */; };
+		A2AD7CDA1EC045F500E687B6 /* HMDHighAltitudeScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB41EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift */; };
+		A2AD7CDB1EC045F700E687B6 /* HMDBarometricAltitudeLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB61EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift */; };
+		A2AD7CDC1EC045F800E687B6 /* HMDBarometricAltitudeLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB61EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift */; };
+		A2AD7CDD1EC0463400E687B6 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */; };
+		A2AD7CDE1EC0463500E687B6 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */; };
+		A2AD7CDF1EC0463700E687B6 /* HMDMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4C1EBA1C2A006970E1 /* HMDMisc.swift */; };
+		A2AD7CE01EC0463700E687B6 /* HMDMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4C1EBA1C2A006970E1 /* HMDMisc.swift */; };
+		A2AD7CE11EC0463A00E687B6 /* HMDSafetySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */; };
+		A2AD7CE21EC0463A00E687B6 /* HMDSafetySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */; };
+		A2AD7CE31EC0463D00E687B6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */; };
+		A2AD7CE41EC0463D00E687B6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */; };
+		A2AD7CE51EC0464000E687B6 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */; };
+		A2AD7CE61EC0464000E687B6 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */; };
+		A2AD7CE71EC0464400E687B6 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */; };
+		A2AD7CE81EC0464400E687B6 /* UIColor+MoreColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */; };
+		A2AD7CE91EC0464400E687B6 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */; };
+		A2AD7CEA1EC0464400E687B6 /* UIColor+MoreColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */; };
+		A2AD7CEB1EC0465500E687B6 /* HMDRadarAltitudeLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */; };
+		A2AD7CED1EC0465500E687B6 /* HMDAltitudeStickLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */; };
+		A2AD7CEE1EC0465500E687B6 /* HMDRadarAltitudeLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */; };
+		A2AD7CF01EC0465500E687B6 /* HMDAltitudeStickLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */; };
+		A2AD7CF11EC0465A00E687B6 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */; };
+		A2AD7CF21EC0465A00E687B6 /* HMDHeadingScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA481EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift */; };
+		A2AD7CF31EC0465A00E687B6 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
+		A2AD7CF41EC0465B00E687B6 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */; };
+		A2AD7CF51EC0465B00E687B6 /* HMDHeadingScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA481EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift */; };
+		A2AD7CF61EC0465B00E687B6 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
+		A2AD7CF71EC0468600E687B6 /* Matrix3x3d.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9D1EBC9AE3006970E1 /* Matrix3x3d.mm */; };
+		A2AD7CF81EC0468600E687B6 /* OrientationEKF.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9F1EBC9AE3006970E1 /* OrientationEKF.mm */; };
+		A2AD7CF91EC0468600E687B6 /* SO3Util.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAA11EBC9AE3006970E1 /* SO3Util.mm */; };
+		A2AD7CFA1EC0468600E687B6 /* Vector3d.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAA31EBC9AE3006970E1 /* Vector3d.mm */; };
+		A2AD7CFB1EC0468600E687B6 /* Matrix3x3d.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9D1EBC9AE3006970E1 /* Matrix3x3d.mm */; };
+		A2AD7CFC1EC0468600E687B6 /* OrientationEKF.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9F1EBC9AE3006970E1 /* OrientationEKF.mm */; };
+		A2AD7CFD1EC0468600E687B6 /* SO3Util.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAA11EBC9AE3006970E1 /* SO3Util.mm */; };
+		A2AD7CFE1EC0468600E687B6 /* Vector3d.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAA31EBC9AE3006970E1 /* Vector3d.mm */; };
+		A2AD7CFF1EC0468A00E687B6 /* HeadTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAC61EBD9526006970E1 /* HeadTransform.mm */; };
+		A2AD7D001EC0468A00E687B6 /* HeadTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9A1EBC9AE3006970E1 /* HeadTracker.mm */; };
+		A2AD7D011EC0468A00E687B6 /* HeadTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAC61EBD9526006970E1 /* HeadTransform.mm */; };
+		A2AD7D021EC0468A00E687B6 /* HeadTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9A1EBC9AE3006970E1 /* HeadTracker.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +135,8 @@
 
 /* Begin PBXFileReference section */
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26F24541EC19AE400653846 /* CGRect+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Resize.swift"; sourceTree = SOURCE_ROOT; };
+		A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Frame.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayer.swift; path = HMD/HMDHeadingCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingRenderer.swift; path = HMD/HMDHeadingRenderer.swift; sourceTree = SOURCE_ROOT; };
@@ -122,14 +179,13 @@
 		A2A1AACA1EBDD266006970E1 /* HMDAttitudeRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAttitudeRenderer.swift; path = HMD/HMDAttitudeRenderer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AACC1EBDD2A9006970E1 /* HMDBankScaleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDBankScaleLayer.swift; path = HMD/HMDBankScaleLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AACE1EBDD56D006970E1 /* HMDPitchLadderLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDPitchLadderLayer.swift; path = HMD/HMDPitchLadderLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AAD01EBDE340006970E1 /* HMDSlideslipLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDSlideslipLayer.swift; path = HMD/HMDSlideslipLayer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDSideslipLayer.swift; path = HMD/HMDSideslipLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD21EBDE3C6006970E1 /* HMDSpeedRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDSpeedRenderer.swift; path = HMD/HMDSpeedRenderer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD41EBDE4D2006970E1 /* HMDAirspeedLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAirspeedLabelLayer.swift; path = HMD/HMDAirspeedLabelLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD71EBDE6E3006970E1 /* HMDGroundSpeedLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDGroundSpeedLayer.swift; path = HMD/HMDGroundSpeedLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHoverVectorLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AADC1EBF2D53006970E1 /* HMDClimbRateMarkLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDClimbRateMarkLayer.swift; path = HMD/HMDClimbRateMarkLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAltitudeStickLayer.swift; path = HMD/HMDAltitudeStickLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatoerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDVerticalSpeedIndicatoerLayer.swift; path = HMD/HMDVerticalSpeedIndicatoerLayer.swift; sourceTree = SOURCE_ROOT; };
+		A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDVerticalSpeedIndicatorLayer.swift; path = HMD/HMDVerticalSpeedIndicatorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRadarAltitudeLabelLayer.swift; path = HMD/HMDRadarAltitudeLabelLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = SOURCE_ROOT; };
@@ -137,7 +193,6 @@
 		A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MoreColors.swift"; sourceTree = SOURCE_ROOT; };
-		A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +255,6 @@
 				A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */,
 				A254BF051EAA2785005E70D9 /* AugmentedReality */,
 				A2A1AA4B1EBA1C2A006970E1 /* Info.plist */,
-				A254BF0B1EAAE431005E70D9 /* useless */,
 			);
 			name = HMD;
 			path = Stereoscopic;
@@ -212,9 +266,9 @@
 				A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */,
 				A28BF8EB1EB05F200097EB4D /* HMDHeading */,
 				A2A1AAA91EBD6B5D006970E1 /* HMDAltitude */,
+				A2A1AAAA1EBD6D30006970E1 /* HMDAttitude */,
 				A2A1AAAC1EBD6D8B006970E1 /* HMDEnginAndFuel */,
 				A2A1AAAB1EBD6D40006970E1 /* HMDSpeed */,
-				A2A1AAAA1EBD6D30006970E1 /* HMDAttitude */,
 				A2A1AAD61EBDE4E7006970E1 /* HMDMission */,
 				A2A1AAAD1EBD6DBD006970E1 /* HMDMiscellaneous */,
 			);
@@ -232,12 +286,13 @@
 			name = AugmentedReality;
 			sourceTree = "<group>";
 		};
-		A254BF0B1EAAE431005E70D9 /* useless */ = {
+		A275B6861EC1E85B0034A0E9 /* CALayer */ = {
 			isa = PBXGroup;
 			children = (
-				A2B567F21EA4DD6C00ED7ACD /* HUDViewRenderer.swift */,
+				A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */,
+				A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */,
 			);
-			name = useless;
+			name = CALayer;
 			sourceTree = "<group>";
 		};
 		A28BF8EB1EB05F200097EB4D /* HMDHeading */ = {
@@ -301,13 +356,12 @@
 			isa = PBXGroup;
 			children = (
 				A2A1AAB01EBD6EF0006970E1 /* HMDAltitudeRenderer.swift */,
-				A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatoerLayer.swift */,
 				A2A1AAB21EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift */,
 				A2A1AAB41EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift */,
 				A2A1AAB61EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift */,
 				A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */,
-				A2A1AADC1EBF2D53006970E1 /* HMDClimbRateMarkLayer.swift */,
 				A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */,
+				A2A1AAE01EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift */,
 			);
 			name = HMDAltitude;
 			sourceTree = "<group>";
@@ -318,7 +372,7 @@
 				A2A1AACA1EBDD266006970E1 /* HMDAttitudeRenderer.swift */,
 				A2A1AACC1EBDD2A9006970E1 /* HMDBankScaleLayer.swift */,
 				A2A1AACE1EBDD56D006970E1 /* HMDPitchLadderLayer.swift */,
-				A2A1AAD01EBDE340006970E1 /* HMDSlideslipLayer.swift */,
+				A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */,
 				A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */,
 			);
 			name = HMDAttitude;
@@ -344,13 +398,14 @@
 		A2A1AAAD1EBD6DBD006970E1 /* HMDMiscellaneous */ = {
 			isa = PBXGroup;
 			children = (
+				A275B6861EC1E85B0034A0E9 /* CALayer */,
 				A2A1AA4C1EBA1C2A006970E1 /* HMDMisc.swift */,
-				A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */,
 				A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */,
 				A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */,
 				A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */,
 				A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */,
 				A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */,
+				A26F24541EC19AE400653846 /* CGRect+Resize.swift */,
 			);
 			name = HMDMiscellaneous;
 			sourceTree = "<group>";
@@ -519,8 +574,7 @@
 				A2A1AABC1EBD71FA006970E1 /* Vector3d.h in Sources */,
 				A2A1AAEB1EBF5FC9006970E1 /* CGFloat+Extensions.swift in Sources */,
 				A2A1AAB81EBD71F2006970E1 /* HeadTracker.h in Sources */,
-				A2A1AADD1EBF2D53006970E1 /* HMDClimbRateMarkLayer.swift in Sources */,
-				A2A1AAD11EBDE340006970E1 /* HMDSlideslipLayer.swift in Sources */,
+				A2A1AAD11EBDE340006970E1 /* HMDSideslipLayer.swift in Sources */,
 				A2A1AACD1EBDD2A9006970E1 /* HMDBankScaleLayer.swift in Sources */,
 				A2A1AAB11EBD6EF0006970E1 /* HMDAltitudeRenderer.swift in Sources */,
 				A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */,
@@ -533,6 +587,7 @@
 				A2A1AADF1EBF3177006970E1 /* HMDAltitudeStickLayer.swift in Sources */,
 				A2A1AA571EBA1C2A006970E1 /* HMDMisc.swift in Sources */,
 				A2A1AA531EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift in Sources */,
+				A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */,
 				A2A1AAB31EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift in Sources */,
 				A2A1AAB71EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
 				A2A1AAA41EBC9AE3006970E1 /* HeadTracker.mm in Sources */,
@@ -540,10 +595,11 @@
 				A2A1AAA81EBC9AE3006970E1 /* Vector3d.mm in Sources */,
 				A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */,
 				A2A1AAA71EBC9AE3006970E1 /* SO3Util.mm in Sources */,
-				A2A1AAE11EBF3CE5006970E1 /* HMDVerticalSpeedIndicatoerLayer.swift in Sources */,
+				A2A1AAE11EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */,
 				A2A1AACF1EBDD56D006970E1 /* HMDPitchLadderLayer.swift in Sources */,
 				A2A1AAE91EBF52A3006970E1 /* HMDSafetySetting.swift in Sources */,
 				A2A1AAB51EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift in Sources */,
+				A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */,
 				A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */,
 				A2A1AAD31EBDE3C6006970E1 /* HMDSpeedRenderer.swift in Sources */,
 				A2A1AAE71EBF5066006970E1 /* String+Extensions.swift in Sources */,
@@ -560,7 +616,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2AD7CD31EC045E600E687B6 /* AppDelegate.swift in Sources */,
+				A2AD7CFA1EC0468600E687B6 /* Vector3d.mm in Sources */,
+				A2AD7CE51EC0464000E687B6 /* CGFloat+Extensions.swift in Sources */,
+				A2AD7CCF1EC045DD00E687B6 /* HMDAltitudeRenderer.swift in Sources */,
+				A2AD7CD11EC045E100E687B6 /* HMDLayer.swift in Sources */,
+				A2AD7CE11EC0463A00E687B6 /* HMDSafetySetting.swift in Sources */,
+				A2AD7CE81EC0464400E687B6 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA831EBA1E2C006970E1 /* HMDUITests.swift in Sources */,
+				A2AD7CD51EC045E900E687B6 /* HUDViewRenderer.swift in Sources */,
+				A2AD7D001EC0468A00E687B6 /* HeadTracker.mm in Sources */,
+				A2AD7CF81EC0468600E687B6 /* OrientationEKF.mm in Sources */,
+				A2AD7CCD1EC045DA00E687B6 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */,
+				A2AD7CF31EC0465A00E687B6 /* HMDHeadingCursorLayer.swift in Sources */,
+				A2AD7CF11EC0465A00E687B6 /* HMDHeadingRenderer.swift in Sources */,
+				A2AD7CDB1EC045F700E687B6 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
+				A2AD7CED1EC0465500E687B6 /* HMDAltitudeStickLayer.swift in Sources */,
+				A2AD7CE31EC0463D00E687B6 /* String+Extensions.swift in Sources */,
+				A2AD7CDD1EC0463400E687B6 /* CALayer+Extensions.swift in Sources */,
+				A2AD7CEB1EC0465500E687B6 /* HMDRadarAltitudeLabelLayer.swift in Sources */,
+				A2AD7CD71EC045EC00E687B6 /* ViewController.swift in Sources */,
+				A2AD7CDF1EC0463700E687B6 /* HMDMisc.swift in Sources */,
+				A2AD7CD91EC045F500E687B6 /* HMDHighAltitudeScaleLayer.swift in Sources */,
+				A2AD7CF91EC0468600E687B6 /* SO3Util.mm in Sources */,
+				A2AD7CF71EC0468600E687B6 /* Matrix3x3d.mm in Sources */,
+				A2AD7CF21EC0465A00E687B6 /* HMDHeadingScaleLayer.swift in Sources */,
+				A2AD7CCB1EC045D600E687B6 /* HMDLowAltitudeScaleLayer.swift in Sources */,
+				A2AD7CFF1EC0468A00E687B6 /* HeadTransform.mm in Sources */,
+				A2AD7CE71EC0464400E687B6 /* UIColor+RGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,7 +651,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2AD7CD41EC045E600E687B6 /* AppDelegate.swift in Sources */,
+				A2AD7CFE1EC0468600E687B6 /* Vector3d.mm in Sources */,
+				A2AD7CE61EC0464000E687B6 /* CGFloat+Extensions.swift in Sources */,
+				A2AD7CD01EC045DD00E687B6 /* HMDAltitudeRenderer.swift in Sources */,
+				A2AD7CD21EC045E200E687B6 /* HMDLayer.swift in Sources */,
+				A2AD7CE21EC0463A00E687B6 /* HMDSafetySetting.swift in Sources */,
+				A2AD7CEA1EC0464400E687B6 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA911EBA1E36006970E1 /* HMDTests.swift in Sources */,
+				A2AD7CD61EC045E900E687B6 /* HUDViewRenderer.swift in Sources */,
+				A2AD7D021EC0468A00E687B6 /* HeadTracker.mm in Sources */,
+				A2AD7CFC1EC0468600E687B6 /* OrientationEKF.mm in Sources */,
+				A2AD7CCE1EC045DB00E687B6 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */,
+				A2AD7CF61EC0465B00E687B6 /* HMDHeadingCursorLayer.swift in Sources */,
+				A2AD7CF41EC0465B00E687B6 /* HMDHeadingRenderer.swift in Sources */,
+				A2AD7CDC1EC045F800E687B6 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
+				A2AD7CF01EC0465500E687B6 /* HMDAltitudeStickLayer.swift in Sources */,
+				A2AD7CE41EC0463D00E687B6 /* String+Extensions.swift in Sources */,
+				A2AD7CDE1EC0463500E687B6 /* CALayer+Extensions.swift in Sources */,
+				A2AD7CEE1EC0465500E687B6 /* HMDRadarAltitudeLabelLayer.swift in Sources */,
+				A2AD7CD81EC045EC00E687B6 /* ViewController.swift in Sources */,
+				A2AD7CE01EC0463700E687B6 /* HMDMisc.swift in Sources */,
+				A2AD7CDA1EC045F500E687B6 /* HMDHighAltitudeScaleLayer.swift in Sources */,
+				A2AD7CFD1EC0468600E687B6 /* SO3Util.mm in Sources */,
+				A2AD7CFB1EC0468600E687B6 /* Matrix3x3d.mm in Sources */,
+				A2AD7CF51EC0465B00E687B6 /* HMDHeadingScaleLayer.swift in Sources */,
+				A2AD7CCC1EC045D700E687B6 /* HMDLowAltitudeScaleLayer.swift in Sources */,
+				A2AD7D011EC0468A00E687B6 /* HeadTransform.mm in Sources */,
+				A2AD7CE91EC0464400E687B6 /* UIColor+RGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +771,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = "";
 			};
 			name = Debug;
@@ -723,6 +833,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

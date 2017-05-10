@@ -54,7 +54,7 @@ class HMDLayer: CALayer, CALayerDelegate {
         let headingTape = HMDHeadingRenderer()
         //        let headingTap = CALayer()
         //TODO: Use rate rather than precisely pixel size.
-        headingTape.frame = CGRect(x: frame.width / 2 - 120, y: frame.height / 2 - 175, width: 250, height: 40)
+        headingTape.frame = CGRect(x: frame.width.middle() - 100, y: frame.height / 2 - 175, width: 210, height: 40)
 //        headingTape.borderColor = UIColor.lightGray.cgColor
 //        headingTape.borderWidth = 1
         headingTape.operationMode = operationMode
@@ -64,7 +64,7 @@ class HMDLayer: CALayer, CALayerDelegate {
         //Fixed Reticle
         let reticle = CALayer()
         //TODO: Use rate rather than precisely pixel size.
-        reticle.frame = CGRect(x: frame.width / 2 - 20, y: frame.height / 2 - 20, width: 40, height: 40)
+        reticle.frame = CGRect(x: frame.width.half() - 20, y: frame.height.half() - 20, width: 40, height: 40)
         reticle.borderColor = UIColor.green.cgColor
         reticle.borderWidth = 1
         addSublayer(reticle)
@@ -72,7 +72,7 @@ class HMDLayer: CALayer, CALayerDelegate {
         //Aircraft Reference
         //TODO: Use rate rather than precisely pixel size.
         let airCraftRef = CALayer()
-        airCraftRef.frame = CGRect(x: frame.width / 2 - 10, y: frame.height / 2 - 10, width: 20, height: 20)
+        airCraftRef.frame = CGRect(x: frame.width.half() - 10, y: frame.height.half() - 10, width: 20, height: 20)
         airCraftRef.borderColor = UIColor.red.cgColor
         airCraftRef.borderWidth = 1
         addSublayer(airCraftRef)
@@ -80,22 +80,21 @@ class HMDLayer: CALayer, CALayerDelegate {
         //Altitude Scale
         let altitudeScale = HMDAltitudeRenderer()
         //TODO: Use rate rather than precisely pixel size.
-        altitudeScale.frame = CGRect(x: frame.width.middle() + 95,
+        altitudeScale.frame = CGRect(x: frame.width.middle() + 85,
                                      y: frame.height.middle() - 140,
-                                     width: 65,
+                                     width: 75,
                                      height: 280)
-        altitudeScale.borderColor = UIColor.blue.cgColor
-        altitudeScale.borderWidth = 1
+//        altitudeScale.borderColor = UIColor.blue.cgColor
+//        altitudeScale.borderWidth = 1
         altitudeScale.setup()
         addSublayer(altitudeScale)
         
-        //Non-conformal Horizon
-        let horizonLine = CALayer()
-        //TODO: Use rate rather than precisely pixel size.
-        horizonLine.frame = CGRect(x: frame.width / 2 - 100, y: frame.height / 2 - 100, width: 200, height: 200)
-        horizonLine.borderColor = UIColor.lightGray.cgColor
-        horizonLine.borderWidth = 1
-        addSublayer(horizonLine)
+        let attitudeLayer = HMDAttitudeRenderer()
+        attitudeLayer.frame = CGRect(x: frame.width.half() - 100, y: frame.height.half() - 100, width: 200, height: 200)
+        attitudeLayer.borderColor = UIColor.lightGray.cgColor
+        attitudeLayer.borderWidth = 1
+        attitudeLayer.setup()
+        addSublayer(attitudeLayer)
         
         //Speed Number
         

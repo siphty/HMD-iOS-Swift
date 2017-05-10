@@ -19,4 +19,10 @@ extension UIColor{
 //    static let lightOrange: UIColor  = UIColor.lighterColor(UIColor.orange)
 //    static let lightPurple: UIColor  = UIColor.lighterColor(UIColor.purple)
 //    static let lightBrown: UIColor  = UIColor.lighterColor(UIColor.brown)
+    
+    static let hmdGreen: UIColor  = UIColor.init(red: 35.0 / 255.0,
+                                                 green: 210.0 / 255.0,
+                                                 blue: 35.0 / 255.0,
+                                                 alpha: 1)
+    
 }

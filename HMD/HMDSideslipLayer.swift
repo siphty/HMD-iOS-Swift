@@ -1,5 +1,5 @@
 //
-//  HMDSlideslipLayer.swift
+//  HMDSideslipLayer.swift
 //  HMD
 //
 //  Created by Yi JIANG on 6/5/17.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class HMDSlideslipLayer: CALayer {
+class HMDSideslipLayer: CALayer {
 
 }
