@@ -142,15 +142,15 @@ class HMDHeadingRenderer: CALayer {
         headingLabel.foregroundColor = scaleColor
         addSublayer(headingLabel)
         
-        //Draw current view heading line
-        let startPoint = CGPoint(x: frame.width / 2, y: middleLayer.frame.height)
-        let endPoint = CGPoint(x: frame.width / 2, y: frame.height)
-        drawLine(fromPoint: startPoint, toPoint: endPoint, width: 2)
-        
         //Draw aircraft heading
         bodyHeadingCursor.frame = CGRect(x: 0, y: middleLayer.frame.height, width: frame.width, height: frame.height - middleLayer.frame.height)
         bodyHeadingCursor.setup()
         addSublayer(bodyHeadingCursor)
+        
+        //Draw current view heading line
+        let startPoint = CGPoint(x: frame.width / 2, y: middleLayer.frame.height)
+        let endPoint = CGPoint(x: frame.width / 2, y: frame.height)
+        drawLine(fromPoint: startPoint, toPoint: endPoint, width: 2)
         
         //Draw Home / aircraft direction cursor
         homeCursor.frame = CGRect(x: 0, y: middleLayer.frame.height, width: frame.height - middleLayer.frame.height, height: frame.height - middleLayer.frame.height)
@@ -173,23 +173,23 @@ class HMDHeadingRenderer: CALayer {
         
         addSublayer(homeCursor)
         addSublayer(aircraftCursor)
-//        switch operationMode {
-//        case .Home:
-//            addSublayer(aircraftCursor)
-//            homeCursor.removeFromSuperlayer()
-//        case .Cruise:
-//            addSublayer(homeCursor)
-//            aircraftCursor.removeFromSuperlayer()
-//        case .Hover:
-//            addSublayer(homeCursor)
-//            aircraftCursor.removeFromSuperlayer()
-//        case .Trans:
-//            addSublayer(homeCursor)
-//            aircraftCursor.removeFromSuperlayer()
-//        default:
-//            homeCursor.removeFromSuperlayer()
-//            aircraftCursor.removeFromSuperlayer()
-//        }
+        switch operationMode {
+        case .Home:
+            addSublayer(aircraftCursor)
+            homeCursor.removeFromSuperlayer()
+        case .Cruise:
+            addSublayer(homeCursor)
+            aircraftCursor.removeFromSuperlayer()
+        case .Hover:
+            addSublayer(homeCursor)
+            aircraftCursor.removeFromSuperlayer()
+        case .Trans:
+            addSublayer(homeCursor)
+            aircraftCursor.removeFromSuperlayer()
+        default:
+            homeCursor.removeFromSuperlayer()
+            aircraftCursor.removeFromSuperlayer()
+        }
     }
     
     

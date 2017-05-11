@@ -36,19 +36,20 @@ class HMDHeadingCursorLayer: CAShapeLayer {
         path = makeIndicatorPath().cgPath
         lineWidth = 1
         lineJoin = kCALineJoinMiter
-        strokeColor = UIColor.hmdGreen.cgColor
+        strokeColor = UIColor.yellow.cgColor
+        backgroundColor = UIColor.clear.cgColor
     }
     
     func makeIndicatorPath() -> UIBezierPath{
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: frame.width.half() - frame.height + 2,
+        path.move(to: CGPoint(x: frame.width.half() - frame.height + 5,
                               y: frame.height))
         path.addLine(to: CGPoint(x: frame.width.half(),
                                  y: 0))
-        path.addLine(to: CGPoint(x: frame.width.half() + frame.height - 2,
+        path.addLine(to: CGPoint(x: frame.width.half() + frame.height - 5,
                                  y: frame.height))
-        path.addLine(to: CGPoint(x: frame.width.half(),
-                                 y: 0))
+//        path.addLine(to: CGPoint(x: frame.width.half(),
+//                                 y: 0))
         path.close()
         //        path.apply(<#T##transform: CGAffineTransform##CGAffineTransform#>)
         return path

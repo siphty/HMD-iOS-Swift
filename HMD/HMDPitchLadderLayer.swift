@@ -13,7 +13,7 @@ class HMDPitchLadderLayer: CALayer {
     
     var pixelsPerDegree: CGFloat = 10.48
     var degreesPerScale: Int = 10
-    var scaleWidth: CGFloat = 50
+    var scaleWidth: CGFloat = 52
     var gapWidth: CGFloat = 50
     var bracketHeight: CGFloat = 10
     var sPoint: CGPoint = CGPoint(x: 0, y: 0)
@@ -27,7 +27,6 @@ class HMDPitchLadderLayer: CALayer {
         ladder.frame = bounds
         let lFrame = ladder.frame
         for var degree in -100 ... +100 {
-            print(degree)
             offsetDegree = degree + 100
             degree = degree * -1
             if offsetDegree % degreesPerScale == 0 {
