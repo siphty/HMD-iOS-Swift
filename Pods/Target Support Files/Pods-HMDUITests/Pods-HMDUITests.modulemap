@@ -1,0 +1,6 @@
+framework module Pods_HMDUITests {
+  umbrella header "Pods-HMDUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
