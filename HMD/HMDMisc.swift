@@ -35,9 +35,16 @@ class misc {
     }
     
     enum operationMode {
+        //Home mode: the operator view on the ground.
         case Home
+        
+        //Hover mode: operator using HMD to control gimbal and drone, and drone is hovering in the sky. 
         case Hover
+        
+        //Cruise mode: drone cruising by mission, Operator can use HMD to control gimbal and drone body, but not the path of cruise.
         case Cruise
+        
+        //Transition mode: HMD can only control gimbal, but not the drone body. Operator needs use remote to control flight path.
         case Trans
     }
 }

@@ -14,6 +14,7 @@ class HMDHeadingRenderer: CALayer {
     
     //Configuration
     var didSetup = false
+    //TODO: fix the initial default problem of operationMode
     public var operationMode = misc.operationMode.Hover
     var translation: CGFloat = 0.0
     var locationManager = CLLocationManager()
@@ -32,6 +33,8 @@ class HMDHeadingRenderer: CALayer {
     let headingLabel = CATextLayer()
     var aircraftCursor = CATextLayer()
     var homeCursor = CATextLayer()
+    
+    var previousGimbalHeadingDegree: CGFloat = 0.0
     
     var didInitCompass = false
     var headingNumberWidth: CGFloat = 30.0
@@ -60,7 +63,7 @@ class HMDHeadingRenderer: CALayer {
         switch operationMode {
         case misc.operationMode.Home:
             locationManager.requestWhenInUseAuthorization()
-            orientation = getCLDeviceOrientation(by: UIDevice.current.orientation)
+            orientation = misc.getCLDeviceOrientation(by: UIDevice.current.orientation)
             locationManager.headingOrientation =  orientation
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.headingFilter = 0.1
@@ -69,6 +72,7 @@ class HMDHeadingRenderer: CALayer {
         case misc.operationMode.Hover, misc.operationMode.Cruise, misc.operationMode.Trans:
             let aircraft = DJISDKManager.product() as? DJIAircraft
             aircraft?.gimbal?.delegate = self
+            aircraft?.flightController?.delegate = self
         }
     }
     
@@ -82,30 +86,10 @@ class HMDHeadingRenderer: CALayer {
             setup()
         }
     }
-    
-    func getCLDeviceOrientation(by uiDeviceOrientation: UIDeviceOrientation) -> CLDeviceOrientation {
-        switch uiDeviceOrientation {
-        case .unknown:
-            return CLDeviceOrientation.unknown
-        case .portrait:
-            return CLDeviceOrientation.portrait
-        case .portraitUpsideDown:
-            return CLDeviceOrientation.portraitUpsideDown
-        case .landscapeLeft:
-            return CLDeviceOrientation.landscapeLeft
-        case .landscapeRight:
-            return CLDeviceOrientation.landscapeRight
-        case .faceUp:
-            return CLDeviceOrientation.faceUp
-        case .faceDown:
-            return CLDeviceOrientation.faceDown
-        }
-    }
-    
+        
     func setup () {
         middleLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: 31)
         
-        //TODO: I might need two scrollLyaers to make heading tape loop.
         scrollLayer = {
             let scrollLayer = CALayer()
             scrollLayer.frame = CGRect(x: 0.0, y: 0.0, width: pixelPerUnit * 360.0, height: middleLayer.frame.height)
@@ -193,15 +177,18 @@ class HMDHeadingRenderer: CALayer {
         case .Trans:
             addSublayer(homeCursor)
             aircraftCursor.removeFromSuperlayer()
-        default:
-            homeCursor.removeFromSuperlayer()
-            aircraftCursor.removeFromSuperlayer()
         }
     }
     
     
     
-    func scrollHeadingTape(with headingDegree:CGFloat) {
+    func scrollHeadingTape(with gimbalHeadingDegree:CGFloat) {
+        var headingDegree: CGFloat
+        if gimbalHeadingDegree < 0 {
+            headingDegree = 360.0 + gimbalHeadingDegree
+        } else {
+            headingDegree = gimbalHeadingDegree
+        }
         var headingPointX: CGFloat = 0.0
         //        DispatchQueue.main.async(execute: {
         //            print("Heading : \(headingDegree)")
@@ -273,7 +260,7 @@ class HMDHeadingRenderer: CALayer {
             case 268 ... 272:
                 self.headingLabel.string = "W"
             default:
-                self.headingLabel.string = String(Int(floor(newHeading.trueHeading)))
+                self.headingLabel.string = String(Int(floor(headingDegree)))
             }
             if self.headingScaleSouth.isHidden {
                 //Facing North
@@ -307,25 +294,74 @@ class HMDHeadingRenderer: CALayer {
                 animation.fillMode = kCAFillModeForwards
                 animation.isRemovedOnCompletion = true
                 animation.fromValue = self.scrollLayer.frame
-                animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                animation.toValue = CGRect(x: headingPointX,
+                                           y: 0,
+                                           width: self.scrollLayer.frame.width,
+                                           height: self.scrollLayer.frame.height)
                 
                 self.scrollLayer.add(animation, forKey: "frame")
             },completionHandler: {
-                self.scrollLayer.frame = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                self.scrollLayer.frame = CGRect(x: headingPointX,
+                                                y: 0,
+                                                width: self.scrollLayer.frame.width,
+                                                height: self.scrollLayer.frame.height)
                 self.scrollLock = false
             })
             
         }
     }
     
+    func shiftBodyHeadingCursor(_ headingDifference: CGFloat){
+        CALayer.performWithAnimation({
+            let animation =  CABasicAnimation(keyPath: "position")
+            animation.fillMode = kCAFillModeRemoved
+            animation.isRemovedOnCompletion = true
+            animation.fromValue = self.bodyHeadingCursor.position
+            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+                                        y: self.bodyHeadingCursor.position.y)
+            print("diff: \(headingDifference * self.pixelPerUnit)")
+            self.bodyHeadingCursor.add(animation, forKey:  "position")
+        }, completionHandler: {
+            self.bodyHeadingCursor.position = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+                                                      y: self.bodyHeadingCursor.position.y)
+        })
+    }
+    
+    //TODO: Update home direction based on drone location and given home location.
+    //TODO: Animate home cursor
     
 }
 
 
 extension HMDHeadingRenderer: DJIGimbalDelegate{
     func gimbal(_ gimbal: DJIGimbal, didUpdate state: DJIGimbalState) {
-        let headingDegree = CGFloat(state.attitudeInDegrees.yaw)
-        scrollHeadingTape(with: headingDegree)
+        var gimbalHeadingDegree = CGFloat(state.attitudeInDegrees.yaw)
+        if gimbalHeadingDegree < 0 {
+            gimbalHeadingDegree = 360 + gimbalHeadingDegree
+        }
+        previousGimbalHeadingDegree = gimbalHeadingDegree
+        scrollHeadingTape(with: gimbalHeadingDegree)
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
+        print("Gimbal Delegate by HMDHeadingRenderer")
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
+    }
+}
+
+extension HMDHeadingRenderer: DJIFlightControllerDelegate{
+    func flightController(_ fc: DJIFlightController, didUpdate state: DJIFlightControllerState) {
+        var bodyHeadingDegree = CGFloat(state.attitude.yaw)
+        if bodyHeadingDegree < 0 {
+            bodyHeadingDegree = 360 + bodyHeadingDegree
+        }
+        var headingDifference = previousGimbalHeadingDegree - bodyHeadingDegree
+        if headingDifference > 180 {
+            headingDifference = headingDifference - 360
+        }
+        print(" body to gimbal degree: \(headingDifference)")
+        shiftBodyHeadingCursor(headingDifference)
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
+        print("FC Delegate by HMDHeadingRenderer")
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
     }
 }
 
