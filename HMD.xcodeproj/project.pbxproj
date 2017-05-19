@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		3CE750071AB5BA74549BA1D4 /* Pods_HMDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D47C10CB3A88CAED2B15AB8 /* Pods_HMDUITests.framework */; };
+		A2048B051EC57F9D00C2413C /* PilotViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B031EC57F9D00C2413C /* PilotViews.storyboard */; };
+		A2048B461EC5913400C2413C /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B451EC5913400C2413C /* NavigatorViewController.swift */; };
+		A2048B481EC5919B00C2413C /* Navigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B471EC5919B00C2413C /* Navigator.storyboard */; };
+		A2048B4A1EC5920B00C2413C /* FirstOfficer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B491EC5920B00C2413C /* FirstOfficer.storyboard */; };
+		A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */; };
+		A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
+		A268414A1ECBE8AD003512FE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26841491ECBE8AD003512FE /* CFNetwork.framework */; };
+		A268414C1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
+		A268414D1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
+		A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */; };
+		A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */; };
+		A269BF221ECADF2B007ABB10 /* CommonDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A269BF211ECADF2B007ABB10 /* CommonDetailTableViewCell.xib */; };
+		A269BF251ECAE06A007ABB10 /* CommonDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF241ECAE06A007ABB10 /* CommonDetailTableViewCell.swift */; };
+		A269BF271ECAE351007ABB10 /* StatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF261ECAE351007ABB10 /* StatusTableViewCell.swift */; };
 		A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F24541EC19AE400653846 /* CGRect+Resize.swift */; };
 		A272BC7E1EC2F74300577941 /* HMDCentreDatumLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */; };
 		A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */; };
@@ -16,14 +30,12 @@
 		A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */; };
 		A2A1AA531EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA481EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift */; };
 		A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */; };
-		A2A1AA551EBA1C2A006970E1 /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */; };
 		A2A1AA561EBA1C2A006970E1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA4B1EBA1C2A006970E1 /* Info.plist */; };
 		A2A1AA571EBA1C2A006970E1 /* HMDMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4C1EBA1C2A006970E1 /* HMDMisc.swift */; };
 		A2A1AA581EBA1C2A006970E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */; };
 		A2A1AA5A1EBA1C39006970E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA591EBA1C39006970E1 /* Assets.xcassets */; };
 		A2A1AA5F1EBA1C5C006970E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */; };
 		A2A1AA601EBA1C5C006970E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */; };
-		A2A1AA631EBA1C78006970E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA611EBA1C78006970E1 /* Main.storyboard */; };
 		A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */; };
 		A2A1AA831EBA1E2C006970E1 /* HMDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA821EBA1E2C006970E1 /* HMDUITests.swift */; };
 		A2A1AA911EBA1E36006970E1 /* HMDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA901EBA1E36006970E1 /* HMDTests.swift */; };
@@ -72,8 +84,6 @@
 		A2AD7CD21EC045E200E687B6 /* HMDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */; };
 		A2AD7CD31EC045E600E687B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2AD7CD41EC045E600E687B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
-		A2AD7CD51EC045E900E687B6 /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */; };
-		A2AD7CD61EC045E900E687B6 /* HUDViewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */; };
 		A2AD7CD71EC045EC00E687B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */; };
 		A2AD7CD81EC045EC00E687B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */; };
 		A2AD7CD91EC045F500E687B6 /* HMDHighAltitudeScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB41EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift */; };
@@ -116,6 +126,7 @@
 		A2AD7D001EC0468A00E687B6 /* HeadTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9A1EBC9AE3006970E1 /* HeadTracker.mm */; };
 		A2AD7D011EC0468A00E687B6 /* HeadTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAC61EBD9526006970E1 /* HeadTransform.mm */; };
 		A2AD7D021EC0468A00E687B6 /* HeadTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9A1EBC9AE3006970E1 /* HeadTracker.mm */; };
+		A2D366B51EC5DEE500DFA96C /* PilotModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */; };
 		BE4446F66FB081FD25AAA4EB /* Pods_HMD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AEEA99F464A8A433A02C9A /* Pods_HMD.framework */; };
 		FA6881A0B18AB678C8B846AD /* Pods_HMDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FCCCAF074DB72C5675D82D /* Pods_HMDTests.framework */; };
 /* End PBXBuildFile section */
@@ -143,7 +154,19 @@
 		78AEEA99F464A8A433A02C9A /* Pods_HMD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8759FD739E0B60CFCB1DBAD2 /* Pods-HMDUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMDUITests/Pods-HMDUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8FA6C228927FFF91E9382361 /* Pods-HMDUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMDUITests/Pods-HMDUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2048B041EC57F9D00C2413C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/PilotViews.storyboard; sourceTree = SOURCE_ROOT; };
+		A2048B451EC5913400C2413C /* NavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = HMD/NavigatorViewController.swift; sourceTree = SOURCE_ROOT; };
+		A2048B471EC5919B00C2413C /* Navigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigator.storyboard; path = HMD/Navigator.storyboard; sourceTree = SOURCE_ROOT; };
+		A2048B491EC5920B00C2413C /* FirstOfficer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FirstOfficer.storyboard; path = HMD/FirstOfficer.storyboard; sourceTree = SOURCE_ROOT; };
+		A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedInterfaceViewController.swift; sourceTree = SOURCE_ROOT; };
+		A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = SOURCE_ROOT; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SystemInfor.storyboard; path = HMD/SystemInfor.storyboard; sourceTree = SOURCE_ROOT; };
+		A269BF211ECADF2B007ABB10 /* CommonDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommonDetailTableViewCell.xib; path = HMD/CommonDetailTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		A269BF241ECAE06A007ABB10 /* CommonDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDetailTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		A269BF261ECAE351007ABB10 /* StatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusTableViewCell.swift; path = HMD/StatusTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		A26F24541EC19AE400653846 /* CGRect+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Resize.swift"; sourceTree = SOURCE_ROOT; };
 		A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDCentreDatumLayer.swift; sourceTree = SOURCE_ROOT; };
 		A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Frame.swift"; sourceTree = SOURCE_ROOT; };
@@ -152,14 +175,12 @@
 		A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingRenderer.swift; path = HMD/HMDHeadingRenderer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA481EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingScaleLayer.swift; path = HMD/HMDHeadingScaleLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA491EBA1C2A006970E1 /* HMDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDLayer.swift; path = HMD/HMDLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HUDViewRenderer.swift; path = HMD/HUDViewRenderer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA4B1EBA1C2A006970E1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HMD/Info.plist; sourceTree = SOURCE_ROOT; };
 		A2A1AA4C1EBA1C2A006970E1 /* HMDMisc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDMisc.swift; path = HMD/HMDMisc.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = HMD/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA591EBA1C39006970E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HMD/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		A2A1AA5C1EBA1C5C006970E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		A2A1AA5E1EBA1C5C006970E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		A2A1AA621EBA1C78006970E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		A2A1AA801EBA1E2C006970E1 /* HMDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A1AA821EBA1E2C006970E1 /* HMDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDUITests.swift; sourceTree = "<group>"; };
 		A2A1AA841EBA1E2C006970E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,7 +201,7 @@
 		A2A1AAB21EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDLowAltitudeScaleLayer.swift; path = HMD/HMDLowAltitudeScaleLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAB41EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHighAltitudeScaleLayer.swift; path = HMD/HMDHighAltitudeScaleLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAB61EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDBarometricAltitudeLabelLayer.swift; path = HMD/HMDBarometricAltitudeLabelLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AABD1EBD7680006970E1 /* HMD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HMD-Bridging-Header.h"; sourceTree = "<group>"; };
+		A2A1AABD1EBD7680006970E1 /* HMD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HMD-Bridging-Header.h"; path = "HMD/MotionEngine/HMD-Bridging-Header.h"; sourceTree = "<group>"; };
 		A2A1AABF1EBD89A0006970E1 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		A2A1AAC11EBD89A7006970E1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A2A1AAC31EBD89AD006970E1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -203,6 +224,7 @@
 		A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MoreColors.swift"; sourceTree = SOURCE_ROOT; };
+		A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PilotModeViewController.swift; path = HMD/PilotMode/PilotModeViewController.swift; sourceTree = SOURCE_ROOT; };
 		B0FCCCAF074DB72C5675D82D /* Pods_HMDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36DCA2046E21FF5EE6FBF91 /* Pods-HMDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3313448B465684DFD2FC829 /* Pods-HMDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A268414A1ECBE8AD003512FE /* CFNetwork.framework in Frameworks */,
 				3CE750071AB5BA74549BA1D4 /* Pods_HMDUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,9 +289,78 @@
 			name = UIKit;
 			sourceTree = "<group>";
 		};
+		A2048B4B1EC5B96000C2413C /* Pilot UI */ = {
+			isa = PBXGroup;
+			children = (
+				A2048B031EC57F9D00C2413C /* PilotViews.storyboard */,
+				A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */,
+				A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */,
+			);
+			name = "Pilot UI";
+			sourceTree = "<group>";
+		};
+		A2048B4C1EC5B96B00C2413C /* Co-Pilot UI */ = {
+			isa = PBXGroup;
+			children = (
+				A2048B491EC5920B00C2413C /* FirstOfficer.storyboard */,
+			);
+			name = "Co-Pilot UI";
+			sourceTree = "<group>";
+		};
+		A2048B4D1EC5B99500C2413C /* Navigator UI */ = {
+			isa = PBXGroup;
+			children = (
+				A2048B471EC5919B00C2413C /* Navigator.storyboard */,
+				A2048B451EC5913400C2413C /* NavigatorViewController.swift */,
+			);
+			name = "Navigator UI";
+			sourceTree = "<group>";
+		};
+		A2048B4E1EC5BA1100C2413C /* ADS-B Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ADS-B Module";
+			sourceTree = "<group>";
+		};
+		A2048B4F1EC5BA4C00C2413C /* Airfield Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Airfield Module";
+			sourceTree = "<group>";
+		};
+		A2048B501EC5BA7400C2413C /* POI Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "POI Module";
+			sourceTree = "<group>";
+		};
+		A2048B511EC5BCC000C2413C /* System Infor UI */ = {
+			isa = PBXGroup;
+			children = (
+				A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */,
+				A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */,
+				A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */,
+				A269BF231ECAE01C007ABB10 /* System Infor Cells */,
+			);
+			name = "System Infor UI";
+			sourceTree = "<group>";
+		};
+		A2048B541EC5BF2000C2413C /* DJI Service */ = {
+			isa = PBXGroup;
+			children = (
+				A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */,
+			);
+			name = "DJI Service";
+			sourceTree = "<group>";
+		};
 		A24BBF231E56840300EBF428 = {
 			isa = PBXGroup;
 			children = (
+				A2A1AABD1EBD7680006970E1 /* HMD-Bridging-Header.h */,
+				A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */,
 				A24BBF2E1E56840300EBF428 /* HMD */,
 				A2A1AA811EBA1E2C006970E1 /* HMDUITests */,
 				A2A1AA8F1EBA1E36006970E1 /* HMDTests */,
@@ -291,14 +383,21 @@
 		A24BBF2E1E56840300EBF428 /* HMD */ = {
 			isa = PBXGroup;
 			children = (
-				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
-				A2A1AA4A1EBA1C2A006970E1 /* HUDViewRenderer.swift */,
-				A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */,
-				A2A1AA611EBA1C78006970E1 /* Main.storyboard */,
+				A2A1AA4B1EBA1C2A006970E1 /* Info.plist */,
 				A2A1AA591EBA1C39006970E1 /* Assets.xcassets */,
 				A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */,
-				A254BF051EAA2785005E70D9 /* AugmentedReality */,
-				A2A1AA4B1EBA1C2A006970E1 /* Info.plist */,
+				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
+				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
+				A2048B4B1EC5B96000C2413C /* Pilot UI */,
+				A2048B4C1EC5B96B00C2413C /* Co-Pilot UI */,
+				A2048B4D1EC5B99500C2413C /* Navigator UI */,
+				A2048B511EC5BCC000C2413C /* System Infor UI */,
+				A254BF051EAA2785005E70D9 /* HMD Module */,
+				A2048B4E1EC5BA1100C2413C /* ADS-B Module */,
+				A2048B4F1EC5BA4C00C2413C /* Airfield Module */,
+				A2048B501EC5BA7400C2413C /* POI Module */,
+				A269BF1C1ECAC911007ABB10 /* Blackbox Module */,
+				A2048B541EC5BF2000C2413C /* DJI Service */,
 			);
 			name = HMD;
 			path = Stereoscopic;
@@ -319,15 +418,30 @@
 			name = HMD;
 			sourceTree = "<group>";
 		};
-		A254BF051EAA2785005E70D9 /* AugmentedReality */ = {
+		A254BF051EAA2785005E70D9 /* HMD Module */ = {
 			isa = PBXGroup;
 			children = (
 				A2A1AA981EBC9AE3006970E1 /* MotionEngine */,
-				A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */,
-				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
 				A254BEFD1EA8DDE6005E70D9 /* HMD */,
 			);
-			name = AugmentedReality;
+			name = "HMD Module";
+			sourceTree = "<group>";
+		};
+		A269BF1C1ECAC911007ABB10 /* Blackbox Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Blackbox Module";
+			sourceTree = "<group>";
+		};
+		A269BF231ECAE01C007ABB10 /* System Infor Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A269BF211ECADF2B007ABB10 /* CommonDetailTableViewCell.xib */,
+				A269BF261ECAE351007ABB10 /* StatusTableViewCell.swift */,
+				A269BF241ECAE06A007ABB10 /* CommonDetailTableViewCell.swift */,
+			);
+			name = "System Infor Cells";
 			sourceTree = "<group>";
 		};
 		A275B6861EC1E85B0034A0E9 /* CALayer */ = {
@@ -370,7 +484,6 @@
 		A2A1AA981EBC9AE3006970E1 /* MotionEngine */ = {
 			isa = PBXGroup;
 			children = (
-				A2A1AABD1EBD7680006970E1 /* HMD-Bridging-Header.h */,
 				A2A1AAC51EBD9526006970E1 /* HeadTransform.h */,
 				A2A1AAC61EBD9526006970E1 /* HeadTransform.mm */,
 				A2A1AA991EBC9AE3006970E1 /* HeadTracker.h */,
@@ -456,6 +569,7 @@
 		A2A1AABE1EBD89A0006970E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A26841491ECBE8AD003512FE /* CFNetwork.framework */,
 				A2A1AAC31EBD89AD006970E1 /* CoreLocation.framework */,
 				A2A1AAC11EBD89A7006970E1 /* CoreMotion.framework */,
 				A2A1AABF1EBD89A0006970E1 /* GLKit.framework */,
@@ -605,11 +719,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2048B481EC5919B00C2413C /* Navigator.storyboard in Resources */,
 				A2A1AA561EBA1C2A006970E1 /* Info.plist in Resources */,
 				A2A1AA601EBA1C5C006970E1 /* Main.storyboard in Resources */,
-				A2A1AA631EBA1C78006970E1 /* Main.storyboard in Resources */,
+				A2048B051EC57F9D00C2413C /* PilotViews.storyboard in Resources */,
+				A2048B4A1EC5920B00C2413C /* FirstOfficer.storyboard in Resources */,
 				A2A1AA5F1EBA1C5C006970E1 /* LaunchScreen.storyboard in Resources */,
+				A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */,
 				A2A1AA5A1EBA1C39006970E1 /* Assets.xcassets in Resources */,
+				A269BF221ECADF2B007ABB10 /* CommonDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,6 +891,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2A1AAB91EBD71FA006970E1 /* Matrix3x3d.h in Sources */,
+				A269BF271ECAE351007ABB10 /* StatusTableViewCell.swift in Sources */,
 				A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */,
 				A2A1AABA1EBD71FA006970E1 /* OrientationEKF.h in Sources */,
 				A2A1AAE31EBF401F006970E1 /* CALayer+Extensions.swift in Sources */,
@@ -786,6 +905,7 @@
 				A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */,
 				A2A1AA581EBA1C2A006970E1 /* ViewController.swift in Sources */,
 				A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLayer.swift in Sources */,
+				A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */,
 				A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */,
 				A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */,
@@ -802,20 +922,24 @@
 				A2A1AAA81EBC9AE3006970E1 /* Vector3d.mm in Sources */,
 				A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */,
 				A2A1AAA71EBC9AE3006970E1 /* SO3Util.mm in Sources */,
+				A269BF251ECAE06A007ABB10 /* CommonDetailTableViewCell.swift in Sources */,
 				A2A1AAE11EBF3CE5006970E1 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */,
 				A2A1AACF1EBDD56D006970E1 /* HMDPitchLadderLayer.swift in Sources */,
 				A2A1AAE91EBF52A3006970E1 /* HMDSafetySetting.swift in Sources */,
 				A2A1AAB51EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift in Sources */,
+				A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */,
 				A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */,
+				A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */,
 				A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */,
+				A2048B461EC5913400C2413C /* NavigatorViewController.swift in Sources */,
 				A2A1AAD31EBDE3C6006970E1 /* HMDSpeedRenderer.swift in Sources */,
 				A2A1AAE71EBF5066006970E1 /* String+Extensions.swift in Sources */,
-				A2A1AA551EBA1C2A006970E1 /* HUDViewRenderer.swift in Sources */,
 				A2A1AAD51EBDE4D2006970E1 /* HMDAirspeedLabelLayer.swift in Sources */,
 				A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */,
 				A2A1AAE51EBF49DD006970E1 /* HMDRadarAltitudeLabelLayer.swift in Sources */,
 				A2A1AACB1EBDD266006970E1 /* HMDAttitudeRenderer.swift in Sources */,
 				A2A1AAC71EBD9526006970E1 /* HeadTransform.mm in Sources */,
+				A2D366B51EC5DEE500DFA96C /* PilotModeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,13 +949,13 @@
 			files = (
 				A2AD7CD31EC045E600E687B6 /* AppDelegate.swift in Sources */,
 				A2AD7CFA1EC0468600E687B6 /* Vector3d.mm in Sources */,
+				A268414C1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */,
 				A2AD7CE51EC0464000E687B6 /* CGFloat+Extensions.swift in Sources */,
 				A2AD7CCF1EC045DD00E687B6 /* HMDAltitudeRenderer.swift in Sources */,
 				A2AD7CD11EC045E100E687B6 /* HMDLayer.swift in Sources */,
 				A2AD7CE11EC0463A00E687B6 /* HMDSafetySetting.swift in Sources */,
 				A2AD7CE81EC0464400E687B6 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA831EBA1E2C006970E1 /* HMDUITests.swift in Sources */,
-				A2AD7CD51EC045E900E687B6 /* HUDViewRenderer.swift in Sources */,
 				A2AD7D001EC0468A00E687B6 /* HeadTracker.mm in Sources */,
 				A2AD7CF81EC0468600E687B6 /* OrientationEKF.mm in Sources */,
 				A2AD7CCD1EC045DA00E687B6 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */,
@@ -860,13 +984,13 @@
 			files = (
 				A2AD7CD41EC045E600E687B6 /* AppDelegate.swift in Sources */,
 				A2AD7CFE1EC0468600E687B6 /* Vector3d.mm in Sources */,
+				A268414D1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */,
 				A2AD7CE61EC0464000E687B6 /* CGFloat+Extensions.swift in Sources */,
 				A2AD7CD01EC045DD00E687B6 /* HMDAltitudeRenderer.swift in Sources */,
 				A2AD7CD21EC045E200E687B6 /* HMDLayer.swift in Sources */,
 				A2AD7CE21EC0463A00E687B6 /* HMDSafetySetting.swift in Sources */,
 				A2AD7CEA1EC0464400E687B6 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA911EBA1E36006970E1 /* HMDTests.swift in Sources */,
-				A2AD7CD61EC045E900E687B6 /* HUDViewRenderer.swift in Sources */,
 				A2AD7D021EC0468A00E687B6 /* HeadTracker.mm in Sources */,
 				A2AD7CFC1EC0468600E687B6 /* OrientationEKF.mm in Sources */,
 				A2AD7CCE1EC045DB00E687B6 /* HMDVerticalSpeedIndicatorLayer.swift in Sources */,
@@ -905,26 +1029,27 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A2048B031EC57F9D00C2413C /* PilotViews.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2048B041EC57F9D00C2413C /* Base */,
+			);
+			name = PilotViews.storyboard;
+			sourceTree = "<group>";
+		};
 		A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A2A1AA5C1EBA1C5C006970E1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = Stereoscopic;
 			sourceTree = "<group>";
 		};
 		A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A2A1AA5E1EBA1C5C006970E1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A2A1AA611EBA1C78006970E1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A2A1AA621EBA1C78006970E1 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1038,7 +1163,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMD;
+				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.hmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1057,7 +1182,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.HMD;
+				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.hmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;

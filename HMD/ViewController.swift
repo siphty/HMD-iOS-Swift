@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import CoreLocation
+import DJISDK
 
 class ViewController: UIViewController {
     
@@ -17,6 +18,8 @@ class ViewController: UIViewController {
     var sessionOutputSetting = AVCapturePhotoSettings(format: [AVVideoCodecKey:AVVideoCodecJPEG])
     var previewLayer = AVCaptureVideoPreviewLayer()
     var hmdLayer = HMDLayer()
+    
+    var aircraft: DJIBaseProduct?
     
     override func viewDidLoad() {
         super.viewDidLoad()

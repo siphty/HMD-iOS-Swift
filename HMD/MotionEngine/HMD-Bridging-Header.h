@@ -8,3 +8,11 @@
 
 #import "HeadTracker.h"
 #import "HeadTransform.h"
+
+#include <ifaddrs.h>
+#include <arpa/inet.h>
+#include <net/if_dl.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <net/if.h>
+#include <netdb.h>

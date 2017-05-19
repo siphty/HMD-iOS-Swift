@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import DJISDK
 
 class HMDLayer: CALayer, CALayerDelegate {
-    
+    public var aircraft: DJIBaseProduct?
     var didSetup = false
-    var operationMode = misc.operationMode.Home {
+    
+    
+    public var operationMode = misc.operationMode.Hover {
         didSet
         {
             setup()
@@ -51,13 +54,13 @@ class HMDLayer: CALayer, CALayerDelegate {
         
         
         //Heading
-        let headingTape = HMDHeadingRenderer()
+        let headingTape = HMDHeadingRenderer.init(operationMode)
         //        let headingTap = CALayer()
         //TODO: Use rate rather than precisely pixel size.
         headingTape.frame = CGRect(x: frame.width.middle() - 100, y: frame.height / 2 - 175, width: 200, height: 40)
 //        headingTape.borderColor = UIColor.lightGray.cgColor
 //        headingTape.borderWidth = 1
-        headingTape.operationMode = operationMode
+        
         headingTape.setup()
         addSublayer(headingTape)
         

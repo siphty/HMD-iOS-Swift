@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreLocation
+import DJISDK
 
 class HMDHeadingRenderer: CALayer {
     
     //Configuration
     var didSetup = false
-    var operationMode = misc.operationMode.Home
+    public var operationMode = misc.operationMode.Hover
     var translation: CGFloat = 0.0
     var locationManager = CLLocationManager()
     var pixelPerUnit: CGFloat = 10.48
@@ -52,15 +53,23 @@ class HMDHeadingRenderer: CALayer {
     
     public override init(){
         super.init()
-        print("init HMDHeadingRenderer")
-        locationManager.requestWhenInUseAuthorization()
-        orientation = getCLDeviceOrientation(by: UIDevice.current.orientation)
-        locationManager.headingOrientation =  orientation
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.headingFilter = 0.1
-        locationManager.startUpdatingHeading()
-        locationManager.delegate = self
-        
+    }
+    
+    public init(_ mode: misc.operationMode){
+        super.init()
+        switch operationMode {
+        case misc.operationMode.Home:
+            locationManager.requestWhenInUseAuthorization()
+            orientation = getCLDeviceOrientation(by: UIDevice.current.orientation)
+            locationManager.headingOrientation =  orientation
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.headingFilter = 0.1
+            locationManager.startUpdatingHeading()
+            locationManager.delegate = self
+        case misc.operationMode.Hover, misc.operationMode.Cruise, misc.operationMode.Trans:
+            let aircraft = DJISDKManager.product() as? DJIAircraft
+            aircraft?.gimbal?.delegate = self
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,7 +81,6 @@ class HMDHeadingRenderer: CALayer {
             didSetup = true
             setup()
         }
-        
     }
     
     func getCLDeviceOrientation(by uiDeviceOrientation: UIDeviceOrientation) -> CLDeviceOrientation {
@@ -95,7 +103,6 @@ class HMDHeadingRenderer: CALayer {
     }
     
     func setup () {
-        print("setup HMDHeadingRenderer")
         middleLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: 31)
         
         //TODO: I might need two scrollLyaers to make heading tape loop.
@@ -193,12 +200,8 @@ class HMDHeadingRenderer: CALayer {
     }
     
     
-}
-
-extension HMDHeadingRenderer: CLLocationManagerDelegate{
     
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        let headingDegree = CGFloat(newHeading.trueHeading)
+    func scrollHeadingTape(with headingDegree:CGFloat) {
         var headingPointX: CGFloat = 0.0
         //        DispatchQueue.main.async(execute: {
         //            print("Heading : \(headingDegree)")
@@ -313,7 +316,24 @@ extension HMDHeadingRenderer: CLLocationManagerDelegate{
             })
             
         }
-        
+    }
+    
+    
+}
+
+
+extension HMDHeadingRenderer: DJIGimbalDelegate{
+    func gimbal(_ gimbal: DJIGimbal, didUpdate state: DJIGimbalState) {
+        let headingDegree = CGFloat(state.attitudeInDegrees.yaw)
+        scrollHeadingTape(with: headingDegree)
+    }
+}
+
+extension HMDHeadingRenderer: CLLocationManagerDelegate{
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        let headingDegree = CGFloat(newHeading.trueHeading)
+        scrollHeadingTape(with: headingDegree)
     }
     
     

@@ -33,6 +33,31 @@ class KeyedInterfaceViewController: UIViewController {
     }
     */
     
+    @IBAction func connectDeviceButtonTouchUpInside(_ sender: Any) {
+        
+        guard let connectedKey = DJIProductKey(param: DJIParamConnection) else {
+            NSLog("Error creating the connectedKey")
+            return;
+        }
+        print("Try to connect product")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DJISDKManager.keyManager()?.startListeningForChanges(on: connectedKey,
+                                                                 withListener: self,
+                                                                 andUpdate: { (oldValue: DJIKeyedValue?, newValue : DJIKeyedValue?) in
+                                                                    if newValue != nil {
+                                                                        if newValue!.boolValue {
+                                                                            // At this point, a product is connected so we can show it.
+                                                                            
+                                                                            // UI goes on MT.
+                                                                            DispatchQueue.main.async {
+                                                                                self.productConnected()
+                                                                            }
+                                                                        }
+                                                                    }
+            })
+        }
+        
+    }
     @IBOutlet weak var getBatteryLevelButton: UIButton!
     @IBOutlet weak var getBatteryLevelLabel: UILabel!
     @IBAction func getBatteryLevel(_ sender: Any) {
@@ -135,6 +160,48 @@ class KeyedInterfaceViewController: UIViewController {
             self.getExposureSettingsLabel.text = "ISO: \(exposureSettings.ISO)\nAperture: \(exposureSettings.aperture.rawValue)\nEV: \(exposureSettings.exposureCompensation.rawValue)\nShutter:\(exposureSettings.shutterSpeed.rawValue)"
         })
         
+    }
+    
+    
+    
+    func productConnected() {
+        guard let newProduct = DJISDKManager.product() else {
+            NSLog("Product is connected but DJISDKManager.product is nil -> something is wrong")
+            return;
+        }
+        
+        //Updates the product's model
+//        self.productModel.text = "Model: \((newProduct.model)!)"
+//        self.productModel.isHidden = false
+        
+        //Updates the product's firmware version - COMING SOON
+        newProduct.getFirmwarePackageVersion{ (version:String?, error:Error?) -> Void in
+            
+//            self.productFirmwarePackageVersion.text = "Firmware Package Version: \(version ?? "Unknown")"
+            
+            if let _ = error {
+//                self.productFirmwarePackageVersion.isHidden = true
+            }else{
+//                self.productFirmwarePackageVersion.isHidden = false
+            }
+            
+            NSLog("Firmware package version is: \(version ?? "Unknown")")
+        }
+        
+        //Updates the product's connection status
+//        self.productConnectionStatus.text = "Status: Product Connected"
+//        
+//        self.openComponents.isEnabled = true;
+//        self.openComponents.alpha = 1.0;
+        NSLog("Product Connected")
+    }
+    
+    func productDisconnected() {
+//        self.productConnectionStatus.text = "Status: No Product Connected"
+//        
+//        self.openComponents.isEnabled = false;
+//        self.openComponents.alpha = 0.8;
+        NSLog("Product Disconnected")
     }
     
 }
