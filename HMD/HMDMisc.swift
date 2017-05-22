@@ -49,9 +49,13 @@ class misc {
     }
 }
 
-public struct  HMDColor {
+public struct HMDColor {
     static let scale = UIColor.init(red: 35.0 / 255.0, green: 255.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
     static let normalIndicator = UIColor.init(red: 35.0 / 255.0, green: 255.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
+}
+
+public struct UIConf {
+    static let pixelPerUnit: CGFloat = 10.48
 }
 
 

@@ -14,6 +14,7 @@
 		A2048B4A1EC5920B00C2413C /* FirstOfficer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B491EC5920B00C2413C /* FirstOfficer.storyboard */; };
 		A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */; };
 		A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
+		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
 		A268414A1ECBE8AD003512FE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26841491ECBE8AD003512FE /* CFNetwork.framework */; };
 		A268414C1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
 		A268414D1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
@@ -127,6 +128,7 @@
 		A2AD7D011EC0468A00E687B6 /* HeadTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAC61EBD9526006970E1 /* HeadTransform.mm */; };
 		A2AD7D021EC0468A00E687B6 /* HeadTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9A1EBC9AE3006970E1 /* HeadTracker.mm */; };
 		A2D366B51EC5DEE500DFA96C /* PilotModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */; };
+		A2DD2EDD1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */; };
 		BE4446F66FB081FD25AAA4EB /* Pods_HMD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AEEA99F464A8A433A02C9A /* Pods_HMD.framework */; };
 		FA6881A0B18AB678C8B846AD /* Pods_HMDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FCCCAF074DB72C5675D82D /* Pods_HMDTests.framework */; };
 /* End PBXBuildFile section */
@@ -160,6 +162,7 @@
 		A2048B491EC5920B00C2413C /* FirstOfficer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FirstOfficer.storyboard; path = HMD/FirstOfficer.storyboard; sourceTree = SOURCE_ROOT; };
 		A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedInterfaceViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = SOURCE_ROOT; };
+		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -225,6 +228,7 @@
 		A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MoreColors.swift"; sourceTree = SOURCE_ROOT; };
 		A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PilotModeViewController.swift; path = HMD/PilotMode/PilotModeViewController.swift; sourceTree = SOURCE_ROOT; };
+		A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftRollCursorLayer.swift; path = HMD/HMDAircraftRollCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		B0FCCCAF074DB72C5675D82D /* Pods_HMDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36DCA2046E21FF5EE6FBF91 /* Pods-HMDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3313448B465684DFD2FC829 /* Pods-HMDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */,
 				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
 				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
+				A2DD2EDB1ED2627100727B64 /* HomeStation UI */,
 				A2048B4B1EC5B96000C2413C /* Pilot UI */,
 				A2048B4C1EC5B96B00C2413C /* Co-Pilot UI */,
 				A2048B4D1EC5B99500C2413C /* Navigator UI */,
@@ -532,6 +537,8 @@
 				A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */,
 				A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */,
 				A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */,
+				A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */,
+				A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */,
 			);
 			name = HMDAttitude;
 			sourceTree = "<group>";
@@ -585,6 +592,13 @@
 			children = (
 			);
 			name = HMDMission;
+			sourceTree = "<group>";
+		};
+		A2DD2EDB1ED2627100727B64 /* HomeStation UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "HomeStation UI";
 			sourceTree = "<group>";
 		};
 		C3AF521D5CE153B9DC34AB06 /* Pods */ = {
@@ -927,6 +941,7 @@
 				A2A1AACF1EBDD56D006970E1 /* HMDPitchLadderLayer.swift in Sources */,
 				A2A1AAE91EBF52A3006970E1 /* HMDSafetySetting.swift in Sources */,
 				A2A1AAB51EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift in Sources */,
+				A2DD2EDD1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift in Sources */,
 				A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */,
 				A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */,
 				A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */,
@@ -936,6 +951,7 @@
 				A2A1AAE71EBF5066006970E1 /* String+Extensions.swift in Sources */,
 				A2A1AAD51EBDE4D2006970E1 /* HMDAirspeedLabelLayer.swift in Sources */,
 				A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */,
+				A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */,
 				A2A1AAE51EBF49DD006970E1 /* HMDRadarAltitudeLabelLayer.swift in Sources */,
 				A2A1AACB1EBDD266006970E1 /* HMDAttitudeRenderer.swift in Sources */,
 				A2A1AAC71EBD9526006970E1 /* HeadTransform.mm in Sources */,

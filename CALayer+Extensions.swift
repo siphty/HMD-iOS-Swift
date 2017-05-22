@@ -121,4 +121,9 @@ extension CALayer {
         
         mask = maskLayer
     }
+    
+    class func degree2radian(a:CGFloat)->CGFloat {
+        let b = CGFloat(Double.pi) * a/180
+        return b
+    }
 }

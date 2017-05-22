@@ -19,13 +19,15 @@ class HMDPitchLadderLayer: CALayer {
     var sPoint: CGPoint = CGPoint(x: 0, y: 0)
     var ePoint: CGPoint = CGPoint(x: 0, y: 0)
     var offsetDegree: Int = 0
-    
+    var labelFontSize: CGFloat = 12.0
+    var labelHeight: CGFloat = 14.0
+    var labelWidth: CGFloat = 20.0
     
     
     func setup() {
         let ladder = CALayer()
         ladder.frame = bounds
-        let lFrame = ladder.frame
+        let ladderFrame = ladder.frame
         for var degree in -100 ... +100 {
             offsetDegree = degree + 100
             degree = degree * -1
@@ -34,74 +36,127 @@ class HMDPitchLadderLayer: CALayer {
                 
                 if degree > 0 {
                     
-                    sPoint = CGPoint(x: lFrame.width.half() - gapWidth.half() - scaleWidth,
+                    let leftLabel = CATextLayer()
+                    leftLabel.font = "Tahoma" as CFTypeRef
+                    leftLabel.fontSize = labelFontSize
+                    leftLabel.contentsScale = UIScreen.main.scale
+                    leftLabel.frame = CGRect(x: ladderFrame.width.half() - gapWidth.half() - scaleWidth,
+                                             y: positionY ,
+                                             width: labelWidth,
+                                             height: labelHeight - 1)
+                    leftLabel.string = String(Int(floor(Double(degree))))
+                    leftLabel.alignmentMode = kCAAlignmentCenter
+                    leftLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    addSublayer(leftLabel)
+                    
+                    sPoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half() - scaleWidth,
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() - gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half(),
                                      y: positionY)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
                     
                     
-                    sPoint = CGPoint(x: lFrame.width.half() + gapWidth.half() + scaleWidth,
+                    sPoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half() + scaleWidth,
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() + gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half(),
                                      y: positionY)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
                     
                     
-                    sPoint = CGPoint(x: lFrame.width.half() - gapWidth.half(),
+                    sPoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half(),
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() - gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half(),
                                      y: positionY + bracketHeight)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
                     
                     
-                    sPoint = CGPoint(x: lFrame.width.half() + gapWidth.half(),
+                    sPoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half(),
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() + gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half(),
                                      y: positionY + bracketHeight)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
+                    
+                    
+                    let rightLabel = CATextLayer()
+                    rightLabel.font = "Tahoma" as CFTypeRef
+                    rightLabel.fontSize = labelFontSize
+                    rightLabel.contentsScale = UIScreen.main.scale
+                    rightLabel.frame = CGRect(x: ladderFrame.width.half() + gapWidth.half() + scaleWidth - labelWidth,
+                                              y: positionY,
+                                              width: labelWidth,
+                                              height: labelHeight - 1)
+                    rightLabel.string = String(Int(floor(Double(degree))))
+                    rightLabel.alignmentMode = kCAAlignmentCenter
+                    rightLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    addSublayer(rightLabel)
                     
                 }else if degree < 0 {
+                    let leftLabel = CATextLayer()
+                    leftLabel.font = "Tahoma" as CFTypeRef
+                    leftLabel.fontSize = labelFontSize
+                    leftLabel.contentsScale = UIScreen.main.scale
+                    leftLabel.frame = CGRect(x: ladderFrame.width.half() - gapWidth.half() - scaleWidth,
+                                             y: positionY - labelHeight,
+                                             width: labelWidth,
+                                             height: labelHeight)
+                    leftLabel.string = String(Int(floor(Double(degree))))
+                    leftLabel.alignmentMode = kCAAlignmentCenter
+                    leftLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    addSublayer(leftLabel)
                     
-                    sPoint = CGPoint(x: lFrame.width.half() - gapWidth.half() - scaleWidth,
+                    sPoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half() - scaleWidth,
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() - gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half(),
                                      y: positionY)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: true)
                     
                     
-                    sPoint = CGPoint(x: lFrame.width.half() + gapWidth.half() + scaleWidth,
+                    sPoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half() + scaleWidth,
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() + gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half(),
                                      y: positionY)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: true)
                     
-                    sPoint = CGPoint(x: lFrame.width.half() - gapWidth.half(),
+                    sPoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half(),
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() - gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half(),
                                      y: positionY - bracketHeight)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
                     
                     
-                    sPoint = CGPoint(x: lFrame.width.half() + gapWidth.half(),
+                    sPoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half(),
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() + gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half(),
                                      y: positionY - bracketHeight)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
+                    
+                    
+                    let rightLabel = CATextLayer()
+                    rightLabel.font = "Tahoma" as CFTypeRef
+                    rightLabel.fontSize = labelFontSize
+                    rightLabel.contentsScale = UIScreen.main.scale
+                    rightLabel.frame = CGRect(x: ladderFrame.width.half() + gapWidth.half() + scaleWidth - labelWidth,
+                                              y: positionY - labelHeight,
+                                              width: labelWidth,
+                                              height: labelHeight)
+                    rightLabel.string = String(Int(floor(Double(degree))))
+                    rightLabel.alignmentMode = kCAAlignmentCenter
+                    rightLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    addSublayer(rightLabel)
                     
                 } else {
                     
                     
-                    sPoint = CGPoint(x: lFrame.width.half() - gapWidth.half() - scaleWidth,
+                    sPoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half() - scaleWidth,
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() - gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half(),
                                      y: positionY)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
                     
                     
-                    sPoint = CGPoint(x: lFrame.width.half() + gapWidth.half() + scaleWidth,
+                    sPoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half() + scaleWidth,
                                      y: positionY)
-                    ePoint = CGPoint(x: lFrame.width.half() + gapWidth.half(),
+                    ePoint = CGPoint(x: ladderFrame.width.half() + gapWidth.half(),
                                      y: positionY)
                     ladder.drawLine(fromPoint: sPoint, toPoint: ePoint, width: 1, isDash: false)
                 }

@@ -29,7 +29,7 @@ class HMDHeadingRenderer: CALayer {
     var enableVertical: Bool = false
     var headingScaleNorth = HMDHeadingScaleLayer()
     var headingScaleSouth = HMDHeadingScaleLayer() // I need change this someway somehow
-    var bodyHeadingCursor = HMDHeadingCursorLayer()
+    var aircraftHeadingCursor = HMDHeadingCursorLayer()
     let headingLabel = CATextLayer()
     var aircraftCursor = CATextLayer()
     var homeCursor = CATextLayer()
@@ -70,9 +70,8 @@ class HMDHeadingRenderer: CALayer {
             locationManager.startUpdatingHeading()
             locationManager.delegate = self
         case misc.operationMode.Hover, misc.operationMode.Cruise, misc.operationMode.Trans:
-            let aircraft = DJISDKManager.product() as? DJIAircraft
-            aircraft?.gimbal?.delegate = self
-            aircraft?.flightController?.delegate = self
+            startUpdatingAircraftHeadingData()
+            startUpdatingGimbalHeadingData()
         }
     }
     
@@ -134,9 +133,10 @@ class HMDHeadingRenderer: CALayer {
         addSublayer(headingLabel)
         
         //Draw aircraft heading
-        bodyHeadingCursor.frame = CGRect(x: 0, y: middleLayer.frame.height, width: frame.width, height: frame.height - middleLayer.frame.height)
-        bodyHeadingCursor.setup()
-        addSublayer(bodyHeadingCursor)
+        aircraftHeadingCursor.frame = CGRect(x: 0, y: middleLayer.frame.height, width: frame.width, height: frame.height - middleLayer.frame.height)
+        aircraftHeadingCursor.setup()
+        aircraftHeadingCursor.backgroundColor = UIColor.clear.cgColor
+        addSublayer(aircraftHeadingCursor)
         
         //Draw current view heading line
         let startPoint = CGPoint(x: frame.width / 2, y: middleLayer.frame.height)
@@ -168,19 +168,82 @@ class HMDHeadingRenderer: CALayer {
         case .Home:
             addSublayer(aircraftCursor)
             homeCursor.removeFromSuperlayer()
-        case .Cruise:
+        case .Cruise,.Hover, .Trans:
             addSublayer(homeCursor)
             aircraftCursor.removeFromSuperlayer()
-        case .Hover:
-            addSublayer(homeCursor)
-            aircraftCursor.removeFromSuperlayer()
-        case .Trans:
-            addSublayer(homeCursor)
-            aircraftCursor.removeFromSuperlayer()
+            startUpdatingAircraftHeadingData()
+            startUpdatingGimbalHeadingData()
         }
     }
     
     
+    //Headings and Attitude data source
+    let aircraftHeadingKey = DJIFlightControllerKey(param: DJIFlightControllerParamCompassHeading)
+    let aircraftAttitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamAttitude)
+    let gimbalAttitudeKey = DJIGimbalKey(param: DJIGimbalParamAttitudeInDegrees)
+    
+    func startUpdatingAircraftHeadingData(){
+        DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftAttitudeKey!,
+                                                             withListener: self,
+                                                             andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
+                                                                if newValue == nil {
+                                                                    return
+                                                                }
+//                                                                print("aircraftAttitude: \(newValue.debugDescription)")
+                                                                let attitude = newValue!.value! as! DJISDKVector3D
+                                                                var bodyHeadingDegree = CGFloat(attitude.z)
+                                                                if bodyHeadingDegree < 0 {
+                                                                    bodyHeadingDegree = 360 + bodyHeadingDegree
+                                                                }
+                                                                var headingDifference = self.previousGimbalHeadingDegree - bodyHeadingDegree
+                                                                if headingDifference > 180 {
+                                                                    headingDifference = headingDifference - 360
+                                                                }
+//                                                                print(" body to gimbal degree: \(headingDifference)")
+                                                                self.shiftAircraftHeadingCursor(headingDifference)
+        })
+        
+    }
+    
+    func stopUpdatingAircraftHeadingData(){
+        DJISDKManager.keyManager()?.stopListening(on: aircraftHeadingKey!, ofListener: self)
+        DJISDKManager.keyManager()?.stopListening(on: aircraftAttitudeKey!, ofListener: self)
+    }
+    
+    func startUpdatingGimbalHeadingData(){
+        
+        DJISDKManager.keyManager()?.startListeningForChanges(on:gimbalAttitudeKey!,
+                                                             withListener: self,
+                                                             andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
+                                                                if newValue == nil {
+                                                                    return
+                                                                }
+                                                                var attitudeInDegrees = DJIGimbalAttitude()
+//                                                                print("gimbalAttitude: \(newValue!.value.debugDescription)")
+                                                                let theNewValue = newValue!.value! as! NSValue
+                                                                theNewValue.getValue(&attitudeInDegrees)
+                                                                var gimbalHeadingDegree = CGFloat(attitudeInDegrees.yaw)
+                                                                if gimbalHeadingDegree < 0 {
+                                                                    gimbalHeadingDegree = 360 + gimbalHeadingDegree
+                                                                }
+                                                                self.previousGimbalHeadingDegree = gimbalHeadingDegree
+                                                                self.scrollHeadingTape(with: gimbalHeadingDegree)
+//                                                                print("gimbalAttitude: \(newValue.debugDescription)")
+        })
+    }
+    
+    func stopUpdatingGimbalHeadingData(){
+        DJISDKManager.keyManager()?.stopListening(on: gimbalAttitudeKey!, ofListener: self)
+    }
+    
+    func startUpdatingPhoneHeadingData(){
+
+    }
+    
+    func stopUpdatingPhoneHeadingData(){
+        
+    }
+
     
     func scrollHeadingTape(with gimbalHeadingDegree:CGFloat) {
         var headingDegree: CGFloat
@@ -311,19 +374,19 @@ class HMDHeadingRenderer: CALayer {
         }
     }
     
-    func shiftBodyHeadingCursor(_ headingDifference: CGFloat){
+    func shiftAircraftHeadingCursor(_ headingDifference: CGFloat){
         CALayer.performWithAnimation({
             let animation =  CABasicAnimation(keyPath: "position")
             animation.fillMode = kCAFillModeRemoved
             animation.isRemovedOnCompletion = true
-            animation.fromValue = self.bodyHeadingCursor.position
+            animation.fromValue = self.aircraftHeadingCursor.position
             animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
-                                        y: self.bodyHeadingCursor.position.y)
-            print("diff: \(headingDifference * self.pixelPerUnit)")
-            self.bodyHeadingCursor.add(animation, forKey:  "position")
+                                        y: self.aircraftHeadingCursor.position.y)
+//            print("diff: \(headingDifference * self.pixelPerUnit)")
+            self.aircraftHeadingCursor.add(animation, forKey:  "position")
         }, completionHandler: {
-            self.bodyHeadingCursor.position = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
-                                                      y: self.bodyHeadingCursor.position.y)
+            self.aircraftHeadingCursor.position = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+                                                      y: self.aircraftHeadingCursor.position.y)
         })
     }
     
@@ -332,38 +395,6 @@ class HMDHeadingRenderer: CALayer {
     
 }
 
-
-extension HMDHeadingRenderer: DJIGimbalDelegate{
-    func gimbal(_ gimbal: DJIGimbal, didUpdate state: DJIGimbalState) {
-        var gimbalHeadingDegree = CGFloat(state.attitudeInDegrees.yaw)
-        if gimbalHeadingDegree < 0 {
-            gimbalHeadingDegree = 360 + gimbalHeadingDegree
-        }
-        previousGimbalHeadingDegree = gimbalHeadingDegree
-        scrollHeadingTape(with: gimbalHeadingDegree)
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
-        print("Gimbal Delegate by HMDHeadingRenderer")
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
-    }
-}
-
-extension HMDHeadingRenderer: DJIFlightControllerDelegate{
-    func flightController(_ fc: DJIFlightController, didUpdate state: DJIFlightControllerState) {
-        var bodyHeadingDegree = CGFloat(state.attitude.yaw)
-        if bodyHeadingDegree < 0 {
-            bodyHeadingDegree = 360 + bodyHeadingDegree
-        }
-        var headingDifference = previousGimbalHeadingDegree - bodyHeadingDegree
-        if headingDifference > 180 {
-            headingDifference = headingDifference - 360
-        }
-        print(" body to gimbal degree: \(headingDifference)")
-        shiftBodyHeadingCursor(headingDifference)
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
-        print("FC Delegate by HMDHeadingRenderer")
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAA")
-    }
-}
 
 extension HMDHeadingRenderer: CLLocationManagerDelegate{
     

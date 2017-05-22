@@ -22,16 +22,20 @@ class HMDAttitudeRenderer: CALayer {
     
     //Spin layers group
     var spinLayer = CALayer()
+    var gimbalAttiSpinLayer = CALayer()
+    var aircraftAttiSpinLayer = CALayer()
     var bankScale = HMDBankScaleLayer()
     var pitchLadder = HMDPitchLadderLayer()
-    var aircraftReference = CALayer()
     var centreDatum = HMDCentreDatumLayer()
+    var aircraftRollCursor = HMDAircraftRollCursorLayer()
+    var aircraftReference = HMDAircraftReferenceLayer()
     
     //Fixed Layers
-    var visualCentreDatum = CALayer() //Camera (iPhone/Drone) visual centre datum 摄像头中心基准线
     var sideslip = HMDSideslipLayer()
     var hoverVector = CAShapeLayer()
     var viewAreaReference = CALayer()
+    
+    var previousGimbalAttitudeRollDegree : CGFloat = 0.0
 
     internal var orientation: CLDeviceOrientation = CLDeviceOrientation.landscapeRight
     {
@@ -42,18 +46,25 @@ class HMDAttitudeRenderer: CALayer {
     }
     
     func setup () {
-        spinLayer.frame = bounds //.getScale(by: 0.9)
-        
-        bankScale.frame = spinLayer.bounds
+        gimbalAttiSpinLayer.frame = bounds //.getScale(by: 0.9)
+        bankScale.frame = gimbalAttiSpinLayer.bounds
         bankScale.setup()
-        spinLayer.addSublayer(bankScale)
-        
+        gimbalAttiSpinLayer.addSublayer(bankScale)
         pitchLadder.bounds = CGRect(x: 0, y: 0, width: spinLayer.bounds.width, height: 200 * 10.48)
-        pitchLadder.position = CGPoint(x: spinLayer.bounds.width.middle(), y: spinLayer.bounds.height.middle())
+        pitchLadder.position = CGPoint(x: gimbalAttiSpinLayer.bounds.width.middle(), y: gimbalAttiSpinLayer.bounds.height.middle())
         pitchLadder.setup()
-        spinLayer.addSublayer(pitchLadder)
+        aircraftReference.bounds = CGRect(x: 0, y: 0, width: pitchLadder.bounds.width.half(), height: pitchLadder.bounds.width.half())
+        aircraftReference.position = CGPoint(x: pitchLadder.bounds.width.half(), y: pitchLadder.bounds.height.half())
+        aircraftReference.setup()
+        pitchLadder.addSublayer(aircraftReference)
+        gimbalAttiSpinLayer.addSublayer(pitchLadder)
+        addSublayer(gimbalAttiSpinLayer)
         
-        addSublayer(spinLayer)
+        aircraftAttiSpinLayer.frame = bounds
+        aircraftRollCursor.frame = aircraftAttiSpinLayer.frame
+        aircraftRollCursor.setup()
+        aircraftAttiSpinLayer.addSublayer(aircraftRollCursor)
+        addSublayer(aircraftAttiSpinLayer)
         
         centreDatum.frame = bounds
         centreDatum.setup()
@@ -68,37 +79,194 @@ class HMDAttitudeRenderer: CALayer {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.headingFilter = 0.1
             locationManager.startUpdatingHeading()
-            locationManager.delegate = self
+//            locationManager.delegate = self
             
             motionManager.accelerometerUpdateInterval = 0.01
         case misc.operationMode.Hover, misc.operationMode.Cruise, misc.operationMode.Trans:
-            let aircraft = DJISDKManager.product() as? DJIAircraft
-            aircraft?.gimbal?.delegate = self
-            aircraft?.flightController?.delegate = self
+//            let aircraft = DJISDKManager.product() as? DJIAircraft
+//            aircraft?.gimbal?.delegate = self
+            //            aircraft?.flightController?.delegate = self
+            startUpdatingGimbalAttitude()
+            startUpdatingAircraftAttitude()
+            startUpdateRemoteRightHorizontal()
         }
         
     }
     
-}
+    //Draw detail components
+//    func drawAircraftRollCursor() -> CALayer {
+//        
+//    }
+    
+    
+    let aircraftAttitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamAttitude)
+    let gimbalAttitudeKey = DJIGimbalKey(param: DJIGimbalParamAttitudeInDegrees)
+    let remoteRightHorizontalKey = DJIRemoteControllerKey(param: DJIRemoteControllerParamRightHorizontalValue)
+    
+    //Data source updating
+    func startUpdatingAircraftAttitude(){
+        DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftAttitudeKey!,
+                                                             withListener: self,
+                                                             andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
+                                                                if newValue == nil {
+                                                                    return
+                                                                }
+//                                                                print("aircraftAttitude: \(newValue.debugDescription)")
+                                                                let attitude = newValue!.value! as! DJISDKVector3D
+                                                                var AircraftRollDegree = CGFloat(attitude.x)
+                                                                let AircraftPitchDegree = CGFloat(attitude.y)
+                                                                if AircraftRollDegree < 0 {
+                                                                    AircraftRollDegree = 360 + AircraftRollDegree
+                                                                }
+                                                                var rollingDifference = AircraftRollDegree - self.previousGimbalAttitudeRollDegree
+                                                                if rollingDifference > 180 {
+                                                                    rollingDifference = rollingDifference - 360
+                                                                }
+//                                                                print(" body to roll degree: \(rollingDifference)")
+                                                                self.spinAircraftAttitudeLayer(angle: rollingDifference)
+                                                                self.moveAircraftReference(byRoll: AircraftRollDegree,
+                                                                                           pitch: AircraftPitchDegree)
+                                                                
+        })
+        
+    }
+    
+    func stopUpdatingAircraftAttitude(){
+        DJISDKManager.keyManager()?.stopListening(on: aircraftAttitudeKey!, ofListener: self)
+    }
+    
+    func startUpdatingGimbalAttitude(){
+        DJISDKManager.keyManager()?.startListeningForChanges(on:gimbalAttitudeKey!,
+                                                             withListener: self,
+                                                             andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
+                                                                if newValue == nil {
+                                                                    return
+                                                                }
+                                                                var attitudeInDegrees = DJIGimbalAttitude()
+                                                                let theNewValue = newValue!.value! as! NSValue
+                                                                theNewValue.getValue(&attitudeInDegrees)
+                                                                self.previousGimbalAttitudeRollDegree = CGFloat(attitudeInDegrees.roll)
+                                                                print("gimbal roll: \(attitudeInDegrees.roll)")
+                                                                self.spinGimbalAttitudeLayer(angle: CGFloat(attitudeInDegrees.roll))
+                                                                print("gimbal pitch: \(attitudeInDegrees.pitch)")
+                                                                self.shiftGimbalAttitudePitchLadder(angle: CGFloat(attitudeInDegrees.pitch))
+        })
+    }
+    
+    func stopUpdatingGimbalHeadingData(){
+        DJISDKManager.keyManager()?.stopListening(on: gimbalAttitudeKey!, ofListener: self)
+    }
 
-
-extension HMDAttitudeRenderer: DJIGimbalDelegate{
-    func gimbal(_ gimbal: DJIGimbal, didUpdate state: DJIGimbalState) {
-
-        print("BBBBBBBBBBBBBBBBBBBBBBBBB")
-        print("Gimbal Delegate by HMDAttitudeRenderer BBBBBBB")
-        print("BBBBBBBBBBBBBBBBBBBBBBBBB")
+    func startUpdateRemoteRightHorizontal(){
+            DJISDKManager.keyManager()?.startListeningForChanges(on: remoteRightHorizontalKey!,
+                                                                 withListener: self,
+                                                                 andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
+                                                                    if newValue == nil {
+                                                                        return
+                                                                    }
+                                                                    let sideSliperValue = newValue!.value! as! NSNumber
+                                                                    self.moveSidesliperCursor(to: sideSliperValue)
+            })
+    }
+    
+    
+    // Animation actions
+    func spinAircraftAttitudeLayer(angle degrees: CGFloat){
+        print("Roll cusor turning to : \(degrees)")
+        CALayer.performWithAnimation({
+            let radians = self.degree2radian(degrees)
+            self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
+            //            let animation =  CABasicAnimation(keyPath: "position")
+            //            animation.fillMode = kCAFillModeRemoved
+            //            animation.isRemovedOnCompletion = true
+            //            animation.fromValue = self.aircraftHeadingCursor.position
+            //            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+            //                                        y: self.aircraftHeadingCursor.position.y)
+            //            //            print("diff: \(headingDifference * self.pixelPerUnit)")
+            //            self.aircraftHeadingCursor.add(animation, forKey:  "position")
+        }, completionHandler: {
+            let radians = self.degree2radian(degrees)
+            self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
+        })
+    }
+    
+    func spinGimbalAttitudeLayer(angle degrees: CGFloat){
+        print("Gimbal Roll cusor turning to : \(degrees)")
+        
+        CALayer.performWithAnimation({
+            let radians = self.degree2radian(degrees)
+            self.gimbalAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
+//            let animation =  CABasicAnimation(keyPath: "position")
+//            animation.fillMode = kCAFillModeRemoved
+//            animation.isRemovedOnCompletion = true
+//            animation.fromValue = self.aircraftHeadingCursor.position
+//            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+//                                        y: self.aircraftHeadingCursor.position.y)
+//            //            print("diff: \(headingDifference * self.pixelPerUnit)")
+//            self.aircraftHeadingCursor.add(animation, forKey:  "position")
+        }, completionHandler: {
+            let radians = self.degree2radian(degrees)
+            self.gimbalAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
+        })
+        
+    }
+    
+    func shiftGimbalAttitudePitchLadder(angle degrees: CGFloat){
+//        print("Pitch Ladder moving to : \(degrees)")
+        let shiftPicels = UIConf.pixelPerUnit * degrees
+        CALayer.performWithoutAnimation ({
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.fillMode = kCAFillModeForwards
+            animation.isRemovedOnCompletion = true
+            animation.fromValue = self.pitchLadder.position
+            let yPosition = self.aircraftAttiSpinLayer.position.y + shiftPicels
+            animation.toValue = CGPoint(x: self.pitchLadder.position.x, y : yPosition )
+            self.pitchLadder.add(animation, forKey: "position")
+//            print("pitchLadder y : \(self.pitchLadder.position.y)")
+        },completionHandler: {
+            let yPosition = self.aircraftAttiSpinLayer.position.y + shiftPicels
+            self.pitchLadder.position = CGPoint(x: self.pitchLadder.position.x, y : yPosition )
+        })
+    }
+    
+    func moveAircraftReference(byRoll rollDegree: CGFloat, pitch pitchDegree: CGFloat){
+        
+        let shiftPicels = UIConf.pixelPerUnit * pitchDegree * -1
+        CALayer.performWithoutAnimation ({
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.fillMode = kCAFillModeForwards
+            animation.isRemovedOnCompletion = true
+            animation.fromValue = self.aircraftReference.position
+            let yPosition = self.pitchLadder.frame.height.half() + shiftPicels
+            animation.toValue = CGPoint(x: self.pitchLadder.frame.width.half(), y : yPosition )
+            self.aircraftReference.add(animation, forKey: "position")
+            print("pitchLadder y : \(self.aircraftReference.position.y)")
+        },completionHandler: {
+            let yPosition = self.pitchLadder.frame.height.half() + shiftPicels
+            self.aircraftReference.position = CGPoint(x: self.pitchLadder.frame.width.half(), y : yPosition )
+        })
+        
+        CALayer.performWithAnimation({
+            let radians = self.degree2radian(rollDegree)
+            self.aircraftReference.transform = CATransform3DMakeRotation(radians, 0.0, 0.0, 1.0)
+        }, completionHandler: {
+            let radians = self.degree2radian(rollDegree)
+            self.aircraftReference.transform = CATransform3DMakeRotation(radians, 0.0, 0.0, 1.0)
+        })
+    }
+    
+    func moveSidesliperCursor(to sideSliperValue:NSNumber){
+        
+        print("\(sideSliperValue)")
+    }
+    
+    func degree2radian(_ degree:CGFloat) -> CGFloat {
+        let radian = CGFloat(Double.pi) * degree/180
+        return radian
     }
 }
 
-extension HMDAttitudeRenderer: DJIFlightControllerDelegate{
-    func flightController(_ fc: DJIFlightController, didUpdate state: DJIFlightControllerState) {
 
-        print("BBBBBBBBBBBBBBBBBBBBBBBBB")
-        print("FC Delegate by HMDAttitudeRenderer BBBBBBB")
-        print("BBBBBBBBBBBBBBBBBBBBBBBBB")
-    }
-}
 
 
 extension HMDAttitudeRenderer: CLLocationManagerDelegate{
