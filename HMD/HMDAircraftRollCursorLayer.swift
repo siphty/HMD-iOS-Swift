@@ -40,7 +40,7 @@ class HMDAircraftRollCursorLayer: CAShapeLayer {
         lineWidth = 1
         lineJoin = kCALineJoinMiter
         strokeColor = UIColor.yellow.cgColor
-        backgroundColor = UIColor.clear.cgColor
+        fillColor = UIColor.clear.cgColor
     }
     
     func makeIndicatorPath() -> UIBezierPath{

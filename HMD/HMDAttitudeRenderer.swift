@@ -126,9 +126,7 @@ class HMDAttitudeRenderer: CALayer {
                                                                 self.spinAircraftAttitudeLayer(angle: rollingDifference)
                                                                 self.moveAircraftReference(byRoll: AircraftRollDegree,
                                                                                            pitch: AircraftPitchDegree)
-                                                                
         })
-        
     }
     
     func stopUpdatingAircraftAttitude(){
@@ -169,6 +167,9 @@ class HMDAttitudeRenderer: CALayer {
             })
     }
     
+    func stopUpdateRemoteRightHorizontal(){
+        DJISDKManager.keyManager()?.stopListening(on: remoteRightHorizontalKey!, ofListener: self)
+    }
     
     // Animation actions
     func spinAircraftAttitudeLayer(angle degrees: CGFloat){

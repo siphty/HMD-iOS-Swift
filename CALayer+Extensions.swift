@@ -90,6 +90,7 @@ extension CALayer {
         CATransaction.setCompletionBlock({
             handler()
         })
+//        CATransaction.setValue(true, forKey: kCATransactionDisableActions)
         actionsWithAnimation()
         CATransaction.commit()
     }
