@@ -17,10 +17,10 @@ import UIKit
 //    case LowAltitude = 30
 //}
 public struct  AltitudeState {
-    static let  ServiceCeiling = 6000
-    static let  MaxAltitude = 500
-    static let  LegalAltitude = 120
-    static let  LowAltitude = 30
+    static let  serviceCeiling: CGFloat = 6000.0
+    static let  max: CGFloat = 500.0
+    static let  legal: CGFloat = 120.0
+    static let  low: CGFloat = 5.0
 }
 
 public struct StateColor{

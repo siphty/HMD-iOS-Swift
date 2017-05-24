@@ -1,5 +1,5 @@
 //
-//  HMDRemoteControllerVerticalCursorLayer.swift
+//  HMDRemoteControllerThrustCursorLayer.swift
 //  HMD
 //
 //  Created by Yi JIANG on 23/5/17.
@@ -8,15 +8,7 @@
 
 import UIKit
 
-class HMDRemoteControllerVerticalCursorLayer: CAShapeLayer {
-    public override init(){
-        super.init()
-        print("init HMDVerticalSpeedIndicatorLayer")
-        
-    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+class HMDRemoteControllerThrustCursorLayer: CAShapeLayer {
     
     func setup(){
         path = makeIndicatorPath().cgPath

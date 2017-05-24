@@ -15,7 +15,7 @@
 		A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */; };
 		A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
-		A22BE7891ED454B50073678A /* HMDRemoteControllerVerticalCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerVerticalCursorLayer.swift */; };
+		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
 		A268414A1ECBE8AD003512FE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26841491ECBE8AD003512FE /* CFNetwork.framework */; };
 		A268414C1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
 		A268414D1ECD78EC003512FE /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
@@ -164,7 +164,7 @@
 		A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedInterfaceViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
-		A22BE7881ED454B50073678A /* HMDRemoteControllerVerticalCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerVerticalCursorLayer.swift; path = HMD/HMDRemoteControllerVerticalCursorLayer.swift; sourceTree = SOURCE_ROOT; };
+		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -526,7 +526,7 @@
 				A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */,
 				A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */,
 				A2A1AAE01EBF3CE5006970E1 /* HMDVerticalVelocityCursorLayer.swift */,
-				A22BE7881ED454B50073678A /* HMDRemoteControllerVerticalCursorLayer.swift */,
+				A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */,
 			);
 			name = HMDAltitude;
 			sourceTree = "<group>";
@@ -934,7 +934,7 @@
 				A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */,
 				A2A1AAB31EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift in Sources */,
 				A2A1AAB71EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
-				A22BE7891ED454B50073678A /* HMDRemoteControllerVerticalCursorLayer.swift in Sources */,
+				A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */,
 				A2A1AAA41EBC9AE3006970E1 /* HeadTracker.mm in Sources */,
 				A2A1AAA51EBC9AE3006970E1 /* Matrix3x3d.mm in Sources */,
 				A2A1AAA81EBC9AE3006970E1 /* Vector3d.mm in Sources */,

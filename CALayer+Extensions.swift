@@ -60,7 +60,7 @@ extension CALayer {
     class func performWithAnimation(_ actionsWithAnimation: () -> Void,
                                     completionHandler handler: @escaping() -> Void){
         CATransaction.begin()
-        CATransaction.setAnimationDuration(0.01)
+        CATransaction.setAnimationDuration(0.1)
         CATransaction.setDisableActions(false)
         CATransaction.setCompletionBlock({
             handler()
@@ -84,11 +84,11 @@ extension CALayer {
     
     class func performAnimation(within duration: CFTimeInterval, action actionsWithAnimation: () -> Void,
                                     completionHandler handler: @escaping() -> Void){
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(duration)
-        CATransaction.setDisableActions(false)
-        CATransaction.setCompletionBlock({
-            handler()
+                                        CATransaction.begin()
+                                        CATransaction.setAnimationDuration(duration)
+                                        CATransaction.setDisableActions(false)
+                                        CATransaction.setCompletionBlock({
+                                            handler()
         })
 //        CATransaction.setValue(true, forKey: kCATransactionDisableActions)
         actionsWithAnimation()

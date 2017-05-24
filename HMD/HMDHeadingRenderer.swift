@@ -272,7 +272,7 @@ class HMDHeadingRenderer: CALayer {
                 self.headingScaleSouth.isHidden = true
                 headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
                 CALayer.performWithoutAnimation ({
-                    let animation = CABasicAnimation(keyPath: "position")
+                    let animation = CABasicAnimation(keyPath: "position")  //TODO: Something must be wrong here, but the result is good for now.
                     animation.fillMode = kCAFillModeForwards
                     animation.isRemovedOnCompletion = true
                     animation.fromValue = self.scrollLayer.frame

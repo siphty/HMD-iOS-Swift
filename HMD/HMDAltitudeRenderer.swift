@@ -26,12 +26,14 @@ class HMDAltitudeRenderer: CALayer{
     var homeAltitudeLabel = CATextLayer()
     var lowAltitudeScale = HMDLowAltitudeScaleLayer()
     var highAltitudeScale = HMDHighAltitudeScaleLayer()
+    var altitudeScale = CALayer()
     
     //Layers with animation
 //    var altitudeStick = HMDAltitudeStickLayer()
     var altitudeStick = CALayer()
     var verticalVelocityCursor = HMDVerticalVelocityCursorLayer()
-    var remoteVerticalCursor = HMDRemoteControllerVerticalCursorLayer()
+    var remoteThrustCursor = HMDRemoteControllerThrustCursorLayer()
+    var thrustAnimateLock = false
     
     //Default values
     var baroAltiLabelHeight = CGFloat(18)
@@ -80,9 +82,13 @@ class HMDAltitudeRenderer: CALayer{
         case .Home:
             registerLocationManagerDelegate()
         case .Cruise,.Hover, .Trans:
-            registerLocationManagerDelegate()
+//            registerLocationManagerDelegate()
             startUpdatingAircraftAltitudeData()
-            startUpdatingRemoteControllerData()
+            startUpdatingRemoteControllerThrustData()
+            startUpdatingHomeAltitudeData()
+            startUpdatingAircraftAltitudeData()
+            startUpdatingAircraftVerticalVelocityData()
+            
         }
 
     }
@@ -126,7 +132,6 @@ class HMDAltitudeRenderer: CALayer{
     }
     
     func drawAltitudeScales(){
-        let altitudeScale = CALayer()
         altitudeScale.frame = CGRect(x: frame.width * 2/3 ,
                                      y: 0,
                                      width: frame.width * 1/3,
@@ -157,6 +162,7 @@ class HMDAltitudeRenderer: CALayer{
         addSublayer(altitudeScale)
         
         altitudeScale.masksToBounds = true
+        
     }
     
     func drawVerticalSpeed(){
@@ -167,12 +173,12 @@ class HMDAltitudeRenderer: CALayer{
         verticalVelocityCursor.setup()
         addSublayer(verticalVelocityCursor)
         
-        remoteVerticalCursor.frame = CGRect(x: frame.width * (1 - 1/3 - 1/9),
+        remoteThrustCursor.frame = CGRect(x: frame.width * (1 - 1/3 - 1/9),
                                               y: 0.0,
                                               width: frame.width * 1/9,
                                               height: frame.height)
-        remoteVerticalCursor.setup()
-        addSublayer(remoteVerticalCursor)
+        remoteThrustCursor.setup()
+        addSublayer(remoteThrustCursor)
         
     }
 
@@ -214,8 +220,8 @@ class HMDAltitudeRenderer: CALayer{
                                                                 }
                                                                 let altitudeInMeters =  newValue!.value! as! NSNumber
                                                                 self.updateRadarAltitudeLabel(CGFloat(altitudeInMeters))
+                                                                self.updateBarometricAltitudeLabel(CGFloat(altitudeInMeters))
                                                                 self.changeAltitudeStickHeight(CGFloat(altitudeInMeters))
-                                                                self.getBaroAltitude(CGFloat(altitudeInMeters))
         })
     }
     
@@ -231,15 +237,15 @@ class HMDAltitudeRenderer: CALayer{
         })
     }
     
-    func startUpdatingRemoteControllerData(){
+    func startUpdatingRemoteControllerThrustData(){
         DJISDKManager.keyManager()?.startListeningForChanges(on: remoteLeftVerticalKey!,
                                                              withListener: self,
                                                              andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
                                                                 if newValue == nil {
                                                                     return
                                                                 }
-                                                                let verticalVelocityValue = newValue!.value! as! NSNumber
-                                                                self.shiftRemoteControllerVerticalCursor(CGFloat(verticalVelocityValue))
+                                                                let thrustValue = newValue!.value! as! NSNumber
+                                                                self.shiftRemoteThrustCursor(CGFloat(thrustValue))
         })
     }
     
@@ -263,63 +269,140 @@ class HMDAltitudeRenderer: CALayer{
     //Animation actions
     
     func changeAltitudeStickHeight(_ altitude: CGFloat){
-        print("Altitude in meters: \(altitude)")
-        
+//        print("Altitude in meters: \(altitude)")
+        var newYInPixels: CGFloat = 0.0
+        if altitude < AltitudeState.low {
+            newYInPixels = altitudeStick.frame.height - altitudeStick.frame.height * 1/4 * (altitude / AltitudeState.low)
+            altitudeStick.backgroundColor = UIColor.yellow.cgColor
+            altitudeStick.borderColor = UIColor.yellow.cgColor
+        } else if AltitudeState.low ... AltitudeState.legal ~= altitude {
+            newYInPixels = altitudeStick.frame.height * 3/4 - altitudeStick.frame.height * 2/4 * ((altitude - AltitudeState.low) / (AltitudeState.legal - AltitudeState.low))
+            altitudeStick.backgroundColor = UIColor.hmdGreen.cgColor
+            altitudeStick.borderColor = UIColor.hmdGreen.cgColor
+        } else if AltitudeState.legal ... AltitudeState.max ~= altitude {
+            newYInPixels = altitudeStick.frame.height * 1/4 - altitudeStick.frame.height * 1/4 * ((altitude - AltitudeState.legal) / (AltitudeState.max - AltitudeState.legal))
+            altitudeStick.backgroundColor = UIColor.orange.cgColor
+            altitudeStick.borderColor = UIColor.orange.cgColor
+        } else if AltitudeState.max ... AltitudeState.serviceCeiling ~= altitude {
+            newYInPixels = 0
+            altitudeStick.backgroundColor = UIColor.red.cgColor
+            altitudeStick.borderColor = UIColor.red.cgColor
+        } else {
+            newYInPixels = frame.height
+        }
+        self.altitudeStick.frame  = CGRect(x: self.altitudeStick.frame.origin.x,
+                                           y: newYInPixels,
+                                           width: self.altitudeStick.frame.width,
+                                           height: self.frame.height - newYInPixels)
+        CALayer.performWithAnimation({
+            let stickAnimation: CABasicAnimation
+            stickAnimation = CABasicAnimation(keyPath: "frame")
+            stickAnimation.isRemovedOnCompletion = true
+            stickAnimation.fillMode = kCAFillModeForwards
+            stickAnimation.fromValue = self.altitudeStick.frame
+            stickAnimation.toValue = CGRect(x: self.altitudeStick.frame.origin.x,
+                                            y: newYInPixels,
+                                            width: self.altitudeStick.frame.width,
+                                            height: self.altitudeScale.frame.height - newYInPixels)
+            self.altitudeStick.add(stickAnimation, forKey: nil)
+        }, completionHandler: {
+            self.altitudeStick.frame = CGRect(x: self.altitudeStick.frame.origin.x,
+                                              y: newYInPixels,
+                                              width: self.altitudeStick.frame.size.width,
+                                              height: self.altitudeScale.frame.height - newYInPixels)
+        })
     }
     
     func updateRadarAltitudeLabel(_ altitude: CGFloat){
-        let redarAltitude = Int(floor(Double(altitude)))
-        radarAltitudeLabel.string = "\(redarAltitude)"
+        if altitude < AltitudeState.low {
+        } else if AltitudeState.low ... AltitudeState.serviceCeiling ~= altitude {
+            let redarAltitude = String(format:"%.1f",floor(Double(altitude)))
+            radarAltitudeLabel.string = redarAltitude
+        }
+            let redarAltitude = Int(floor(Double(altitude)))
+            radarAltitudeLabel.string = "\(redarAltitude)"
         
     }
     
     func shiftVerticalVelocityCursor(_ velocity: CGFloat){
         print("Vertical velocity in meters per second: \(velocity)")
+        let VerticalVelocityValueToPixel = (velocity / 5) * (frame.height / 4.0) * -1
+        CALayer.performWithAnimation({
+            let cursorAnimation: CABasicAnimation
+            cursorAnimation = CABasicAnimation(keyPath: "position")
+            cursorAnimation.fillMode = kCAFillModeForwards
+            cursorAnimation.isRemovedOnCompletion = true
+            cursorAnimation.fromValue = self.remoteThrustCursor.position
+            cursorAnimation.toValue = CGPoint(x: self.verticalVelocityCursor.position.x,
+                                              y: self.frame.height.half() + VerticalVelocityValueToPixel)
+            self.verticalVelocityCursor.add(cursorAnimation, forKey: nil)
+        }, completionHandler: {
+            self.verticalVelocityCursor.position = CGPoint(x: self.verticalVelocityCursor.position.x,
+                                                       y: self.frame.height.half() + VerticalVelocityValueToPixel)
+            self.thrustAnimateLock = false
+        })
     }
     
-    func shiftRemoteControllerVerticalCursor(_ value: CGFloat){
+    func shiftRemoteThrustCursor(_ value: CGFloat){
+//        if thrustAnimateLock {
+//            return
+//        } else {
+//            thrustAnimateLock = true
+//        }
         print("Remote Controller Vertical velocity value: \(value)")
-        
+        let joystickMaxValue: CGFloat = 660.0
+        let thrustValueToPixel = (value / joystickMaxValue) * (frame.height / 4.0) * -1
+        CALayer.performWithAnimation({
+            let cursorAnimation: CABasicAnimation
+            cursorAnimation = CABasicAnimation(keyPath: "position")
+            cursorAnimation.isRemovedOnCompletion = true
+            cursorAnimation.fillMode = kCAFillModeForwards
+            cursorAnimation.fromValue = self.remoteThrustCursor.position
+            cursorAnimation.toValue = CGPoint(x: self.remoteThrustCursor.position.x,
+                                              y: self.frame.height.half() + thrustValueToPixel)
+            self.remoteThrustCursor.add(cursorAnimation, forKey: nil)
+        }, completionHandler: {
+            self.remoteThrustCursor.position = CGPoint(x: self.remoteThrustCursor.position.x,
+                                                       y: self.frame.height.half() + thrustValueToPixel)
+            self.thrustAnimateLock = false
+        })
+    
     }
     
     func updateBarometricAltitudeLabel(_ altitude: CGFloat){
-        
+        let baroAltitude = Int(floor(Double(previousHomeAltitude + altitude)))
+        baroAltitudeLabel.string = "\(baroAltitude)"
     }
     
     func updateHomeAltitudeLabel(_ altitude: CGFloat){
+//        print("Home Altitude in meters: \(altitude)")
         let homeAltitude = Int(floor(Double(altitude)))
         homeAltitudeLabel.string = "\(homeAltitude)"
     }
     
-    func getBaroAltitude(_ altitude: CGFloat){
-        let BaroAltitude = Int(floor(Double(previousHomeAltitude + altitude)))
-        baroAltitudeLabel.string = "\(BaroAltitude)"
-    }
     
     func preflightCheck(){
         //Altitude Stick check
-        let animation: CABasicAnimation
-        animation = CABasicAnimation(keyPath: "transform.translation.y")
-        animation.duration = 1
-        animation.repeatCount = 2
-        animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
-        animation.autoreverses = true
-        animation.fromValue = NSNumber(floatLiteral: 300)
-        animation.toValue = NSNumber(floatLiteral: 2)
-        altitudeStick.add(animation, forKey: nil)
+//        let animation: CABasicAnimation
+//        animation = CABasicAnimation(keyPath: "transform.translation.y")
+//        animation.duration = 1
+//        animation.repeatCount = 1
+//        animation.isRemovedOnCompletion = false
+//        animation.fillMode = kCAFillModeForwards
+//        animation.autoreverses = true
+//        animation.fromValue = NSNumber(floatLiteral: 300)
+//        animation.toValue = NSNumber(floatLiteral: 2)
+//        altitudeStick.add(animation, forKey: nil)
         
         let cursorAnimation: CABasicAnimation
         cursorAnimation = CABasicAnimation(keyPath: "transform.translation.y")
         cursorAnimation.duration = 1.5
-        cursorAnimation.repeatCount = 2
+        cursorAnimation.repeatCount = 1
         cursorAnimation.isRemovedOnCompletion = false
         cursorAnimation.fillMode = kCAFillModeForwards
         cursorAnimation.autoreverses = true
         cursorAnimation.fromValue = NSNumber(floatLiteral: 0)
         cursorAnimation.toValue = NSNumber(floatLiteral: -70)
-        remoteVerticalCursor.add(cursorAnimation, forKey: nil)
-        cursorAnimation.duration = 1.6
         verticalVelocityCursor.add(cursorAnimation, forKey: nil)
     }
 }

@@ -9,15 +9,7 @@
 import UIKit
 
 class HMDVerticalVelocityCursorLayer: CAShapeLayer {
-    
-    public override init(){
-        super.init()
-        print("init HMDVerticalSpeedIndicatorLayer")
-        
-    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+
     
     func setup(){
         path = makeIndicatorPath().cgPath

@@ -144,9 +144,9 @@ class HMDAttitudeRenderer: CALayer {
                                                                 let theNewValue = newValue!.value! as! NSValue
                                                                 theNewValue.getValue(&attitudeInDegrees)
                                                                 self.previousGimbalAttitudeRollDegree = CGFloat(attitudeInDegrees.roll)
-                                                                print("gimbal roll: \(attitudeInDegrees.roll)")
+//                                                                print("gimbal roll: \(attitudeInDegrees.roll)")
                                                                 self.spinGimbalAttitudeLayer(angle: CGFloat(attitudeInDegrees.roll))
-                                                                print("gimbal pitch: \(attitudeInDegrees.pitch)")
+//                                                                print("gimbal pitch: \(attitudeInDegrees.pitch)")
                                                                 self.shiftGimbalAttitudePitchLadder(angle: CGFloat(attitudeInDegrees.pitch))
         })
     }
@@ -173,7 +173,7 @@ class HMDAttitudeRenderer: CALayer {
     
     // Animation actions
     func spinAircraftAttitudeLayer(angle degrees: CGFloat){
-        print("Roll cusor turning to : \(degrees)")
+//        print("Roll cusor turning to : \(degrees)")
         CALayer.performWithAnimation({
             let radians = self.degree2radian(degrees)
             self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
@@ -192,7 +192,7 @@ class HMDAttitudeRenderer: CALayer {
     }
     
     func spinGimbalAttitudeLayer(angle degrees: CGFloat){
-        print("Gimbal Roll cusor turning to : \(degrees)")
+//        print("Gimbal Roll cusor turning to : \(degrees)")
         
         CALayer.performWithAnimation({
             let radians = self.degree2radian(degrees)
@@ -241,7 +241,7 @@ class HMDAttitudeRenderer: CALayer {
             let yPosition = self.pitchLadder.frame.height.half() + shiftPicels
             animation.toValue = CGPoint(x: self.pitchLadder.frame.width.half(), y : yPosition )
             self.aircraftReference.add(animation, forKey: "position")
-            print("pitchLadder y : \(self.aircraftReference.position.y)")
+//            print("pitchLadder y : \(self.aircraftReference.position.y)")
         },completionHandler: {
             let yPosition = self.pitchLadder.frame.height.half() + shiftPicels
             self.aircraftReference.position = CGPoint(x: self.pitchLadder.frame.width.half(), y : yPosition )
