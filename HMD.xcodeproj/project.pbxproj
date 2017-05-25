@@ -135,6 +135,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A22BE8761ED67B510073678A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A22BE84B1ED67B500073678A /* VideoPreviewer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 02A543FD1C3C51CB0083C11B;
+			remoteInfo = VideoPreviewer;
+		};
 		A2A1AA851EBA1E2C006970E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A24BBF241E56840300EBF428 /* Project object */;
@@ -165,6 +172,7 @@
 		A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
+		A22BE84B1ED67B500073678A /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = VideoPreviewer.xcodeproj; sourceTree = "<group>"; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -360,6 +368,22 @@
 				A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */,
 			);
 			name = "DJI Service";
+			sourceTree = "<group>";
+		};
+		A22BE7901ED67B500073678A /* VideoPreviewer */ = {
+			isa = PBXGroup;
+			children = (
+				A22BE84B1ED67B500073678A /* VideoPreviewer.xcodeproj */,
+			);
+			path = VideoPreviewer;
+			sourceTree = "<group>";
+		};
+		A22BE84C1ED67B500073678A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A22BE8771ED67B510073678A /* VideoPreviewer.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A24BBF231E56840300EBF428 = {
@@ -579,6 +603,7 @@
 		A2A1AABE1EBD89A0006970E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A22BE7901ED67B500073678A /* VideoPreviewer */,
 				A26841491ECBE8AD003512FE /* CFNetwork.framework */,
 				A2A1AAC31EBD89AD006970E1 /* CoreLocation.framework */,
 				A2A1AAC11EBD89A7006970E1 /* CoreMotion.framework */,
@@ -722,6 +747,12 @@
 			mainGroup = A24BBF231E56840300EBF428;
 			productRefGroup = A24BBF2D1E56840300EBF428 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A22BE84C1ED67B500073678A /* Products */;
+					ProjectRef = A22BE84B1ED67B500073678A /* VideoPreviewer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A24BBF2B1E56840300EBF428 /* HMD */,
@@ -730,6 +761,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A22BE8771ED67B510073678A /* VideoPreviewer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VideoPreviewer.framework;
+			remoteRef = A22BE8761ED67B510073678A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A24BBF2A1E56840300EBF428 /* Resources */ = {
@@ -1181,6 +1222,10 @@
 				DEVELOPMENT_TEAM = DQK83PW4RV;
 				INFOPLIST_FILE = HMD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VideoPreviewer/VideoPreviewer/ffmpeg/lib",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.hmd;
@@ -1200,6 +1245,10 @@
 				DEVELOPMENT_TEAM = DQK83PW4RV;
 				INFOPLIST_FILE = HMD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VideoPreviewer/VideoPreviewer/ffmpeg/lib",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.hmd;
