@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Iaz-vC-ZiC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Iaz-vC-ZiC">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,7 +137,7 @@
                 <viewControllerPlaceholder storyboardName="PilotViews" id="OYD-c8-TvU" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuF-ys-Ws1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-272" y="515"/>
+            <point key="canvasLocation" x="-273" y="534"/>
         </scene>
         <!--FirstOfficer-->
         <scene sceneID="RII-JU-2cO">
@@ -145,7 +145,7 @@
                 <viewControllerPlaceholder storyboardName="FirstOfficer" id="dWV-qG-gGv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmS-Ad-gd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="595"/>
+            <point key="canvasLocation" x="-270" y="618"/>
         </scene>
         <!--Navigator-->
         <scene sceneID="r7V-dK-5Vi">
@@ -153,7 +153,7 @@
                 <viewControllerPlaceholder storyboardName="Navigator" id="h3M-yN-LFZ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWi-1G-fT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-275" y="675"/>
+            <point key="canvasLocation" x="-275" y="694"/>
         </scene>
         <!--SystemInfor-->
         <scene sceneID="3lM-Vi-RkQ">
@@ -176,53 +176,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swf-X6-HSe">
-                                <rect key="frame" x="277" y="134" width="113" height="30"/>
+                                <rect key="frame" x="277" y="90" width="113" height="30"/>
                                 <state key="normal" title="Get battery level"/>
                                 <connections>
                                     <action selector="getBatteryLevel:" destination="srb-nO-kmw" eventType="touchUpInside" id="esA-BM-pJF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZW-FF-DZG">
-                                <rect key="frame" x="272" y="218" width="123" height="30"/>
+                                <rect key="frame" x="272" y="174" width="123" height="30"/>
                                 <state key="normal" title="Set Camera Mode"/>
                                 <connections>
                                     <action selector="setCameraMode:" destination="srb-nO-kmw" eventType="touchUpInside" id="fCV-Wb-xLc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgf-x7-tIi">
-                                <rect key="frame" x="310" y="172" width="46" height="21"/>
+                                <rect key="frame" x="310" y="128" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Mode: N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHw-gq-1zd">
-                                <rect key="frame" x="261" y="256" width="144" height="21"/>
+                                <rect key="frame" x="261" y="212" width="144" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLm-I2-337">
-                                <rect key="frame" x="283" y="302" width="100" height="30"/>
+                                <rect key="frame" x="283" y="258" width="100" height="30"/>
                                 <state key="normal" title="Start Listening"/>
                                 <connections>
                                     <action selector="startStopListeningCoordinates:" destination="srb-nO-kmw" eventType="touchUpInside" id="vbm-Xi-UG7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat: 0,000 - Long: 0,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCz-IP-OQM">
-                                <rect key="frame" x="240" y="340" width="186" height="21"/>
+                                <rect key="frame" x="240" y="296" width="186" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oB1-jx-THm">
-                                <rect key="frame" x="257" y="386" width="153" height="30"/>
+                                <rect key="frame" x="257" y="342" width="153" height="30"/>
                                 <state key="normal" title="Get Exposure Settings"/>
                                 <connections>
                                     <action selector="getExposureSettings:" destination="srb-nO-kmw" eventType="touchUpInside" id="nib-yP-RVt"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qr-Km-Qnw">
-                                <rect key="frame" x="319" y="424" width="29" height="21"/>
+                                <rect key="frame" x="319" y="380" width="29" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

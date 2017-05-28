@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CE750071AB5BA74549BA1D4 /* Pods_HMDUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D47C10CB3A88CAED2B15AB8 /* Pods_HMDUITests.framework */; };
 		A2048B051EC57F9D00C2413C /* PilotViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B031EC57F9D00C2413C /* PilotViews.storyboard */; };
 		A2048B461EC5913400C2413C /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B451EC5913400C2413C /* NavigatorViewController.swift */; };
 		A2048B481EC5919B00C2413C /* Navigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B471EC5919B00C2413C /* Navigator.storyboard */; };
 		A2048B4A1EC5920B00C2413C /* FirstOfficer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B491EC5920B00C2413C /* FirstOfficer.storyboard */; };
 		A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */; };
 		A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
+		A21B22241EDAAA7900815204 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22BE8771ED67B510073678A /* VideoPreviewer.framework */; };
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
 		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
 		A268414A1ECBE8AD003512FE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26841491ECBE8AD003512FE /* CFNetwork.framework */; };
@@ -128,10 +128,9 @@
 		A2AD7D001EC0468A00E687B6 /* HeadTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9A1EBC9AE3006970E1 /* HeadTracker.mm */; };
 		A2AD7D011EC0468A00E687B6 /* HeadTransform.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAC61EBD9526006970E1 /* HeadTransform.mm */; };
 		A2AD7D021EC0468A00E687B6 /* HeadTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA9A1EBC9AE3006970E1 /* HeadTracker.mm */; };
+		A2CD02BE1EDA95130035E962 /* PilotRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CD02BD1EDA95130035E962 /* PilotRootViewController.swift */; };
 		A2D366B51EC5DEE500DFA96C /* PilotModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */; };
 		A2DD2EDD1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */; };
-		BE4446F66FB081FD25AAA4EB /* Pods_HMD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AEEA99F464A8A433A02C9A /* Pods_HMD.framework */; };
-		FA6881A0B18AB678C8B846AD /* Pods_HMDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FCCCAF074DB72C5675D82D /* Pods_HMDTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,8 +159,6 @@
 
 /* Begin PBXFileReference section */
 		2405F073441FA0DE6076C47A /* Pods-HMD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMD.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMD/Pods-HMD.release.xcconfig"; sourceTree = "<group>"; };
-		6D47C10CB3A88CAED2B15AB8 /* Pods_HMDUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		78AEEA99F464A8A433A02C9A /* Pods_HMD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8759FD739E0B60CFCB1DBAD2 /* Pods-HMDUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMDUITests/Pods-HMDUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8FA6C228927FFF91E9382361 /* Pods-HMDUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMDUITests/Pods-HMDUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A2048B041EC57F9D00C2413C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/PilotViews.storyboard; sourceTree = SOURCE_ROOT; };
@@ -170,6 +167,8 @@
 		A2048B491EC5920B00C2413C /* FirstOfficer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FirstOfficer.storyboard; path = HMD/FirstOfficer.storyboard; sourceTree = SOURCE_ROOT; };
 		A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedInterfaceViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = SOURCE_ROOT; };
+		A21B221F1EDAA9A000815204 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "Pods/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework"; sourceTree = "<group>"; };
+		A21B22211EDAA9A500815204 /* DJIUILibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJIUILibrary.framework; path = "Pods/DJI-UILibrary-iOS/iOS_UILibrary/DJIUILibrary.framework"; sourceTree = "<group>"; };
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE84B1ED67B500073678A /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = VideoPreviewer.xcodeproj; sourceTree = "<group>"; };
@@ -237,9 +236,9 @@
 		A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MoreColors.swift"; sourceTree = SOURCE_ROOT; };
+		A2CD02BD1EDA95130035E962 /* PilotRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PilotRootViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PilotModeViewController.swift; path = HMD/PilotMode/PilotModeViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftRollCursorLayer.swift; path = HMD/HMDAircraftRollCursorLayer.swift; sourceTree = SOURCE_ROOT; };
-		B0FCCCAF074DB72C5675D82D /* Pods_HMDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36DCA2046E21FF5EE6FBF91 /* Pods-HMDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3313448B465684DFD2FC829 /* Pods-HMDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.release.xcconfig"; sourceTree = "<group>"; };
 		F4F1C7AA6B0B6D324A53B408 /* Pods-HMD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMD/Pods-HMD.debug.xcconfig"; sourceTree = "<group>"; };
@@ -250,10 +249,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A21B22241EDAAA7900815204 /* VideoPreviewer.framework in Frameworks */,
 				A2A1AAC41EBD89AD006970E1 /* CoreLocation.framework in Frameworks */,
 				A2A1AAC21EBD89A7006970E1 /* CoreMotion.framework in Frameworks */,
 				A2A1AAC01EBD89A0006970E1 /* GLKit.framework in Frameworks */,
-				BE4446F66FB081FD25AAA4EB /* Pods_HMD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A268414A1ECBE8AD003512FE /* CFNetwork.framework in Frameworks */,
-				3CE750071AB5BA74549BA1D4 /* Pods_HMDUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +268,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA6881A0B18AB678C8B846AD /* Pods_HMDTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				A2048B031EC57F9D00C2413C /* PilotViews.storyboard */,
+				A2CD02BD1EDA95130035E962 /* PilotRootViewController.swift */,
 				A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */,
 				A2A1AA4D1EBA1C2A006970E1 /* ViewController.swift */,
 			);
@@ -603,14 +601,13 @@
 		A2A1AABE1EBD89A0006970E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A21B22211EDAA9A500815204 /* DJIUILibrary.framework */,
+				A21B221F1EDAA9A000815204 /* DJISDK.framework */,
 				A22BE7901ED67B500073678A /* VideoPreviewer */,
 				A26841491ECBE8AD003512FE /* CFNetwork.framework */,
 				A2A1AAC31EBD89AD006970E1 /* CoreLocation.framework */,
 				A2A1AAC11EBD89A7006970E1 /* CoreMotion.framework */,
 				A2A1AABF1EBD89A0006970E1 /* GLKit.framework */,
-				78AEEA99F464A8A433A02C9A /* Pods_HMD.framework */,
-				B0FCCCAF074DB72C5675D82D /* Pods_HMDTests.framework */,
-				6D47C10CB3A88CAED2B15AB8 /* Pods_HMDUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -953,6 +950,7 @@
 				A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */,
 				A2A1AABA1EBD71FA006970E1 /* OrientationEKF.h in Sources */,
 				A2A1AAE31EBF401F006970E1 /* CALayer+Extensions.swift in Sources */,
+				A2CD02BE1EDA95130035E962 /* PilotRootViewController.swift in Sources */,
 				A2A1AABB1EBD71FA006970E1 /* SO3Util.h in Sources */,
 				A2A1AABC1EBD71FA006970E1 /* Vector3d.h in Sources */,
 				A2A1AAEB1EBF5FC9006970E1 /* CGFloat+Extensions.swift in Sources */,
@@ -1165,6 +1163,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = "";
 			};
 			name = Debug;
@@ -1208,6 +1207,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1220,6 +1220,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/DJI-SDK-iOS/iOS_Mobile_SDK",
+					"$(PROJECT_DIR)/Pods/DJI-UILibrary-iOS/iOS_UILibrary",
+				);
 				INFOPLIST_FILE = HMD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1232,6 +1237,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1243,6 +1249,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/DJI-SDK-iOS/iOS_Mobile_SDK",
+					"$(PROJECT_DIR)/Pods/DJI-UILibrary-iOS/iOS_UILibrary",
+				);
 				INFOPLIST_FILE = HMD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1254,6 +1265,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.hmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1264,6 +1276,11 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = HMDUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1280,6 +1297,11 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = HMDUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1297,6 +1319,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = HMDTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1314,6 +1341,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = DQK83PW4RV;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = HMDTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

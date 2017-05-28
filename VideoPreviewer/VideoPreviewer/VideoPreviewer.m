@@ -17,7 +17,7 @@
 //#import "DJIH264FrameRawLayerDumper.h"
 
 #define __TEST_VIDEO_DELAY__  (0)
-#define __PERFROMANCE_COUNT__ (0) //显示性能计数
+#define __PERFROMANCE_COUNT__ (1) //显示性能计数
 #define __TEST_QUEUE_PULL__   (0) //从264码流文件拉取调试
 #define __TEST_FRAME_PULL__   (0) //从帧文件拉取调试
 #define __TEST_PACK_PULL__    (0) //从分包文件拉取调试
