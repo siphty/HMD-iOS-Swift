@@ -12,6 +12,10 @@ import DJIUILibrary
 
 class PilotRootViewController: DULDefaultLayoutViewController {
     
+    
+    var aircraft: DJIBaseProduct?
+    var hmdLayer = HMDLayer()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent;
     }
@@ -20,6 +24,20 @@ class PilotRootViewController: DULDefaultLayoutViewController {
         self.dismiss(animated: true) {
             
         }
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let hmdWidth = view.bounds.height - 60
+        let hmdHeight = hmdWidth
+        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
+                                y: 30,
+                                width: hmdWidth,
+                                height: hmdHeight)
+        hmdLayer.borderWidth = 1
+        hmdLayer.borderColor = UIColor.yellow.cgColor
+        view.layer.addSublayer(hmdLayer)
     }
     
 }

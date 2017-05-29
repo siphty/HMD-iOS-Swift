@@ -16,7 +16,7 @@ class PilotModeViewController: UIViewController {
     @IBOutlet weak var productModel: UILabel!
     @IBOutlet weak var productFirmwarePackageVersion: UILabel!
     @IBOutlet weak var openComponents: UIButton!
-    @IBOutlet weak var bluetoothConnectorButton: UIButton!
+//    @IBOutlet weak var bluetoothConnectorButton: UIButton!
     @IBOutlet weak var sdkVersionLabel: UILabel!
     @IBOutlet weak var bridgeModeLabel: UILabel!
     
@@ -26,6 +26,7 @@ class PilotModeViewController: UIViewController {
             return;
         }
         print("Try to connect product")
+        DJISDKManager.startConnectionToProduct()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             DJISDKManager.keyManager()?.startListeningForChanges(on: connectedKey,
                                                                  withListener: self,
@@ -48,7 +49,7 @@ class PilotModeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.resetUI()
-
+        DJISDKManager.startConnectionToProduct()
         // Do any additional setup after loading the view.
     }
     
@@ -81,6 +82,7 @@ class PilotModeViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         DJISDKManager.keyManager()?.stopAllListening(ofListeners: self)
+        DJISDKManager.stopConnectionToProduct()
     }
     
 
@@ -97,8 +99,8 @@ class PilotModeViewController: UIViewController {
     func resetUI() {
         self.title = "DJI iOS SDK Sample"
         self.sdkVersionLabel.text = "DJI SDK Version: \(DJISDKManager.sdkVersion())"
-        self.openComponents.isEnabled = true; //FIXME: set it back to false
-        self.bluetoothConnectorButton.isEnabled = true;
+        self.openComponents.isEnabled = false //FIXME: set it back to false
+//        self.bluetoothConnectorButton.isEnabled = true;
         self.productModel.isHidden = true
         self.productFirmwarePackageVersion.isHidden = true
         self.bridgeModeLabel.isHidden = !self.appDelegate.productCommunicationManager.enableBridgeMode

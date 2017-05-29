@@ -1,7 +1,7 @@
 //
-//  VideoPreviewer.h
+//  BinocularVideoPreviewer.h
 //
-//  Copyright (c) 2013 DJI. All rights reserved.
+//  Copyright (c) 2017 Siphty. All rights reserved.
 //
 
 
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
  *  required. It consists of decoder, data buffer queue and OpenGL renderer。
  *  Set the view before calling the `start` method。
  */
-@interface VideoPreviewer : NSObject
+@interface BinocularVideoPreviewer : NSObject
 
 // a tag for video processor and frame processor
 @property (assign, nonatomic) uint8_t videoChannelTag;
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 
 #pragma mark - instance
 
-@interface VideoPreviewer (Instance)
+@interface BinocularVideoPreviewer (Instance)
 
 /**
  *  YES if this is the first instance
@@ -94,13 +94,13 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 /**
  *  get default previewer
  */
-+(VideoPreviewer*) instance;
++(BinocularVideoPreviewer*) instance;
 
 @end
 
 #pragma mark - geometry
 
-@interface VideoPreviewer (Geometry)
+@interface BinocularVideoPreviewer (Geometry)
 /**
  *  for kvo, preview content frame
  */
@@ -109,11 +109,10 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 /*
  * for internal use only
  */
-@property (nonatomic, readonly) MovieGLView* internalGLViewLeft;
-@property (nonatomic, readonly) MovieGLView* internalGLViewRight;
+@property (nonatomic, readonly) MovieGLView* internalGLView;
 @end
 
-@interface VideoPreviewer ()
+@interface BinocularVideoPreviewer ()
 
 /**
  *  rotation of the preview content
@@ -173,7 +172,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 
 #pragma mark - decoder control
 
-@interface VideoPreviewer (DecoderControl)
+@interface BinocularVideoPreviewer (DecoderControl)
 /**
  *  Current status of Video Previewer.
  */
@@ -194,7 +193,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 @property (readonly, nonatomic) VPFrameType frameOutputType;
 @end
 
-@interface VideoPreviewer ()  <VideoFrameProcessor>
+@interface BinocularVideoPreviewer ()  <VideoFrameProcessor>
 
 /**
  *  enable hadeware decode
@@ -260,7 +259,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 
 #pragma mark - snapshot
 
-@interface VideoPreviewer (SnapShot)
+@interface BinocularVideoPreviewer (SnapShot)
 
 /**
  *  Screen capture of the current view
@@ -276,7 +275,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 
 #pragma mark - processor
 
-@interface VideoPreviewer (Processor)
+@interface BinocularVideoPreviewer (Processor)
 
 /**
  *  @param processor Processor registered to receive the H264 stream data.
@@ -303,7 +302,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 #pragma mark - filters and effects
 ///////////////// Filter's config ///////////////////////////
 
-@interface VideoPreviewer ()
+@interface BinocularVideoPreviewer ()
 
 /**
  * Enable overexposure tips

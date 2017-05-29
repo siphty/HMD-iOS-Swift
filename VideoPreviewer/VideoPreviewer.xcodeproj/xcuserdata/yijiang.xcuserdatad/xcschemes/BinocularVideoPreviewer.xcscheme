@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E091A08657BCC45FAEB6826F374B6ACF"
-               BuildableName = "Pods_HMDTests.framework"
-               BlueprintName = "Pods-HMDTests"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "A2D341DF1EDC653D001DEF82"
+               BuildableName = "BinocularVideoPreviewer.framework"
+               BlueprintName = "BinocularVideoPreviewer"
+               ReferencedContainer = "container:VideoPreviewer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2D341E71EDC653D001DEF82"
+               BuildableName = "BinocularVideoPreviewerTests.xctest"
+               BlueprintName = "BinocularVideoPreviewerTests"
+               ReferencedContainer = "container:VideoPreviewer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A2D341DF1EDC653D001DEF82"
+            BuildableName = "BinocularVideoPreviewer.framework"
+            BlueprintName = "BinocularVideoPreviewer"
+            ReferencedContainer = "container:VideoPreviewer.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E091A08657BCC45FAEB6826F374B6ACF"
-            BuildableName = "Pods_HMDTests.framework"
-            BlueprintName = "Pods-HMDTests"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "A2D341DF1EDC653D001DEF82"
+            BuildableName = "BinocularVideoPreviewer.framework"
+            BlueprintName = "BinocularVideoPreviewer"
+            ReferencedContainer = "container:VideoPreviewer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,6 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A2D341DF1EDC653D001DEF82"
+            BuildableName = "BinocularVideoPreviewer.framework"
+            BlueprintName = "BinocularVideoPreviewer"
+            ReferencedContainer = "container:VideoPreviewer.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

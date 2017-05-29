@@ -13,6 +13,7 @@ import DJISDK
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var returnButton: UIButton!
     var captureSession = AVCaptureSession()
     var sessionOutput = AVCapturePhotoOutput()
     var sessionOutputSetting = AVCapturePhotoSettings(format: [AVVideoCodecKey:AVVideoCodecJPEG])
@@ -20,19 +21,32 @@ class ViewController: UIViewController {
     var hmdLayer = HMDLayer()
     
     var aircraft: DJIBaseProduct?
-    
+    @IBAction func close () {
+        self.dismiss(animated: true) {
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
 //        self.loadCamera()
         //        self.startCamera(notifyLocationFailure: true)
-        let deviceDiscoverySession = AVCaptureDeviceDiscoverySession(
-                                            deviceTypes: [AVCaptureDeviceType.builtInDualCamera,
-                                                          AVCaptureDeviceType.builtInTelephotoCamera,
-                                                          AVCaptureDeviceType.builtInWideAngleCamera],
-                                            mediaType: AVMediaTypeVideo,
-                                            position: AVCaptureDevicePosition.unspecified)
+        let deviceDiscoverySession: AVCaptureDeviceDiscoverySession?
+        if #available(iOS 10.2, *) {
+            deviceDiscoverySession = AVCaptureDeviceDiscoverySession(
+                deviceTypes: [AVCaptureDeviceType.builtInDualCamera,
+                              AVCaptureDeviceType.builtInTelephotoCamera,
+                              AVCaptureDeviceType.builtInWideAngleCamera],
+                mediaType: AVMediaTypeVideo,
+                position: AVCaptureDevicePosition.unspecified)
+        } else {
+            deviceDiscoverySession = AVCaptureDeviceDiscoverySession(
+                deviceTypes: [AVCaptureDeviceType.builtInTelephotoCamera,
+                              AVCaptureDeviceType.builtInWideAngleCamera],
+                mediaType: AVMediaTypeVideo,
+                position: AVCaptureDevicePosition.unspecified)
+        }
         for device in (deviceDiscoverySession?.devices)! {
             if(device.position == AVCaptureDevicePosition.back){
                 do{
@@ -75,6 +89,7 @@ class ViewController: UIViewController {
             }
         }
         captureSession.startRunning()
+        view.bringSubview(toFront: returnButton)
     }
 
     override func didReceiveMemoryWarning() {

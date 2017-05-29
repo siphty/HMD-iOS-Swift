@@ -153,6 +153,171 @@
 		9AC2749D1E544E7700DFBE85 /* DJILiveViewRenderDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2740F1E544E7700DFBE85 /* DJILiveViewRenderDataSource.h */; };
 		9AC2749E1E544E7700DFBE85 /* DJILiveViewRenderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC274101E544E7700DFBE85 /* DJILiveViewRenderDataSource.m */; };
 		9ACA4AC61E5D4068005ADDDE /* VideoPreviewer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ACA4AC51E5D4068005ADDDE /* VideoPreviewer.bundle */; };
+		A2D341D91EDC5751001DEF82 /* BinocularVideoPreviewer.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D341D71EDC5751001DEF82 /* BinocularVideoPreviewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D341DA1EDC5751001DEF82 /* BinocularVideoPreviewer.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D341D81EDC5751001DEF82 /* BinocularVideoPreviewer.m */; };
+		A2D341F71EDC6655001DEF82 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273D51E544E7700DFBE85 /* libavcodec.a */; };
+		A2D341F81EDC6655001DEF82 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273D61E544E7700DFBE85 /* libavdevice.a */; };
+		A2D341F91EDC6655001DEF82 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273D71E544E7700DFBE85 /* libavfilter.a */; };
+		A2D341FA1EDC6655001DEF82 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273D81E544E7700DFBE85 /* libavformat.a */; };
+		A2D341FB1EDC6655001DEF82 /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273D91E544E7700DFBE85 /* libavresample.a */; };
+		A2D341FC1EDC6655001DEF82 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273DA1E544E7700DFBE85 /* libavutil.a */; };
+		A2D341FD1EDC6655001DEF82 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273DB1E544E7700DFBE85 /* libswresample.a */; };
+		A2D341FE1EDC6655001DEF82 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC273DC1E544E7700DFBE85 /* libswscale.a */; };
+		A2D341FF1EDC666B001DEF82 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EE50641C3DA525006783E5 /* libz.tbd */; };
+		A2D342001EDC667D001DEF82 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EE504B1C3D9F36006783E5 /* VideoToolbox.framework */; };
+		A2D342011EDC6687001DEF82 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EE50491C3D9BC3006783E5 /* CoreMedia.framework */; };
+		A2D342021EDC66D3001DEF82 /* DJIRTPlayerRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273681E5448AE00DFBE85 /* DJIRTPlayerRenderView.m */; };
+		A2D342031EDC66D3001DEF82 /* DJICameraRemotePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2735F1E54473800DFBE85 /* DJICameraRemotePlayerView.m */; };
+		A2D342041EDC66D3001DEF82 /* DJIVideoPresentViewAdjustHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273E11E544E7700DFBE85 /* DJIVideoPresentViewAdjustHelper.m */; };
+		A2D342051EDC66D3001DEF82 /* LB2AUDHackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273E41E544E7700DFBE85 /* LB2AUDHackParser.m */; };
+		A2D342061EDC66D3001DEF82 /* DJILiveViewFrameBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273E81E544E7700DFBE85 /* DJILiveViewFrameBuffer.m */; };
+		A2D342071EDC66D3001DEF82 /* DJILiveViewRenderCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273EA1E544E7700DFBE85 /* DJILiveViewRenderCommon.m */; };
+		A2D342081EDC66D3001DEF82 /* DJILiveViewRenderContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273EC1E544E7700DFBE85 /* DJILiveViewRenderContext.m */; };
+		A2D342091EDC66D3001DEF82 /* DJILiveViewRenderFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273EE1E544E7700DFBE85 /* DJILiveViewRenderFilter.m */; };
+		A2D3420A1EDC66D3001DEF82 /* DJILiveViewRenderPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273F01E544E7700DFBE85 /* DJILiveViewRenderPass.m */; };
+		A2D3420B1EDC66D3001DEF82 /* DJILiveViewRenderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273F21E544E7700DFBE85 /* DJILiveViewRenderProgram.m */; };
+		A2D3420C1EDC66D3001DEF82 /* DJILiveViewRenderColorMatrixFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273F51E544E7700DFBE85 /* DJILiveViewRenderColorMatrixFilter.m */; };
+		A2D3420D1EDC66D3001DEF82 /* DJILiveViewColorMonitorFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273F81E544E7700DFBE85 /* DJILiveViewColorMonitorFilter.m */; };
+		A2D3420E1EDC66D3001DEF82 /* DJILiveViewRenderHighlightShadowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273FB1E544E7700DFBE85 /* DJILiveViewRenderHighlightShadowFilter.m */; };
+		A2D3420F1EDC66D3001DEF82 /* DJILiveViewRenderHSBFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC273FE1E544E7700DFBE85 /* DJILiveViewRenderHSBFilter.m */; };
+		A2D342101EDC66D3001DEF82 /* DJILiveViewRenderLookupFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC274011E544E7700DFBE85 /* DJILiveViewRenderLookupFilter.m */; };
+		A2D342111EDC66D3001DEF82 /* DJIReverseDLogFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC274041E544E7700DFBE85 /* DJIReverseDLogFilter.m */; };
+		A2D342121EDC66D3001DEF82 /* DJILiveViewRenderScaleFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC274071E544E7700DFBE85 /* DJILiveViewRenderScaleFilter.m */; };
+		A2D342131EDC66D3001DEF82 /* DJILiveViewRenderFocusWarningFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2740A1E544E7700DFBE85 /* DJILiveViewRenderFocusWarningFilter.m */; };
+		A2D342141EDC66D3001DEF82 /* DJILiveViewRenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2740D1E544E7700DFBE85 /* DJILiveViewRenderTexture.m */; };
+		A2D342151EDC66D3001DEF82 /* DJILiveViewRenderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC274101E544E7700DFBE85 /* DJILiveViewRenderDataSource.m */; };
+		A2D342161EDC66D3001DEF82 /* DJIStreamCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC2736E1E544E7700DFBE85 /* DJIStreamCommon.m */; };
+		A2D342171EDC66D3001DEF82 /* DJIVideoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF34D01CF99B8F00491E84 /* DJIVideoHelper.m */; };
+		A2D342181EDC66D3001DEF82 /* DJIVTH264DecoderIFrameData.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF34D21CF99B8F00491E84 /* DJIVTH264DecoderIFrameData.m */; };
+		A2D342191EDC66D3001DEF82 /* H264VTDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FF34D41CF99B8F00491E84 /* H264VTDecode.m */; };
+		A2D3421A1EDC66D3001DEF82 /* SoftwareDecodeProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B828932C1C9867AB00CCBD3B /* SoftwareDecodeProcessor.m */; };
+		A2D3421B1EDC66D3001DEF82 /* VideoPreviewerQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B828932E1C9867AB00CCBD3B /* VideoPreviewerQueue.m */; };
+		A2D3421C1EDC66D3001DEF82 /* MovieGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EE4FD41C3D9B55006783E5 /* MovieGLView.m */; };
+		A2D3421D1EDC66D3001DEF82 /* VideoFrameExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EE4FD61C3D9B55006783E5 /* VideoFrameExtractor.m */; };
+		A2D3421E1EDC66D3001DEF82 /* VideoPreviewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB30C021E64038E00107706 /* VideoPreviewer.m */; };
+		A2D3421F1EDC66D3001DEF82 /* BinocularVideoPreviewer.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D341D81EDC5751001DEF82 /* BinocularVideoPreviewer.m */; };
+		A2D342201EDC674B001DEF82 /* avcodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273731E544E7700DFBE85 /* avcodec.h */; };
+		A2D342211EDC674B001DEF82 /* avfft.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273741E544E7700DFBE85 /* avfft.h */; };
+		A2D342221EDC674B001DEF82 /* dv_profile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273751E544E7700DFBE85 /* dv_profile.h */; };
+		A2D342231EDC674B001DEF82 /* dxva2.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273761E544E7700DFBE85 /* dxva2.h */; };
+		A2D342241EDC674B001DEF82 /* old_codec_ids.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273771E544E7700DFBE85 /* old_codec_ids.h */; };
+		A2D342251EDC674B001DEF82 /* vaapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273781E544E7700DFBE85 /* vaapi.h */; };
+		A2D342261EDC674B001DEF82 /* vda.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273791E544E7700DFBE85 /* vda.h */; };
+		A2D342271EDC674B001DEF82 /* vdpau.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2737A1E544E7700DFBE85 /* vdpau.h */; };
+		A2D342281EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2737B1E544E7700DFBE85 /* version.h */; };
+		A2D342291EDC674B001DEF82 /* vorbis_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2737C1E544E7700DFBE85 /* vorbis_parser.h */; };
+		A2D3422A1EDC674B001DEF82 /* xvmc.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2737D1E544E7700DFBE85 /* xvmc.h */; };
+		A2D3422B1EDC674B001DEF82 /* avdevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2737F1E544E7700DFBE85 /* avdevice.h */; };
+		A2D3422C1EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273801E544E7700DFBE85 /* version.h */; };
+		A2D3422D1EDC674B001DEF82 /* asrc_abuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273821E544E7700DFBE85 /* asrc_abuffer.h */; };
+		A2D3422E1EDC674B001DEF82 /* avcodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273831E544E7700DFBE85 /* avcodec.h */; };
+		A2D3422F1EDC674B001DEF82 /* avfilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273841E544E7700DFBE85 /* avfilter.h */; };
+		A2D342301EDC674B001DEF82 /* avfiltergraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273851E544E7700DFBE85 /* avfiltergraph.h */; };
+		A2D342311EDC674B001DEF82 /* buffersink.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273861E544E7700DFBE85 /* buffersink.h */; };
+		A2D342321EDC674B001DEF82 /* buffersrc.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273871E544E7700DFBE85 /* buffersrc.h */; };
+		A2D342331EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273881E544E7700DFBE85 /* version.h */; };
+		A2D342341EDC674B001DEF82 /* avformat.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2738A1E544E7700DFBE85 /* avformat.h */; };
+		A2D342351EDC674B001DEF82 /* avio.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2738B1E544E7700DFBE85 /* avio.h */; };
+		A2D342361EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2738C1E544E7700DFBE85 /* version.h */; };
+		A2D342371EDC674B001DEF82 /* avresample.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2738E1E544E7700DFBE85 /* avresample.h */; };
+		A2D342381EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2738F1E544E7700DFBE85 /* version.h */; };
+		A2D342391EDC674B001DEF82 /* adler32.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273911E544E7700DFBE85 /* adler32.h */; };
+		A2D3423A1EDC674B001DEF82 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273921E544E7700DFBE85 /* aes.h */; };
+		A2D3423B1EDC674B001DEF82 /* attributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273931E544E7700DFBE85 /* attributes.h */; };
+		A2D3423C1EDC674B001DEF82 /* audio_fifo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273941E544E7700DFBE85 /* audio_fifo.h */; };
+		A2D3423D1EDC674B001DEF82 /* audioconvert.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273951E544E7700DFBE85 /* audioconvert.h */; };
+		A2D3423E1EDC674B001DEF82 /* avassert.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273961E544E7700DFBE85 /* avassert.h */; };
+		A2D3423F1EDC674B001DEF82 /* avconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273971E544E7700DFBE85 /* avconfig.h */; };
+		A2D342401EDC674B001DEF82 /* avstring.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273981E544E7700DFBE85 /* avstring.h */; };
+		A2D342411EDC674B001DEF82 /* avutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273991E544E7700DFBE85 /* avutil.h */; };
+		A2D342421EDC674B001DEF82 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2739A1E544E7700DFBE85 /* base64.h */; };
+		A2D342431EDC674B001DEF82 /* blowfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2739B1E544E7700DFBE85 /* blowfish.h */; };
+		A2D342441EDC674B001DEF82 /* bprint.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2739C1E544E7700DFBE85 /* bprint.h */; };
+		A2D342451EDC674B001DEF82 /* bswap.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2739D1E544E7700DFBE85 /* bswap.h */; };
+		A2D342461EDC674B001DEF82 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2739E1E544E7700DFBE85 /* buffer.h */; };
+		A2D342471EDC674B001DEF82 /* cast5.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2739F1E544E7700DFBE85 /* cast5.h */; };
+		A2D342481EDC674B001DEF82 /* channel_layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A01E544E7700DFBE85 /* channel_layout.h */; };
+		A2D342491EDC674B001DEF82 /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A11E544E7700DFBE85 /* common.h */; };
+		A2D3424A1EDC674B001DEF82 /* cpu.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A21E544E7700DFBE85 /* cpu.h */; };
+		A2D3424B1EDC674B001DEF82 /* crc.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A31E544E7700DFBE85 /* crc.h */; };
+		A2D3424C1EDC674B001DEF82 /* dict.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A41E544E7700DFBE85 /* dict.h */; };
+		A2D3424D1EDC674B001DEF82 /* display.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A51E544E7700DFBE85 /* display.h */; };
+		A2D3424E1EDC674B001DEF82 /* downmix_info.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A61E544E7700DFBE85 /* downmix_info.h */; };
+		A2D3424F1EDC674B001DEF82 /* error.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A71E544E7700DFBE85 /* error.h */; };
+		A2D342501EDC674B001DEF82 /* eval.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A81E544E7700DFBE85 /* eval.h */; };
+		A2D342511EDC674B001DEF82 /* ffversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273A91E544E7700DFBE85 /* ffversion.h */; };
+		A2D342521EDC674B001DEF82 /* fifo.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273AA1E544E7700DFBE85 /* fifo.h */; };
+		A2D342531EDC674B001DEF82 /* file.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273AB1E544E7700DFBE85 /* file.h */; };
+		A2D342541EDC674B001DEF82 /* frame.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273AC1E544E7700DFBE85 /* frame.h */; };
+		A2D342551EDC674B001DEF82 /* hash.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273AD1E544E7700DFBE85 /* hash.h */; };
+		A2D342561EDC674B001DEF82 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273AE1E544E7700DFBE85 /* hmac.h */; };
+		A2D342571EDC674B001DEF82 /* imgutils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273AF1E544E7700DFBE85 /* imgutils.h */; };
+		A2D342581EDC674B001DEF82 /* intfloat.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B01E544E7700DFBE85 /* intfloat.h */; };
+		A2D342591EDC674B001DEF82 /* intreadwrite.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B11E544E7700DFBE85 /* intreadwrite.h */; };
+		A2D3425A1EDC674B001DEF82 /* lfg.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B21E544E7700DFBE85 /* lfg.h */; };
+		A2D3425B1EDC674B001DEF82 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B31E544E7700DFBE85 /* log.h */; };
+		A2D3425C1EDC674B001DEF82 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B41E544E7700DFBE85 /* macros.h */; };
+		A2D3425D1EDC674B001DEF82 /* mathematics.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B51E544E7700DFBE85 /* mathematics.h */; };
+		A2D3425E1EDC674B001DEF82 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B61E544E7700DFBE85 /* md5.h */; };
+		A2D3425F1EDC674B001DEF82 /* mem.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B71E544E7700DFBE85 /* mem.h */; };
+		A2D342601EDC674B001DEF82 /* motion_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B81E544E7700DFBE85 /* motion_vector.h */; };
+		A2D342611EDC674B001DEF82 /* murmur3.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273B91E544E7700DFBE85 /* murmur3.h */; };
+		A2D342621EDC674B001DEF82 /* old_pix_fmts.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273BA1E544E7700DFBE85 /* old_pix_fmts.h */; };
+		A2D342631EDC674B001DEF82 /* opt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273BB1E544E7700DFBE85 /* opt.h */; };
+		A2D342641EDC674B001DEF82 /* parseutils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273BC1E544E7700DFBE85 /* parseutils.h */; };
+		A2D342651EDC674B001DEF82 /* pixdesc.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273BD1E544E7700DFBE85 /* pixdesc.h */; };
+		A2D342661EDC674B001DEF82 /* pixelutils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273BE1E544E7700DFBE85 /* pixelutils.h */; };
+		A2D342671EDC674B001DEF82 /* pixfmt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273BF1E544E7700DFBE85 /* pixfmt.h */; };
+		A2D342681EDC674B001DEF82 /* random_seed.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C01E544E7700DFBE85 /* random_seed.h */; };
+		A2D342691EDC674B001DEF82 /* rational.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C11E544E7700DFBE85 /* rational.h */; };
+		A2D3426A1EDC674B001DEF82 /* replaygain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C21E544E7700DFBE85 /* replaygain.h */; };
+		A2D3426B1EDC674B001DEF82 /* ripemd.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C31E544E7700DFBE85 /* ripemd.h */; };
+		A2D3426C1EDC674B001DEF82 /* samplefmt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C41E544E7700DFBE85 /* samplefmt.h */; };
+		A2D3426D1EDC674B001DEF82 /* sha.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C51E544E7700DFBE85 /* sha.h */; };
+		A2D3426E1EDC674B001DEF82 /* sha512.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C61E544E7700DFBE85 /* sha512.h */; };
+		A2D3426F1EDC674B001DEF82 /* stereo3d.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C71E544E7700DFBE85 /* stereo3d.h */; };
+		A2D342701EDC674B001DEF82 /* threadmessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C81E544E7700DFBE85 /* threadmessage.h */; };
+		A2D342711EDC674B001DEF82 /* time.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273C91E544E7700DFBE85 /* time.h */; };
+		A2D342721EDC674B001DEF82 /* timecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273CA1E544E7700DFBE85 /* timecode.h */; };
+		A2D342731EDC674B001DEF82 /* timestamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273CB1E544E7700DFBE85 /* timestamp.h */; };
+		A2D342741EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273CC1E544E7700DFBE85 /* version.h */; };
+		A2D342751EDC674B001DEF82 /* xtea.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273CD1E544E7700DFBE85 /* xtea.h */; };
+		A2D342761EDC674B001DEF82 /* swresample.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273CF1E544E7700DFBE85 /* swresample.h */; };
+		A2D342771EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273D01E544E7700DFBE85 /* version.h */; };
+		A2D342781EDC674B001DEF82 /* swscale.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273D21E544E7700DFBE85 /* swscale.h */; };
+		A2D342791EDC674B001DEF82 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273D31E544E7700DFBE85 /* version.h */; };
+		A2D342901EDC67DB001DEF82 /* DJIRTPlayerRenderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2735D1E54473800DFBE85 /* DJIRTPlayerRenderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342911EDC67DB001DEF82 /* DJICameraRemotePlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2735E1E54473800DFBE85 /* DJICameraRemotePlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342921EDC67EF001DEF82 /* VideoPreviewerQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B828932D1C9867AB00CCBD3B /* VideoPreviewerQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342931EDC681A001DEF82 /* DJIStreamCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FF34CE1CF99B8F00491E84 /* DJIStreamCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342941EDC681A001DEF82 /* DJIVideoHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FF34CF1CF99B8F00491E84 /* DJIVideoHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342951EDC681A001DEF82 /* DJIVTH264DecoderIFrameData.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FF34D11CF99B8F00491E84 /* DJIVTH264DecoderIFrameData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342961EDC681A001DEF82 /* H264VTDecode.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FF34D31CF99B8F00491E84 /* H264VTDecode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342971EDC681A001DEF82 /* SoftwareDecodeProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B828932B1C9867AB00CCBD3B /* SoftwareDecodeProcessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342981EDC681A001DEF82 /* MovieGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 02EE4FD31C3D9B55006783E5 /* MovieGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342991EDC681A001DEF82 /* VideoFrameExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 02EE4FD51C3D9B55006783E5 /* VideoFrameExtractor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D3429A1EDC681A001DEF82 /* VideoPreviewerMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = B83DC24B1D8FB298003461D3 /* VideoPreviewerMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D3429B1EDC681A001DEF82 /* VideoPreviewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB30C031E64038E00107706 /* VideoPreviewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D3429C1EDC681A001DEF82 /* BinocularVideoPreviewer.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D341D71EDC5751001DEF82 /* BinocularVideoPreviewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D3429E1EDC6879001DEF82 /* VideoPreviewer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ACA4AC51E5D4068005ADDDE /* VideoPreviewer.bundle */; };
+		A2D3429F1EDC6A69001DEF82 /* DJIVideoPresentViewAdjustHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273E01E544E7700DFBE85 /* DJIVideoPresentViewAdjustHelper.h */; };
+		A2D342A01EDC6A69001DEF82 /* LB2AUDHackParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273E31E544E7700DFBE85 /* LB2AUDHackParser.h */; };
+		A2D342A11EDC6A69001DEF82 /* DJILiveViewFrameBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273E71E544E7700DFBE85 /* DJILiveViewFrameBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342A21EDC6A69001DEF82 /* DJILiveViewRenderCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273E91E544E7700DFBE85 /* DJILiveViewRenderCommon.h */; };
+		A2D342A31EDC6A69001DEF82 /* DJILiveViewRenderContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273EB1E544E7700DFBE85 /* DJILiveViewRenderContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342A41EDC6A69001DEF82 /* DJILiveViewRenderFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273ED1E544E7700DFBE85 /* DJILiveViewRenderFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342A51EDC6A69001DEF82 /* DJILiveViewRenderPass.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273EF1E544E7700DFBE85 /* DJILiveViewRenderPass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342A61EDC6A69001DEF82 /* DJILiveViewRenderProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273F11E544E7700DFBE85 /* DJILiveViewRenderProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342A71EDC6A69001DEF82 /* DJILiveViewRenderColorMatrixFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273F41E544E7700DFBE85 /* DJILiveViewRenderColorMatrixFilter.h */; };
+		A2D342A81EDC6A69001DEF82 /* DJILiveViewColorMonitorFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273F71E544E7700DFBE85 /* DJILiveViewColorMonitorFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2D342A91EDC6A69001DEF82 /* DJILiveViewRenderHighlightShadowFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273FA1E544E7700DFBE85 /* DJILiveViewRenderHighlightShadowFilter.h */; };
+		A2D342AA1EDC6A69001DEF82 /* DJILiveViewRenderHSBFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC273FD1E544E7700DFBE85 /* DJILiveViewRenderHSBFilter.h */; };
+		A2D342AB1EDC6A69001DEF82 /* DJILiveViewRenderLookupFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC274001E544E7700DFBE85 /* DJILiveViewRenderLookupFilter.h */; };
+		A2D342AC1EDC6A69001DEF82 /* DJIReverseDLogFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC274031E544E7700DFBE85 /* DJIReverseDLogFilter.h */; };
+		A2D342AD1EDC6A69001DEF82 /* DJILiveViewRenderScaleFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC274061E544E7700DFBE85 /* DJILiveViewRenderScaleFilter.h */; };
+		A2D342AE1EDC6A69001DEF82 /* DJILiveViewRenderFocusWarningFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC274091E544E7700DFBE85 /* DJILiveViewRenderFocusWarningFilter.h */; };
+		A2D342AF1EDC6A69001DEF82 /* DJILiveViewRenderTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2740C1E544E7700DFBE85 /* DJILiveViewRenderTexture.h */; };
+		A2D342B01EDC6A69001DEF82 /* DJILiveViewRenderDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2740F1E544E7700DFBE85 /* DJILiveViewRenderDataSource.h */; };
 		B828932F1C9867AB00CCBD3B /* SoftwareDecodeProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B828932B1C9867AB00CCBD3B /* SoftwareDecodeProcessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B82893301C9867AB00CCBD3B /* SoftwareDecodeProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B828932C1C9867AB00CCBD3B /* SoftwareDecodeProcessor.m */; };
 		B82893311C9867AB00CCBD3B /* VideoPreviewerQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B828932D1C9867AB00CCBD3B /* VideoPreviewerQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -321,6 +486,10 @@
 		9AC2740F1E544E7700DFBE85 /* DJILiveViewRenderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJILiveViewRenderDataSource.h; sourceTree = "<group>"; };
 		9AC274101E544E7700DFBE85 /* DJILiveViewRenderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJILiveViewRenderDataSource.m; sourceTree = "<group>"; };
 		9ACA4AC51E5D4068005ADDDE /* VideoPreviewer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VideoPreviewer.bundle; path = VideoPreviewer/VideoPreviewer.bundle; sourceTree = "<group>"; };
+		A2D341D71EDC5751001DEF82 /* BinocularVideoPreviewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BinocularVideoPreviewer.h; path = ../VideoPreviewer/BinocularVideoPreviewer.h; sourceTree = "<group>"; };
+		A2D341D81EDC5751001DEF82 /* BinocularVideoPreviewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BinocularVideoPreviewer.m; path = ../VideoPreviewer/BinocularVideoPreviewer.m; sourceTree = "<group>"; };
+		A2D341E01EDC653D001DEF82 /* BinocularVideoPreviewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BinocularVideoPreviewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D341E31EDC653D001DEF82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B828932B1C9867AB00CCBD3B /* SoftwareDecodeProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoftwareDecodeProcessor.h; path = VideoPreviewer/SoftwareDecodeProcessor.h; sourceTree = "<group>"; };
 		B828932C1C9867AB00CCBD3B /* SoftwareDecodeProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoftwareDecodeProcessor.m; path = VideoPreviewer/SoftwareDecodeProcessor.m; sourceTree = "<group>"; };
 		B828932D1C9867AB00CCBD3B /* VideoPreviewerQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoPreviewerQueue.h; path = VideoPreviewer/VideoPreviewerQueue.h; sourceTree = "<group>"; };
@@ -357,6 +526,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2D341DC1EDC653D001DEF82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2D342011EDC6687001DEF82 /* CoreMedia.framework in Frameworks */,
+				A2D342001EDC667D001DEF82 /* VideoToolbox.framework in Frameworks */,
+				A2D341F71EDC6655001DEF82 /* libavcodec.a in Frameworks */,
+				A2D341F81EDC6655001DEF82 /* libavdevice.a in Frameworks */,
+				A2D341F91EDC6655001DEF82 /* libavfilter.a in Frameworks */,
+				A2D341FA1EDC6655001DEF82 /* libavformat.a in Frameworks */,
+				A2D341FB1EDC6655001DEF82 /* libavresample.a in Frameworks */,
+				A2D341FC1EDC6655001DEF82 /* libavutil.a in Frameworks */,
+				A2D341FD1EDC6655001DEF82 /* libswresample.a in Frameworks */,
+				A2D341FE1EDC6655001DEF82 /* libswscale.a in Frameworks */,
+				A2D341FF1EDC666B001DEF82 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -390,6 +577,7 @@
 				9AB30C021E64038E00107706 /* VideoPreviewer.m */,
 				02EE4FD21C3D9B55006783E5 /* Info.plist */,
 				02EE504F1C3DA40A006783E5 /* libs */,
+				A2D341E11EDC653D001DEF82 /* BinocularVideoPreviewer */,
 				02A543FE1C3C51CB0083C11B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -398,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				02A543FD1C3C51CB0083C11B /* VideoPreviewer.framework */,
+				A2D341E01EDC653D001DEF82 /* BinocularVideoPreviewer.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -761,6 +950,16 @@
 			path = Upload;
 			sourceTree = "<group>";
 		};
+		A2D341E11EDC653D001DEF82 /* BinocularVideoPreviewer */ = {
+			isa = PBXGroup;
+			children = (
+				A2D341D71EDC5751001DEF82 /* BinocularVideoPreviewer.h */,
+				A2D341D81EDC5751001DEF82 /* BinocularVideoPreviewer.m */,
+				A2D341E31EDC653D001DEF82 /* Info.plist */,
+			);
+			path = BinocularVideoPreviewer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -768,6 +967,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2D341D91EDC5751001DEF82 /* BinocularVideoPreviewer.h in Headers */,
 				9AC274971E544E7700DFBE85 /* DJILiveViewRenderScaleFilter.h in Headers */,
 				9AC2741A1E544E7700DFBE85 /* dxva2.h in Headers */,
 				9AC274251E544E7700DFBE85 /* avcodec.h in Headers */,
@@ -890,6 +1090,134 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2D341DD1EDC653D001DEF82 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2D3429C1EDC681A001DEF82 /* BinocularVideoPreviewer.h in Headers */,
+				A2D342901EDC67DB001DEF82 /* DJIRTPlayerRenderView.h in Headers */,
+				A2D342921EDC67EF001DEF82 /* VideoPreviewerQueue.h in Headers */,
+				A2D342931EDC681A001DEF82 /* DJIStreamCommon.h in Headers */,
+				A2D342941EDC681A001DEF82 /* DJIVideoHelper.h in Headers */,
+				A2D342951EDC681A001DEF82 /* DJIVTH264DecoderIFrameData.h in Headers */,
+				A2D342961EDC681A001DEF82 /* H264VTDecode.h in Headers */,
+				A2D342971EDC681A001DEF82 /* SoftwareDecodeProcessor.h in Headers */,
+				A2D342991EDC681A001DEF82 /* VideoFrameExtractor.h in Headers */,
+				A2D342A11EDC6A69001DEF82 /* DJILiveViewFrameBuffer.h in Headers */,
+				A2D3429A1EDC681A001DEF82 /* VideoPreviewerMacros.h in Headers */,
+				A2D3429B1EDC681A001DEF82 /* VideoPreviewer.h in Headers */,
+				A2D342A51EDC6A69001DEF82 /* DJILiveViewRenderPass.h in Headers */,
+				A2D342A41EDC6A69001DEF82 /* DJILiveViewRenderFilter.h in Headers */,
+				A2D342A61EDC6A69001DEF82 /* DJILiveViewRenderProgram.h in Headers */,
+				A2D342911EDC67DB001DEF82 /* DJICameraRemotePlayerView.h in Headers */,
+				A2D342A31EDC6A69001DEF82 /* DJILiveViewRenderContext.h in Headers */,
+				A2D342981EDC681A001DEF82 /* MovieGLView.h in Headers */,
+				A2D342A81EDC6A69001DEF82 /* DJILiveViewColorMonitorFilter.h in Headers */,
+				A2D3429F1EDC6A69001DEF82 /* DJIVideoPresentViewAdjustHelper.h in Headers */,
+				A2D342A01EDC6A69001DEF82 /* LB2AUDHackParser.h in Headers */,
+				A2D342A21EDC6A69001DEF82 /* DJILiveViewRenderCommon.h in Headers */,
+				A2D342A71EDC6A69001DEF82 /* DJILiveViewRenderColorMatrixFilter.h in Headers */,
+				A2D342A91EDC6A69001DEF82 /* DJILiveViewRenderHighlightShadowFilter.h in Headers */,
+				A2D342AA1EDC6A69001DEF82 /* DJILiveViewRenderHSBFilter.h in Headers */,
+				A2D342AB1EDC6A69001DEF82 /* DJILiveViewRenderLookupFilter.h in Headers */,
+				A2D342AC1EDC6A69001DEF82 /* DJIReverseDLogFilter.h in Headers */,
+				A2D342AD1EDC6A69001DEF82 /* DJILiveViewRenderScaleFilter.h in Headers */,
+				A2D342AE1EDC6A69001DEF82 /* DJILiveViewRenderFocusWarningFilter.h in Headers */,
+				A2D342AF1EDC6A69001DEF82 /* DJILiveViewRenderTexture.h in Headers */,
+				A2D342B01EDC6A69001DEF82 /* DJILiveViewRenderDataSource.h in Headers */,
+				A2D342201EDC674B001DEF82 /* avcodec.h in Headers */,
+				A2D342211EDC674B001DEF82 /* avfft.h in Headers */,
+				A2D342221EDC674B001DEF82 /* dv_profile.h in Headers */,
+				A2D342231EDC674B001DEF82 /* dxva2.h in Headers */,
+				A2D342241EDC674B001DEF82 /* old_codec_ids.h in Headers */,
+				A2D342251EDC674B001DEF82 /* vaapi.h in Headers */,
+				A2D342261EDC674B001DEF82 /* vda.h in Headers */,
+				A2D342271EDC674B001DEF82 /* vdpau.h in Headers */,
+				A2D342281EDC674B001DEF82 /* version.h in Headers */,
+				A2D342291EDC674B001DEF82 /* vorbis_parser.h in Headers */,
+				A2D3422A1EDC674B001DEF82 /* xvmc.h in Headers */,
+				A2D3422B1EDC674B001DEF82 /* avdevice.h in Headers */,
+				A2D3422C1EDC674B001DEF82 /* version.h in Headers */,
+				A2D3422D1EDC674B001DEF82 /* asrc_abuffer.h in Headers */,
+				A2D3422E1EDC674B001DEF82 /* avcodec.h in Headers */,
+				A2D3422F1EDC674B001DEF82 /* avfilter.h in Headers */,
+				A2D342301EDC674B001DEF82 /* avfiltergraph.h in Headers */,
+				A2D342311EDC674B001DEF82 /* buffersink.h in Headers */,
+				A2D342321EDC674B001DEF82 /* buffersrc.h in Headers */,
+				A2D342331EDC674B001DEF82 /* version.h in Headers */,
+				A2D342341EDC674B001DEF82 /* avformat.h in Headers */,
+				A2D342351EDC674B001DEF82 /* avio.h in Headers */,
+				A2D342361EDC674B001DEF82 /* version.h in Headers */,
+				A2D342371EDC674B001DEF82 /* avresample.h in Headers */,
+				A2D342381EDC674B001DEF82 /* version.h in Headers */,
+				A2D342391EDC674B001DEF82 /* adler32.h in Headers */,
+				A2D3423A1EDC674B001DEF82 /* aes.h in Headers */,
+				A2D3423B1EDC674B001DEF82 /* attributes.h in Headers */,
+				A2D3423C1EDC674B001DEF82 /* audio_fifo.h in Headers */,
+				A2D3423D1EDC674B001DEF82 /* audioconvert.h in Headers */,
+				A2D3423E1EDC674B001DEF82 /* avassert.h in Headers */,
+				A2D3423F1EDC674B001DEF82 /* avconfig.h in Headers */,
+				A2D342401EDC674B001DEF82 /* avstring.h in Headers */,
+				A2D342411EDC674B001DEF82 /* avutil.h in Headers */,
+				A2D342421EDC674B001DEF82 /* base64.h in Headers */,
+				A2D342431EDC674B001DEF82 /* blowfish.h in Headers */,
+				A2D342441EDC674B001DEF82 /* bprint.h in Headers */,
+				A2D342451EDC674B001DEF82 /* bswap.h in Headers */,
+				A2D342461EDC674B001DEF82 /* buffer.h in Headers */,
+				A2D342471EDC674B001DEF82 /* cast5.h in Headers */,
+				A2D342481EDC674B001DEF82 /* channel_layout.h in Headers */,
+				A2D342491EDC674B001DEF82 /* common.h in Headers */,
+				A2D3424A1EDC674B001DEF82 /* cpu.h in Headers */,
+				A2D3424B1EDC674B001DEF82 /* crc.h in Headers */,
+				A2D3424C1EDC674B001DEF82 /* dict.h in Headers */,
+				A2D3424D1EDC674B001DEF82 /* display.h in Headers */,
+				A2D3424E1EDC674B001DEF82 /* downmix_info.h in Headers */,
+				A2D3424F1EDC674B001DEF82 /* error.h in Headers */,
+				A2D342501EDC674B001DEF82 /* eval.h in Headers */,
+				A2D342511EDC674B001DEF82 /* ffversion.h in Headers */,
+				A2D342521EDC674B001DEF82 /* fifo.h in Headers */,
+				A2D342531EDC674B001DEF82 /* file.h in Headers */,
+				A2D342541EDC674B001DEF82 /* frame.h in Headers */,
+				A2D342551EDC674B001DEF82 /* hash.h in Headers */,
+				A2D342561EDC674B001DEF82 /* hmac.h in Headers */,
+				A2D342571EDC674B001DEF82 /* imgutils.h in Headers */,
+				A2D342581EDC674B001DEF82 /* intfloat.h in Headers */,
+				A2D342591EDC674B001DEF82 /* intreadwrite.h in Headers */,
+				A2D3425A1EDC674B001DEF82 /* lfg.h in Headers */,
+				A2D3425B1EDC674B001DEF82 /* log.h in Headers */,
+				A2D3425C1EDC674B001DEF82 /* macros.h in Headers */,
+				A2D3425D1EDC674B001DEF82 /* mathematics.h in Headers */,
+				A2D3425E1EDC674B001DEF82 /* md5.h in Headers */,
+				A2D3425F1EDC674B001DEF82 /* mem.h in Headers */,
+				A2D342601EDC674B001DEF82 /* motion_vector.h in Headers */,
+				A2D342611EDC674B001DEF82 /* murmur3.h in Headers */,
+				A2D342621EDC674B001DEF82 /* old_pix_fmts.h in Headers */,
+				A2D342631EDC674B001DEF82 /* opt.h in Headers */,
+				A2D342641EDC674B001DEF82 /* parseutils.h in Headers */,
+				A2D342651EDC674B001DEF82 /* pixdesc.h in Headers */,
+				A2D342661EDC674B001DEF82 /* pixelutils.h in Headers */,
+				A2D342671EDC674B001DEF82 /* pixfmt.h in Headers */,
+				A2D342681EDC674B001DEF82 /* random_seed.h in Headers */,
+				A2D342691EDC674B001DEF82 /* rational.h in Headers */,
+				A2D3426A1EDC674B001DEF82 /* replaygain.h in Headers */,
+				A2D3426B1EDC674B001DEF82 /* ripemd.h in Headers */,
+				A2D3426C1EDC674B001DEF82 /* samplefmt.h in Headers */,
+				A2D3426D1EDC674B001DEF82 /* sha.h in Headers */,
+				A2D3426E1EDC674B001DEF82 /* sha512.h in Headers */,
+				A2D3426F1EDC674B001DEF82 /* stereo3d.h in Headers */,
+				A2D342701EDC674B001DEF82 /* threadmessage.h in Headers */,
+				A2D342711EDC674B001DEF82 /* time.h in Headers */,
+				A2D342721EDC674B001DEF82 /* timecode.h in Headers */,
+				A2D342731EDC674B001DEF82 /* timestamp.h in Headers */,
+				A2D342741EDC674B001DEF82 /* version.h in Headers */,
+				A2D342751EDC674B001DEF82 /* xtea.h in Headers */,
+				A2D342761EDC674B001DEF82 /* swresample.h in Headers */,
+				A2D342771EDC674B001DEF82 /* version.h in Headers */,
+				A2D342781EDC674B001DEF82 /* swscale.h in Headers */,
+				A2D342791EDC674B001DEF82 /* version.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -911,17 +1239,40 @@
 			productReference = 02A543FD1C3C51CB0083C11B /* VideoPreviewer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		A2D341DF1EDC653D001DEF82 /* BinocularVideoPreviewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2D341F11EDC653D001DEF82 /* Build configuration list for PBXNativeTarget "BinocularVideoPreviewer" */;
+			buildPhases = (
+				A2D341DB1EDC653D001DEF82 /* Sources */,
+				A2D341DC1EDC653D001DEF82 /* Frameworks */,
+				A2D341DD1EDC653D001DEF82 /* Headers */,
+				A2D341DE1EDC653D001DEF82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BinocularVideoPreviewer;
+			productName = BinocularVideoPreviewer;
+			productReference = A2D341E01EDC653D001DEF82 /* BinocularVideoPreviewer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		02A543F41C3C51CB0083C11B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = dji;
 				TargetAttributes = {
 					02A543FC1C3C51CB0083C11B = {
 						CreatedOnToolsVersion = 7.2;
+					};
+					A2D341DF1EDC653D001DEF82 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -938,6 +1289,7 @@
 			projectRoot = "";
 			targets = (
 				02A543FC1C3C51CB0083C11B /* VideoPreviewer */,
+				A2D341DF1EDC653D001DEF82 /* BinocularVideoPreviewer */,
 			);
 		};
 /* End PBXProject section */
@@ -948,6 +1300,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACA4AC61E5D4068005ADDDE /* VideoPreviewer.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2D341DE1EDC653D001DEF82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2D3429E1EDC6879001DEF82 /* VideoPreviewer.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +1347,44 @@
 				9AC2749A1E544E7700DFBE85 /* DJILiveViewRenderFocusWarningFilter.m in Sources */,
 				B82893321C9867AB00CCBD3B /* VideoPreviewerQueue.m in Sources */,
 				9AC274921E544E7700DFBE85 /* DJILiveViewRenderHSBFilter.m in Sources */,
+				A2D341DA1EDC5751001DEF82 /* BinocularVideoPreviewer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2D341DB1EDC653D001DEF82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2D342021EDC66D3001DEF82 /* DJIRTPlayerRenderView.m in Sources */,
+				A2D342031EDC66D3001DEF82 /* DJICameraRemotePlayerView.m in Sources */,
+				A2D342041EDC66D3001DEF82 /* DJIVideoPresentViewAdjustHelper.m in Sources */,
+				A2D342051EDC66D3001DEF82 /* LB2AUDHackParser.m in Sources */,
+				A2D342061EDC66D3001DEF82 /* DJILiveViewFrameBuffer.m in Sources */,
+				A2D342071EDC66D3001DEF82 /* DJILiveViewRenderCommon.m in Sources */,
+				A2D342081EDC66D3001DEF82 /* DJILiveViewRenderContext.m in Sources */,
+				A2D342091EDC66D3001DEF82 /* DJILiveViewRenderFilter.m in Sources */,
+				A2D3420A1EDC66D3001DEF82 /* DJILiveViewRenderPass.m in Sources */,
+				A2D3420B1EDC66D3001DEF82 /* DJILiveViewRenderProgram.m in Sources */,
+				A2D3420C1EDC66D3001DEF82 /* DJILiveViewRenderColorMatrixFilter.m in Sources */,
+				A2D3420D1EDC66D3001DEF82 /* DJILiveViewColorMonitorFilter.m in Sources */,
+				A2D3420E1EDC66D3001DEF82 /* DJILiveViewRenderHighlightShadowFilter.m in Sources */,
+				A2D3420F1EDC66D3001DEF82 /* DJILiveViewRenderHSBFilter.m in Sources */,
+				A2D342101EDC66D3001DEF82 /* DJILiveViewRenderLookupFilter.m in Sources */,
+				A2D342111EDC66D3001DEF82 /* DJIReverseDLogFilter.m in Sources */,
+				A2D342121EDC66D3001DEF82 /* DJILiveViewRenderScaleFilter.m in Sources */,
+				A2D342131EDC66D3001DEF82 /* DJILiveViewRenderFocusWarningFilter.m in Sources */,
+				A2D342141EDC66D3001DEF82 /* DJILiveViewRenderTexture.m in Sources */,
+				A2D342151EDC66D3001DEF82 /* DJILiveViewRenderDataSource.m in Sources */,
+				A2D342161EDC66D3001DEF82 /* DJIStreamCommon.m in Sources */,
+				A2D342171EDC66D3001DEF82 /* DJIVideoHelper.m in Sources */,
+				A2D342181EDC66D3001DEF82 /* DJIVTH264DecoderIFrameData.m in Sources */,
+				A2D342191EDC66D3001DEF82 /* H264VTDecode.m in Sources */,
+				A2D3421A1EDC66D3001DEF82 /* SoftwareDecodeProcessor.m in Sources */,
+				A2D3421B1EDC66D3001DEF82 /* VideoPreviewerQueue.m in Sources */,
+				A2D3421C1EDC66D3001DEF82 /* MovieGLView.m in Sources */,
+				A2D3421D1EDC66D3001DEF82 /* VideoFrameExtractor.m in Sources */,
+				A2D3421E1EDC66D3001DEF82 /* VideoPreviewer.m in Sources */,
+				A2D3421F1EDC66D3001DEF82 /* BinocularVideoPreviewer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,6 +1550,84 @@
 			};
 			name = Release;
 		};
+		A2D341F21EDC653D001DEF82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/VideoPreviewer/ffmpeg/include";
+				INFOPLIST_FILE = BinocularVideoPreviewer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VideoPreviewer/ffmpeg/lib",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-read_only_relocs",
+					suppress,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.BinocularVideoPreviewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A2D341F31EDC653D001DEF82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES_NONAGGRESSIVE;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/..",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/VideoPreviewer/ffmpeg/include";
+				INFOPLIST_FILE = BinocularVideoPreviewer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/lib/$(CONFIGURATION)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VideoPreviewer/ffmpeg/lib",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-read_only_relocs",
+					suppress,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.siphty.com.BinocularVideoPreviewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1172,6 +1648,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A2D341F11EDC653D001DEF82 /* Build configuration list for PBXNativeTarget "BinocularVideoPreviewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2D341F21EDC653D001DEF82 /* Debug */,
+				A2D341F31EDC653D001DEF82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

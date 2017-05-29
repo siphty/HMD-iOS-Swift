@@ -9,6 +9,7 @@
 import UIKit
 import DJISDK
 
+let ProductCommunicationManagerStateDidChange = "ProductCommunicationManagerStateDidChange"
 class ProductCommunicationManager: NSObject {
 
     // Set this value to true to use the app with the Bridge and false to connect directly to the product
@@ -17,6 +18,8 @@ class ProductCommunicationManager: NSObject {
     // When enableBridgeMode is set to true, set this value to the IP of your bridge app.
     public let bridgeAppIP = "10.0.0.20"
     
+    
+    open var connectedProduct: DJIBaseProduct!
     var registered = false
     var connected = false
     
@@ -60,11 +63,21 @@ extension ProductCommunicationManager : DJISDKManagerDelegate {
     }
     
     func productConnected(_ product: DJIBaseProduct?) {
+        if product != nil {
+            self.connected = true
+            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: ProductCommunicationManagerStateDidChange)))
+            NSLog("Connection to new product succeeded!")
+            self.connectedProduct = product
+        } else {
+            print("product is nil: \(product.debugDescription)")
+        }
         
     }
     
     func productDisconnected() {
-        
+        self.connected = false
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: ProductCommunicationManagerStateDidChange)))
+        NSLog("Disconnected from product!");
     }
     
     func componentConnected(withKey key: String?, andIndex index: Int) {
