@@ -14,7 +14,6 @@ import VideoPreviewer
 
 class PilotHMDViewController: UIViewController {
     var isRecording : Bool!
-    var previewLayer = CALayer()
     var hmdLayer = HMDLayer()
     
     @IBOutlet weak var returnButton: UIButton!
@@ -27,9 +26,9 @@ class PilotHMDViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupVideoPreviewer()
         
         let replicatorInstances = 2
-        
         let replicatorViewWidth = (self.view.bounds.size.width / CGFloat(replicatorInstances))
         let replicatorLayer = CAReplicatorLayer()
         replicatorLayer.frame = CGRect.init(x: 0.0,
@@ -51,9 +50,10 @@ class PilotHMDViewController: UIViewController {
         self.resetVideoPreview()
     }
     
+    
     func setupVideoPreviewer() {
+        VideoPreviewer.instance().setEnableBinocular(true)
         VideoPreviewer.instance().setView(self.view)
-        VideoPreviewer.instance().enableBinocular = false
         let product = DJISDKManager.product()
         
         //Use "SecondaryVideoFeed" if the DJI Product is A3, N3, Matrice 600, or Matrice 600 Pro, otherwise, use "primaryVideoFeed".
@@ -65,7 +65,6 @@ class PilotHMDViewController: UIViewController {
         }else{
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
         }
-        
         VideoPreviewer.instance().start()
     }
     
@@ -82,6 +81,7 @@ class PilotHMDViewController: UIViewController {
         }else{
             DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
         }
+        VideoPreviewer.instance().close()
     }
     
     func fetchCamera() -> DJICamera? {
@@ -99,7 +99,7 @@ class PilotHMDViewController: UIViewController {
         dateFormatter.dateFormat = "mm:ss"
         return(dateFormatter.string(from: date))
     }
-
+    
 }
 
 extension PilotHMDViewController: DJIVideoFeedListener{
@@ -137,3 +137,4 @@ extension PilotHMDViewController: DJICameraDelegate{
         
     }
 }
+

@@ -48,8 +48,8 @@ class PilotHUDViewController: UIViewController {
     
 
     func setupVideoPreviewer() {
+        VideoPreviewer.instance().setEnableBinocular(false)
         VideoPreviewer.instance().setView(self.view)
-        VideoPreviewer.instance().enableBinocular = false
         let product = DJISDKManager.product()
         
         //Use "SecondaryVideoFeed" if the DJI Product is A3, N3, Matrice 600, or Matrice 600 Pro, otherwise, use "primaryVideoFeed".
@@ -77,6 +77,7 @@ class PilotHUDViewController: UIViewController {
         }else{
             DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
         }
+        VideoPreviewer.instance().close()
     }
     
     func fetchCamera() -> DJICamera? {

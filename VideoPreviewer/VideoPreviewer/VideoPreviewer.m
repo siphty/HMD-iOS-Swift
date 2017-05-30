@@ -384,15 +384,15 @@ LB2AUDHackParserDelegate>{
         dispatch_async(dispatch_get_main_queue(), ^{
             if(_glView.superview != view){
                 [view addSubview:_glView];
-                _glView.backgroundColor = [UIColor yellowColor];
-                _glView.center = CGPointMake(view.bounds.size.width/4, view.bounds.size.height/2);
+                _glView.backgroundColor = [UIColor lightGrayColor];
+                _glView.center = CGPointMake(view.bounds.size.width/2, view.bounds.size.height/2);
             }
             [view sendSubviewToBack:_glView];
             [_glView adjustSize];
             
             _status.isGLViewInit = YES;
             //set self frame property
-            [self movieGlView:nil didChangedFrame:view.frame];
+            [self movieGlView:nil didChangedFrame:_glView.frame];
             self.internalGLViewLeft = _glView;
         });
         END_DISPATCH_QUEUE
@@ -784,6 +784,8 @@ LB2AUDHackParserDelegate>{
     
     _enableBinocular = enableBinocular;
     //TODO: Reload view
+    [self clearVideoData];
+    [self reset];
 }
 
 

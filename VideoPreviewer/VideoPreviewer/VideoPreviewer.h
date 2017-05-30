@@ -80,6 +80,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
  */
 -(void) clearVideoData;
 
+
 @end
 
 #pragma mark - instance
@@ -112,6 +113,8 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 @property (nonatomic, readonly) MovieGLView* internalGLView;
 @end
 
+
+
 @interface VideoPreviewer ()
 
 /**
@@ -143,6 +146,13 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
  *  Unset the view which is set previously.
  */
 - (void)unSetView;
+
+/**
+ Enable binocular views
+ 
+ @param enableBinocular
+ */
+-(void)setEnableBinocular:(BOOL)enableBinocular;
 
 /*
  * resize
@@ -259,14 +269,6 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
  * clear gl view to black
  */
 - (void)clearRender;
-
-
-/**
- Enable binocular views
-
- @param enableBinocular
- */
-- (void)setEnableBinocular:(BOOL)enableBinocular;
 
 @end
 
