@@ -63,7 +63,6 @@
 		A2D341D01EDB07D2001DEF82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */; };
 		A2D341D21EDBDEBE001DEF82 /* PilotHUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D341D11EDBDEBE001DEF82 /* PilotHUDViewController.swift */; };
 		A2D341D41EDBDF10001DEF82 /* PilotHMDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D341D31EDBDF10001DEF82 /* PilotHMDViewController.swift */; };
-		A2D342B51EDC6E73001DEF82 /* BinocularVideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D342B41EDC6E73001DEF82 /* BinocularVideoPreviewer.framework */; };
 		A2D366B51EC5DEE500DFA96C /* PilotModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D366B41EC5DEE500DFA96C /* PilotModeViewController.swift */; };
 		A2DD2EDD1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */; };
 /* End PBXBuildFile section */
@@ -75,13 +74,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 02A543FD1C3C51CB0083C11B;
 			remoteInfo = VideoPreviewer;
-		};
-		A2D342B31EDC6E73001DEF82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A22529911EDADBB300A971B8 /* VideoPreviewer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A2D341E01EDC653D001DEF82;
-			remoteInfo = BinocularVideoPreviewer;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -174,7 +166,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2D342B51EDC6E73001DEF82 /* BinocularVideoPreviewer.framework in Frameworks */,
 				A225299A1EDADEA800A971B8 /* VideoPreviewer.framework in Frameworks */,
 				A2A1AAC41EBD89AD006970E1 /* CoreLocation.framework in Frameworks */,
 				A2A1AAC21EBD89A7006970E1 /* CoreMotion.framework in Frameworks */,
@@ -285,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				A22529961EDADBB400A971B8 /* VideoPreviewer.framework */,
-				A2D342B41EDC6E73001DEF82 /* BinocularVideoPreviewer.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -572,13 +562,6 @@
 			fileType = wrapper.framework;
 			path = VideoPreviewer.framework;
 			remoteRef = A22529951EDADBB400A971B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A2D342B41EDC6E73001DEF82 /* BinocularVideoPreviewer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BinocularVideoPreviewer.framework;
-			remoteRef = A2D342B31EDC6E73001DEF82 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

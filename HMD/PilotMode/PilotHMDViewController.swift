@@ -11,12 +11,11 @@ import CoreLocation
 import CoreMotion
 import DJISDK
 import VideoPreviewer
-import BinocularVideoPreviewer
 
 class PilotHMDViewController: UIViewController {
     var isRecording : Bool!
+    var previewLayer = CALayer()
     var hmdLayer = HMDLayer()
-    var previewerView = UIView()
     
     @IBOutlet weak var returnButton: UIButton!
     
@@ -28,18 +27,34 @@ class PilotHMDViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
+        
+        let replicatorInstances = 2
+        
+        let replicatorViewWidth = (self.view.bounds.size.width / CGFloat(replicatorInstances))
+        let replicatorLayer = CAReplicatorLayer()
+        replicatorLayer.frame = CGRect.init(x: 0.0,
+                                            y: 0.0,
+                                            width: replicatorViewWidth,
+                                            height: self.view.bounds.height)
+        replicatorLayer.instanceCount = replicatorInstances
+        replicatorLayer.instanceTransform = CATransform3DMakeTranslation(replicatorViewWidth, 0.0, 0.0)
+        
+        hmdLayer.frame = replicatorLayer.bounds
+        hmdLayer.borderWidth = 1
+        hmdLayer.borderColor = UIColor.yellow.cgColor
+        replicatorLayer.addSublayer(hmdLayer)
+        view.layer.addSublayer(replicatorLayer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.resetVideoPreview()
     }
     
     func setupVideoPreviewer() {
         VideoPreviewer.instance().setView(self.view)
-        let product = DJISDKManager.product();
+        VideoPreviewer.instance().enableBinocular = false
+        let product = DJISDKManager.product()
         
         //Use "SecondaryVideoFeed" if the DJI Product is A3, N3, Matrice 600, or Matrice 600 Pro, otherwise, use "primaryVideoFeed".
         if ((product?.model == DJIAircraftModelNameA3)
@@ -55,8 +70,8 @@ class PilotHMDViewController: UIViewController {
     }
     
     func resetVideoPreview() {
-        BinocularVideoPreviewer.instance().unSetView()
-        let product = DJISDKManager.product();
+        VideoPreviewer.instance().unSetView()
+        let product = DJISDKManager.product()
         
         //Use "SecondaryVideoFeed" if the DJI Product is A3, N3, Matrice 600, or Matrice 600 Pro, otherwise, use "primaryVideoFeed".
         if ((product?.model == DJIAircraftModelNameA3)

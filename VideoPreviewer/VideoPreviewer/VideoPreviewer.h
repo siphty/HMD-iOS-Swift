@@ -1,7 +1,7 @@
 //
 //  VideoPreviewer.h
 //
-//  Copyright (c) 2013 DJI. All rights reserved.
+//  Copyright (c) 2017 Siphty. All rights reserved.
 //
 
 
@@ -109,8 +109,7 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 /*
  * for internal use only
  */
-@property (nonatomic, readonly) MovieGLView* internalGLViewLeft;
-@property (nonatomic, readonly) MovieGLView* internalGLViewRight;
+@property (nonatomic, readonly) MovieGLView* internalGLView;
 @end
 
 @interface VideoPreviewer ()
@@ -202,6 +201,11 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
 @property (assign, nonatomic) BOOL enableHardwareDecode;
 
 /**
+ *  enable Binocular View
+ */
+@property (assign, nonatomic) BOOL enableBinocular;
+
+/**
  *  Use for choice the H264 steam type, default is inspire.
  */
 @property (assign,nonatomic) H264EncoderType encoderType;
@@ -255,6 +259,14 @@ typedef NS_ENUM(NSUInteger, VideoPreviewerType){
  * clear gl view to black
  */
 - (void)clearRender;
+
+
+/**
+ Enable binocular views
+
+ @param enableBinocular
+ */
+- (void)setEnableBinocular:(BOOL)enableBinocular;
 
 @end
 
