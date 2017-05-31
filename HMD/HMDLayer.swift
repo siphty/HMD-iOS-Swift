@@ -78,13 +78,26 @@ class HMDLayer: CALayer, CALayerDelegate {
         addSublayer(altitudeScale)
         
         let attitudeLayer = HMDAttitudeRenderer()
-        attitudeLayer.frame = CGRect(x: frame.width.half() - 135, y: frame.height.half() - 135, width: 270, height: 270)
+        attitudeLayer.frame = CGRect(x: frame.width.half() - 135,
+                                     y: frame.height.half() - 135,
+                                     width: 270,
+                                     height: 270)
 //        attitudeLayer.borderColor = UIColor.lightGray.cgColor
 //        attitudeLayer.borderWidth = 1
         attitudeLayer.setup()
         addSublayer(attitudeLayer)
         
         //Speed Number
+        let statusLayer = HMDAviationStatusRenderer()
+        statusLayer.frame = CGRect(x: frame.width.half() - 160,
+                                  y: frame.height.half() - 135,
+                                  width: 40,
+                                  height: 50)
+        statusLayer.borderWidth = 1
+        statusLayer.borderColor = UIColor.white.cgColor
+        statusLayer.operationMode = operationMode
+        statusLayer.setup()
+        addSublayer(statusLayer)
         
         //Mode Annunciation
         

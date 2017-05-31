@@ -14,7 +14,7 @@ class PilotRootViewController: DULDefaultLayoutViewController {
     
     
     var aircraft: DJIBaseProduct?
-    var hmdLayer = HMDLayer()
+//    var hmdLayer = HMDLayer()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent;
@@ -22,22 +22,27 @@ class PilotRootViewController: DULDefaultLayoutViewController {
     
     @IBAction func close () {
         self.dismiss(animated: true) {
-            
+
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let hmdWidth = view.bounds.height - 60
-        let hmdHeight = hmdWidth
-        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
-                                y: 30,
-                                width: hmdWidth,
-                                height: hmdHeight)
-        hmdLayer.borderWidth = 1
-        hmdLayer.borderColor = UIColor.yellow.cgColor
-        view.layer.addSublayer(hmdLayer)
+        removeLeftVersatileViewController()
+//        let hmdWidth = view.bounds.height - 60
+//        let hmdHeight = hmdWidth
+//        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
+//                                y: 30,
+//                                width: hmdWidth,
+//                                height: hmdHeight)
+//        hmdLayer.borderWidth = 1
+//        hmdLayer.borderColor = UIColor.yellow.cgColor
+//        view.layer.addSublayer(hmdLayer)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("View will dispear")
     }
     
 }

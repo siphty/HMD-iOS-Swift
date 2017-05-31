@@ -1,5 +1,5 @@
 //
-//  HMDGroundSpeedLayer.swift
+//  HMDGroundSpeedLabelLayer.swift
 //  HMD
 //
 //  Created by Yi JIANG on 6/5/17.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class HMDGroundSpeedLayer: CALayer {
+class HMDGroundSpeedLabelLayer: CATextLayer {
 
 }

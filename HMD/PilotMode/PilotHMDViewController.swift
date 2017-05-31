@@ -44,6 +44,16 @@ class PilotHMDViewController: UIViewController {
         replicatorLayer.addSublayer(hmdLayer)
         view.layer.addSublayer(replicatorLayer)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+//        let camera = self.fetchCamera()
+//        if((camera != nil) && (camera?.delegate?.isEqual(self))!){
+//            camera?.delegate = nil
+//        }
+        self.resetVideoPreview()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

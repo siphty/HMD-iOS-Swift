@@ -40,6 +40,17 @@ class PilotHUDViewController: UIViewController {
         view.layer.addSublayer(hmdLayer)
         view.bringSubview(toFront: returnButton)
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+//        let camera = self.fetchCamera()
+//        if((camera != nil) && (camera?.delegate?.isEqual(self))!){
+//            camera?.delegate = nil
+//        }
+        self.resetVideoPreview()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

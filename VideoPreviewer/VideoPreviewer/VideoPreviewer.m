@@ -40,8 +40,6 @@ LB2AUDHackParserDelegate>{
     
     NSThread *_decodeThread;        //decode thread
     MovieGLView *_glView;           //OpenGL render
-    MovieGLView *_glViewLeft;       //OpenGL render
-    MovieGLView *_glViewRight;      //OpenGL render
     
     BOOL videoDecoderCanReset;
     int videoDecoderFailedCount;
@@ -115,8 +113,6 @@ LB2AUDHackParserDelegate>{
     
     _decodeThread          = nil;
     _glView                = nil;
-    _glViewLeft            = nil;
-    _glViewRight           = nil;
     _type                  = VideoPreviewerTypeAutoAdapt;
     _decoderStatus         = VideoDecoderStatus_Normal;
     _dataQueue             = [[VideoPreviewerQueue alloc] initWithSize:100];
@@ -187,8 +183,6 @@ LB2AUDHackParserDelegate>{
     
     [_videoExtractor freeExtractor];
     [_glView releaseResourece];
-    [_glViewLeft releaseResourece];
-    [_glViewRight releaseResourece];
     [self privateClose];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -279,211 +273,97 @@ LB2AUDHackParserDelegate>{
 {
     [self.dataQueue clear];
     [_glView clear];
-    [_glViewLeft clear];
-    [_glViewRight clear];
 }
 
 -(void) snapshotPreview:(void(^)(UIImage* snapshot))block{
-    if (_enableBinocular) {
-        if (!_glViewLeft || _status.isPause || safe_resume_skip_count) {
-            if (block) {
-                block(nil);
-            };
-            return;
-        }
-        _glViewLeft.snapshotCallback = block;
-        _glViewRight.snapshotCallback = block;
-    } else {
-        if (!_glView || _status.isPause || safe_resume_skip_count) {
-            if (block) {
-                block(nil);
-            };
-            return;
-        }
-        _glView.snapshotCallback = block;
+    if (!_glView || _status.isPause || safe_resume_skip_count) {
+        if (block) {
+            block(nil);
+        };
+        return;
     }
+    _glView.snapshotCallback = block;
 }
 
 -(void) snapshotThumnnail:(void(^)(UIImage* snapshot))block{
-    if (_enableBinocular) {
-        if (!_glViewLeft || _status.isPause || safe_resume_skip_count) {
-            if (block) {
-                block(nil);
-            };
-            return;
-        }
-        
-        _glViewLeft.snapshotThumbnailCallback = block;
-        _glViewRight.snapshotThumbnailCallback = block;
-    } else{
-        
-        if (!_glView || _status.isPause || safe_resume_skip_count) {
-            if (block) {
-                block(nil);
-            };
-            return;
-        }
-        _glView.snapshotThumbnailCallback = block;
+    if (!_glView || _status.isPause || safe_resume_skip_count) {
+        if (block) {
+            block(nil);
+        };
+        return;
     }
+    _glView.snapshotThumbnailCallback = block;
 }
 
 
--(BOOL)setView:(UIView *)view
-{
-    if (_enableBinocular) {
-        BEGIN_DISPATCH_QUEUE
-        if(_glViewLeft == nil){
-            //generate
-            _glViewLeft = [[MovieGLView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, view.frame.size.width / 2, view.frame.size.height)];
-            _glViewLeft.delegate = self;
-            _glViewLeft.rotation = self.rotation;
-            _glViewLeft.contentClipRect = self.contentClipRect;
-        }
-        
-        if(_glViewRight == nil){
-            //generate
-            _glViewRight = [[MovieGLView alloc] initWithFrame:CGRectMake((view.frame.size.width/2)+1, 0.0f, view.frame.size.width/2, view.frame.size.height)];
-            _glViewRight.delegate = self;
-            _glViewRight.rotation = self.rotation;
-            _glViewRight.contentClipRect = self.contentClipRect;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(_glViewLeft.superview != view){
-                [view addSubview:_glViewLeft];
-                _glViewLeft.backgroundColor = [UIColor yellowColor];
-                _glViewLeft.center = CGPointMake(view.bounds.size.width/4, view.bounds.size.height/2);
-            }
-            if(_glViewRight.superview != view){
-                [view addSubview:_glViewRight];
-                _glViewRight.backgroundColor = [UIColor redColor];
-                _glViewRight.center = CGPointMake(view.bounds.size.width*3/4, view.bounds.size.height/2);
-            }
-            [view sendSubviewToBack:_glViewLeft];
-            [view sendSubviewToBack:_glViewRight];
-            [_glViewRight adjustSize];
-            [_glViewLeft adjustSize];
-            
-            _status.isGLViewInit = YES;
-            //set self frame property
-            [self movieGlView:nil didChangedFrame:view.frame];
-            self.internalGLViewLeft = _glViewLeft;
-            self.internalGLViewRight = _glViewRight;
-        });
-        END_DISPATCH_QUEUE
-    } else {
-        BEGIN_DISPATCH_QUEUE
-        if(_glView == nil){
-            //generate
-            _glView = [[MovieGLView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, view.frame.size.width, view.frame.size.height)];
-            _glView.delegate = self;
-            _glView.rotation = self.rotation;
-            _glView.contentClipRect = self.contentClipRect;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(_glView.superview != view){
-                [view addSubview:_glView];
-                _glView.backgroundColor = [UIColor lightGrayColor];
-                _glView.center = CGPointMake(view.bounds.size.width/2, view.bounds.size.height/2);
-            }
-            [view sendSubviewToBack:_glView];
-            [_glView adjustSize];
-            
-            _status.isGLViewInit = YES;
-            //set self frame property
-            [self movieGlView:nil didChangedFrame:_glView.frame];
-            self.internalGLViewLeft = _glView;
-        });
-        END_DISPATCH_QUEUE
+-(BOOL)setView:(UIView *)view{
+    BEGIN_DISPATCH_QUEUE
+    if(_glView == nil){
+        //generate
+        _glView = [[MovieGLView alloc] initWithFrame:view.frame];
+        _glView.delegate = self;
+        _glView.rotation = self.rotation;
+        _glView.contentClipRect = self.contentClipRect;
     }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(_glView.superview != view){
+            [view addSubview:_glView];
+            _glView.backgroundColor = [UIColor lightGrayColor];
+            _glView.center = CGPointMake(view.bounds.size.width/2, view.bounds.size.height/2);
+        }
+        [view sendSubviewToBack:_glView];
+        [_glView adjustSize];
+        
+        _status.isGLViewInit = YES;
+        //set self frame property
+        [self movieGlView:nil didChangedFrame:_glView.frame];
+        self.internalGLViewLeft = _glView;
+    });
+    END_DISPATCH_QUEUE
     return NO;
 }
 
 -(void)unSetView
 {
-    if (_enableBinocular) {
-        BEGIN_DISPATCH_QUEUE
-        if(_glViewLeft != nil && _glViewLeft.superview !=nil)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_glViewLeft removeFromSuperview];
-                [_glViewRight removeFromSuperview];
-                //_glView = nil; // Deliberately not release dglView, Avoid each entry view flickering。
-                _status.isGLViewInit = NO;
-                self.internalGLViewLeft = nil;
-                self.internalGLViewRight = nil;
-            });
-        }
-        END_DISPATCH_QUEUE
-    } else {
-        BEGIN_DISPATCH_QUEUE
-        if(_glView != nil && _glView.superview !=nil)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_glView removeFromSuperview];
-                //_glView = nil; // Deliberately not release dglView, Avoid each entry view flickering。
-                _status.isGLViewInit = NO;
-                self.internalGLView = nil;
-            });
-        }
-        END_DISPATCH_QUEUE
-        
+    BEGIN_DISPATCH_QUEUE
+    if(_glView != nil && _glView.superview !=nil)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_glView removeFromSuperview];
+            //_glView = nil; // Deliberately not release dglView, Avoid each entry view flickering。
+            _status.isGLViewInit = NO;
+            [self.internalGLView releaseResourece];
+            self.internalGLView = nil;
+        });
     }
+    END_DISPATCH_QUEUE
+     
 }
 
 -(void)adjustViewSize{
-    if (_enableBinocular) {
-        BEGIN_DISPATCH_QUEUE
-        pthread_mutex_lock(&_render_mutex);
-        if (_glViewLeft && [self glviewCanRender]) {
-            [_glViewLeft adjustSize];
-        }
-        if (_glViewRight && [self glviewCanRender]) {
-            [_glViewRight adjustSize];
-        }
-        pthread_mutex_unlock(&_render_mutex);
-        END_DISPATCH_QUEUE
-    } else {
-        BEGIN_DISPATCH_QUEUE
-        pthread_mutex_lock(&_render_mutex);
-        if (_glView && [self glviewCanRender]) {
-            [_glView adjustSize];
-        }
-        pthread_mutex_unlock(&_render_mutex);
-        END_DISPATCH_QUEUE
+    BEGIN_DISPATCH_QUEUE
+    pthread_mutex_lock(&_render_mutex);
+    if (_glView && [self glviewCanRender]) {
+        [_glView adjustSize];
     }
+    pthread_mutex_unlock(&_render_mutex);
+    END_DISPATCH_QUEUE
 }
 
 -(CGPoint) convertPoint:(CGPoint)point toVideoViewFromView:(UIView*)view{
-    if (_enableBinocular) {
-        if (!_glViewLeft) {
-            return CGPointZero;
-        }
-        //TODO: Here has problem definatly.
-        return [_glViewLeft convertPoint:point fromView:view];
-    } else {
-        if (!_glView) {
-            return CGPointZero;
-        }
-        //TODO: Here has problem definatly.
-        return [_glView convertPoint:point fromView:view];
+    if (!_glView) {
+        return CGPointZero;
     }
+    //TODO: Here has problem definatly.
+    return [_glView convertPoint:point fromView:view];
 }
 
 -(CGPoint) convertPoint:(CGPoint)point fromVideoViewToView:(UIView *)view{
-    if (_enableBinocular) {
-        if (!_glViewLeft) {
-            return CGPointZero;
-        }
-        //TODO: Here has problem definatly.
-        return [_glViewLeft convertPoint:point toView:view];
-    } else {
-        if (!_glView) {
-            return CGPointZero;
-        }
-        return [_glView convertPoint:point toView:view];
+    if (!_glView) {
+        return CGPointZero;
     }
+    return [_glView convertPoint:point toView:view];
 }
 
 - (BOOL)start
@@ -574,19 +454,10 @@ LB2AUDHackParserDelegate>{
 
 -(void) clearRender
 {
-    
-    if (_enableBinocular) {
-        BEGIN_DISPATCH_QUEUE
-        [_glViewLeft clear];
-        [_glViewRight clear];
-        [self.dataQueue wakeupReader];
-        END_DISPATCH_QUEUE
-    } else {
-        BEGIN_DISPATCH_QUEUE
-        [_glView clear];
-        [self.dataQueue wakeupReader];
-        END_DISPATCH_QUEUE
-    }
+    BEGIN_DISPATCH_QUEUE
+    [_glView clear];
+    [self.dataQueue wakeupReader];
+    END_DISPATCH_QUEUE
 }
 
 - (void)privateClose
@@ -600,54 +471,26 @@ LB2AUDHackParserDelegate>{
 }
 
 - (void)setType:(VideoPreviewerType)type{
-    if (_enableBinocular) {
-        if(_type == type)return;
-        if(_glViewLeft == nil)return;
-        BEGIN_DISPATCH_QUEUE
-        pthread_mutex_lock(&_render_mutex);
-        _type = type;
-        if(_type == VideoPreviewerTypeFullWindow){
-            [_glViewLeft setType:VideoPresentContentModeAspectFill];
-            [_glViewRight setType:VideoPresentContentModeAspectFill];
-            
-            if ([self glviewCanRender]) {
-                [_glViewLeft render:nil];
-                [_glViewRight render:nil];
-            }
+    if(_type == type)return;
+    if(_glView == nil)return;
+    BEGIN_DISPATCH_QUEUE
+    pthread_mutex_lock(&_render_mutex);
+    _type = type;
+    if(_type == VideoPreviewerTypeFullWindow){
+        [_glView setType:VideoPresentContentModeAspectFill];
+        
+        if ([self glviewCanRender]) {
+            [_glView render:nil];
         }
-        else if(_type == VideoPreviewerTypeAutoAdapt){
-            [_glViewLeft setType:VideoPresentContentModeAspectFit];
-            [_glViewRight setType:VideoPresentContentModeAspectFit];
-            
-            if ([self glviewCanRender]) {
-                [_glViewLeft render:nil];
-                [_glViewRight render:nil];
-            }
-        }
-        pthread_mutex_unlock(&_render_mutex);
-        END_DISPATCH_QUEUE
-    } else {
-        if(_type == type)return;
-        if(_glView == nil)return;
-        BEGIN_DISPATCH_QUEUE
-        pthread_mutex_lock(&_render_mutex);
-        _type = type;
-        if(_type == VideoPreviewerTypeFullWindow){
-            [_glView setType:VideoPresentContentModeAspectFill];
-            
-            if ([self glviewCanRender]) {
-                [_glView render:nil];
-            }
-        }
-        else if(_type == VideoPreviewerTypeAutoAdapt){
-            [_glView setType:VideoPresentContentModeAspectFit];
-            if ([self glviewCanRender]) {
-                [_glView render:nil];
-            }
-        }
-        pthread_mutex_unlock(&_render_mutex);
-        END_DISPATCH_QUEUE
     }
+    else if(_type == VideoPreviewerTypeAutoAdapt){
+        [_glView setType:VideoPresentContentModeAspectFit];
+        if ([self glviewCanRender]) {
+            [_glView render:nil];
+        }
+    }
+    pthread_mutex_unlock(&_render_mutex);
+    END_DISPATCH_QUEUE
 }
 
 -(void) setRotation:(VideoStreamRotationType)rotation{
@@ -656,12 +499,7 @@ LB2AUDHackParserDelegate>{
     }
     
     _rotation = rotation;
-    if (_enableBinocular) {
-        [_glViewLeft setRotation:rotation];
-        [_glViewRight setRotation:rotation];
-    } else {
-        [_glView setRotation:rotation];
-    }
+    [_glView setRotation:rotation];
 }
 
 -(void) setContentClipRect:(CGRect)rect{
@@ -669,12 +507,7 @@ LB2AUDHackParserDelegate>{
         return;
     }
     _contentClipRect = rect;
-    if (_enableBinocular) {
-        [_glViewLeft setContentClipRect:rect];
-        [_glViewRight setContentClipRect:rect];
-    } else {
-        [_glView setContentClipRect:rect];
-    }
+    [_glView setContentClipRect:rect];
 }
 
 -(BOOL) glviewCanRender{
@@ -684,65 +517,34 @@ LB2AUDHackParserDelegate>{
 -(void) setOverExposedWarningThreshold:(float)overExposedWarningThreshold
 {
     _overExposedWarningThreshold = overExposedWarningThreshold;
-    if (_enableBinocular) {
-        _glViewLeft.overExposedMark = overExposedWarningThreshold;
-        _glViewRight.overExposedMark = overExposedWarningThreshold;
-    } else {
-        _glView.overExposedMark = overExposedWarningThreshold;
-    }
+    _glView.overExposedMark = overExposedWarningThreshold;
 }
 
 -(void) setEnableFocusWarning:(BOOL)enableFocusWarning
 {
     _enableFocusWarning = enableFocusWarning;
-    if (_enableBinocular) {
-        _glViewLeft.enableFocusWarning  = enableFocusWarning;
-        _glViewRight.enableFocusWarning  = enableFocusWarning;
-    } else {
-        _glView.enableFocusWarning  = enableFocusWarning;
-    }
+    _glView.enableFocusWarning  = enableFocusWarning;
 }
 
 - (void) setFocusWarningThreshold:(float)focusWarningThreshold{
     
     _focusWarningThreshold = focusWarningThreshold;
-    if (_enableBinocular) {
-        _glViewLeft.focusWarningThreshold = focusWarningThreshold;
-        _glViewRight.focusWarningThreshold = focusWarningThreshold;
-    } else {
-        _glView.focusWarningThreshold = focusWarningThreshold;
-        
-    }
+    _glView.focusWarningThreshold = focusWarningThreshold;
 }
 
 -(void) setLuminanceScale:(float)luminanceScale{
     _luminanceScale = luminanceScale;
-    if (_enableBinocular) {
-        _glViewLeft.luminanceScale = luminanceScale;
-        _glViewRight.luminanceScale = luminanceScale;
-    } else{
-        _glView.luminanceScale = luminanceScale;
-    }
+    _glView.luminanceScale = luminanceScale;
 }
 
 -(void) setEnableHSB:(BOOL)enableHSB{
     _enableHSB = enableHSB;
-    if (_enableBinocular) {
-        _glViewLeft.enableHSB = enableHSB;
-        _glViewRight.enableHSB = enableHSB;
-    } else {
-        _glView.enableHSB = enableHSB;
-    }
+    _glView.enableHSB = enableHSB;
 }
 
 -(void) setHsbConfig:(DJILiveViewRenderHSBConfig)hsbConfig{
     _hsbConfig = hsbConfig;
-    if (_enableBinocular) {
-        _glViewLeft.hsbConfig = hsbConfig;
-        _glViewRight.hsbConfig = hsbConfig;
-    } else {
-        _glView.hsbConfig = hsbConfig;
-    }
+    _glView.hsbConfig = hsbConfig;
 }
 
 -(void) setEncoderType:(H264EncoderType)encoderType{
@@ -760,12 +562,7 @@ LB2AUDHackParserDelegate>{
     }
     
     _enableShadowAndHighLightenhancement = enable;
-    if (_enableBinocular) {
-        _glViewLeft.enableShadowAndHighLightenhancement = enable;
-        _glViewRight.enableShadowAndHighLightenhancement = enable;
-    } else {
-        _glView.enableShadowAndHighLightenhancement = enable;
-    }
+    _glView.enableShadowAndHighLightenhancement = enable;
 }
 
 -(void) setEnableHardwareDecode:(BOOL)enableHardwareDecode{
@@ -778,11 +575,8 @@ LB2AUDHackParserDelegate>{
 }
 
 -(void) setEnableBinocular:(BOOL)enableBinocular{
-    if (_enableBinocular == enableBinocular) {
-        return;
-    }
-    
     _enableBinocular = enableBinocular;
+    [_glView setBinocular:enableBinocular];
     //TODO: Reload view
     [self clearVideoData];
     [self reset];
@@ -915,41 +709,18 @@ LB2AUDHackParserDelegate>{
             [frameLayerDumper dumpFrame:frameRaw];
 #endif
             
-            if (_enableBinocular) {
             //sync config
-                _glViewLeft.overExposedMark = _overExposedWarningThreshold;
-                _glViewLeft.luminanceScale = _luminanceScale;
-                _glViewLeft.enableFocusWarning = _enableFocusWarning;
-                _glViewLeft.focusWarningThreshold = _focusWarningThreshold;
-                _glViewLeft.dLogReverse = _dLogReverse;
-                _glViewLeft.enableHSB = _enableHSB;
-                _glViewLeft.hsbConfig = _hsbConfig;
-                _glViewLeft.enableShadowAndHighLightenhancement = _enableShadowAndHighLightenhancement;
-                _glViewLeft.shadowsLighten = _shadowsLighten;
-                _glViewLeft.highlightsDecrease = _highlightsDecrease;
-                
-                _glViewRight.overExposedMark = _overExposedWarningThreshold;
-                _glViewRight.luminanceScale = _luminanceScale;
-                _glViewRight.enableFocusWarning = _enableFocusWarning;
-                _glViewRight.focusWarningThreshold = _focusWarningThreshold;
-                _glViewRight.dLogReverse = _dLogReverse;
-                _glViewRight.enableHSB = _enableHSB;
-                _glViewRight.hsbConfig = _hsbConfig;
-                _glViewRight.enableShadowAndHighLightenhancement = _enableShadowAndHighLightenhancement;
-                _glViewRight.shadowsLighten = _shadowsLighten;
-                _glViewRight.highlightsDecrease = _highlightsDecrease;
-            } else {
-                _glView.overExposedMark = _overExposedWarningThreshold;
-                _glView.luminanceScale = _luminanceScale;
-                _glView.enableFocusWarning = _enableFocusWarning;
-                _glView.focusWarningThreshold = _focusWarningThreshold;
-                _glView.dLogReverse = _dLogReverse;
-                _glView.enableHSB = _enableHSB;
-                _glView.hsbConfig = _hsbConfig;
-                _glView.enableShadowAndHighLightenhancement = _enableShadowAndHighLightenhancement;
-                _glView.shadowsLighten = _shadowsLighten;
-                _glView.highlightsDecrease = _highlightsDecrease;
-            }
+            _glView.overExposedMark = _overExposedWarningThreshold;
+            _glView.luminanceScale = _luminanceScale;
+            _glView.enableFocusWarning = _enableFocusWarning;
+            _glView.focusWarningThreshold = _focusWarningThreshold;
+            _glView.dLogReverse = _dLogReverse;
+            _glView.enableHSB = _enableHSB;
+            _glView.hsbConfig = _hsbConfig;
+            _glView.enableShadowAndHighLightenhancement = _enableShadowAndHighLightenhancement;
+            _glView.shadowsLighten = _shadowsLighten;
+            _glView.highlightsDecrease = _highlightsDecrease;
+            
             
             if(inputData == NULL)
             {
@@ -963,19 +734,9 @@ LB2AUDHackParserDelegate>{
                 pthread_mutex_lock(&_render_mutex);
                 if([self glviewCanRender]){
                     // render as grey when it is paused
-                    if (_enableBinocular) {
-                        _glViewLeft.grayScale = _grayOutPause;
-                        [_glViewLeft render:nil];
-                        _glViewLeft.grayScale = NO;
-                        
-                        _glViewRight.grayScale = _grayOutPause;
-                        [_glViewRight render:nil];
-                        _glViewRight.grayScale = NO;
-                    } else {
-                        _glView.grayScale = _grayOutPause;
-                        [_glView render:nil];
-                        _glView.grayScale = NO;
-                    }
+                    _glView.grayScale = _grayOutPause;
+                    [_glView render:nil];
+                    _glView.grayScale = NO;
                 }
                 pthread_mutex_unlock(&_render_mutex);
                 
@@ -1172,12 +933,7 @@ LB2AUDHackParserDelegate>{
     }
     
     if (!dropFrame) {
-        if (_enableBinocular) {
-            [_glViewLeft render:frame];
-            [_glViewRight render:frame];
-        } else {
-            [_glView render:frame];
-        }
+        [_glView render:frame];
     }
     
     glViewRenderFrameCount++;

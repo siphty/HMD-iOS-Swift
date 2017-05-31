@@ -99,7 +99,7 @@ class PilotModeViewController: UIViewController {
     func resetUI() {
         self.title = "DJI iOS SDK Sample"
         self.sdkVersionLabel.text = "DJI SDK Version: \(DJISDKManager.sdkVersion())"
-        self.openComponents.isEnabled = false //FIXME: set it back to false
+        self.openComponents.isEnabled = true //FIXME: set it back to false
 //        self.bluetoothConnectorButton.isEnabled = true;
         self.productModel.isHidden = true
         self.productFirmwarePackageVersion.isHidden = true
@@ -155,7 +155,7 @@ class PilotModeViewController: UIViewController {
     func productDisconnected() {
         self.productConnectionStatus.text = "Status: No Product Connected"
         
-        self.openComponents.isEnabled = false;
+        self.openComponents.isEnabled = true;
         self.openComponents.alpha = 0.8;
         NSLog("Product Disconnected")
     }

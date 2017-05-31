@@ -31,6 +31,8 @@
 //clear buffer, render a black image
 - (void)clear;
 
+- (void)setBinocular: (BOOL)enableBinocular;
+
 @end
 
 #pragma mark - geometry
@@ -94,6 +96,8 @@ typedef struct {
 //scale on output luminance
 @property (assign, nonatomic) float luminanceScale;
 
+//Binocular for AR/VR
+@property (assign, nonatomic) BOOL enableBinocular;
 
 /////////////// use sobel process
 @property (assign, nonatomic) BOOL enableFocusWarning;

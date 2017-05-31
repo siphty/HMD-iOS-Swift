@@ -684,8 +684,9 @@ int h264_decode_slice_header(unsigned char * buf,unsigned int nLen,SPS* out_sps,
     if (slice_type > 4) {
         slice_type -= 5;
         slice_type_fixed = 1;
-    } else
+    } else {
         slice_type_fixed = 0;
+    }
     
     slice_type = golomb_to_pict_type[slice_type];
     pps_id = Ue(buf,nLen,&StartBit);

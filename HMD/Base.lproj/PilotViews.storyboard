@@ -21,19 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNw-DB-cYS">
-                                <rect key="frame" x="265" y="312" width="137" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="XKs-Ml-0nC"/>
-                                    <constraint firstAttribute="width" constant="137" id="p0S-Ua-uz2"/>
-                                </constraints>
-                                <state key="normal" title="Take Off">
-                                    <color key="titleShadowColor" red="0.2588235438" green="0.75686275960000005" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="lRj-HJ-I8X" kind="presentation" id="Yxn-by-sBz"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model: Not Available" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iu7-Ds-hGs">
                                 <rect key="frame" x="53" y="184" width="560" height="21"/>
                                 <constraints>
@@ -71,7 +58,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firmware Package Version: Not Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jew-Uc-x3l">
-                                <rect key="frame" x="54" y="213" width="560" height="21"/>
+                                <rect key="frame" x="53" y="213" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="6uB-xM-5ej"/>
                                     <constraint firstAttribute="width" constant="560" id="PUD-Jk-S31"/>
@@ -97,7 +84,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDK Version: 4.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpg-cs-Fes">
-                                <rect key="frame" x="259" y="268" width="149" height="16"/>
+                                <rect key="frame" x="258.5" y="268" width="149" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="Fwp-RD-SO6"/>
                                     <constraint firstAttribute="height" constant="16" id="S8O-Qi-kdj"/>
@@ -158,20 +145,33 @@
                                     <action selector="ConnectButtonTouchUpInside:" destination="AeQ-xc-Gqb" eventType="touchUpInside" id="g0k-R1-pVT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNw-DB-cYS">
+                                <rect key="frame" x="266" y="312" width="137" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="XKs-Ml-0nC"/>
+                                    <constraint firstAttribute="width" constant="137" id="p0S-Ua-uz2"/>
+                                </constraints>
+                                <state key="normal" title="Phone Camera">
+                                    <color key="titleShadowColor" red="0.2588235438" green="0.75686275960000005" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="lRj-HJ-I8X" kind="presentation" id="Yxn-by-sBz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f7V-WN-rk8" firstAttribute="top" secondItem="wcA-O0-P7x" secondAttribute="bottom" constant="62" id="16n-AF-JTK"/>
                             <constraint firstItem="jNw-DB-cYS" firstAttribute="top" secondItem="Zpg-cs-Fes" secondAttribute="bottom" constant="28" id="9YD-zL-YwD"/>
                             <constraint firstItem="TIe-cG-dPB" firstAttribute="top" secondItem="jNw-DB-cYS" secondAttribute="bottom" constant="8" symbolic="YES" id="GCJ-mf-fD1"/>
-                            <constraint firstItem="jNw-DB-cYS" firstAttribute="centerX" secondItem="Zpg-cs-Fes" secondAttribute="centerX" id="Ric-7k-96K"/>
+                            <constraint firstItem="jNw-DB-cYS" firstAttribute="centerX" secondItem="Zpg-cs-Fes" secondAttribute="centerX" constant="1.5" id="Ric-7k-96K"/>
                             <constraint firstItem="Iu7-Ds-hGs" firstAttribute="top" secondItem="2aj-91-fce" secondAttribute="bottom" constant="22" id="SZD-LQ-6J7"/>
                             <constraint firstItem="Iu7-Ds-hGs" firstAttribute="centerX" secondItem="2aj-91-fce" secondAttribute="centerX" id="ZVx-2B-Wve"/>
                             <constraint firstItem="Iu7-Ds-hGs" firstAttribute="top" secondItem="Ejd-Py-Diq" secondAttribute="top" constant="184" id="ZyO-0e-1ts"/>
                             <constraint firstItem="Iu7-Ds-hGs" firstAttribute="centerX" secondItem="Ejd-Py-Diq" secondAttribute="centerX" id="ceT-Gd-15V"/>
                             <constraint firstItem="Iu7-Ds-hGs" firstAttribute="centerX" secondItem="f7V-WN-rk8" secondAttribute="centerX" constant="-1" id="tNa-kM-Nsa"/>
-                            <constraint firstItem="Iu7-Ds-hGs" firstAttribute="centerX" secondItem="jNw-DB-cYS" secondAttribute="centerX" id="uuy-G5-emO"/>
-                            <constraint firstItem="jNw-DB-cYS" firstAttribute="centerX" secondItem="jew-Uc-x3l" secondAttribute="centerX" id="yuc-FN-blf"/>
+                            <constraint firstItem="Iu7-Ds-hGs" firstAttribute="centerX" secondItem="jNw-DB-cYS" secondAttribute="centerX" constant="-1.5" id="uuy-G5-emO"/>
+                            <constraint firstItem="jNw-DB-cYS" firstAttribute="centerX" secondItem="jew-Uc-x3l" secondAttribute="centerX" constant="1.5" id="yuc-FN-blf"/>
                             <constraint firstItem="jew-Uc-x3l" firstAttribute="top" secondItem="Iu7-Ds-hGs" secondAttribute="bottom" constant="8" id="zxk-91-eVv"/>
                         </constraints>
                     </view>

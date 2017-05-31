@@ -124,6 +124,7 @@ NSString *const renderToScreenFS = SHADER_STRING
 @property (nonatomic, strong) DJILiveViewRenderHighlightShadowFilter* highlightFilter;
 //lock for render;
 @property (nonatomic, strong) NSLock* renderLock;
+
 @end
 
 @implementation MovieGLView {
@@ -168,6 +169,13 @@ NSString *const renderToScreenFS = SHADER_STRING
     GLfloat _downscale_quadTexCoords[8];
     
     DJIVideoPresentViewAdjustHelper* _adjustHelper;
+    
+    CAEAGLLayer *eaglLayer;
+    CAReplicatorLayer *replicatorLayer;
+    
+    
+    //Binocular for AR/VR
+    BOOL _enableBinocular;
 }
 
 #pragma mark - for UIKit
@@ -193,6 +201,7 @@ NSString *const renderToScreenFS = SHADER_STRING
         _inputWidth   = 1280;
         _inputHeight  = 720;
         _needUpdatePipline = YES;
+        _enableBinocular = false;
         
         [self setBackgroundColor:[UIColor clearColor]];
         _type = VideoPresentContentModeAspectFit;
@@ -205,13 +214,34 @@ NSString *const renderToScreenFS = SHADER_STRING
         _adjustHelper.boundingFrame = self.bounds;
         _adjustHelper.contentClipRect = self.contentClipRect;
         
-        CAEAGLLayer *eaglLayer = (CAEAGLLayer*) self.layer;
+        replicatorLayer = [CAReplicatorLayer layer];
+        replicatorLayer.bounds = self.bounds;
+        replicatorLayer.position = self.center;
+        replicatorLayer.borderColor = [UIColor yellowColor].CGColor;
+        replicatorLayer.borderWidth = 2;
+        replicatorLayer.instanceCount = 2;
+        [replicatorLayer setInstanceTransform:CATransform3DMakeTranslation(self.bounds.size.width/2, 0, 0)];
+    
+        eaglLayer = [CAEAGLLayer new];
         eaglLayer.opaque = YES;
+        eaglLayer.frame = self.frame;
+        eaglLayer.borderColor = [UIColor redColor].CGColor;
+        eaglLayer.borderWidth = 2;
         eaglLayer.contentsScale = [UIScreen mainScreen].scale;
         eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [NSNumber numberWithBool:FALSE], kEAGLDrawablePropertyRetainedBacking,
                                         kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
                                         nil];
+        
+        if (_enableBinocular) {
+            eaglLayer.position = CGPointMake(replicatorLayer.bounds.size.width / 4, replicatorLayer.bounds.size.height / 4);
+            [replicatorLayer addSublayer:eaglLayer];
+            [self.layer addSublayer:replicatorLayer];
+        } else {
+            [self.layer addSublayer:eaglLayer];
+        }
+        
+//        [self.layer addSublayer:eaglLayer];
         
         context = [[DJILiveViewRenderContext alloc] initWithMultiThreadSupport:multiThread];
         
@@ -312,6 +342,27 @@ NSString *const renderToScreenFS = SHADER_STRING
     _targetLayerFrame = frame;
     //After the view frame changes in the need to re-bind buffer, or size may be abnormal
     //However, we should do this thing in the render thread inside
+}
+
+- (void)setBinocular: (BOOL)enableBinocular{
+    _enableBinocular = enableBinocular;
+    [eaglLayer removeFromSuperlayer];
+    
+    if (_enableBinocular) {
+        replicatorLayer = [CAReplicatorLayer layer];
+        replicatorLayer.bounds = self.bounds;
+        replicatorLayer.position = self.center;
+        replicatorLayer.borderColor = [UIColor yellowColor].CGColor;
+        replicatorLayer.borderWidth = 2;
+        replicatorLayer.instanceCount = 2;
+        [replicatorLayer setInstanceTransform:CATransform3DMakeTranslation(self.bounds.size.width/2, 0, 0)];
+        [replicatorLayer addSublayer:eaglLayer];
+        eaglLayer.position = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+        [self.layer addSublayer:replicatorLayer];
+    } else {
+        [replicatorLayer removeFromSuperlayer];
+        [self.layer addSublayer:eaglLayer];
+    }
 }
 
 - (void)dealloc
@@ -751,7 +802,7 @@ NSString *const renderToScreenFS = SHADER_STRING
 
     glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
-    [[context context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
+    [[context context] renderbufferStorage:GL_RENDERBUFFER fromDrawable:eaglLayer];
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderbuffer);

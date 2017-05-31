@@ -1,5 +1,5 @@
 //
-//  HMDAirspeedLabelLayer.swift
+//  HMDAirSpeedLabelLayer.swift
 //  HMD
 //
 //  Created by Yi JIANG on 6/5/17.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class HMDAirspeedLabelLayer: CALayer {
+class HMDAirSpeedLabelLayer: CATextLayer {
 
 }
