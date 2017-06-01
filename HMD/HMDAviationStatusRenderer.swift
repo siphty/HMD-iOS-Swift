@@ -81,8 +81,8 @@ class HMDAviationStatusRenderer: CALayer {
                                                                 if newValue == nil {
                                                                     return
                                                                 }
-                                                                let velocity = newValue!.value! as! NSNumber
-                                                                self.updateGroundSpeedVelocity(velocity)
+                                                                let velocity = newValue!.value! as! DJISDKVector3D
+                                                                self.updateGroundSpeedVelocity(CGFloat(velocity.x))
         })
         
     }
@@ -95,7 +95,7 @@ class HMDAviationStatusRenderer: CALayer {
     
     }
     
-    func updateGroundSpeedVelocity(_ velocity: NSNumber){
+    func updateGroundSpeedVelocity(_ velocity: CGFloat){
         let groundSpeed = Int(floor(Double(velocity)))
         groundSpeedLabel.string = "\(groundSpeed)"
     }

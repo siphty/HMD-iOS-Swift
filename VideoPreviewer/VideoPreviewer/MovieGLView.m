@@ -172,7 +172,7 @@ NSString *const renderToScreenFS = SHADER_STRING
     
     CAEAGLLayer *eaglLayer;
     CAReplicatorLayer *replicatorLayer;
-    
+    CALayer *midLayer;
     
     //Binocular for AR/VR
     BOOL _enableBinocular;
@@ -214,28 +214,37 @@ NSString *const renderToScreenFS = SHADER_STRING
         _adjustHelper.boundingFrame = self.bounds;
         _adjustHelper.contentClipRect = self.contentClipRect;
         
-        replicatorLayer = [CAReplicatorLayer layer];
-        replicatorLayer.bounds = self.bounds;
-        replicatorLayer.position = self.center;
-        replicatorLayer.borderColor = [UIColor yellowColor].CGColor;
-        replicatorLayer.borderWidth = 2;
-        replicatorLayer.instanceCount = 2;
-        [replicatorLayer setInstanceTransform:CATransform3DMakeTranslation(self.bounds.size.width/2, 0, 0)];
     
         eaglLayer = [CAEAGLLayer new];
         eaglLayer.opaque = YES;
         eaglLayer.frame = self.frame;
         eaglLayer.borderColor = [UIColor redColor].CGColor;
-        eaglLayer.borderWidth = 2;
+        eaglLayer.borderWidth = 6;
+        eaglLayer.contentsGravity = kCAGravityResizeAspectFill;
         eaglLayer.contentsScale = [UIScreen mainScreen].scale;
         eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [NSNumber numberWithBool:FALSE], kEAGLDrawablePropertyRetainedBacking,
                                         kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
                                         nil];
-        
+//        [self setEnableBinocular:_enableBinocular];
         if (_enableBinocular) {
-            eaglLayer.position = CGPointMake(replicatorLayer.bounds.size.width / 4, replicatorLayer.bounds.size.height / 4);
-            [replicatorLayer addSublayer:eaglLayer];
+            replicatorLayer = [CAReplicatorLayer layer];
+            replicatorLayer.bounds = self.bounds;
+            replicatorLayer.position = self.center;
+            replicatorLayer.borderColor = [UIColor yellowColor].CGColor;
+            replicatorLayer.borderWidth = 2;
+            replicatorLayer.instanceCount = 2;
+            [replicatorLayer setInstanceTransform:CATransform3DMakeTranslation(self.bounds.size.width/2, 0, 0)];
+            
+            midLayer = [CALayer new];
+            midLayer.bounds = CGRectMake(0, 0, replicatorLayer.bounds.size.width / 2, replicatorLayer.bounds.size.height);
+            midLayer.borderColor = [UIColor darkGrayColor].CGColor;
+            midLayer.borderWidth = 1;
+            [midLayer addSublayer:eaglLayer];
+            midLayer.masksToBounds = true;
+            eaglLayer.position = CGPointMake(midLayer.frame.size.width / 2, midLayer.frame.size.height / 2);
+            
+            [replicatorLayer addSublayer:midLayer];
             [self.layer addSublayer:replicatorLayer];
         } else {
             [self.layer addSublayer:eaglLayer];
@@ -356,8 +365,17 @@ NSString *const renderToScreenFS = SHADER_STRING
         replicatorLayer.borderWidth = 2;
         replicatorLayer.instanceCount = 2;
         [replicatorLayer setInstanceTransform:CATransform3DMakeTranslation(self.bounds.size.width/2, 0, 0)];
-        [replicatorLayer addSublayer:eaglLayer];
-        eaglLayer.position = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+        
+        midLayer = [CALayer new];
+        midLayer.bounds = CGRectMake(0, 0, self.bounds.size.width / 2, self.bounds.size.height);
+        midLayer.borderColor = [UIColor darkGrayColor].CGColor;
+        midLayer.borderWidth = 1;
+        [midLayer addSublayer:eaglLayer];
+        midLayer.masksToBounds = true;
+        midLayer.position = CGPointMake(replicatorLayer.bounds.size.width / 4.0, replicatorLayer.bounds.size.height / 2.0);
+        eaglLayer.position = CGPointMake(midLayer.frame.size.width / 2, midLayer.frame.size.height / 2);
+        
+        [replicatorLayer addSublayer:midLayer];
         [self.layer addSublayer:replicatorLayer];
     } else {
         [replicatorLayer removeFromSuperlayer];
