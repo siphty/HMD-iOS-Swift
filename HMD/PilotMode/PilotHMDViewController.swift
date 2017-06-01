@@ -117,9 +117,10 @@ extension PilotHMDViewController: DJIVideoFeedListener{
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData rawData: Data) {
         
         let videoData = rawData as NSData
-        let videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: videoData.length)
+        var videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: videoData.length)
         videoData.getBytes(videoBuffer, length: videoData.length)
         VideoPreviewer.instance().push(videoBuffer, length: Int32(videoData.length))
+        videoBuffer.deallocate(capacity: 1)
     }
     
 }
