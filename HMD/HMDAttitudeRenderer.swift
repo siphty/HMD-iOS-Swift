@@ -93,6 +93,13 @@ class HMDAttitudeRenderer: CALayer {
         
     }
     
+    func unSetup() {
+        stopUpdatingAircraftAttitude()
+        stopUpdatingGimbalHeadingData()
+        stopUpdateRemoteRightHorizontal()
+        sublayers = nil
+    }
+    
     //Draw detail components
 //    func drawAircraftRollCursor() -> CALayer {
 //        
@@ -173,87 +180,31 @@ class HMDAttitudeRenderer: CALayer {
     
     // Animation actions
     func spinAircraftAttitudeLayer(angle degrees: CGFloat){
-//        print("Roll cusor turning to : \(degrees)")
-        CALayer.performWithAnimation({
             let radians = self.degree2radian(degrees)
             self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
-            //            let animation =  CABasicAnimation(keyPath: "position")
-            //            animation.fillMode = kCAFillModeRemoved
-            //            animation.isRemovedOnCompletion = true
-            //            animation.fromValue = self.aircraftHeadingCursor.position
-            //            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
-            //                                        y: self.aircraftHeadingCursor.position.y)
-            //            //            print("diff: \(headingDifference * self.pixelPerUnit)")
-            //            self.aircraftHeadingCursor.add(animation, forKey:  "position")
-        }, completionHandler: {
-            let radians = self.degree2radian(degrees)
-            self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
-        })
     }
     
     func spinGimbalAttitudeLayer(angle degrees: CGFloat){
-//        print("Gimbal Roll cusor turning to : \(degrees)")
-        
-        CALayer.performWithAnimation({
             let radians = self.degree2radian(degrees)
             self.gimbalAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
-//            let animation =  CABasicAnimation(keyPath: "position")
-//            animation.fillMode = kCAFillModeRemoved
-//            animation.isRemovedOnCompletion = true
-//            animation.fromValue = self.aircraftHeadingCursor.position
-//            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
-//                                        y: self.aircraftHeadingCursor.position.y)
-//            //            print("diff: \(headingDifference * self.pixelPerUnit)")
-//            self.aircraftHeadingCursor.add(animation, forKey:  "position")
-        }, completionHandler: {
-            let radians = self.degree2radian(degrees)
-            self.gimbalAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
-        })
-        
     }
     
     func shiftGimbalAttitudePitchLadder(angle degrees: CGFloat){
 //        print("Pitch Ladder moving to : \(degrees)")
         let shiftPicels = UIConf.pixelPerUnit * degrees
-        CALayer.performWithoutAnimation ({
-            let animation = CABasicAnimation(keyPath: "position")
-            animation.fillMode = kCAFillModeForwards
-            animation.isRemovedOnCompletion = true
-            animation.fromValue = self.pitchLadder.position
-            let yPosition = self.aircraftAttiSpinLayer.position.y + shiftPicels
-            animation.toValue = CGPoint(x: self.pitchLadder.position.x, y : yPosition )
-            self.pitchLadder.add(animation, forKey: "position")
-//            print("pitchLadder y : \(self.pitchLadder.position.y)")
-        },completionHandler: {
             let yPosition = self.aircraftAttiSpinLayer.position.y + shiftPicels
             self.pitchLadder.position = CGPoint(x: self.pitchLadder.position.x, y : yPosition )
-        })
     }
     
     func moveAircraftReference(byRoll rollDegree: CGFloat, pitch pitchDegree: CGFloat){
         
         let shiftPicels = UIConf.pixelPerUnit * pitchDegree * -1
-        CALayer.performWithoutAnimation ({
-            let animation = CABasicAnimation(keyPath: "position")
-            animation.fillMode = kCAFillModeForwards
-            animation.isRemovedOnCompletion = true
-            animation.fromValue = self.aircraftReference.position
-            let yPosition = self.pitchLadder.frame.height.half() + shiftPicels
-            animation.toValue = CGPoint(x: self.pitchLadder.frame.width.half(), y : yPosition )
-            self.aircraftReference.add(animation, forKey: "position")
-//            print("pitchLadder y : \(self.aircraftReference.position.y)")
-        },completionHandler: {
             let yPosition = self.pitchLadder.frame.height.half() + shiftPicels
             self.aircraftReference.position = CGPoint(x: self.pitchLadder.frame.width.half(), y : yPosition )
-        })
-        
-        CALayer.performWithAnimation({
+
             let radians = self.degree2radian(rollDegree)
             self.aircraftReference.transform = CATransform3DMakeRotation(radians, 0.0, 0.0, 1.0)
-        }, completionHandler: {
-            let radians = self.degree2radian(rollDegree)
-            self.aircraftReference.transform = CATransform3DMakeRotation(radians, 0.0, 0.0, 1.0)
-        })
+
     }
     
     func moveSidesliperCursor(to sideSliperValue:NSNumber){

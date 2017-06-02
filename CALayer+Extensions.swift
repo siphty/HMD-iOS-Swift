@@ -9,6 +9,11 @@
 import UIKit
 
 extension CALayer {
+    
+//Properties
+    
+    
+    
 //Draw Section
     func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
         let line = CAShapeLayer()

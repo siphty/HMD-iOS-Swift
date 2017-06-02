@@ -30,7 +30,7 @@ class HMDAviationStatusRenderer: CALayer {
     
     func setup() {
         drawGroundSpeed()
-        drawAirSpeed()
+//        drawAirSpeed()
         
         switch operationMode {
         case .Home:
@@ -40,6 +40,10 @@ class HMDAviationStatusRenderer: CALayer {
             startUpdatingAirSpeedData()
             startUpdatingGroundSpeedData()
         }
+    }
+    
+    func unSetup() {
+        
     }
     
     func drawGroundSpeed() {

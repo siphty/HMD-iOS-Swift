@@ -30,6 +30,7 @@ class PilotRootViewController: DULDefaultLayoutViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeLeftVersatileViewController()
+        
 //        let hmdWidth = view.bounds.height - 60
 //        let hmdHeight = hmdWidth
 //        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,

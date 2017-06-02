@@ -379,6 +379,7 @@ NSString *const renderToScreenFS = SHADER_STRING
         [self.layer addSublayer:replicatorLayer];
     } else {
         [replicatorLayer removeFromSuperlayer];
+        eaglLayer.position = self.center;
         [self.layer addSublayer:eaglLayer];
     }
 }

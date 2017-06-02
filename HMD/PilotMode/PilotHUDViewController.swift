@@ -89,6 +89,8 @@ class PilotHUDViewController: UIViewController {
             DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
         }
         VideoPreviewer.instance().close()
+        
+        hmdLayer.unSetup()
     }
     
     func fetchCamera() -> DJICamera? {
@@ -114,10 +116,10 @@ extension PilotHUDViewController: DJIVideoFeedListener{
     func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData rawData: Data) {
         
         let videoData = rawData as NSData
-        var videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: videoData.length)
+        let videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: videoData.length)
         videoData.getBytes(videoBuffer, length: videoData.length)
         VideoPreviewer.instance().push(videoBuffer, length: Int32(videoData.length))
-        videoBuffer.deallocate(capacity: 1)
+//        videoBuffer.deallocate(capacity: videoData.length)
     }
     
 }

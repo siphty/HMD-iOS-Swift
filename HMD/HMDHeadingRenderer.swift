@@ -54,12 +54,26 @@ class HMDHeadingRenderer: CALayer {
     }
     
     
-    public override init(){
-        super.init()
-    }
-    
-    public init(_ mode: misc.operationMode){
-        super.init()
+//    public override init(){
+//        super.init()
+//    }
+//    
+//    public init(_ mode: misc.operationMode){
+//        super.init()
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//    }
+//
+//    override func layoutSublayers() {
+//        if !didSetup {
+//            didSetup = true
+//            setup()
+//        }
+//    }
+        
+    func setup () {
         switch operationMode {
         case misc.operationMode.Home:
             locationManager.requestWhenInUseAuthorization()
@@ -73,20 +87,7 @@ class HMDHeadingRenderer: CALayer {
             startUpdatingAircraftHeadingData()
             startUpdatingGimbalHeadingData()
         }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override func layoutSublayers() {
-        if !didSetup {
-            didSetup = true
-            setup()
-        }
-    }
         
-    func setup () {
         middleLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: 31)
         
         scrollLayer = {
@@ -176,9 +177,16 @@ class HMDHeadingRenderer: CALayer {
         }
     }
     
+    func unSetup(){
+        stopUpdatingGimbalHeadingData()
+        stopUpdatingAircraftHeadingData()
+        stopUpdatingPhoneHeadingData()
+        sublayers = nil
+    }
+    
     
     //Headings and Attitude data source
-    let aircraftHeadingKey = DJIFlightControllerKey(param: DJIFlightControllerParamCompassHeading)
+//    let aircraftHeadingKey = DJIFlightControllerKey(param: DJIFlightControllerParamCompassHeading)
     let aircraftAttitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamAttitude)
     let gimbalAttitudeKey = DJIGimbalKey(param: DJIGimbalParamAttitudeInDegrees)
     
@@ -202,16 +210,12 @@ class HMDHeadingRenderer: CALayer {
 //                                                                print(" body to gimbal degree: \(headingDifference)")
                                                                 self.shiftAircraftHeadingCursor(headingDifference)
         })
-        
     }
-    
     func stopUpdatingAircraftHeadingData(){
-        DJISDKManager.keyManager()?.stopListening(on: aircraftHeadingKey!, ofListener: self)
         DJISDKManager.keyManager()?.stopListening(on: aircraftAttitudeKey!, ofListener: self)
     }
     
     func startUpdatingGimbalHeadingData(){
-        
         DJISDKManager.keyManager()?.startListeningForChanges(on:gimbalAttitudeKey!,
                                                              withListener: self,
                                                              andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
@@ -231,7 +235,6 @@ class HMDHeadingRenderer: CALayer {
 //                                                                print("gimbalAttitude: \(newValue.debugDescription)")
         })
     }
-    
     func stopUpdatingGimbalHeadingData(){
         DJISDKManager.keyManager()?.stopListening(on: gimbalAttitudeKey!, ofListener: self)
     }
@@ -271,39 +274,20 @@ class HMDHeadingRenderer: CALayer {
                 self.headingScaleNorth.isHidden = false
                 self.headingScaleSouth.isHidden = true
                 headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                CALayer.performWithoutAnimation ({
-                    let animation = CABasicAnimation(keyPath: "position")  //TODO: Something must be wrong here, but the result is good for now.
-                    animation.fillMode = kCAFillModeForwards
-                    animation.isRemovedOnCompletion = true
-                    animation.fromValue = self.scrollLayer.frame
-                    animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
-                    self.scrollLayer.add(animation, forKey: "position")
-                    print("Facing North")
-                },completionHandler: {
-                    self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
-                    self.scrollLock = false
-                })
+                self.scrollLayer.frame = CGRect(x: headingPointX,
+                                                y: 0,
+                                                width: self.scrollLayer.frame.width,
+                                                height: self.scrollLayer.frame.height)
             case 90 ... 270:
                 
                 //Facing South//
                 self.headingScaleSouth.isHidden = false
                 self.headingScaleNorth.isHidden = true
                 headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                CALayer.performWithoutAnimation ({
-                    let animation = CABasicAnimation(keyPath: "position")
-                    animation.fillMode = kCAFillModeForwards
-                    animation.isRemovedOnCompletion = true
-                    animation.fromValue = self.scrollLayer.frame
-                    animation.toValue = CGRect(x: headingPointX,
-                                               y : 0,
-                                               width: self.scrollLayer.frame.width,
-                                               height: self.scrollLayer.frame.height)
-                    self.scrollLayer.add(animation, forKey: "position")
-                    print("Facing South")
-                },completionHandler: {
-                    self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
-                    self.scrollLock = false
-                })
+                self.scrollLayer.frame = CGRect(x: headingPointX,
+                                                y : 0,
+                                                width: self.scrollLayer.frame.width,
+                                                height: self.scrollLayer.frame.height)
             default:
                 print("Something is wrong")
             }
@@ -352,42 +336,19 @@ class HMDHeadingRenderer: CALayer {
                     headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
                 }
             }
-            CALayer.performWithAnimation({
-                let animation = CABasicAnimation(keyPath: "frame")
-                animation.fillMode = kCAFillModeForwards
-                animation.isRemovedOnCompletion = true
-                animation.fromValue = self.scrollLayer.frame
-                animation.toValue = CGRect(x: headingPointX,
-                                           y: 0,
-                                           width: self.scrollLayer.frame.width,
-                                           height: self.scrollLayer.frame.height)
-                
-                self.scrollLayer.add(animation, forKey: "frame")
-            },completionHandler: {
                 self.scrollLayer.frame = CGRect(x: headingPointX,
                                                 y: 0,
                                                 width: self.scrollLayer.frame.width,
                                                 height: self.scrollLayer.frame.height)
                 self.scrollLock = false
-            })
+//            })
             
         }
     }
     
     func shiftAircraftHeadingCursor(_ headingDifference: CGFloat){
-        CALayer.performWithAnimation({
-            let animation =  CABasicAnimation(keyPath: "position")
-            animation.fillMode = kCAFillModeRemoved
-            animation.isRemovedOnCompletion = true
-            animation.fromValue = self.aircraftHeadingCursor.position
-            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
-                                        y: self.aircraftHeadingCursor.position.y)
-//            print("diff: \(headingDifference * self.pixelPerUnit)")
-            self.aircraftHeadingCursor.add(animation, forKey:  "position")
-        }, completionHandler: {
             self.aircraftHeadingCursor.position = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
                                                       y: self.aircraftHeadingCursor.position.y)
-        })
     }
     
     //TODO: Update home direction based on drone location and given home location.
