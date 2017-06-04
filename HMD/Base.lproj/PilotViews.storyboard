@@ -223,7 +223,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Viewfinder"/>
                                 <connections>
-                                    <segue destination="uCj-Iv-bGd" kind="presentation" id="ECZ-Ia-RVX"/>
+                                    <segue destination="uCj-Iv-bGd" kind="show" id="ECZ-Ia-RVX"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -15,83 +15,67 @@ import VideoPreviewer
 class PilotHUDViewController: UIViewController {
     var isRecording : Bool!
     var hmdLayer = HMDLayer()
+    var isSettingMode:Bool = false
+    var previewerAdapter = VideoPreviewerSDKAdapter()
     
+    @IBOutlet weak var fpvView : UIView!
+    @IBOutlet weak var fpvTemView : UIView!
     @IBOutlet weak var returnButton: UIButton!
     
     @IBAction func close () {
         self.dismiss(animated: true) {
-            self.resetVideoPreview()
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupVideoPreviewer()
-        
-        let hmdWidth = view.bounds.height - 60
-        let hmdHeight = hmdWidth
-        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
-                                y: 30,
-                                width: hmdWidth,
-                                height: hmdHeight)
-        hmdLayer.borderWidth = 1
-        hmdLayer.borderColor = UIColor.yellow.cgColor
-        view.layer.addSublayer(hmdLayer)
+        VideoPreviewer.instance().start()
+        previewerAdapter = VideoPreviewerSDKAdapter.withDefaultSettings()
+        previewerAdapter.start()
+//        let hmdWidth = view.bounds.height - 60
+//        let hmdHeight = hmdWidth
+//        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
+//                                y: 30,
+//                                width: hmdWidth,
+//                                height: hmdHeight)
+//        hmdLayer.borderWidth = 1
+//        hmdLayer.borderColor = UIColor.yellow.cgColor
+//        view.layer.addSublayer(hmdLayer)
         view.bringSubview(toFront: returnButton)
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let camera: DJICamera? = fetchCamera()
+        if camera != nil {
+            camera!.delegate = self
+        }
+        VideoPreviewer.instance().enableHardwareDecode = false
+        VideoPreviewer.instance().setEnableBinocular(false)
+        VideoPreviewer.instance().setView(self.view)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-//        let camera = self.fetchCamera()
-//        if((camera != nil) && (camera?.delegate?.isEqual(self))!){
-//            camera?.delegate = nil
-//        }
-        self.resetVideoPreview()
+        VideoPreviewer.instance().close()
+        VideoPreviewer.instance().unSetView()
+        VideoPreviewer.instance().clearRender()
+        VideoPreviewer.instance().clearVideoData()
+        previewerAdapter.stop()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        self.resetVideoPreview()
+        VideoPreviewer.instance().close()
+        VideoPreviewer.instance().unSetView()
+        VideoPreviewer.instance().clearRender()
+        VideoPreviewer.instance().clearVideoData()
+        hmdLayer.unSetup()
     }
     
 
-    func setupVideoPreviewer() {
-        VideoPreviewer.instance().setEnableBinocular(false)
-        VideoPreviewer.instance().setView(self.view)
-        let product = DJISDKManager.product()
-        
-        //Use "SecondaryVideoFeed" if the DJI Product is A3, N3, Matrice 600, or Matrice 600 Pro, otherwise, use "primaryVideoFeed".
-        if ((product?.model == DJIAircraftModelNameA3)
-            || (product?.model == DJIAircraftModelNameN3)
-            || (product?.model == DJIAircraftModelNameMatrice600)
-            || (product?.model == DJIAircraftModelNameMatrice600Pro)){
-            DJISDKManager.videoFeeder()?.secondaryVideoFeed.add(self, with: nil)
-        }else{
-            DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
-        }
-        VideoPreviewer.instance().start()
-    }
-    
-    func resetVideoPreview() {
-        VideoPreviewer.instance().unSetView()
-        let product = DJISDKManager.product()
-        
-        //Use "SecondaryVideoFeed" if the DJI Product is A3, N3, Matrice 600, or Matrice 600 Pro, otherwise, use "primaryVideoFeed".
-        if ((product?.model == DJIAircraftModelNameA3)
-            || (product?.model == DJIAircraftModelNameN3)
-            || (product?.model == DJIAircraftModelNameMatrice600)
-            || (product?.model == DJIAircraftModelNameMatrice600Pro)){
-            DJISDKManager.videoFeeder()?.secondaryVideoFeed.remove(self)
-        }else{
-            DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
-        }
-        VideoPreviewer.instance().close()
-        
-        hmdLayer.unSetup()
-    }
     
     func fetchCamera() -> DJICamera? {
         let product = DJISDKManager.product()
@@ -108,42 +92,50 @@ class PilotHUDViewController: UIViewController {
         dateFormatter.dateFormat = "mm:ss"
         return(dateFormatter.string(from: date))
     }
+    
+   
+
 
 }
 
-extension PilotHUDViewController: DJIVideoFeedListener{
-    
-    func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData rawData: Data) {
-        
-        let videoData = rawData as NSData
-        let videoBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: videoData.length)
-        videoData.getBytes(videoBuffer, length: videoData.length)
-        VideoPreviewer.instance().push(videoBuffer, length: Int32(videoData.length))
-//        videoBuffer.deallocate(capacity: videoData.length)
-    }
-    
-}
 
 
 extension PilotHUDViewController: DJICameraDelegate{
-    func camera(_ camera: DJICamera, didUpdate cameraState: DJICameraSystemState) {
-        self.isRecording = cameraState.isRecording
-//        self.recordTimeLabel.isHidden = !self.isRecording
+    func camera(_ camera: DJICamera, didReceiveVideoData videoBuffer: UnsafeMutablePointer<UInt8>, length size: Int){
+        VideoPreviewer.instance().push(videoBuffer, length: Int32(size))
+    }
+    
+//    func camera(_ camera: DJICamera, didUpdate cameraState: DJICameraSystemState) {
+//        self.isRecording = cameraState.isRecording
+////        self.recordTimeLabel.isHidden = !self.isRecording
+////        
+////        self.recordTimeLabel.text = formatSeconds(seconds: cameraState.currentVideoRecordingTimeInSeconds)
 //        
-//        self.recordTimeLabel.text = formatSeconds(seconds: cameraState.currentVideoRecordingTimeInSeconds)
-        
-        if (self.isRecording == true) {
-//            self.recordButton.setTitle("Stop Record", for: UIControlState.normal)
-        } else {
-//            self.recordButton.setTitle("Start Record", for: UIControlState.normal)
+//        if (self.isRecording == true) {
+////            self.recordButton.setTitle("Stop Record", for: UIControlState.normal)
+//        } else {
+////            self.recordButton.setTitle("Start Record", for: UIControlState.normal)
+//        }
+//        
+//        //Update UISegmented Control's State
+//        if (cameraState.mode == DJICameraMode.shootPhoto) {
+////            self.workModeSegmentControl.selectedSegmentIndex = 0
+//        } else {
+////            self.workModeSegmentControl.selectedSegmentIndex = 1
+//        }
+//        
+//    }
+    
+    func camera(_ camera: DJICamera, didUpdate systemState: DJICameraSystemState) {
+        if systemState.mode == DJICameraMode.playback || systemState.mode == DJICameraMode.mediaDownload {
+            if !self.isSettingMode {
+                self.isSettingMode = true
+                camera.setMode(DJICameraMode.shootPhoto, withCompletion: {[weak self](error: Error?) -> Void in
+                    if error == nil {
+                        self?.isSettingMode = false
+                    }
+                })
+            }
         }
-        
-        //Update UISegmented Control's State
-        if (cameraState.mode == DJICameraMode.shootPhoto) {
-//            self.workModeSegmentControl.selectedSegmentIndex = 0
-        } else {
-//            self.workModeSegmentControl.selectedSegmentIndex = 1
-        }
-        
     }
 }
