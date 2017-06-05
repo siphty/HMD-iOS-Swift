@@ -19,7 +19,10 @@ class PilotModeViewController: UIViewController {
 //    @IBOutlet weak var bluetoothConnectorButton: UIButton!
     @IBOutlet weak var sdkVersionLabel: UILabel!
     @IBOutlet weak var bridgeModeLabel: UILabel!
-    
+    @IBAction func close () {
+        self.dismiss(animated: true) {
+        }
+    }
     @IBAction func ConnectButtonTouchUpInside(_ sender: Any) {
         guard let connectedKey = DJIProductKey(param: DJIParamConnection) else {
             NSLog("Error creating the connectedKey")

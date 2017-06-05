@@ -18,8 +18,8 @@ class PilotHUDViewController: UIViewController {
     var isSettingMode:Bool = false
     var previewerAdapter = VideoPreviewerSDKAdapter()
     
-    @IBOutlet weak var fpvView : UIView!
-    @IBOutlet weak var fpvTemView : UIView!
+//    @IBOutlet weak var fpvView : UIView!
+//    @IBOutlet weak var fpvTemView : UIView!
     @IBOutlet weak var returnButton: UIButton!
     
     @IBAction func close () {
@@ -33,15 +33,15 @@ class PilotHUDViewController: UIViewController {
         VideoPreviewer.instance().start()
         previewerAdapter = VideoPreviewerSDKAdapter.withDefaultSettings()
         previewerAdapter.start()
-//        let hmdWidth = view.bounds.height - 60
-//        let hmdHeight = hmdWidth
-//        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
-//                                y: 30,
-//                                width: hmdWidth,
-//                                height: hmdHeight)
-//        hmdLayer.borderWidth = 1
-//        hmdLayer.borderColor = UIColor.yellow.cgColor
-//        view.layer.addSublayer(hmdLayer)
+        let hmdWidth = view.bounds.height - 60
+        let hmdHeight = hmdWidth
+        hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
+                                y: 30,
+                                width: hmdWidth,
+                                height: hmdHeight)
+        hmdLayer.borderWidth = 1
+        hmdLayer.borderColor = UIColor.yellow.cgColor
+        view.layer.addSublayer(hmdLayer)
         view.bringSubview(toFront: returnButton)
     }
     
@@ -52,6 +52,8 @@ class PilotHUDViewController: UIViewController {
         if camera != nil {
             camera!.delegate = self
         }
+        previewerAdapter.start()
+        VideoPreviewer.instance().start()
         VideoPreviewer.instance().enableHardwareDecode = false
         VideoPreviewer.instance().setEnableBinocular(false)
         VideoPreviewer.instance().setView(self.view)

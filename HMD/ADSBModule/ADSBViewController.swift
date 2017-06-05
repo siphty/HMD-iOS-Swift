@@ -1,14 +1,14 @@
 //
-//  PilotMainViewController.swift
+//  ADSBViewController.swift
 //  HMD
 //
-//  Created by Yi JIANG on 3/6/17.
+//  Created by Yi JIANG on 6/6/17.
 //  Copyright © 2017 RobertYiJiang. All rights reserved.
 //
 
 import UIKit
 
-class PilotMainViewController: UIViewController {
+class ADSBViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

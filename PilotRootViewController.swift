@@ -51,6 +51,13 @@ class PilotRootViewController: DULDefaultLayoutViewController {
         VideoPreviewer.instance().clearVideoData()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        VideoPreviewer.instance().close()
+        VideoPreviewer.instance().unSetView()
+        VideoPreviewer.instance().clearRender()
+        VideoPreviewer.instance().clearVideoData()
+    }
     
 }
 
