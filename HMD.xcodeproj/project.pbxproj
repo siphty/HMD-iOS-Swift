@@ -18,6 +18,7 @@
 		A225299A1EDADEA800A971B8 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; };
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
 		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
+		A22CCC641EE6D48A00788DDF /* CGRect+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CCC631EE6D48A00788DDF /* CGRect+Init.swift */; };
 		A258C8301EDAF94600B3F499 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */; };
 		A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */; };
@@ -152,6 +153,7 @@
 		A22529971EDADCEA00A971B8 /* PilotRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PilotRootViewController.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
+		A22CCC631EE6D48A00788DDF /* CGRect+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Init.swift"; sourceTree = SOURCE_ROOT; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -625,6 +627,7 @@
 				A275B6861EC1E85B0034A0E9 /* CALayer */,
 				A2048AF41EC333B300C2413C /* Swift */,
 				A2048AF51EC333C800C2413C /* UIKit */,
+				A22CCC631EE6D48A00788DDF /* CGRect+Init.swift */,
 			);
 			name = HMDMiscellaneous;
 			sourceTree = "<group>";
@@ -933,6 +936,7 @@
 				A2A1AAE11EBF3CE5006970E1 /* HMDVerticalVelocityCursorLayer.swift in Sources */,
 				A2A1AACF1EBDD56D006970E1 /* HMDPitchLadderLayer.swift in Sources */,
 				A2DA58021EE25EDC0088E1A9 /* DemoTableViewController.m in Sources */,
+				A22CCC641EE6D48A00788DDF /* CGRect+Init.swift in Sources */,
 				A2A1AAE91EBF52A3006970E1 /* HMDSafetySetting.swift in Sources */,
 				A22529981EDADCEA00A971B8 /* PilotRootViewController.swift in Sources */,
 				A2A1AAB51EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift in Sources */,

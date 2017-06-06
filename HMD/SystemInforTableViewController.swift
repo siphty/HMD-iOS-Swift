@@ -25,7 +25,10 @@ class SystemInforTableViewController: UITableViewController {
     //Flight Control
     var flightControl: DJIFlightController?
     var flightControlKey: DJIFlightControllerKey?
-    
+    @IBAction func close () {
+        self.dismiss(animated: true) {
+        }
+    }
     //Gimbal
     var gimbal: DJIGimbal?
     

@@ -128,8 +128,18 @@ extension CALayer {
         mask = maskLayer
     }
     
+    func doMask(by imageMask: UIImage) {
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.bounds = CGRect(x: 0, y: 0, width: imageMask.size.width, height: imageMask.size.height)
+        maskLayer.contents = imageMask.cgImage
+        maskLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        mask = maskLayer
+    }
+    
     class func degree2radian(a:CGFloat)->CGFloat {
         let b = CGFloat(Double.pi) * a/180
         return b
     }
+    
 }

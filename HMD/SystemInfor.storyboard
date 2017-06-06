@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xJc-nI-neo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uMg-Ub-l2M">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseCell" textLabel="kOV-LE-HBT" detailTextLabel="sQk-cS-njG" style="IBUITableViewCellStyleSubtitle" id="ieq-ru-57q">
-                                <rect key="frame" x="0.0" y="56" width="667" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="667" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ieq-ru-57q" id="bGT-Ur-bRS">
                                     <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
@@ -52,6 +52,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="System Details" id="2hu-lm-7kC">
                         <barButtonItem key="backBarButtonItem" title="Main" id="f6v-CY-MRb"/>
+                        <barButtonItem key="leftBarButtonItem" image="Navigation left-arrow" style="plain" id="9cg-mO-Rvz">
+                            <connections>
+                                <action selector="close" destination="xJc-nI-neo" id="fZw-0g-LOx"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Connect" id="7OZ-WS-DEs">
                             <connections>
                                 <action selector="connectDeviceItemSelector:" destination="xJc-nI-neo" id="Bkz-jo-XdK"/>
@@ -68,6 +73,22 @@
             </objects>
             <point key="canvasLocation" x="-53" y="1625"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qae-RO-nMS">
+            <objects>
+                <navigationController id="uMg-Ub-l2M" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FLH-MV-hhD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xJc-nI-neo" kind="relationship" relationship="rootViewController" id="cMT-nI-omT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xlp-US-SKF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-753" y="1625"/>
+        </scene>
         <!--Compass-->
         <scene sceneID="ci8-mH-Qxl">
             <objects>
@@ -81,7 +102,7 @@
                                 <rect key="frame" x="0.0" y="28" width="667" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kyz-rZ-fHX" id="2mk-5X-0PH">
-                                    <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -97,4 +118,7 @@
             <point key="canvasLocation" x="748" y="151"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Navigation left-arrow" width="28" height="28"/>
+    </resources>
 </document>
