@@ -15,15 +15,20 @@ class DroneCockpitViewController: UIViewController {
     var isRecording : Bool!
     var hmdLayer = HMDLayer()
     var isSettingMode:Bool = false
-    var previewerAdapter = VideoPreviewerSDKAdapter()
-    var statusBarViewController = DULStatusBarViewController()
-    var dockViewController = DULDockViewController()
-    var sideBarViewController = DULSideBarViewController()
+    var previewerAdapter            = VideoPreviewerSDKAdapter()
+    
+    let statusBarViewController     = DULStatusBarViewController()
+    let dockViewController          = DULDockViewController()
+    let sideBarViewController       = DULSideBarViewController()
+    let leadingBarViewController    = DULLeadingBarViewController()
+    let trailingBarViewController   = DULTrailingBarViewController()
+    
 //    var preflightChecklistController = DUL
    
     @IBOutlet weak var statusBarContainingView: UIView!
     @IBOutlet weak var dockContainingView: UIView!
-    @IBOutlet weak var sideBarContainingView: UIView!
+    @IBOutlet weak var trailingBarContainingView: UIView!
+    @IBOutlet weak var leadingBarContainingView: UIView!
     
     @IBOutlet weak var returnButton: UIButton!
     @IBAction func close () {
@@ -37,6 +42,7 @@ class DroneCockpitViewController: UIViewController {
         previewerAdapter = VideoPreviewerSDKAdapter.withDefaultSettings()
         previewerAdapter.start()
         view.bringSubview(toFront: returnButton)
+        initialCockpitViewControllers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +56,6 @@ class DroneCockpitViewController: UIViewController {
         VideoPreviewer.instance().enableHardwareDecode = false
         VideoPreviewer.instance().setEnableBinocular(false)
         VideoPreviewer.instance().setView(self.view)
-        initialCockpitViewControllers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,6 +95,7 @@ class DroneCockpitViewController: UIViewController {
     
     func initialCockpitViewControllers(){
         // Status Top Bar
+        statusBarViewController.widget(with: DULPreFlightStatusWidget.self)
         addChildViewController(statusBarViewController)
         statusBarContainingView.addSubview(statusBarViewController.view)
         statusBarViewController.view.translatesAutoresizingMaskIntoConstraints = false;
@@ -99,9 +105,29 @@ class DroneCockpitViewController: UIViewController {
         statusBarViewController.view.trailingAnchor.constraint(equalTo:statusBarContainingView.trailingAnchor).isActive = true
         
         guard let djiLogoWidget = self.statusBarViewController.widget(at: 0) else {
-            return;
+            return
         }
         self.statusBarViewController.removeWidget(djiLogoWidget)
+        
+        guard let djiPreflightStatusWidget: DULWidget = statusBarViewController.widget(with: DULPreFlightStatusWidget.self) as? DULWidget else {
+            return
+        }
+        djiPreflightStatusWidget.action =  {
+           self.preflightStatusWidgetTouchUpInside()
+        }
+        
+        // Trailing Bar View
+        for childViewController in childViewControllers {
+            if childViewController is DULTrailingBarViewController {
+                let trailingBarViewController = childViewController as! DULTrailingBarViewController
+                guard let djiExposureSettignsWidget = trailingBarViewController.widget(with: DULExposureSettingsMenu.self) as? DULExposureSettingsMenu else{
+                    return
+                }
+                djiExposureSettignsWidget.action = {
+                    self.exposureSettingsWidgetTouchUpInside()
+                }
+            }
+        }
         
         // Dock View
         addChildViewController(dockViewController)
@@ -111,11 +137,41 @@ class DroneCockpitViewController: UIViewController {
         dockViewController.view.bottomAnchor.constraint(equalTo: dockContainingView.bottomAnchor).isActive = true
         dockViewController.view.leadingAnchor.constraint(equalTo: dockContainingView.leadingAnchor).isActive = true
         dockViewController.view.trailingAnchor.constraint(equalTo: dockContainingView.trailingAnchor).isActive = true
-        
-        //Side Bar View
+        guard let djiDushboardWidget = dockViewController.widget(with: DULDashboardWidget.self) as? DULDashboardWidget else {
+            return
+        }
+        for subview in djiDushboardWidget.subviews{
+            if subview is DULCompassWidget {
+                guard let djiCompassWidget = subview as? DULCompassWidget else{
+                    return
+                }
+                djiCompassWidget.action = {
+                    self.compassWidgetTouchUpInside()
+                }
+                
+            }
+        }
+//        guard let djiCompassWidget = djiDushboardWidget.widget(with: DULCompassWidget.self) as? DULCompassWidget else {
+//            return
+//        }
+//        djiCompassWidget.action = {
+//            self.compassWidgetTouchUpInside()
+//        }
         
     }
-
+    
+    func preflightStatusWidgetTouchUpInside(){
+        //TODO: Show preflight view controller
+        print("📮preflightStatus been touched")
+    }
+    
+    func compassWidgetTouchUpInside(){
+        print("🖇Compass been touched")
+    }
+    
+    func exposureSettingsWidgetTouchUpInside(){
+        print("📌 exposureSettings  been touched")
+    }
 }
 
 

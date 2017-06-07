@@ -361,8 +361,8 @@ NSString *const renderToScreenFS = SHADER_STRING
         replicatorLayer = [CAReplicatorLayer layer];
         replicatorLayer.bounds = self.bounds;
         replicatorLayer.position = self.center;
-        replicatorLayer.borderColor = [UIColor yellowColor].CGColor;
-        replicatorLayer.borderWidth = 2;
+        replicatorLayer.borderColor = [UIColor blackColor].CGColor;
+        replicatorLayer.borderWidth = 1;
         replicatorLayer.instanceCount = 2;
         [replicatorLayer setInstanceTransform:CATransform3DMakeTranslation(self.bounds.size.width/2, 0, 0)];
         

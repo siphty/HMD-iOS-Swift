@@ -21,6 +21,9 @@
         <array key="Gotham-MediumItalic.otf">
             <string>Gotham-MediumItalic</string>
         </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Drone-->
@@ -224,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHG-mg-mmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1282.3088455772115" y="2052"/>
+            <point key="canvasLocation" x="-1291" y="2105"/>
         </scene>
         <!--Photos-->
         <scene sceneID="P11-cu-2F9">
@@ -904,7 +907,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bh-pd-9wJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1962" y="2052"/>
+            <point key="canvasLocation" x="-1988" y="2106"/>
         </scene>
         <!--ADS-B-->
         <scene sceneID="906-ON-ftq">
@@ -941,7 +944,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ge7-YR-PBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2687.4062968515746" y="2052"/>
+            <point key="canvasLocation" x="-2687" y="2105"/>
         </scene>
         <!--Pilot-->
         <scene sceneID="fJ1-Ym-a3z">

@@ -33,18 +33,15 @@ class PilotHUDViewController: UIViewController {
         VideoPreviewer.instance().start()
         previewerAdapter = VideoPreviewerSDKAdapter.withDefaultSettings()
         previewerAdapter.start()
-        let hmdWidth = view.bounds.height - 60
+        let hmdWidth = view.bounds.height - 10
         let hmdHeight = hmdWidth
         hmdLayer.frame = CGRect(x: (view.bounds.width - hmdWidth) / 2,
-                                y: 30,
+                                y: 5,
                                 width: hmdWidth,
                                 height: hmdHeight)
-        hmdLayer.borderWidth = 1
-        hmdLayer.borderColor = UIColor.yellow.cgColor
         view.layer.addSublayer(hmdLayer)
         view.bringSubview(toFront: returnButton)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -94,39 +91,12 @@ class PilotHUDViewController: UIViewController {
         dateFormatter.dateFormat = "mm:ss"
         return(dateFormatter.string(from: date))
     }
-    
-   
-
-
 }
-
-
 
 extension PilotHUDViewController: DJICameraDelegate{
     func camera(_ camera: DJICamera, didReceiveVideoData videoBuffer: UnsafeMutablePointer<UInt8>, length size: Int){
         VideoPreviewer.instance().push(videoBuffer, length: Int32(size))
     }
-    
-//    func camera(_ camera: DJICamera, didUpdate cameraState: DJICameraSystemState) {
-//        self.isRecording = cameraState.isRecording
-////        self.recordTimeLabel.isHidden = !self.isRecording
-////        
-////        self.recordTimeLabel.text = formatSeconds(seconds: cameraState.currentVideoRecordingTimeInSeconds)
-//        
-//        if (self.isRecording == true) {
-////            self.recordButton.setTitle("Stop Record", for: UIControlState.normal)
-//        } else {
-////            self.recordButton.setTitle("Start Record", for: UIControlState.normal)
-//        }
-//        
-//        //Update UISegmented Control's State
-//        if (cameraState.mode == DJICameraMode.shootPhoto) {
-////            self.workModeSegmentControl.selectedSegmentIndex = 0
-//        } else {
-////            self.workModeSegmentControl.selectedSegmentIndex = 1
-//        }
-//        
-//    }
     
     func camera(_ camera: DJICamera, didUpdate systemState: DJICameraSystemState) {
         if systemState.mode == DJICameraMode.playback || systemState.mode == DJICameraMode.mediaDownload {
