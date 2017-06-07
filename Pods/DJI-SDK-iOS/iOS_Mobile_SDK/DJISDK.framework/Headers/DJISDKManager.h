@@ -5,7 +5,7 @@
 //  Copyright © 2015, DJI. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <DJISDK/DJISDKFoundation.h>
 
 
 /**
@@ -22,8 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @class DJIKeyManager;
 @class DJIFlyZoneManager;
 @class DJIMissionControl;
-@class DJIDiagnosticsManager;
 @class DJIVideoFeeder;
+@class DJIUserAccountManager;
+@class DJIAppActivationManager; 
 
 
 /**
@@ -108,6 +109,23 @@ NS_ASSUME_NONNULL_BEGIN
  *  must be successful before the SDK can be used with a DJI product.
  */
 @interface DJISDKManager : NSObject
+
+
+/**
+ *  Used to manage the DJI account of users. Login is required by
+ *  `DJIFlyZoneManager`  and `DJIAppActivationManager`.
+ *  
+ *  @return A instance of `DJIUserAccountManager`.
+ */
++ (DJIUserAccountManager *)userAccountManager;
+
+
+/**
+ *  Used to check the states related to the App Activation.
+ *  
+ *  @return A instance of `DJIAppActivationManager`.
+ */
++ (DJIAppActivationManager *)appActivationManager;
 
 
 /**

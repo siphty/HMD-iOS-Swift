@@ -117,6 +117,17 @@ extern NSString *const DJIAircraftModelNamePhantom4Pro;
 extern NSString *const DJIAircraftModelNameInspire2;
 
 
+/**
+ *  The aircraft's model name is Matrice 200.
+ */
+extern NSString *const DJIAircraftModelNameMatrice200;
+
+
+/**
+ *  The aircraft's model name is Phantom 4 Advanced.
+ */
+extern NSString *const DJIAircraftModelNamePhantom4Advanced;
+
 
 /**
  *  Aircraft product class, which includes basic product information and access to

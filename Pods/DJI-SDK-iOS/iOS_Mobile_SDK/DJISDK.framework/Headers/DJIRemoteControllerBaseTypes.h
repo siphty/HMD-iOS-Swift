@@ -27,7 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
  *  aircraft), master, slave, or unknown.
  */
 typedef NS_ENUM (uint8_t, DJIRCMode){
- 
+
+
+    /**
+     *  Remote Controller is not connected to another Remote Controller.
+     */
+    DJIRCModeNormal,
+
 
     /**
      *  Remote Controller is a master (will route a connected slave Remote
@@ -41,15 +47,11 @@ typedef NS_ENUM (uint8_t, DJIRCMode){
      */
     DJIRCModeSlave,
 
-    /**
-     *  Remote Controller is not connected to another Remote Controller.
-     */
-    DJIRCModeNormal,
 
     /**
      *  The Remote Controller's mode is unknown.
      */
-    DJIRCModeUnknown,
+    DJIRCModeUnknown = 0xFF,
 };
 
 /*********************************************************************************/
@@ -365,7 +367,7 @@ typedef NS_ENUM (uint8_t, DJIRCConnectToMasterResult){
 
     /**
      *  The slave Remote Controller's attempt to join the master Remote Controller was
-     *  unsuccesful because the master  Remote Controller is at the maximum number of
+     *  unsuccessful because the master  Remote Controller is at the maximum number of
      *  slaves it can have.
      */
     DJIRCConnectToMasterResultMaximumCapacity,
@@ -726,7 +728,7 @@ typedef NS_ENUM(NSUInteger, DJIRCFiveDButtonDirection) {
 
 /**
  *  State of the 5D button on the remote controller. Vertical movement, horizontal
- *  movment and if it is pressed are  not exclusive.
+ *  movement and if it is pressed are  not exclusive.
  */
 typedef struct{
     
@@ -953,7 +955,7 @@ typedef NS_ENUM (uint8_t, DJIRCChargeMobileMode){
 
     /**
      *  The remote controller charges the mobile device in an intelligent mode: The
-     *  remote controller starts charging  when the mobile device's battery is lower
+     *  remote controller starts charging  when the mobile device's battery is lowered
      *  then 20% and stops charging when the mobile device's battery is above 50%.
      */
     DJIRCChargeMobileModeIntelligent,

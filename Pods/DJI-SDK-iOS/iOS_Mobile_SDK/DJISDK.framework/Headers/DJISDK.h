@@ -24,6 +24,18 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 /*********************************************************************************/
 #import <DJISDK/DJISDKManager.h>
 #import <DJISDK/DJIBluetoothProductConnector.h>
+
+/*********************************************************************************/
+#pragma mark - App Activation
+/*********************************************************************************/
+#import <DJISDK/DJIAppActivationSystemTypes.h>
+#import <DJISDK/DJIAppActivationManager.h>
+
+/*********************************************************************************/
+#pragma mark - User Account
+/*********************************************************************************/
+#import <DJISDK/DJIUserAccountManager.h>
+
 /*********************************************************************************/
 #pragma mark - Products
 /*********************************************************************************/
@@ -66,7 +78,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJILandingGearStructs.h>
 #import <DJISDK/DJIFlightControllerBaseTypes.h>
 #import <DJISDK/DJISimulatorState.h>
-#import <DJISDK/DJISDKLocation.h>
+#import <DJISDK/DJIAirSenseSystemInformation.h>
 
 //-----------------------------------------------------------------
 #pragma mark RemoteController
@@ -211,6 +223,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #pragma mark - GEO
 /*********************************************************************************/
 #import <DJISDK/DJIFlyZoneInformation.h>
+#import <DJISDK/DJIIndividualUnlockZone.h>
 #import <DJISDK/DJIFlyZoneManager.h>
 /*********************************************************************************/
 #pragma mark - Categories

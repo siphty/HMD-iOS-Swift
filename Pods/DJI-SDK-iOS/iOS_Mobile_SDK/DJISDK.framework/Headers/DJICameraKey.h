@@ -91,6 +91,8 @@ EXTERN_KEY NSString *const DJICameraParamFileIndexMode;
 EXTERN_KEY NSString *const DJICameraParamHDLiveViewEnabled;
 EXTERN_KEY NSString *const DJICameraParamOrientation;
 EXTERN_KEY NSString *const DJICameraParamDefogEnabled;
+EXTERN_KEY NSString *const DJICameraParamVisionStablizationEnabled;
+EXTERN_KEY NSString *const DJICameraParamMediaFileCustomInformation;
 
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Digital zoom
@@ -143,7 +145,6 @@ EXTERN_KEY NSString *const DJICameraParamFocusRingValueUpperBound;
 EXTERN_KEY NSString *const DJICameraParamFocusRingValue;
 EXTERN_KEY NSString *const DJICameraParamLensFocusStatus;
 EXTERN_KEY NSString *const DJICameraParamIsFocusAssistantWorking;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Save/load settings

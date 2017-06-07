@@ -57,7 +57,7 @@ typedef NS_ENUM (uint8_t, DJIWiFiFrequencyBand){
 
 
 /**
- *  WiFi magnetic interferrence - as measuremed by Osmo, Phantom 3 4K and Phantom 3
+ *  WiFi magnetic interferrence - as measured by Osmo, Phantom 3 4K and Phantom 3
  *  Standard.
  */
 typedef NS_ENUM (uint8_t, DJIWiFiMagneticInterferenceLevel) {
@@ -421,7 +421,7 @@ typedef NS_ENUM (uint8_t, DJILightbridgeSecondaryVideoFormat) {
 
 
 /**
- *  PIP (Picture In Picture) position on the screen reltaive to the main subject
+ *  PIP (Picture In Picture) position on the screen relative to the main subject
  *  video.
  */
 typedef NS_ENUM (uint8_t, DJILightbridgePIPPosition) {

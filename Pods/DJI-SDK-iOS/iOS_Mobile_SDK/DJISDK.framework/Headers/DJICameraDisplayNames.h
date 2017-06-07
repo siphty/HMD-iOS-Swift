@@ -101,9 +101,11 @@ extern NSString *const DJICameraDisplayNameX4S;
  *  The display name for X5S camera.
  */
 extern NSString *const DJICameraDisplayNameX5S;
+
+
 /**
- *  The display name for FF camera.
+ *  The display name for Phantom 4 Advanced camera.
  */
-extern NSString *const DJICameraDisplayNameFF;
+extern NSString *const DJICameraDisplayNamePhantom4AdvancedCamera;
 
 #endif /* DJICameraDisplayNames_h */

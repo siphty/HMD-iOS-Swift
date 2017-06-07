@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "DJISDKFoundation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -529,11 +530,32 @@ typedef NS_ENUM(NSUInteger, DJIFlyZoneDatabaseState) {
  *  NFZ fly zone. If populated, this fly zone is a Poly fly zone and the sub fly
  *  zone information  will take precedence over information in
  *  `DJIFlyZoneInformation`. `DJIFlyZoneInformation` should only be used for fly
- *  zone idenifying information.
+ *  zone identifying information.
  *  
  *  @return An array of `DJISubFlyZoneInformation` objects.
  */
 @property(nonatomic, readonly, nullable) NSArray<DJISubFlyZoneInformation *> *subFlyZones;
+
+
+/**
+ *  When `isIndividualUnlockZoneSupported` is `YES`, unlocked fly zones  can be
+ *  disabled. This is useful if the aircraft is shared between users.
+ *  
+ *  @param enabled `YES` to enable the unlocked fly zone.
+ *  @param completion `completion block` to receive the result.
+ */
+-(void)setUnlockingEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  `YES` if the unlocked fly zone is enabled. This method can only be used when
+ *  `isIndividualUnlockZoneSupported` is `YES`.
+ *  
+ *  @param enabled `YES` if the visual stabilization is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+-(void)getUnlockingEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
 
 @end
 

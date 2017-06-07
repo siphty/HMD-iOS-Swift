@@ -21,7 +21,7 @@
 
 
 /**
- *  The anglular distance in degrees the aircraft will travel in the  orbit of the
+ *  The angular distance in degrees the aircraft will travel in the  orbit of the
  *  hotpoint. The default is 360 degrees.
  */
 @property(nonatomic, assign) float surroundingAngle;
@@ -29,7 +29,7 @@
 
 /**
  *  Initialize with hotpoint mission. The Hotpoint action  will automatically stop
- *  after one complete orbit (360 degress).
+ *  after one complete orbit (360 degrees).
  *  
  *  @param mission An object of `DJIHotpointMission`.
  */

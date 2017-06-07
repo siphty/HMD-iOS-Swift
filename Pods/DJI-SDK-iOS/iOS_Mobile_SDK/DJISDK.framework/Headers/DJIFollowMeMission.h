@@ -61,7 +61,7 @@ typedef NS_ENUM (uint8_t, DJIFollowMeHeading){
 /**
  *  The aircraft's heading during the mission.
  *  
- *  @return A enum value of `DJIFollowMeHeading`.
+ *  @return An enum value of `DJIFollowMeHeading`.
  */
 @property(nonatomic, assign) DJIFollowMeHeading heading;
 

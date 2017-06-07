@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Required behavior of elements that run in a Timeline.
- *   In addition to implmenting this behavior, a Timeline element must communicate
+ *   In addition to implementing this behavior, a Timeline element must communicate
  *  with Mission Control to let it know its state. Mission Control will wait for
  *  updates from the Timeline element before it itself progresses. Refer to
  *  `DJIMissionControlTimelineElementFeedback` for the methods Mission Control
@@ -401,7 +401,7 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  *  
  *  @param element A `DJIMissionControlTimelineElement` element.
  *  
- *  @return The first error if one occured.
+ *  @return The first error if one occurred.
  */
 - (NSError * _Nullable)scheduleElement:(id <DJIMissionControlTimelineElement>)element;
 
@@ -411,7 +411,7 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  *  
  *  @param elementsArray An array of `DJIMissionControlTimelineElement` elements.
  *  
- *  @return The first error if one occured. <code>userInfo</code> will hold a dictionary with two keys: @"element" -> holding the elemnt involved in the error and @"index" -> the index in the array for the element.
+ *  @return The first error if one occurred. <code>userInfo</code> will hold a dictionary with two keys: @"element" -> holding the elemnt involved in the error and @"index" -> the index in the array for the element.
  */
 - (NSError * _Nullable)scheduleElements:(NSArray <id <DJIMissionControlTimelineElement>> *)elementsArray;
 
@@ -459,7 +459,7 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  *  
  *  @return Element count.
  */
-- (NSUInteger)scheduledCount;
+- (NSUInteger)scheduledElementsCount;
 
 
 /**
@@ -467,6 +467,29 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  */
 - (void)unscheduleEverything;
 
+
+/**
+ *  Adds triggers to be living along the whole timeline.
+ *  
+ *  @param triggers An object of `DJIMissionTrigger`.
+ */
+- (void)scheduleTriggers:(NSArray <DJIMissionTrigger *> *)triggers;
+
+
+/**
+ *  Clears all the triggers living along the whole timeline.
+ *  
+ *  @param triggers An object of `DJIMissionTrigger`.
+ */
+- (void)unscheduleTriggers:(NSArray <DJIMissionTrigger *> *)triggers;
+
+
+/**
+ *  Return the triggers' count living along the whole timeline.
+ *  
+ *  @return An NSUInteger value of scheduled Triggers Count.
+ */
+- (NSUInteger)scheduledTriggersCount;
 
 /*********************************************************************************/
 #pragma mark - Listener Progress

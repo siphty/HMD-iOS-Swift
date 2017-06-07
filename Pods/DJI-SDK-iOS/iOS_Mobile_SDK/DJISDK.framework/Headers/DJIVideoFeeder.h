@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
      *  Main Camera.
      */
     DJIVideoFeedPhysicalSourceMainCamera,
-
+    
 
     /**
      *  FPV Camera.
@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
     /**
      *  Unknown video channel.
      */
-    DJIVideoFeedPhysicalSourceUnknown
+    DJIVideoFeedPhysicalSourceUnknown = 0xFF,
 };
 
 @class DJIVideoFeed;

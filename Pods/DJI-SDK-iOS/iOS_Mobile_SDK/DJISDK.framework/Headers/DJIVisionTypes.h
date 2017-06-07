@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import "DJISDKFoundation.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 
 /**
  *  Position of the sensor on the aircraft.
@@ -297,3 +299,5 @@ typedef NS_ENUM (NSInteger, DJIVisionLandingProtectionState){
 @property (nonatomic, readonly) DJIVisionLandingProtectionState landingProtectionState;
 
 @end
+
+NS_ASSUME_NONNULL_END

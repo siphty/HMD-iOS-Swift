@@ -40,7 +40,7 @@ typedef NS_ENUM (NSUInteger, DJICameraMode){
 
     /**
      *  Playback mode. In this mode, the user can preview photos and videos, and can
-     *  delete files. It is supported by  Phantom 3 Profressional camera, X3, X5 and X5R
+     *  delete files. It is supported by  Phantom 3 Professional camera, X3, X5 and X5R
      *  cameras on aircraft and Phantom 4 camera. Playback mode is not  supported by
      *  Z30, X5S, X4S, Phantom 4 Pro, Mavic Pro, Phantom 3 Standard, Phantom 3 Advanced,
      *  Phantom 3 4K and  Osmo series.
@@ -157,13 +157,13 @@ typedef NS_ENUM (NSUInteger, DJICameraShootPhotoMode){
  *  Camera exposure modes. The default value is `DJICameraExposureModeProgram`. The
  *  different exposure  modes define whether Aperture, Shutter Speed, ISO can be set
  *  automatically or manually. Exposure compensation can  be changed in all modes
- *  except Manual mode where it is not settable. <b>X5, X5R, Phantom 4 Pro camera,
- *  X4S and  X5S:</b>
+ *  except Manual mode where it is not settable.
+ *  X5, X5R, Phantom 4 Pro camera, X4S and  X5S:
  *   Program Mode:       Shutter: Auto     Aperture: Auto     ISO: Manual or Auto
  *   Shutter Priority:   Shutter: Manual   Aperture: Auto     ISO: Manual or Auto
  *   Aperture Priority:  Shutter: Auto     Aperture: Manual    ISO: Manual or Auto
  *   Manual Mode:        Shutter: Manual   Aperture: Manual   ISO: Manual
- *   <b>All  other cameras:</b>
+ *  All  other cameras:</b>
  *   Program Mode:       Shutter: Auto     Aperture: Fixed    ISO: Auto
  *   Shutter Priority:    Shutter: Manual   Aperture: Fixed    ISO: Auto
  *   Aperture Priority:  N/A
@@ -564,7 +564,7 @@ typedef NS_ENUM (NSUInteger, DJICameraPhotoFileFormat){
     /**
      *  The camera's photo storage format is TIFF Linear Low. In this mode each pixel is
      *  14 bits and linearly  proportional with temperature, covering a high dynamic
-     *  range of temperture which results in a lower  temperature resolution. Supported
+     *  range of temperature which results in a lower  temperature resolution. Supported
      *  only by Zenmuse XT containing Advanced Radiometry capabilities with  firmware
      *  version 1.17.1.80 or lower. For newer firmwares, the temperature resolution
      *  preference is coupled  with the thermal gain mode.
@@ -575,10 +575,10 @@ typedef NS_ENUM (NSUInteger, DJICameraPhotoFileFormat){
     /**
      *  The camera's photo storage format is TIFF Linear High. In this mode each pixel
      *  is 14 bits and linearly  proportional with temperature, covering a low dynamic
-     *  range of temperture which results in a higher  temperature resolution. Supported
-     *  only by Zenmuse XT containing Advanced Radiometry capabilities with  firmware
-     *  version 1.17.1.80 or lower. For newer firmwares, the temperature resolution
-     *  preference is  coupled with the thermal gain mode.
+     *  range of temperature which results in a higher  temperature resolution.
+     *  Supported only by Zenmuse XT containing Advanced Radiometry capabilities with
+     *  firmware version 1.17.1.80 or lower. For newer firmwares, the temperature
+     *  resolution preference is  coupled with the thermal gain mode.
      */
     DJICameraPhotoFileFormatTIFF14BitLinearHighTempResolution,
  
@@ -678,14 +678,14 @@ typedef NS_ENUM (NSUInteger, DJICameraPhotoBurstCount){
      *  camera takes a photo.
      */
     DJICameraPhotoBurstCount5 = 5,
- 
+
 
     /**
      *  The camera burst shoot count is set to capture 7 pictures at once when the
      *  camera takes a photo. It is not  supported by Z30 camera.
      */
     DJICameraPhotoBurstCount7 = 7,
- 
+
 
     /**
      *  The camera burst shoot count is set to capture 10 pictures at once when the
@@ -693,7 +693,7 @@ typedef NS_ENUM (NSUInteger, DJICameraPhotoBurstCount){
      *  Pro camera.
      */
     DJICameraPhotoBurstCount10 = 10,
- 
+
 
     /**
      *  The camera burst shoot count is set to capture 14 pictures at once when the
@@ -1308,12 +1308,12 @@ typedef NS_ENUM (NSUInteger, DJICameraISO){
      *  The ISO value is set to 25600.
      */
     DJICameraISO25600 = 0x09,
- 
+
 
     /**
      *  The ISO value is set to Unknown value.
      */
-    DJICameraISOUnknown = 0xFF
+    DJICameraISOUnknown = 0xFFFF,
 };
 
 /*********************************************************************************/
@@ -1566,7 +1566,7 @@ typedef NS_ENUM (NSUInteger, DJICameraWhiteBalancePreset){
      *  white balance value, user can set a  specific value for the color temperature.
      */
     DJICameraWhiteBalancePresetCustom = 0x06,
- 
+
 
     /**
      *  The camera's white balance is unknown.
@@ -1851,12 +1851,12 @@ typedef NS_ENUM (NSUInteger, DJICameraExposureCompensation){
      *  The camera's exposure compensation is +5.0ev.
      */
     DJICameraExposureCompensationP50,
- 
+
 
     /**
      *  The camera's exposure compensation is unknown.
      */
-    DJICameraExposureCompensationUnknown = 0xFF
+    DJICameraExposureCompensationUnknown = 0xFFFF,
 };
 
 /*********************************************************************************/
@@ -2699,7 +2699,7 @@ typedef NS_ENUM(NSUInteger, DJICameraThermalCustomExternalSceneSettingsProfile) 
 
 
 /**
- *  Flat-field correciton mods.
+ *  Flat-field correction mods.
  */
 typedef NS_ENUM(NSUInteger, DJICameraThermalFFCMode) {
  
@@ -3244,7 +3244,7 @@ typedef NS_ENUM (NSUInteger, DJICameraDigitalFilter){
      *  The digital filter is set to inverse.
      */
     DJICameraDigitalFilterInverse,
- 
+
 
     /**
      *  The digital filter is set to reminiscence.

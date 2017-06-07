@@ -270,7 +270,7 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
 
 
 /**
- *  Returns the current valid range for camera's photo apsect ratio (See
+ *  Returns the current valid range for camera's photo aspect ratio (See
  *  `DJICameraPhotoAspectRatio`).  Returns `nil` if current camera does not support
  *  any photo aspect ratio value or the camera is disconnected.
  *  

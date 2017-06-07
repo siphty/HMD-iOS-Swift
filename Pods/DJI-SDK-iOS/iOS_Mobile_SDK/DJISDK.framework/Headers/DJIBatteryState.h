@@ -390,7 +390,7 @@ typedef NS_ENUM (uint8_t, DJIBatteryPairingState){
 
 /**
  *  `YES` if one of the batteries in the group has damaged cells. When `YES`, the
- *  aircraft is not allow to take off.
+ *  aircraft is not allowed to take off.
  */
 @property(nonatomic, readonly) BOOL isCellDamaged;
 

@@ -87,5 +87,4 @@ typedef NS_ENUM (uint8_t, DJILandingGearMode){
     DJILandingGearModeUnknown,
 };
 
-
 #endif /* DJILandingGearStructs_h */

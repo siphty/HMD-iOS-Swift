@@ -53,9 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  Updated power for interference signals with frequencies in the 2.4 GHz (2400MHz
  *  to 2482 MHz) frequency band  incident on the remote controller. Note, measuring
  *  the interference reduces effective data rate as the radio  is spending time
- *  listening to frequencies outside of the communiation channel. Interference
+ *  listening to frequencies outside of the communication channel. Interference
  *  measurements will  only be made if the `delegate` property in OcuSyncLink is
- *  assigned to a class that implements this delgate method.
+ *  assigned to a class that implements this delegate method.
  *  
  *  @param ocuSyncLink The OcuSync link.
  *  @param interference The updated interference information. The elements in the array  of `DJIOcuSyncFrequencyInterference` objects each hold interference information about a small  part of the frequency band. Elements are sorted by increasing frequency.
@@ -129,7 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  can be centered at 2405.5 MHz, 2406.5 MHz and every 1  MHz to 2477.5 MHz. For a
  *  20 MHz bandwidth, channel center can be at 2410.5 MHz to 2472.5 MHz in 1 MHz
  *  steps. The  channel location within the band is specified using the Channel
- *  Number. Channel Number is defned as the integer  of 0.5 MHz less than the
+ *  Number. Channel Number is defined as the integer  of 0.5 MHz less than the
  *  channel center frequency. E.g. Channel Number 2406 represents the 10 MHz channel
  *  centered  at 2406.5 MHz (this is only for the 10 MHz bandwidth as 20 MHz
  *  bandwidth channels start at 2410.5 MHz). Channel  Number 2450 represents the
@@ -151,7 +151,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  OcuSync channel can be centered at 2405.5 MHz, 2406.5 MHz and every 1 MHz to
  *  2477.5 MHz. For a  20 MHz bandwidth, channel center can be at 2410.5 MHz to
  *  2472.5 MHz in 1 MHz steps. The channel location within  the band is specified
- *  using the Channel Number. Channel Number is defned as the integer of 0.5 MHz
+ *  using the Channel Number. Channel Number is defined as the integer of 0.5 MHz
  *  less than the  channel center frequency. E.g. Channel Number 2406 represents the
  *  10 MHz channel centered at 2406.5 MHz (this is  only for the 10 MHz bandwidth as
  *  20 MHz bandwidth channels start at 2410.5 MHz). Channel Number 2450 represents
@@ -172,7 +172,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  OcuSync channel can be centered at 2405.5 MHz, 2406.5 MHz and every 1 MHz to
  *  2477.5 MHz. For a  20 MHz bandwidth, channel center can be at 2410.5 MHz to
  *  2472.5 MHz in 1 MHz steps. The channel location within  the band is specified
- *  using the Channel Number. Channel Number is defned as the integer of 0.5 MHz
+ *  using the Channel Number. Channel Number is defined as the integer of 0.5 MHz
  *  less than the  channel center frequency. E.g. Channel Number 2406 represents the
  *  10 MHz channel centered at 2406.5 MHz (this is  only for the 10 MHz bandwidth as
  *  20 MHz bandwidth channels start at 2410.5 MHz). Channel Number 2450 represents

@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, DJIWaypointMissionState) {
 
     /**
-     *  The state of the operator is unknown. It is the inital state when the operator
+     *  The state of the operator is unknown. It is the initial state when the operator
      *  is just created.
      */
     DJIWaypointMissionStateUnknown = -1,

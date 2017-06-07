@@ -203,7 +203,7 @@ typedef NS_ENUM (NSUInteger, DJIWaypointActionType){
 
 
 /**
- *  Determines whether the aircraft will turn clockwise or anitclockwise when
+ *  Determines whether the aircraft will turn clockwise or anticlockwise when
  *  changing its heading.
  */
 @property(nonatomic) DJIWaypointTurnMode turnMode;

@@ -190,7 +190,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Media Manager is used for interaction when camera is in
  *  `DJICameraModeMediaDownload`.  The user can only access the manager when
  *  `isMediaDownloadModeSupported` returns  `YES`. @return The `DJIMediaManager`
- *  object if the aircraft supports medialist feature.  Otherwise, returns `nil`.
+ *  object if the aircraft supports media list feature.  Otherwise, returns `nil`.
  */
 @property(nonatomic, readonly) DJIMediaManager *_Nullable mediaManager;
 
@@ -288,10 +288,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  modes).Also,
  *    Precondition:
  *   1. Camera must be in ShootPhoto mode. Check the enum named CameraShootPhotoMode
- *  in  DJICameraSettingsDef to find all possible camera capture modes.
- *   <b>For thermal imaging camera,  Single photo can be taken while recording
- *  video.</> 2. The SD card state should be checked before this  method is used to
- *  ensure sufficient space exists.
+ *  in  DJICameraSettingsDef to find all possible camera capture modes. For thermal
+ *  imaging camera,  Single photo can be taken while recording video.
+ *  2. The SD card state should be checked before this  method is used to ensure
+ *  sufficient space exists.
  *   Post condition:
  *   If the capture mode is either  Burst or Interval, calling stopShootPhoto will
  *  be required for the camera to stop taking photos.
@@ -321,8 +321,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Starts recording video.
  *   Precondition:
- *   Camera must be in `DJICameraModeRecordVideo` mode.  <b>For thermal imaging
- *  camera, user can take Single photo when recording video.</>
+ *   Camera must be in `DJICameraModeRecordVideo` mode.
+ *  For thermal imaging camera, user can take Single photo when recording video.
  *  
  *  @param completion The execution callback with the returned execution result.
  */
@@ -1233,75 +1233,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(void)tapZoomAtTarget:(CGPoint)target withCompletion:(DJICompletionBlock)completion;
 
-
-/**
- *  Enables HD (high-definition) live view. When it is enabled, the live view
- *  resolution is 1080p with frame rate  30 fps. The settings will only take effect
- *  when the camera is in record-video mode and the video resolution is  either
- *  1080p or 2.7k without slow-motion enabled. If recording video in 4k, then the
- *  live stream will be limited  to 720p. Supported only by Mavic Pro.
- *  
- *  @param enabled Enable or disable HD live view.
- *  @param completion The execution callback with the returned execution result.
- */
--(void)setHDLiveViewEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
-
-
-/**
- *  `YES` if 1080p live view is enabled. This will return the value of the setter,
- *  and not  necessarily the actual live view resolution. For example, if recording
- *  in 4K and HD live view has previously  been set, then this will return `YES` but
- *  the actual live view resolution will be 720p.  Supported only by Mavic Pro.
- *  
- *  @param enabled The enabled value.
- *  @param error Error retrieving the value.
- *  @param completion Completion block to receive the result.
- */
--(void)getHDLiveViewEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
-
-
-/**
- *  Enables the automatic control of the front-arm LEDs. The camera can turn off the
- *  front-arm LEDs automatically  when it shoots photos or records videos. The LEDs
- *  will be turned on after the shooting or recording is finished.  Supported only
- *  by Mavic Pro.
- *  
- *  @param enabled Enable the automatic control of the front-arm LEDs.
- *  @param completion The execution callback with the returned execution result.
- */
--(void)setLEDAutoTurnOffEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
-
-
-/**
- *  Determines whether the automatic control of the front-arm LEDs is Enabled.
- *  Supported only by Mavic Pro.
- *  
- *  @param enabled The enabled value.
- *  @param error Error retrieving the value.
- *  @param completion Completion block to receive the result.
- */
--(void)getLEDAutoTurnOffEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
-
-
-/**
- *  Sets the camera's orientation. The gimbal will rotate the roll axis based on the
- *  orientation. Supported only by Mavic Pro.
- *  
- *  @param orientation Camera's orientation.
- *  @param completion The execution callback with the returned execution result.
- */
--(void)setOrientation:(DJICameraOrientation)orientation withCompletion:(DJICompletionBlock)completion;
-
-
-/**
- *  Gets the camera's orientation. Supported only by Mavic Pro.
- *  
- *  @param orientation The value of the `DJICameraOrientation` Enum.
- *  @param error Error retrieving the value.
- *  @param completion Completion block to receive the result.
- */
--(void)getOrientationWithCompletion:(void (^_Nonnull)(DJICameraOrientation orientation, NSError *_Nullable error))completion;
-
 /*********************************************************************************/
 #pragma mark Audio Settings
 /*********************************************************************************/
@@ -1569,6 +1500,128 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion Completion block to receive the result.
  */
 - (void)getFocusRingValueWithCompletion:(void (^_Nonnull)(NSUInteger distance, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables HD (high-definition) live view. When it is enabled, the live view
+ *  resolution is 1080p with frame rate  30 fps. The settings will only take effect
+ *  when the camera is in record-video mode and the video resolution is  either
+ *  1080p or 2.7k without slow-motion enabled. If recording video in 4k, then the
+ *  live stream will be limited  to 720p. Supported only by Mavic Pro.
+ *  
+ *  @param enabled Enable or disable HD live view.
+ *  @param completion The execution callback with the returned execution result.
+ */
+-(void)setHDLiveViewEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  `YES` if 1080p live view is enabled. This will return the value of the setter,
+ *  and not  necessarily the actual live view resolution. For example, if recording
+ *  in 4K and HD live view has previously  been set, then this will return `YES` but
+ *  the actual live view resolution will be 720p.  Supported only by Mavic Pro.
+ *  
+ *  @param enabled The enabled value.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+-(void)getHDLiveViewEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables the automatic control of the front-arm LEDs. The camera can turn off the
+ *  front-arm LEDs automatically  when it shoots photos or records videos. The LEDs
+ *  will be turned on after the shooting or recording is finished.  Supported only
+ *  by Mavic Pro.
+ *  
+ *  @param enabled Enable the automatic control of the front-arm LEDs.
+ *  @param completion The execution callback with the returned execution result.
+ */
+-(void)setLEDAutoTurnOffEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether the automatic control of the front-arm LEDs is Enabled.
+ *  Supported only by Mavic Pro.
+ *  
+ *  @param enabled The enabled value.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+-(void)getLEDAutoTurnOffEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the camera's orientation. The gimbal will rotate the roll axis based on the
+ *  orientation. Supported only by Mavic Pro.
+ *  
+ *  @param orientation Camera's orientation.
+ *  @param completion The execution callback with the returned execution result.
+ */
+-(void)setOrientation:(DJICameraOrientation)orientation withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the camera's orientation. Supported only by Mavic Pro.
+ *  
+ *  @param orientation The value of the `DJICameraOrientation` Enum.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+-(void)getOrientationWithCompletion:(void (^_Nonnull)(DJICameraOrientation orientation, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables vision stablization for Z30 camera on M200 series. The vision system in
+ *  the M200  series of aircraft can be used to compensate for any drift in the
+ *  gimbal by analyzing the  live view when there is no gimbal movement. Drift in
+ *  the gimbal will be most noticable at  higher zoom factors. Only supported by Z30
+ *  on M200 series.
+ *  
+ *  @param enabled `YES` to enable the vision stablization.
+ *  @param completion `completion block` to receive the result.
+ */
+- (void)setVisionStablizationEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets if vision stablization is enabled. Only supported by Z30 on M200 series.
+ *  
+ *  @param enabled `YES` if the vision stablization is enabled.
+ *  @param error Error if there is any.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getVisionStablizationEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Custom information can be stored in media file's XMP meta data. The custom
+ *  information is written to the media file automatically after the media file  is
+ *  created. This method defines the information to write. The same information
+ *  will be written to all media files until the information is changed again by
+ *  this  method. Custom information written to each file can be retrieved through
+ *  `fetchCustomInformationWithCompletion`  or from the image itself  when processed
+ *  on a separate system. Only supported by Phantom 4 Pro, Phantom 4  Advanced and
+ *  Inspire 2 with firmware released after May 23 2017.
+ *  
+ *  @param information Custom information to set. Use UTF-8 encoding with a length equal to or less  than 31 characters.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setMediaFileCustomInformation:(NSString *)information withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Custom information can be stored in media file's XMP meta data. This method
+ *  retrieves  the information that will be written to future media files. The
+ *  information written  to individual files can be retrieved through
+ *  `fetchCustomInformationWithCompletion`. Only supported by Phantom 4 Pro,
+ *  Phantom 4 Advanced and Inspire 2 with firmware released after May 23 2017.
+ *  
+ *  @param information The custom information to write.
+ *  @param error The encountered error if any.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getMediaFileCustomInformationWithCompletion:(void (^_Nonnull)(NSString *_Nullable information, NSError *_Nullable error))completion;
 
 /*********************************************************************************/
 #pragma mark Save/load camera settings
@@ -1851,14 +1904,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the scene to instantly enhance your image. In all modes except Manual and
- *  User modes, the DDE, ACE, SSO,  brightness and contrast are set automatically to
- *  obtain the best result. In User modes, the DDE, brightness and  contrast are set
- *  automatically to obtain the best results. Any settings that are made in these
- *  modes are retained  if the scene is changed. In Manual mode, DDE, ACE, SSO,
- *  brightness and contrast are set manually. Supported only  by thermal imaging
- *  cameras.
+ *  User modes, the  DDE, ACE, SSO,  brightness and contrast are set automatically
+ *  to obtain the best result. In  User modes, the contrast and brightness are set
+ *  automatically to obtain the best results. Any  settings that are made in these
+ *  modes are retained if the scene is changed. In Manual mode,  DDE, contrast and
+ *  brightness are set manually. Supported only by thermal imaging cameras.
  *  
- *  @param scene An enum type for the CameraThermalScene to be used. Please refer to DJICameraThermalScene.
+ *  @param scene An enum type for the `DJICameraThermalScene` to be used.
  *  @param completion Completion block that receives the getter execution result.
  */
 - (void)setThermalScene:(DJICameraThermalScene)scene withCompletion:(DJICompletionBlock)completion;

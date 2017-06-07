@@ -164,7 +164,7 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 /**
  *  Returns the name of the media file in the SD Card.
  */
-@property(nonatomic, readonly) NSString *_Nonnull fileName;
+@property(nonatomic, readonly) NSString *fileName;
 
 
 /**
@@ -177,7 +177,7 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
  *  Returns the time when the media file was created as a string in the format
  *  "yyyy-MM-dd HH:mm:ss".
  */
-@property(nonatomic, readonly) NSString *_Nonnull timeCreated;
+@property(nonatomic, readonly) NSString *timeCreated;
 
 
 /**
@@ -197,7 +197,7 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
  *  Returns the thumbnail for this media. If this property returns nil, call
  *  `fetchThumbnailWithCompletion`.
  */
-@property(nonatomic, readonly) UIImage *_Nullable thumbnail;
+@property(nonatomic, nullable, readonly) UIImage *thumbnail;
 
 
 /**
@@ -222,6 +222,19 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
  *  @return An int value.
  */
 @property(nonatomic, readonly) DJICameraVideoFrameRate frameRate;
+
+
+/**
+ *  Custom information can be stored in media file's XMP meta data using
+ *  `setMediaFileCustomInformation:withCompletion`. This property contains the
+ *  information that was written to this media file. If this property returns `nil`,
+ *  use `fetchCustomInformationWithCompletion` to populate it. Only supported  by
+ *  Phantom 4 Pro, Phantom 4 Advanced and Inspire 2 with firmware versions from
+ *  after  May 23 2017.
+ *  
+ *  @return An int value.
+ */
+@property(nonatomic, nullable, readonly) NSString *customInformation;
 
 
 /**
@@ -279,6 +292,17 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
  *  @param completion Completion block to receive the result.
  */
 - (void)fetchSubMediaFileListWithCompletion:(void (^_Nonnull)(NSArray<DJIMediaFile *> *_Nullable mediaList, NSError *_Nullable error))completion;
+
+
+/**
+ *  Custom information can be stored in media file's XMP meta data using
+ *  `setMediaFileCustomInformation:withCompletion`. The information will be stored
+ *  in  `customInformation`. Only supported by Phantom 4 Pro, Phantom 4  Advanced
+ *  and Inspire 2 with firmware released after May 23 2017.
+ *  
+ *  @param completion Completion block to receive the result.
+ */
+- (void)fetchCustomInformationWithCompletion:(DJICompletionBlock)completion;
 
 @end
 

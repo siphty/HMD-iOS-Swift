@@ -97,7 +97,7 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
 
 
 /**
- *  Gets RTK errors, if any. Returns 'nil' when RTK is normal.
+ *  Gets RTK errors, if any. Returns `nil` when RTK is normal.
  */
 @property(nonatomic, readonly) NSError *_Nullable error;
 
@@ -211,7 +211,7 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
 
 
 /**
- *  Whether the RTK is beging used.
+ *  Whether the RTK is being used.
  */
 @property(nonatomic, readonly) BOOL isRTKBeingUsed;
 

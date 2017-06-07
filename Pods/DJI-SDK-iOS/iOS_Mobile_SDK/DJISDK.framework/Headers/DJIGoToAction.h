@@ -67,6 +67,18 @@ typedef NS_ENUM(NSInteger, DJIGoToActionError) {
 
 
 /**
+ *  The target coordinate of the go-to action.
+ */
+@property (readonly) CLLocationCoordinate2D coordinate;
+
+
+/**
+ *  The target altitude in meters.
+ */
+@property (readonly) CLLocationDistance altitude;
+
+
+/**
  *  Go to the specified coordinate from the current aircraft position.
  *  
  *  @param coordinate Target coordinate.
@@ -83,7 +95,7 @@ typedef NS_ENUM(NSInteger, DJIGoToActionError) {
  *  
  *  @return An instance of `DJIGoToAction`.
  */
-- (instancetype _Nullable)initWithAltitude:(float)altitude;
+- (instancetype _Nullable)initWithAltitude:(CLLocationDistance)altitude;
 
 
 /**

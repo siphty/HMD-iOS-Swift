@@ -152,8 +152,8 @@ typedef NS_ENUM (NSUInteger, DJIWaypointMissionHeadingMode){
     
 
     /**
-     *  Aircraft's heading will be set to the previous waypoint's heading while
-     *  travelling between waypoints.
+     *  Aircraft's heading will be gradually set to the next waypoint heading while
+     *  travelling between two adjacent waypoints.
      */
     DJIWaypointMissionHeadingUsingWaypointHeading,
     

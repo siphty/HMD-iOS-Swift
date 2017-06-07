@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, DJIActiveTrackMissionState) {
 
 
     /**
-     *  The state of the operator is unknown. It is the inital state when the  operator
+     *  The state of the operator is unknown. It is the initial state when the  operator
      *  is just created.
      */
     DJIActiveTrackMissionStateUnknown = -1,
@@ -101,7 +101,7 @@ typedef NS_ENUM(NSInteger, DJIActiveTrackMissionState) {
 
     /**
      *  ActiveTrack is started but the target is lost. The vision system is detecting
-     *  the previous found target.
+     *  the previously found target.
      */
     DJIActiveTrackMissionStateFindingTrackedTarget,
 };
@@ -432,7 +432,7 @@ typedef void (^DJIActiveTrackMissionOperatorEventBlock)(DJIActiveTrackMissionEve
  *  
  *  @param completion Completion block that receives the execution result.
  */
--(void)getRetreatEanbledWithCompletion:(DJIBooleanCompletionBlock)completion;
+-(void)getRetreatEnabledWithCompletion:(DJIBooleanCompletionBlock)completion;
 
 @end
 

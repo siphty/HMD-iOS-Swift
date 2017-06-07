@@ -31,14 +31,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Home location of the aircraft as a coordinate.
  */
-@property(nonatomic, readonly) CLLocationCoordinate2D homeLocation;
+@property(nonatomic, readonly, nullable) CLLocation *homeLocation;
 
 
 /**
- *  The current location of the aircraft as a coordinate. The altitude is  relative
- *  to take off location, measured by the barometer, in meters.
+ *  The current location of the aircraft as a coordinate. `nil` if the location is
+ *  invalid.
  */
-@property(nonatomic, readonly) CLLocationCoordinate2D aircraftLocation;
+@property(nonatomic, readonly, nullable) CLLocation *aircraftLocation;
 
 
 /**

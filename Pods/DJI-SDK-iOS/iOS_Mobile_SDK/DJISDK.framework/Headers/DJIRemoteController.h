@@ -485,7 +485,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Sets the Remote Contoller's slave control mode.
+ *  Sets the Remote Controller's slave control mode.
  *  
  *  @param style Control mode to be set.
  *  @param completion Remote execution result error callback.
@@ -505,7 +505,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Sets the Remote Contoller's slave control mode.
+ *  Sets the Remote Controller's slave control mode.
  *  
  *  @param mapping The DJIRCGimbalMapping object.
  *  @param completion Remote execution result completion block.

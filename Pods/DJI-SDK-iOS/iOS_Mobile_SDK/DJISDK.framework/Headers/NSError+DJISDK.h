@@ -457,7 +457,6 @@ typedef NS_ENUM (NSInteger, DJISDKCameraError){
      *  Camera has no SSD.
      */
     DJISDKCameraErrorSSDError = -3019L,
-
 };
 
 /*********************************************************************************/
@@ -668,9 +667,9 @@ typedef NS_ENUM (NSInteger, DJISDKMissionError){
     /**
      *  Cannot execute in the current mode. For products and flight controller firmware
      *  versions that support 'F'  mode (e.g. Phantom 3 Professional, Inspire 1, A3 with
-     *  flight controller firmware version lowever than  3.2.10.0, etc), please make
-     *  sure the remote controller's mode switch is in 'F' mode. For the others,  please
-     *  make sure the remote controller's mode switch is in 'P' mode.
+     *  flight controller firmware version lower than  3.2.10.0, etc), please make sure
+     *  the remote controller's mode switch is in 'F' mode. For the others,  please make
+     *  sure the remote controller's mode switch is in 'P' mode.
      */
     DJISDKMissionErrorModeError = -5000L,
  

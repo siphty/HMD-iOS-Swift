@@ -18,6 +18,7 @@
 @class DJIRTK;
 @class DJIFlightAssistant;
 @class DJISimulator;
+@class DJIAirSenseSystemInformation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -116,6 +117,16 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param imuState DJIIMUState object.
  */
 - (void)flightController:(DJIFlightController *_Nonnull)fc didUpdateIMUState:(DJIIMUState *_Nonnull)imuState;
+
+
+/**
+ *  Called when the flight controller pushes a DJI AirSense system update. Only
+ *  supported by M200 series.
+ *  
+ *  @param fc Instance of the flight controller for which the data will be updated.
+ *  @param information DJI AirSense system information.
+ */
+- (void)flightController:(DJIFlightController *_Nonnull)fc didUpdateAirSenseSystemInformation:(DJIAirSenseSystemInformation *_Nonnull)information;
 
 @end
 
@@ -289,7 +300,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 /**
  *  Stops auto-landing of the aircraft. If called before
  *  `startLandingWithCompletion` is complete, then the  auto landing will be
- *  cancelled (`startLandingWithCompletion` completion block will return an error)
+ *  canceled (`startLandingWithCompletion` completion block will return an error)
  *  and  the aircraft will hover at its current location.
  *  
  *  @param completion Completion block.
@@ -316,8 +327,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  The aircraft will start to go home. This method is considered complete once the
- *  aircraft has landed at its  home position.
+ *  The aircraft will start to go home. The `completion block` will return execution
+ *  result once this method is invoked.
  *  
  *  @param completion Completion block.
  */
@@ -325,8 +336,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  The aircraft will stop going home and will hover in place. The
- *  `startGoHomeWithCompletion` completion  block will immediately return an error.
+ *  The aircraft will stop going home and will hover in place.
  *  
  *  @param completion Completion block.
  */

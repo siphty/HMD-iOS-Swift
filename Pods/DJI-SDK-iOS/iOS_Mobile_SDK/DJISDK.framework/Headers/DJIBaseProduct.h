@@ -53,7 +53,7 @@ typedef void (^_Nullable DJICompletionBlock)(NSError *_Nullable error);
 
 /**
  *  Abstract class for all DJI Products. `DJIAircraft` and `DJIHandheld` objects
- *  are sublcasses of `DJIBaseProduct` and can be accessed from `product` in
+ *  are subclasses of `DJIBaseProduct` and can be accessed from `product` in
  *  `DJISDKManager`. Additional components can be found in `DJIAircraft` and
  *  `DJIHandheld` that are unique to those products only.
  */

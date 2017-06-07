@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*********************************************************************************/
 
 /**
- *  The mode of the gimabl rotation operation.
+ *  The mode of the gimbal rotation operation.
  */
 typedef NS_ENUM(NSInteger, DJIGimbalRotationMode) {
 

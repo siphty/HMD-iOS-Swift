@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class DJIFlightAssistant;
 @class DJIVisionDetectionState;
-@class DJIVisionControlState; 
+@class DJIVisionControlState;
 
 
 /**
@@ -108,7 +108,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Enables/disables landing protection. During auto-landing, the downwards facing
  *  vision sensor will check if  the ground surface is flat enough for a safe
- *  landing. If it is not and landing proteciton is enabled, then  landing will
+ *  landing. If it is not and landing protection is enabled, then  landing will
  *  abort and need to be manually performed by the user.
  *  
  *  @param enabled `YES` to enable the landing protection.

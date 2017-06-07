@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, DJIHotpointMissionState) {
 
     /**
-     *  The state of the operator is unknown. This is the inital state when the
+     *  The state of the operator is unknown. This is the initial state when the
      *  operator has just been created.
      */
     DJIHotpointMissionStateUnknown = -1,
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger, DJIHotpointMissionState) {
 
 
     /**
-     *  The aircraft is moving torwards the start point of the Hotpoint mission.
+     *  The aircraft is moving towards the start point of the Hotpoint mission.
      */
     DJIHotpointMissionStateExecutingInitialPhase,
 
@@ -186,7 +186,7 @@ typedef void (^DJIHotpointMissionOperatorSimpleEventBlock)();
 
 
 /**
- *  Removes listener from listener pool of start mission notfications.
+ *  Removes listener from listener pool of start mission notifications.
  *  
  *  @param listener Listener to be removed.
  */
@@ -194,7 +194,7 @@ typedef void (^DJIHotpointMissionOperatorSimpleEventBlock)();
 
 
 /**
- *  Removes listener from listener pool of stop mission notfications
+ *  Removes listener from listener pool of stop mission notifications
  *  
  *  @param listener Listener to be removed.
  */

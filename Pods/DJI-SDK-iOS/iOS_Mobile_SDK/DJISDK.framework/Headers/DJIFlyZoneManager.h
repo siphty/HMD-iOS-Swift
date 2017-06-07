@@ -13,47 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class DJIFlyZoneManager;
-
-
-
-/**
- *  User account status. Users need to be logged in.
- */
-typedef NS_ENUM(uint8_t, DJIUserAccountState) {
-
-
-    /**
-     *  User is not logged in. User needs to be logged in to retrieve currently
-     *  unlocked, and unlock authorization zones.
-     */
-    DJIUserAccountStateNotLoggedIn,
-    
-
-    /**
-     *  User is logged in but has not been authorized to unlock authorization zones.
-     */
-    DJIUserAccountStateNotAuthorized,
-    
-
-    /**
-     *  User is logged in and has been authorized to unlock authorization zones.
-     */
-    DJIUserAccountStateAuthorized,
-    
-
-    /**
-     *  The token of the user account is out of date.
-     */
-    DJIUserAccountStateTokenOutOfDate,
-
-
-    /**
-     *  Unknown.
-     */
-    DJIUserAccountStateUnknown = 0xFF
-};
-
-typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState state, NSError *_Nullable error);
+@class DJIIndividualUnlockZone;
 
 
 /**
@@ -106,6 +66,14 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
 
 
 /**
+ *  `YES` if an aircraft is connected with flight controller firmware that  supports
+ *  Individual Unlock Zones. Aircraft that support Individual unlock  zones are also
+ *  able to disable unlocked fly zones temporarily.
+ */
+@property(nonatomic, readonly) BOOL isIndividualUnlockZoneSupported;
+
+
+/**
  *  The fly zone database state in the firmware of the aircraft. The SDK will
  *  compare the version of the database on the aircraft against the latest one
  *  online. When the aircraft database is  out-of-date, the user should use DJI GO
@@ -122,14 +90,6 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
 
 
 /**
- *  The name of the currently logged in user account.  It is `nil` if
- *  `getUserAccountState` is either:  `DJIUserAccountStateNotLoggedIn`,
- *  `DJIUserAccountStateTokenOutOfDate` or `DJIUserAccountStateUnknown`.
- */
-@property(nonatomic, readonly, nullable) NSString *loggedInDJIUserAccountName;
-
-
-/**
  *  Gets all the fly zones within 20km of the aircraft. During simulation, this
  *  method is available only when the aircraft location is within 50km of
  *  (37.460484, -122.115312) or within 50km of (22.5726, 113.8124499). Use of the
@@ -141,25 +101,6 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
  *  @param completion Completion block to receive the result.
  */
 -(void)getFlyZonesInSurroundingAreaWithCompletion:(void (^_Nonnull)(NSArray<DJIFlyZoneInformation*> *_Nullable infos, NSError* _Nullable error))completion;
-
-
-/**
- *  After invoking this method, a dialog redirecting users to log into their DJI
- *  account will be shown. After  the login process, if the account has not been
- *  authorized to unlock authorization zones, the dialog will  then redirect users
- *  to authorize their account.
- *  
- *  @param completion The execution block with the returned execution result.
- */
--(void)logIntoDJIUserAccountWithCompletion:(DJIAccountStateCompletionBlock)completion;
-
-
-/**
- *  Logs out the DJI user that is logged in.
- *  
- *  @param completion The execution block with the returned execution result.
- */
--(void)logOutOfDJIUserAccountWithCompletion:(DJICompletionBlock)completion;
 
 
 /**
@@ -190,14 +131,6 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
 
 
 /**
- *  Gets the DJI user account state.
- *  
- *  @return The account state.
- */
--(DJIUserAccountState)getUserAccountState;
-
-
-/**
  *  Gets a list of unlocked fly zones of the authorized account from the server.
  *  The list contains the fly zones unlocked by the Flight Planner
  *  (http://www.dji.com/flysafe/geo-system#planner), and the fly zones unlocked
@@ -221,6 +154,61 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
  *  @param completion The execution block with the returned execution result.
  */
 -(void)unlockFlyZones:(NSArray<NSNumber *> *_Nonnull)flyZoneIDs withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  When an Individual Unlock Zone is approved, the approval and zone information
+ *  needs to be downloaded from the Fly Zone server and uploaded to the aircraft.
+ *  For each product connection state change, or network connection state change
+ *  this  is done automatically. However, if the Individual Unlock Zone is approved
+ *  and needs  to be uploaded to the aircraft without changing the network
+ *  connectivity or product  connectivity state, then this method can be used to
+ *  force the  Individual Unlock  Zone update. For this method to work, the user
+ *  must already be logged in. Individual  Unlock Zones are associated with an
+ *  aircraft serial number, and so, to upload to  the aircraft, the right aircraft
+ *  must also be connected. This method can only be  used when
+ *  `isIndividualUnlockZoneSupported` is `YES`.
+ *  
+ *  @param completion `completion block` to receive the result.
+ */
+-(void)loadIndividualUnlockZonesFromServerWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the Individual Unlock zones currently on the aircraft. This method can
+ *  only be used when `isIndividualUnlockZoneSupported`  is `YES`.
+ *  
+ *  @param zones Array of `DJIIndividualUnlockZone` objects.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+-(void)getIndividualUnlockZonesWithCompletion:(void (^_Nonnull)(NSArray<DJIIndividualUnlockZone *> *_Nullable zones, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables an Individual Unlock zones that is on the aircraft. All Individual
+ *  Unlock zones  on the aircraft can be retrieved with
+ *  `getIndividualUnlockZonesWithCompletion`.  At any time, only one Individual
+ *  Unlock zone can be enabled. Enabling an Individual Unlock  zone will disable the
+ *  previously enabled zone. This method can only be used when
+ *  `isIndividualUnlockZoneSupported` is `YES`.
+ *  
+ *  @param zone Individual Unlock zone to enabled. If `zone` is `nil`, only the previously enabled zone  will be disabled.
+ *  @param completion `completion block` to receive the result.
+ */
+-(void)enableIndividualUnlockZone:(DJIIndividualUnlockZone *_Nullable)zone
+                   withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the currently enabled Individual Unlock zone. This method can only be used
+ *  when `isIndividualUnlockZoneSupported` is `YES`.
+ *  
+ *  @param zone The enabled Individual Unlock zone. `nil` if no zones are enabled.
+ *  @param error Error if there is any.
+ *  @param completion Completion block to receive the result.
+ */
+-(void)getEnabledIndividualUnlockZoneWithCompletion:(void (^_Nonnull)(DJIIndividualUnlockZone *_Nullable zone, NSError *_Nullable error))completion;
 
 @end
 

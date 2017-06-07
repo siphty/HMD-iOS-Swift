@@ -113,7 +113,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  `YES` if the battery is a smart battery. When the connected battery is a DJI
- *  smart battery, more information can be obtained by communcating with the
+ *  smart battery, more information can be obtained by communicating with the
  *  battery.
  *  
  *  @return <code>Yes</code>> if battery is smart battery.
@@ -151,7 +151,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Gets the battery's cell voltages. There will be a voltage for each cell in the
  *  battery.
  *  
- *  @param cellVoltages Array of battery cell voltages. For example, the Inpspire 1 has a 6 cell battery and therefore will have a 6 element array.
+ *  @param cellVoltages Array of battery cell voltages. For example, the Inspire 1 has a 6 cell battery and therefore will have a 6 element array.
  *  @param error Error retrieving the value.
  *  @param completion Asynchronous execution result block.
  */
