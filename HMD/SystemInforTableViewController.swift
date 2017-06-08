@@ -227,7 +227,7 @@ class SystemInforTableViewController: UITableViewController {
                     return cell
                 }
                 
-                let droneLocation = droneLocationValue.value as! DJISDKLocation
+                let droneLocation = droneLocationValue.value as! CLLocation
                 cell.details.text = "Long: \(droneLocation.coordinate.longitude); Lati: \(droneLocation.coordinate.latitude)"
                 
             default:

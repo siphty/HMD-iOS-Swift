@@ -15,6 +15,26 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Exposure Settings Controller-->
+        <scene sceneID="3hY-1c-o3A">
+            <objects>
+                <viewController storyboardIdentifier="CameraExposureSettingsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n0s-Jo-FTW" customClass="DULExposureSettingsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CpM-bj-wGg"/>
+                        <viewControllerLayoutGuide type="bottom" id="hm3-Pl-sbh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gyi-VV-zuO">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CP5-3r-kgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="-72"/>
+        </scene>
         <!--Drone Cockpit View Controller-->
         <scene sceneID="dHM-50-nqJ">
             <objects>
@@ -81,6 +101,9 @@
                                 <state key="normal" title="MENU">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="cameraManuButtonTouchUpInside:" destination="SU0-NX-vDc" eventType="touchUpInside" id="V9c-6L-ztG"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lg5-wY-ZE2">
                                 <rect key="frame" x="6" y="45" width="62" height="162"/>
@@ -175,6 +198,80 @@
             </objects>
             <point key="canvasLocation" x="1648" y="649"/>
         </scene>
+        <!--Camera Settings Controller-->
+        <scene sceneID="bC8-vx-CS8">
+            <objects>
+                <viewController storyboardIdentifier="CameraSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gZK-ZL-czf" customClass="DULCameraSettingsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="skP-4x-CrY"/>
+                        <viewControllerLayoutGuide type="bottom" id="1vg-Fz-WJN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fKP-db-3hK">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fo5-E6-rvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="539" y="-72"/>
+        </scene>
+        <!--Preflight Checklist Controller-->
+        <scene sceneID="b0V-tG-yxU">
+            <objects>
+                <viewController storyboardIdentifier="PreflightChecklistVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VwR-Vc-28Y" customClass="DULPreflightChecklistController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JYb-pR-SjM"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZzY-JV-TdX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hBb-nJ-3lU">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="feb-0B-bdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134" y="-72"/>
+        </scene>
+        <!--Drone Aero Chart View Controller-->
+        <scene sceneID="Iiv-h6-bdm">
+            <objects>
+                <viewController storyboardIdentifier="AeroChartVC" id="Gq1-3q-319" customClass="DroneAeroChartViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hhY-eX-Q6R"/>
+                        <viewControllerLayoutGuide type="bottom" id="pQo-1u-8Zg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ji5-FC-dWJ">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KYN-h7-syB">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VQt-tv-6hy"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KYN-h7-syB" firstAttribute="leading" secondItem="ji5-FC-dWJ" secondAttribute="leading" id="Drd-ut-L9i"/>
+                            <constraint firstItem="pQo-1u-8Zg" firstAttribute="top" secondItem="KYN-h7-syB" secondAttribute="bottom" id="RVs-j7-dO4"/>
+                            <constraint firstAttribute="trailing" secondItem="KYN-h7-syB" secondAttribute="trailing" id="fhK-2h-hgn"/>
+                            <constraint firstItem="KYN-h7-syB" firstAttribute="top" secondItem="ji5-FC-dWJ" secondAttribute="top" id="h3E-fm-MQV"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tjd-ae-cTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="778.11094452773614" y="-72"/>
+        </scene>
         <!--Leading Bar View Controller-->
         <scene sceneID="HSm-lI-yWo">
             <objects>
@@ -205,14 +302,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUJ-37-ydO">
-                                <rect key="frame" x="0.0" y="-8" width="667" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <connections>
-                                    <action selector="close" destination="uCj-Iv-bGd" eventType="touchUpInside" id="mEF-di-Rte"/>
-                                </connections>
-                            </button>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-oa-uOy">
                                 <rect key="frame" x="609" y="116" width="48" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -220,6 +309,14 @@
                                     <segue destination="Teu-rz-b6q" kind="embed" id="pOD-yC-E3e"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUJ-37-ydO">
+                                <rect key="frame" x="0.0" y="0.0" width="601" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <connections>
+                                    <action selector="close" destination="uCj-Iv-bGd" eventType="touchUpInside" id="mEF-di-Rte"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -229,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiC-Wa-JPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217.5412293853074" y="1152.8"/>
+            <point key="canvasLocation" x="1217" y="1161"/>
         </scene>
         <!--PilotHMD View Controller-->
         <scene sceneID="1Oo-Mg-59m">

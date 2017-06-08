@@ -14,7 +14,7 @@ import DJIUILibrary
 class DroneCockpitViewController: UIViewController {
     var isRecording : Bool!
     var hmdLayer = HMDLayer()
-    var isSettingMode:Bool = false
+    var isSettingMode = false
     var previewerAdapter            = VideoPreviewerSDKAdapter()
     
     let statusBarViewController     = DULStatusBarViewController()
@@ -22,6 +22,9 @@ class DroneCockpitViewController: UIViewController {
     let sideBarViewController       = DULSideBarViewController()
     let leadingBarViewController    = DULLeadingBarViewController()
     let trailingBarViewController   = DULTrailingBarViewController()
+    let preflightCheckViewController = DULPreflightChecklistController()
+    let cameraMenuViewController    = DULCameraSettingsController()
+    let mapThumbnailView            = MKMapView()
     
 //    var preflightChecklistController = DUL
    
@@ -132,7 +135,7 @@ class DroneCockpitViewController: UIViewController {
         // Dock View
         addChildViewController(dockViewController)
         dockContainingView.addSubview(dockViewController.view)
-        dockViewController.view.translatesAutoresizingMaskIntoConstraints = false;
+        dockViewController.view.translatesAutoresizingMaskIntoConstraints = false
         dockViewController.view.topAnchor.constraint(equalTo: dockContainingView.topAnchor).isActive = true
         dockViewController.view.bottomAnchor.constraint(equalTo: dockContainingView.bottomAnchor).isActive = true
         dockViewController.view.leadingAnchor.constraint(equalTo: dockContainingView.leadingAnchor).isActive = true
@@ -161,17 +164,74 @@ class DroneCockpitViewController: UIViewController {
     }
     
     func preflightStatusWidgetTouchUpInside(){
-        //TODO: Show preflight view controller
-        print("📮preflightStatus been touched")
+        let checklistVC = storyboard?.instantiateViewController(withIdentifier: "PreflightChecklistVC") as! DULPreflightChecklistController
+        self.popoverChildViewController(checklistVC)
+        checklistVC.view.translatesAutoresizingMaskIntoConstraints = false
+        checklistVC.view.topAnchor.constraint(equalTo: statusBarContainingView.bottomAnchor).isActive = true
+        checklistVC.view.leftAnchor.constraint(equalTo: statusBarContainingView.leftAnchor).isActive = true
+        checklistVC.view.rightAnchor.constraint(equalTo: trailingBarContainingView.leftAnchor, constant: -4).isActive = true
+        checklistVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        
+        for subview in checklistVC.view.subviews {
+            if subview is UIButton {
+                print("I found the button!")
+                let dismissButton = subview as! UIButton
+                let newDismissButton = UIButton()
+                newDismissButton.add(for: .touchUpInside) {
+                    self.dismissPopoverChildViewController(checklistVC)
+                    
+                }
+                newDismissButton.setImage(#imageLiteral(resourceName: "UI Cancel w"), for: .normal)
+                checklistVC.view.addSubview(newDismissButton)
+                checklistVC.view.bringSubview(toFront: newDismissButton)
+                newDismissButton.bounds.size = CGSize(width: 44, height: 44)
+                newDismissButton.translatesAutoresizingMaskIntoConstraints = false
+                newDismissButton.rightAnchor.constraint(equalTo: checklistVC.view.rightAnchor, constant: -4).isActive = true
+                newDismissButton.topAnchor.constraint(equalTo: checklistVC.view.topAnchor, constant: 4).isActive = true
+                dismissButton.removeFromSuperview()
+            } else if subview is UILabel {
+                let titleLabel = subview as! UILabel
+                if titleLabel.text == "Checklist" {
+                    titleLabel.text = "Preflight Checklist"
+                    titleLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    titleLabel.font =  UIFont(name: "Gotham-Light", size: 13)
+                }
+            }
+        }
     }
     
     func compassWidgetTouchUpInside(){
-        print("🖇Compass been touched")
+        
+        let AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! DroneAeroChartViewController
+        self.displayChildViewController(AeroChartVC)
+        AeroChartVC.view.translatesAutoresizingMaskIntoConstraints = false
+        AeroChartVC.view.topAnchor.constraint(equalTo: dockContainingView.topAnchor).isActive = true
+        AeroChartVC.view.leftAnchor.constraint(equalTo: dockContainingView.leftAnchor).isActive = true
+        AeroChartVC.view.rightAnchor.constraint(equalTo: dockContainingView.leftAnchor, constant: 100).isActive = true
+        AeroChartVC.view.bottomAnchor.constraint(equalTo: dockContainingView.bottomAnchor).isActive = true
     }
     
     func exposureSettingsWidgetTouchUpInside(){
-        print("📌 exposureSettings  been touched")
+        let exposureSettingsVC = storyboard?.instantiateViewController(withIdentifier: "CameraExposureSettingsVC") as! DULExposureSettingsController
+        self.popoverChildViewController(exposureSettingsVC)
+        exposureSettingsVC.view.translatesAutoresizingMaskIntoConstraints = false
+        exposureSettingsVC.view.topAnchor.constraint(equalTo: statusBarContainingView.bottomAnchor, constant: 4).isActive = true
+        exposureSettingsVC.view.rightAnchor.constraint(equalTo: trailingBarContainingView.leftAnchor, constant: 2).isActive = true
+        exposureSettingsVC.view.leftAnchor.constraint(equalTo: trailingBarContainingView.leftAnchor, constant: -250).isActive = true
+        exposureSettingsVC.view.bottomAnchor.constraint(equalTo: dockContainingView.topAnchor, constant: 55).isActive = true
     }
+
+
+    @IBAction func cameraManuButtonTouchUpInside(_ sender: Any) {
+        let cameraManuVC = storyboard?.instantiateViewController(withIdentifier: "CameraSettingsViewController") as! DULCameraSettingsController
+        self.popoverChildViewController(cameraManuVC)
+        cameraManuVC.view.translatesAutoresizingMaskIntoConstraints = false
+        cameraManuVC.view.topAnchor.constraint(equalTo: statusBarContainingView.bottomAnchor, constant: 4).isActive = true
+        cameraManuVC.view.rightAnchor.constraint(equalTo: trailingBarContainingView.leftAnchor, constant: 2).isActive = true
+        cameraManuVC.view.leftAnchor.constraint(equalTo: trailingBarContainingView.leftAnchor, constant: -250).isActive = true
+        cameraManuVC.view.bottomAnchor.constraint(equalTo: dockContainingView.topAnchor, constant: 55).isActive = true
+    }
+    
 }
 
 
@@ -194,3 +254,5 @@ extension DroneCockpitViewController: DJICameraDelegate{
         }
     }
 }
+
+

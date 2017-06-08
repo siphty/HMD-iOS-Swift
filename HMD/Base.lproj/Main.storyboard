@@ -308,14 +308,6 @@
             </objects>
             <point key="canvasLocation" x="-856" y="2083"/>
         </scene>
-        <!--FirstOfficer-->
-        <scene sceneID="RII-JU-2cO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="FirstOfficer" id="dWV-qG-gGv" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tmS-Ad-gd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-799" y="422"/>
-        </scene>
         <!--Navigator-->
         <scene sceneID="r7V-dK-5Vi">
             <objects>
@@ -965,14 +957,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mM0-CL-jAg">
-                                <rect key="frame" x="561" y="172" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Co-Pilot"/>
-                                <connections>
-                                    <segue destination="dWV-qG-gGv" kind="presentation" id="Ffc-S9-0Cg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8CR-JQ-r8T">
                                 <rect key="frame" x="556" y="237" width="67" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

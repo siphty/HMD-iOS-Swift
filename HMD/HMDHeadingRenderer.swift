@@ -90,30 +90,27 @@ class HMDHeadingRenderer: CALayer {
         
         middleLayer.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: 31)
         
-        scrollLayer = {
-            let scrollLayer = CALayer()
-            scrollLayer.frame = CGRect(x: 0.0, y: 0.0, width: pixelPerUnit * 360.0, height: middleLayer.frame.height)
-            
-            headingScaleNorth.isFacingNorth = true
-            headingScaleNorth.backgroundColor = UIColor.clear.cgColor
-            headingScaleNorth.frame = scrollLayer.bounds
-            headingScaleNorth.labelFontSize = labelFontSize
-            headingScaleNorth.setup()
-            scrollLayer.addSublayer(headingScaleNorth)
-            
-            headingScaleSouth.isFacingNorth = false
-            headingScaleSouth.backgroundColor = UIColor.clear.cgColor
-            headingScaleSouth.frame = scrollLayer.bounds
-            headingScaleNorth.labelFontSize = labelFontSize
-            headingScaleSouth.setup()
-            scrollLayer.addSublayer(headingScaleSouth)
-            
-            headingScaleNorth.isHidden = false
-            headingScaleSouth.isHidden = true
-            scrollLayer.backgroundColor = UIColor.clear.cgColor
-            
-            return scrollLayer
-        }()
+        scrollLayer.frame = CGRect(x: 0.0, y: 0.0, width: pixelPerUnit * 360.0, height: middleLayer.frame.height)
+        
+        headingScaleNorth.isFacingNorth = true
+        headingScaleNorth.backgroundColor = UIColor.clear.cgColor
+        headingScaleNorth.frame = scrollLayer.bounds
+        headingScaleNorth.labelFontSize = labelFontSize
+        headingScaleNorth.setup()
+        scrollLayer.addSublayer(headingScaleNorth)
+        
+        headingScaleSouth.isFacingNorth = false
+        headingScaleSouth.backgroundColor = UIColor.clear.cgColor
+        headingScaleSouth.frame = scrollLayer.bounds
+        headingScaleNorth.labelFontSize = labelFontSize
+        headingScaleSouth.setup()
+        scrollLayer.addSublayer(headingScaleSouth)
+        
+        headingScaleNorth.isHidden = false
+        headingScaleSouth.isHidden = true
+        
+        scrollLayer.backgroundColor = UIColor.clear.cgColor
+        
         middleLayer.addSublayer(scrollLayer)
         addSublayer(middleLayer)
         
@@ -274,20 +271,14 @@ class HMDHeadingRenderer: CALayer {
                 self.headingScaleNorth.isHidden = false
                 self.headingScaleSouth.isHidden = true
                 headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                self.scrollLayer.frame = CGRect(x: headingPointX,
-                                                y: 0,
-                                                width: self.scrollLayer.frame.width,
-                                                height: self.scrollLayer.frame.height)
+                self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
             case 90 ... 270:
                 
                 //Facing South//
                 self.headingScaleSouth.isHidden = false
                 self.headingScaleNorth.isHidden = true
                 headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                self.scrollLayer.frame = CGRect(x: headingPointX,
-                                                y : 0,
-                                                width: self.scrollLayer.frame.width,
-                                                height: self.scrollLayer.frame.height)
+                self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
             default:
                 print("Something is wrong")
             }
