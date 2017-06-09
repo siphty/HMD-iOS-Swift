@@ -25,7 +25,7 @@ class DroneCockpitViewController: UIViewController {
     let preflightCheckViewController = DULPreflightChecklistController()
     let cameraMenuViewController    = DULCameraSettingsController()
     let mapThumbnailView            = MKMapView()
-    
+    var AeroChartVC = DroneAeroChartViewController()
 //    var preflightChecklistController = DUL
    
     @IBOutlet weak var statusBarContainingView: UIView!
@@ -46,6 +46,7 @@ class DroneCockpitViewController: UIViewController {
         previewerAdapter.start()
         view.bringSubview(toFront: returnButton)
         initialCockpitViewControllers()
+        AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! DroneAeroChartViewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -201,14 +202,11 @@ class DroneCockpitViewController: UIViewController {
     }
     
     func compassWidgetTouchUpInside(){
-        
-        let AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! DroneAeroChartViewController
         self.displayChildViewController(AeroChartVC)
-//        self.popoverChildViewController(AeroChartVC)
         AeroChartVC.view.translatesAutoresizingMaskIntoConstraints = false
         AeroChartVC.view.topAnchor.constraint(equalTo: dockContainingView.topAnchor).isActive = true
-        AeroChartVC.view.leftAnchor.constraint(equalTo: dockContainingView.leftAnchor).isActive = true
-        AeroChartVC.view.rightAnchor.constraint(equalTo: dockContainingView.leftAnchor, constant: 100).isActive = true
+        AeroChartVC.view.leftAnchor.constraint(equalTo: dockContainingView.leftAnchor, constant: -18).isActive = true
+        AeroChartVC.view.rightAnchor.constraint(equalTo: dockContainingView.leftAnchor, constant: 108).isActive = true
         AeroChartVC.view.bottomAnchor.constraint(equalTo: dockContainingView.bottomAnchor).isActive = true
     }
     

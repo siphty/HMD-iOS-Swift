@@ -9,6 +9,11 @@
 import Foundation
 
 extension UIViewController {
+    
+    /// Pop over a child view on the top of current view.
+    /// And, make all background area as dismiss button.
+    ///
+    /// - Parameter content: an UIViewController
     func popoverChildViewController(_ content: UIViewController) {
         let dismissBackgroundButton = UIButton()
         dismissBackgroundButton.frame = view.frame
@@ -27,6 +32,9 @@ extension UIViewController {
         
     }
     
+    /// Dismiss pop overed child view.
+    ///
+    /// - Parameter content: <#content description#>
     func dismissPopoverChildViewController(_ content: UIViewController) {
         content.willMove(toParentViewController: nil)
         content.view.removeFromSuperview()
@@ -39,6 +47,10 @@ extension UIViewController {
     }
     
     
+    /// Display a child view in current view.
+    /// Only the child view a covered by dismiss button.
+    ///
+    /// - Parameter content: an UIViewController
     func displayChildViewController(_ content: UIViewController) {
         addChildViewController(content)
         view.addSubview(content.view)
