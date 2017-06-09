@@ -89,6 +89,7 @@
 		A2B3B2BA1EE92B1D00A1EB0B /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2B91EE92B1D00A1EB0B /* UIControl+Closure.swift */; };
 		A2B3B2BD1EE92E2B00A1EB0B /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2BC1EE92E2B00A1EB0B /* UIViewController+Child.swift */; };
 		A2B3B2BF1EE9878D00A1EB0B /* DroneAeroChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2BE1EE9878D00A1EB0B /* DroneAeroChartViewController.swift */; };
+		A2B54C421EEABA1E00215A18 /* String+UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */; };
 		A2B567D81EE59D63002E4806 /* ADSBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B567D71EE59D63002E4806 /* ADSBViewController.swift */; };
 		A2B567DB1EE5A240002E4806 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B567DA1EE5A240002E4806 /* StoreTableViewController.swift */; };
 		A2D341D01EDB07D2001DEF82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */; };
@@ -225,6 +226,7 @@
 		A2B3B2B91EE92B1D00A1EB0B /* UIControl+Closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Closure.swift"; sourceTree = "<group>"; };
 		A2B3B2BC1EE92E2B00A1EB0B /* UIViewController+Child.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Child.swift"; sourceTree = "<group>"; };
 		A2B3B2BE1EE9878D00A1EB0B /* DroneAeroChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneAeroChartViewController.swift; path = HMD/DroneModule/DroneAeroChartViewController.swift; sourceTree = SOURCE_ROOT; };
+		A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UserLogin.swift"; sourceTree = "<group>"; };
 		A2B567D71EE59D63002E4806 /* ADSBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBViewController.swift; path = HMD/ADSBModule/ADSBViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2B567DA1EE5A240002E4806 /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreTableViewController.swift; path = HMD/StoreModule/StoreTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2D341D11EDBDEBE001DEF82 /* PilotHUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PilotHUDViewController.swift; path = HMD/PilotMode/PilotHUDViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -387,12 +389,12 @@
 		A24BBF231E56840300EBF428 = {
 			isa = PBXGroup;
 			children = (
-				A2B3B2B71EE92AAF00A1EB0B /* Siphty Dev Extensions */,
 				A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */,
 				A24BBF2E1E56840300EBF428 /* HMD */,
 				A24BBF2D1E56840300EBF428 /* Products */,
 				A2A1AABE1EBD89A0006970E1 /* Frameworks */,
 				A27358171EE3BB9100ECFC28 /* Support */,
+				A2B3B2B71EE92AAF00A1EB0B /* Siphty Dev Extensions */,
 				C3AF521D5CE153B9DC34AB06 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -408,12 +410,13 @@
 		A24BBF2E1E56840300EBF428 /* HMD */ = {
 			isa = PBXGroup;
 			children = (
+				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
 				A2DA57D91EE25DBA0088E1A9 /* HMD-Bridging-Header.h */,
 				A2A1AA4B1EBA1C2A006970E1 /* Info.plist */,
 				A2A1AA591EBA1C39006970E1 /* Assets.xcassets */,
 				A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */,
 				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
-				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
+				A27878411EE535D000636B9D /* DroneViewController.swift */,
 				A2DD2EDB1ED2627100727B64 /* HomeStation UI */,
 				A278783F1EE534F200636B9D /* Drone UI */,
 				A2048B4D1EC5B99500C2413C /* Navigator UI */,
@@ -532,7 +535,6 @@
 			isa = PBXGroup;
 			children = (
 				A2048B031EC57F9D00C2413C /* Drone.storyboard */,
-				A27878411EE535D000636B9D /* DroneViewController.swift */,
 				A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */,
 				A2B3B2BE1EE9878D00A1EB0B /* DroneAeroChartViewController.swift */,
 				A2D341D11EDBDEBE001DEF82 /* PilotHUDViewController.swift */,
@@ -632,6 +634,7 @@
 		A2B3B2B71EE92AAF00A1EB0B /* Siphty Dev Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A2B54C3F1EEAB9D700215A18 /* String */,
 				A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */,
 				A2B3B2B81EE92AF500A1EB0B /* UIControl */,
 				A2048AF31EC3339600C2413C /* UIColor */,
@@ -656,6 +659,14 @@
 				A2B3B2BC1EE92E2B00A1EB0B /* UIViewController+Child.swift */,
 			);
 			name = UIViewController;
+			sourceTree = "<group>";
+		};
+		A2B54C3F1EEAB9D700215A18 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */,
+			);
+			name = String;
 			sourceTree = "<group>";
 		};
 		A2B567D91EE5A211002E4806 /* Store Module */ = {
@@ -937,6 +948,7 @@
 				A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */,
 				A2DA57F71EE25EDC0088E1A9 /* DemoComponentHelper.m in Sources */,
 				A269BF251ECAE06A007ABB10 /* CommonDetailTableViewCell.swift in Sources */,
+				A2B54C421EEABA1E00215A18 /* String+UserLogin.swift in Sources */,
 				A2A1AAE11EBF3CE5006970E1 /* HMDVerticalVelocityCursorLayer.swift in Sources */,
 				A2A1AACF1EBDD56D006970E1 /* HMDPitchLadderLayer.swift in Sources */,
 				A2DA58021EE25EDC0088E1A9 /* DemoTableViewController.m in Sources */,

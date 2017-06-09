@@ -130,7 +130,13 @@ class DroneCockpitViewController: UIViewController {
                 djiExposureSettignsWidget.action = {
                     self.exposureSettingsWidgetTouchUpInside()
                 }
-            }
+                guard let djiCameraSettingsWidget = trailingBarViewController.widget(with: DULCameraSettingsMenu.self) as? DULCameraSettingsMenu else{
+                    return
+                }
+                djiCameraSettingsWidget.action = {
+                    self.cameraSettingsManuWidgetTouchUpInside()
+                }
+            } 
         }
         
         // Dock View
@@ -182,7 +188,7 @@ class DroneCockpitViewController: UIViewController {
                     self.dismissPopoverChildViewController(checklistVC)
                     
                 }
-                newDismissButton.setImage(#imageLiteral(resourceName: "UI Cancel w"), for: .normal)
+                newDismissButton.setImage(#imageLiteral(resourceName: "UICancelIcon"), for: .normal)
                 checklistVC.view.addSubview(newDismissButton)
                 checklistVC.view.bringSubview(toFront: newDismissButton)
                 newDismissButton.bounds.size = CGSize(width: 44, height: 44)
@@ -221,7 +227,7 @@ class DroneCockpitViewController: UIViewController {
     }
 
 
-    @IBAction func cameraManuButtonTouchUpInside(_ sender: Any) {
+    func cameraSettingsManuWidgetTouchUpInside() {
         let cameraManuVC = storyboard?.instantiateViewController(withIdentifier: "CameraSettingsViewController") as! DULCameraSettingsController
         self.popoverChildViewController(cameraManuVC)
         cameraManuVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -229,6 +235,30 @@ class DroneCockpitViewController: UIViewController {
         cameraManuVC.view.rightAnchor.constraint(equalTo: trailingBarContainingView.leftAnchor, constant: 2).isActive = true
         cameraManuVC.view.leftAnchor.constraint(equalTo: trailingBarContainingView.leftAnchor, constant: -250).isActive = true
         cameraManuVC.view.bottomAnchor.constraint(equalTo: dockContainingView.topAnchor, constant: 55).isActive = true
+    }
+    
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        if identifier == "segueToFullAeroChart" {
+            
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToFullAeroChart" {
+            let aeroChartViewController = segue.destination as! DroneAeroChartViewController
+            let dismissButton = UIButton()
+            dismissButton.setImage(#imageLiteral(resourceName: "UICancelIconB"), for: .normal)
+            dismissButton.backgroundColor = UIColor.clear
+            dismissButton.frame = CGRect(x: 10, y: 10, width: 44, height: 44)
+            dismissButton.add(for: .touchUpInside, {
+                aeroChartViewController.dismiss(animated: true)
+            })
+            aeroChartViewController.view.addSubview(dismissButton)
+        }
+    }
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        if unwindSegue.identifier == "segueToFullAeroChart" {
+            
+        }
     }
     
 }

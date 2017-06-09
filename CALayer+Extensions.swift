@@ -132,9 +132,29 @@ extension CALayer {
         
         let maskLayer = CAShapeLayer()
         maskLayer.bounds = CGRect(x: 0, y: 0, width: imageMask.size.width, height: imageMask.size.height)
+        bounds = maskLayer.bounds
         maskLayer.contents = imageMask.cgImage
         maskLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         mask = maskLayer
+    }
+    
+    func toImage() -> UIImage?
+    {
+        UIGraphicsBeginImageContextWithOptions(bounds.size,
+                                               isOpaque,
+                                               UIScreen.main.scale)
+        
+        // Don't proceed unless we have context
+        guard let context = UIGraphicsGetCurrentContext() else {
+            UIGraphicsEndImageContext()
+            return nil
+        }
+        
+        render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
     }
     
     class func degree2radian(a:CGFloat)->CGFloat {

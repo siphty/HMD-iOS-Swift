@@ -23,13 +23,6 @@ class DroneViewController: UIViewController {
         return droneImageView
     }()
     
-    let shadowView: UIView = {
-        let shadowView = UIView()
-        shadowView.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor
-        shadowView.layer.borderWidth = 3
-        return shadowView
-    }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,15 +54,18 @@ class DroneViewController: UIViewController {
                 }
             })
         }
-        
-        shadowView.bounds = CGRect(x: 0, y: 0, width: #imageLiteral(resourceName: "DJI P4").size.width, height: #imageLiteral(resourceName: "DJI P4").size.height)
-        shadowView.center = droneImageView.center
-        shadowView.layer.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
-        shadowView.layer.doMask(by: #imageLiteral(resourceName: "DJI P4"))
-        droneImageView.image = nil
-        droneImageView.addSubview(shadowView)
-        
+        showPhantomShadow()
     }
+    
+    func showPhantomShadow(){
+        let shadowLayer = CALayer()
+        shadowLayer.bounds = CGRect(x: 0, y: 0, width:#imageLiteral(resourceName: "DJI P4").size.width, height: #imageLiteral(resourceName: "DJI P4").size.height)
+        shadowLayer.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
+        shadowLayer.doMask(by: #imageLiteral(resourceName: "DJI P4"))
+        let shadowImage = shadowLayer.toImage()
+        droneImageView.image = shadowImage
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
 //        droneImageView.image = getDroneImage(of: "Spark")
@@ -130,7 +126,6 @@ class DroneViewController: UIViewController {
         self.productConnectionStatus.textColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
         
         //Update backgound drone image
-        shadowView.removeFromSuperview()
         droneImageView.image = getDroneImage(of: newProduct.model!)
         NSLog("Product Connected")
         
@@ -164,13 +159,7 @@ class DroneViewController: UIViewController {
             bridgeModeLabel.text = "Bridge: \(appDelegate.productCommunicationManager.bridgeAppIP)"
         }
         
-        shadowView.bounds = CGRect(x: 0, y: 0, width: #imageLiteral(resourceName: "DJI P4").size.width, height: #imageLiteral(resourceName: "DJI P4").size.height)
-        shadowView.center = droneImageView.center
-        shadowView.layer.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
-        shadowView.layer.doMask(by: #imageLiteral(resourceName: "DJI P4"))
-        droneImageView.image = nil
-        droneImageView.addSubview(shadowView)
-        
+        showPhantomShadow()
     }
     
     func getDroneImage(of model: String) -> UIImage{
