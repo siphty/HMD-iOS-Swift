@@ -46,18 +46,17 @@ extension UIViewController {
         view.bringSubview(toFront: content.view)
         
         let dismissBackgroundButton = UIButton()
+        content.view.addSubview(dismissBackgroundButton)
         dismissBackgroundButton.frame = content.view.frame
         dismissBackgroundButton.accessibilityIdentifier = "DismissBackgroundButton"
-        view.addSubview(dismissBackgroundButton)
         view.bringSubview(toFront: dismissBackgroundButton)
         dismissBackgroundButton.add(for: .touchDown){
             self.hideChildViewController(content)
         }
         dismissBackgroundButton.topAnchor.constraint(equalTo: content.view.topAnchor).isActive = true
-        dismissBackgroundButton.leftAnchor.constraint(equalTo: content.view.leftAnchor).isActive = true
-        dismissBackgroundButton.rightAnchor.constraint(equalTo: content.view.rightAnchor).isActive = true
+        dismissBackgroundButton.leadingAnchor.constraint(equalTo: content.view.leadingAnchor).isActive = true
+        dismissBackgroundButton.trailingAnchor.constraint(equalTo: content.view.trailingAnchor).isActive = true
         dismissBackgroundButton.bottomAnchor.constraint(equalTo: content.view.bottomAnchor).isActive = true
-        
     }
     
     func hideChildViewController(_ content: UIViewController) {

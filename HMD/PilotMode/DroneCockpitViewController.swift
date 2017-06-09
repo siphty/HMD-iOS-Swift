@@ -204,6 +204,7 @@ class DroneCockpitViewController: UIViewController {
         
         let AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! DroneAeroChartViewController
         self.displayChildViewController(AeroChartVC)
+//        self.popoverChildViewController(AeroChartVC)
         AeroChartVC.view.translatesAutoresizingMaskIntoConstraints = false
         AeroChartVC.view.topAnchor.constraint(equalTo: dockContainingView.topAnchor).isActive = true
         AeroChartVC.view.leftAnchor.constraint(equalTo: dockContainingView.leftAnchor).isActive = true
