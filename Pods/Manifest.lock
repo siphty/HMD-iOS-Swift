@@ -1,15 +1,21 @@
 PODS:
   - DJI-SDK-iOS (4.1.1)
   - DJI-UILibrary-iOS (4.1.1)
+  - NVActivityIndicatorView (3.6.1)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - DJI-SDK-iOS (~> 4.1.1)
   - DJI-UILibrary-iOS (~> 4.1.1)
+  - NVActivityIndicatorView
+  - SnapKit
 
 SPEC CHECKSUMS:
   DJI-SDK-iOS: 4c536c208a59714a44b5f92d187013480104a863
   DJI-UILibrary-iOS: e5424bb3e38c6d7f1119f0897e0fa1cb64a980a2
+  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 50a4d032a999288622bfdbe43abd0dd3d23fb16d
+PODFILE CHECKSUM: 9dfb74b8b9d109f2e30c7fdd400e535acf574948
 
 COCOAPODS: 1.2.1

@@ -8,17 +8,19 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var productCommunicationManager = ProductCommunicationManager()
+    var djiProductCommunicationManager = ProductCommunicationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        self.productCommunicationManager.registerWithSDK()
+        self.djiProductCommunicationManager.registerWithSDK()
+        
         return true
     }
 
@@ -92,4 +94,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
 

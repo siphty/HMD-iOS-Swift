@@ -185,7 +185,7 @@ class SystemInforTableViewController: UITableViewController {
                 cell.details.text = aircraft?.model ?? "N/A"
             case Aircraft.connectMode.rawValue:
                 cell.title.text = "Connect Mode"
-                let enableBMode = appDelegate.productCommunicationManager.enableBridgeMode
+                let enableBMode = appDelegate.djiProductCommunicationManager.enableBridgeMode
                 if enableBMode {
                     cell.details.text = "Bridge"
                 } else {
@@ -193,7 +193,7 @@ class SystemInforTableViewController: UITableViewController {
                 }
             case Aircraft.ipAddress.rawValue:
                 cell.title.text = "IP Address"
-                cell.details.text = appDelegate.productCommunicationManager.bridgeAppIP
+                cell.details.text = appDelegate.djiProductCommunicationManager.bridgeAppIP
             case Aircraft.firmwareVersion.rawValue:
                 cell.title.text = "Firmware Version"
                 cell.details.text = productFirmwarePackageVersion ?? "N/A"

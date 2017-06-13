@@ -25,7 +25,7 @@ class DroneCockpitViewController: UIViewController {
     let preflightCheckViewController = DULPreflightChecklistController()
     let cameraMenuViewController    = DULCameraSettingsController()
     let mapThumbnailView            = MKMapView()
-    var AeroChartVC = DroneAeroChartViewController()
+    var AeroChartVC                 = ADSBAeroChartViewController()
 //    var preflightChecklistController = DUL
    
     @IBOutlet weak var statusBarContainingView: UIView!
@@ -46,7 +46,7 @@ class DroneCockpitViewController: UIViewController {
         previewerAdapter.start()
         view.bringSubview(toFront: returnButton)
         initialCockpitViewControllers()
-        AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! DroneAeroChartViewController
+        AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! ADSBAeroChartViewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -244,7 +244,7 @@ class DroneCockpitViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToFullAeroChart" {
-            let aeroChartViewController = segue.destination as! DroneAeroChartViewController
+            let aeroChartViewController = segue.destination as! ADSBAeroChartViewController
             let dismissButton = UIButton()
             dismissButton.setImage(#imageLiteral(resourceName: "UICancelIconB"), for: .normal)
             dismissButton.backgroundColor = UIColor.clear

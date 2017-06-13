@@ -196,14 +196,17 @@ class HMDAltitudeRenderer: CALayer{
     
     
     func registerLocationManagerDelegate(){
-        locationManager.requestWhenInUseAuthorization()
-        orientation = misc.getCLDeviceOrientation(by: UIDevice.current.orientation)
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.headingFilter = 0.1
-        locationManager.headingOrientation =  orientation
-        locationManager.startUpdatingLocation()
-        locationManager.delegate = self
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+            orientation = misc.getCLDeviceOrientation(by: UIDevice.current.orientation)
+            locationManager.distanceFilter = kCLDistanceFilterNone
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.headingFilter = 0.1
+            locationManager.headingOrientation =  orientation
+            locationManager.startUpdatingLocation()
+            locationManager.delegate = self
+        }
     }
     
  
@@ -227,7 +230,7 @@ class HMDAltitudeRenderer: CALayer{
                                                                 }
                                                                 let altitudeInMeters =  newValue!.value! as! NSNumber
                                                                 self.updateRadarAltitudeLabel(CGFloat(altitudeInMeters))
-                                                                self.updateBarometricAltitudeLabel(CGFloat(altitudeInMeters))
+                                                                self.updateBarometricAltitudeLabel(CGFloat(altitudeInMeters) + CGFloat(self.previousHomeAltitude))
                                                                 self.changeAltitudeStickHeight(CGFloat(altitudeInMeters))
         })
     }

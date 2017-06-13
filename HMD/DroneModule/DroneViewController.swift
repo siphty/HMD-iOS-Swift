@@ -31,9 +31,9 @@ class DroneViewController: UIViewController {
             return;
         }
         
-        bridgeModeLabel.isHidden = !appDelegate.productCommunicationManager.enableBridgeMode
+        bridgeModeLabel.isHidden = !appDelegate.djiProductCommunicationManager.enableBridgeMode
         if !bridgeModeLabel.isHidden {
-            bridgeModeLabel.text = "Bridge: \(appDelegate.productCommunicationManager.bridgeAppIP)"
+            bridgeModeLabel.text = "Bridge: \(appDelegate.djiProductCommunicationManager.bridgeAppIP)"
         }
         productFirmwarePackageVersion.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -79,13 +79,13 @@ class DroneViewController: UIViewController {
     
     
     @IBAction func ConnectButtonTouchUpInside(_ sender: Any) {
-        if self.appDelegate.productCommunicationManager.enableBridgeMode {
-            NSLog("Connecting to Product using debug IP address: \(self.appDelegate.productCommunicationManager.bridgeAppIP)...")
-            DJISDKManager.enableBridgeMode(withBridgeAppIP: self.appDelegate.productCommunicationManager.bridgeAppIP)
+        if self.appDelegate.djiProductCommunicationManager.enableBridgeMode {
+            NSLog("Connecting to Product using debug IP address: \(self.appDelegate.djiProductCommunicationManager.bridgeAppIP)...")
+            DJISDKManager.enableBridgeMode(withBridgeAppIP: self.appDelegate.djiProductCommunicationManager.bridgeAppIP)
         }
-        bridgeModeLabel.isHidden = !appDelegate.productCommunicationManager.enableBridgeMode
-        if appDelegate.productCommunicationManager.enableBridgeMode {
-            bridgeModeLabel.text = "Bridge: \(appDelegate.productCommunicationManager.bridgeAppIP)"
+        bridgeModeLabel.isHidden = !appDelegate.djiProductCommunicationManager.enableBridgeMode
+        if appDelegate.djiProductCommunicationManager.enableBridgeMode {
+            bridgeModeLabel.text = "Bridge: \(appDelegate.djiProductCommunicationManager.bridgeAppIP)"
         }
         connectProduct()
     }
@@ -131,9 +131,9 @@ class DroneViewController: UIViewController {
         
         //Update Bridge Moddl label
         
-        bridgeModeLabel.isHidden = !appDelegate.productCommunicationManager.enableBridgeMode
-        if appDelegate.productCommunicationManager.enableBridgeMode {
-            bridgeModeLabel.text = "Bridge: \(appDelegate.productCommunicationManager.bridgeAppIP)"
+        bridgeModeLabel.isHidden = !appDelegate.djiProductCommunicationManager.enableBridgeMode
+        if appDelegate.djiProductCommunicationManager.enableBridgeMode {
+            bridgeModeLabel.text = "Bridge: \(appDelegate.djiProductCommunicationManager.bridgeAppIP)"
         }
     }
     
@@ -153,10 +153,10 @@ class DroneViewController: UIViewController {
         self.productConnectionStatus.text = "DISCONNECTED"
         productModel.isHidden = true
         productFirmwarePackageVersion.isHidden = true
-        bridgeModeLabel.isHidden = !appDelegate.productCommunicationManager.enableBridgeMode
+        bridgeModeLabel.isHidden = !appDelegate.djiProductCommunicationManager.enableBridgeMode
         
-        if appDelegate.productCommunicationManager.enableBridgeMode {
-            bridgeModeLabel.text = "Bridge: \(appDelegate.productCommunicationManager.bridgeAppIP)"
+        if appDelegate.djiProductCommunicationManager.enableBridgeMode {
+            bridgeModeLabel.text = "Bridge: \(appDelegate.djiProductCommunicationManager.bridgeAppIP)"
         }
         
         showPhantomShadow()

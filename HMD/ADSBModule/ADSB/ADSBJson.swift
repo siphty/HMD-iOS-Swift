@@ -87,8 +87,8 @@ extension Date {
     }
     
     init?(json: [String: Any], key: String, format: String) {
-        guard let string = json[key] as? String
-        date = Date.parse(string: string, format: format) else { return nil }
+        guard let string = json[key] as? String else { return nil }
+        guard let date = Date.parse(string: string, format: format) else { return nil }
         self.init(timeIntervalSinceReferenceDate: date.timeIntervalSinceReferenceDate)
     }
 }

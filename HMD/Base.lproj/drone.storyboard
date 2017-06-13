@@ -237,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="134" y="-72"/>
         </scene>
-        <!--Drone Aero Chart View Controller-->
+        <!--Aero Chart View Controller-->
         <scene sceneID="Iiv-h6-bdm">
             <objects>
-                <viewController storyboardIdentifier="AeroChartVC" id="Gq1-3q-319" customClass="DroneAeroChartViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AeroChartVC" id="Gq1-3q-319" customClass="ADSBAeroChartViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hhY-eX-Q6R"/>
                         <viewControllerLayoutGuide type="bottom" id="pQo-1u-8Zg"/>
