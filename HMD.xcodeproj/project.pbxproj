@@ -15,6 +15,8 @@
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
 		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
 		A258C8301EDAF94600B3F499 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A26222B11EF0B90B00E87DC2 /* CLLocation+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */; };
+		A26222B31EF1111C00E87DC2 /* ADSBMiscellanious.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */; };
 		A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */; };
 		A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */; };
 		A269BF221ECADF2B007ABB10 /* CommonDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A269BF211ECADF2B007ABB10 /* CommonDetailTableViewCell.xib */; };
@@ -157,6 +159,8 @@
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocation+Operator.swift"; path = "Siphty Extensions/CoreLocation/CLLocation+Operator.swift"; sourceTree = "<group>"; };
+		A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBMiscellanious.swift; path = HMD/ADSBModule/ADSBMiscellanious.swift; sourceTree = SOURCE_ROOT; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SystemInfor.storyboard; path = HMD/SystemInfor.storyboard; sourceTree = SOURCE_ROOT; };
@@ -402,7 +406,7 @@
 				A24BBF2D1E56840300EBF428 /* Products */,
 				A2A1AABE1EBD89A0006970E1 /* Frameworks */,
 				A27358171EE3BB9100ECFC28 /* Support */,
-				A2B3B2B71EE92AAF00A1EB0B /* Siphty Dev Extensions */,
+				A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */,
 				C3AF521D5CE153B9DC34AB06 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -462,6 +466,14 @@
 				A254BEFD1EA8DDE6005E70D9 /* HMD */,
 			);
 			name = "HMD Module";
+			sourceTree = "<group>";
+		};
+		A26222AE1EF0B75400E87DC2 /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */,
+			);
+			name = CoreLocation;
 			sourceTree = "<group>";
 		};
 		A269BF1C1ECAC911007ABB10 /* Blackbox Module */ = {
@@ -638,9 +650,10 @@
 			name = HMDMission;
 			sourceTree = "<group>";
 		};
-		A2B3B2B71EE92AAF00A1EB0B /* Siphty Dev Extensions */ = {
+		A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A26222AE1EF0B75400E87DC2 /* CoreLocation */,
 				A2B54C3F1EEAB9D700215A18 /* String */,
 				A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */,
 				A2B3B2B81EE92AF500A1EB0B /* UIControl */,
@@ -649,7 +662,7 @@
 				A2048AF41EC333B300C2413C /* Swift */,
 				A2048AF51EC333C800C2413C /* UIKit */,
 			);
-			name = "Siphty Dev Extensions";
+			name = "Siphty Extensions";
 			sourceTree = "<group>";
 		};
 		A2B3B2B81EE92AF500A1EB0B /* UIControl */ = {
@@ -697,6 +710,7 @@
 				A2B54C481EED659C00215A18 /* ADSBFlight.swift */,
 				A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */,
 				A2B54C4D1EED7A6800215A18 /* ADSBXResponse.swift */,
+				A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -959,6 +973,7 @@
 				A2A1AAB11EBD6EF0006970E1 /* HMDAltitudeRenderer.swift in Sources */,
 				A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */,
 				A2DA57D71EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter.m in Sources */,
+				A26222B11EF0B90B00E87DC2 /* CLLocation+Operator.swift in Sources */,
 				A2C93A6E1EF00E2B00DDE914 /* ADSBAnnotationView.swift in Sources */,
 				A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift in Sources */,
 				A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */,
@@ -968,6 +983,7 @@
 				A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */,
 				A2C93ACD1EF019EB00DDE914 /* ADSBAnnotation.swift in Sources */,
 				A2DA57F81EE25EDC0088E1A9 /* DemoUtilityMethod.m in Sources */,
+				A26222B31EF1111C00E87DC2 /* ADSBMiscellanious.swift in Sources */,
 				A2B54C501EED7B2600215A18 /* ADSBJson.swift in Sources */,
 				A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */,

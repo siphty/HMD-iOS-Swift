@@ -11,7 +11,7 @@ import MapKit
 import SnapKit
 import NVActivityIndicatorView
 
-class ADSBAnnotationCalloutView: UIView {
+class ADSBAnnotationCalloutView: ADSBCalloutView {
     
     public var titleLabel: UILabel = {
         let label = UILabel()
@@ -58,7 +58,24 @@ class ADSBAnnotationCalloutView: UIView {
         loadingIndicator.snp.makeConstraints { (make) in
             make.center.equalTo(contentView)
         }
-        
-        
+    }
+    
+    override func didTouchUpInCallout(_ sender: Any) {
+        print("didTouchUpInCallout")
+    }
+    
+    
+    func didTapDetailsButton(_ sender: UIButton) {
+        print("didTapDetailsButton")
+    }
+    open func startLoading() {
+        titleLabel.isHidden = true
+        loadingIndicator.isHidden = false
+        loadingIndicator.startAnimating()
+    }
+    open func stopLoading() {
+        titleLabel.isHidden = false
+        loadingIndicator.isHidden = true
+        loadingIndicator.stopAnimating()
     }
 }

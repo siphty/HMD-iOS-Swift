@@ -42,25 +42,25 @@ class ADSBAnnotationView: MKAnnotationView {
         
         if selected {
             self.calloutView?.removeFromSuperview()
-            let aCalloutView = ADSBAnnotationCalloutView()
+            let aCalloutView = ADSBAnnotationCalloutView(annotation: annotation as! MKShape)
             aCalloutView.add(to: self)
             self.calloutView = aCalloutView
             if animated {
-                calloutView.alpha = 0
+                self.calloutView?.alpha = 0
                 UIView.animate(withDuration: animationDuration) {
-                    calloutView.alpha = 1
+                    self.calloutView?.alpha = 1
                 }
             }
         } else {
             guard let aCalloutView = calloutView else { return }
             if animated {
                 UIView.animate(withDuration: animationDuration, animations: {
-                    calloutView.alpha = 0
+                    self.calloutView?.alpha = 0
                 }, completion: { finished in
-                    calloutView.removeFromSuperview()
+                    self.calloutView?.removeFromSuperview()
                 })
             } else {
-                calloutView.removeFromSuperview()
+                calloutView?.removeFromSuperview()
             }
         }
     }
