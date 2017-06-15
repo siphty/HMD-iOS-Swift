@@ -13,6 +13,7 @@ import UIKit
 class ADSBAnnotationView: MKAnnotationView {
     public var calloutView: ADSBAnnotationCalloutView?
     public var annotationImage: UIImage?
+    var annotationImageView: UIView?
     
     override open var annotation: MKAnnotation? {
         willSet {
@@ -28,7 +29,9 @@ class ADSBAnnotationView: MKAnnotationView {
         if let customPin = annotation as? ADSBAnnotation {
             annotationImage = customPin.image
         }
-        image = annotationImage
+        annotationImageView = UIImageView(image: annotationImage)
+        addSubview(annotationImageView!)
+        image = nil
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -52,7 +55,7 @@ class ADSBAnnotationView: MKAnnotationView {
                 }
             }
         } else {
-            guard let aCalloutView = calloutView else { return }
+            guard calloutView != nil else { return }
             if animated {
                 UIView.animate(withDuration: animationDuration, animations: {
                     self.calloutView?.alpha = 0

@@ -307,7 +307,7 @@
                                         <rect key="frame" x="0.0" y="28" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PQ6-RN-Pun" id="Ppu-I1-v0w">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$1.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F1Q-sk-cgI">
@@ -331,7 +331,7 @@
                                         <rect key="frame" x="0.0" y="72" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zCk-4T-o2b" id="QFO-M9-j8T">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$2.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34o-aa-kia">
@@ -342,7 +342,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Record HMD Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q9R-lh-vhv">
-                                                    <rect key="frame" x="117" y="14" width="115.5" height="16"/>
+                                                    <rect key="frame" x="117" y="14" width="115" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -355,7 +355,7 @@
                                         <rect key="frame" x="0.0" y="116" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P9e-nA-VEq" id="NDl-bA-MWF">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$3.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pJb-9t-TeQ">
@@ -379,7 +379,7 @@
                                         <rect key="frame" x="0.0" y="160" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lBC-uQ-LBt" id="IT9-ec-vdd">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Adi-Ke-4Pf">
@@ -390,7 +390,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: Australia Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FXr-7D-Syq">
-                                                    <rect key="frame" x="117" y="14" width="192.5" height="16"/>
+                                                    <rect key="frame" x="117" y="14" width="192" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -403,7 +403,7 @@
                                         <rect key="frame" x="0.0" y="204" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W3a-hx-XpE" id="CzS-g9-uzg">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F7A-bE-KFv">
@@ -414,7 +414,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: British Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qiM-57-Ye6">
-                                                    <rect key="frame" x="117" y="14" width="178.5" height="16"/>
+                                                    <rect key="frame" x="117" y="14" width="178" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -427,7 +427,7 @@
                                         <rect key="frame" x="0.0" y="248" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NIS-Tf-Jsb" id="DDL-LE-xe7">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tcb-x3-gFe">
@@ -438,7 +438,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: USA Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="unx-d0-wcU">
-                                                    <rect key="frame" x="117" y="14" width="166.5" height="16"/>
+                                                    <rect key="frame" x="117" y="14" width="166" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -451,7 +451,7 @@
                                         <rect key="frame" x="0.0" y="292" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOK-qa-7BW" id="2Tc-r9-iTK">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OLs-Dj-gvl">
@@ -462,7 +462,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: China Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CwV-di-74b">
-                                                    <rect key="frame" x="117" y="14" width="174.5" height="16"/>
+                                                    <rect key="frame" x="117" y="14" width="174" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -475,7 +475,7 @@
                                         <rect key="frame" x="0.0" y="336" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GMe-mf-MUX" id="RXO-0O-Ycr">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -487,18 +487,18 @@
                                         <rect key="frame" x="0.0" y="408" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P3M-ai-sfT" id="nYn-Sw-zZB">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$1.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BUF-z1-h1d">
-                                                    <rect key="frame" x="15" y="14" width="91" height="16"/>
+                                                    <rect key="frame" x="15" y="15" width="91" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="HMD Style: AH-47" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k2n-v4-r0d">
-                                                    <rect key="frame" x="112" y="14" width="112" height="16"/>
+                                                    <rect key="frame" x="112" y="15" width="112" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -511,7 +511,7 @@
                                         <rect key="frame" x="0.0" y="452" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dqK-nz-vTW" id="LL8-il-FeN">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$2.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3cs-tR-cv6">
@@ -522,7 +522,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Record HMD Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i2b-hk-XVu">
-                                                    <rect key="frame" x="112" y="14" width="115.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="115" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -535,7 +535,7 @@
                                         <rect key="frame" x="0.0" y="496" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cO7-za-hj7" id="Mko-Mt-Kdn">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$3.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JNg-r2-1mR">
@@ -559,7 +559,7 @@
                                         <rect key="frame" x="0.0" y="540" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jUf-fQ-DaT" id="Zjw-O2-W37">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qch-ZS-VJT">
@@ -570,7 +570,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: Australia Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a8k-t7-FKZ">
-                                                    <rect key="frame" x="112" y="14" width="192.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="192" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -583,7 +583,7 @@
                                         <rect key="frame" x="0.0" y="584" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6TK-k9-TcR" id="SJq-lj-k2t">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGd-AE-auA">
@@ -594,7 +594,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: British Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Wh-Hc-1U1">
-                                                    <rect key="frame" x="112" y="14" width="178.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="178" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -607,7 +607,7 @@
                                         <rect key="frame" x="0.0" y="628" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GfQ-un-Mtm" id="O01-Am-Z7K">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sgf-Cj-Qqb">
@@ -618,7 +618,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: USA Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f3U-bR-HhV">
-                                                    <rect key="frame" x="112" y="14" width="166.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="166" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -631,7 +631,7 @@
                                         <rect key="frame" x="0.0" y="672" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4dU-jI-zdP" id="BVF-DV-ZTx">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qu2-vb-gx7">
@@ -642,7 +642,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: China Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I1m-tS-0Pn">
-                                                    <rect key="frame" x="112" y="14" width="174.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="174" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -655,7 +655,7 @@
                                         <rect key="frame" x="0.0" y="716" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eG3-Q2-cLb" id="6uF-uI-MVw">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$3.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hza-OD-6AD">
@@ -683,7 +683,7 @@
                                         <rect key="frame" x="0.0" y="788" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dWr-En-cYc" id="tex-AE-2bp">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$1.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="far-iC-GHi">
@@ -707,7 +707,7 @@
                                         <rect key="frame" x="0.0" y="832" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uY5-Af-gTU" id="c1C-xj-qlc">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$2.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C8i-Dl-qB5">
@@ -718,7 +718,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Record HMD Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D5e-Wj-Jqa">
-                                                    <rect key="frame" x="112" y="14" width="115.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="115" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -731,7 +731,7 @@
                                         <rect key="frame" x="0.0" y="876" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pDG-cK-ued" id="rkz-bp-dCd">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$3.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lhI-I2-FKI">
@@ -755,7 +755,7 @@
                                         <rect key="frame" x="0.0" y="920" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ygg-aE-Eha" id="hD1-r2-BZ8">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yAg-yc-jiZ">
@@ -766,7 +766,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: Australia Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RNy-Db-qa4">
-                                                    <rect key="frame" x="112" y="14" width="192.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="192" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -779,7 +779,7 @@
                                         <rect key="frame" x="0.0" y="964" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1SJ-jZ-jKO" id="qcB-WE-ZuA">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H1S-Ve-dud">
@@ -790,7 +790,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: British Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RZv-4V-Iy8">
-                                                    <rect key="frame" x="112" y="14" width="178.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="178" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -803,7 +803,7 @@
                                         <rect key="frame" x="0.0" y="1008" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U6I-Hj-FrA" id="Rdu-88-L77">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JOO-wB-o9W">
@@ -814,7 +814,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: USA Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Pg-Km-Flx">
-                                                    <rect key="frame" x="112" y="14" width="166.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="166" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -827,7 +827,7 @@
                                         <rect key="frame" x="0.0" y="1052" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w1j-kT-9bY" id="Meg-9k-m3r">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="$5.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nzk-L3-xNA">
@@ -838,7 +838,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AR Info: China Air Restriction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O6X-ne-l5h">
-                                                    <rect key="frame" x="112" y="14" width="174.5" height="16"/>
+                                                    <rect key="frame" x="112" y="14" width="174" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -851,7 +851,7 @@
                                         <rect key="frame" x="0.0" y="1096" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1BK-VS-KSi" id="Ana-9v-9Rs">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -915,9 +915,16 @@
                                 </constraints>
                                 <state key="normal" image="VR icon"/>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FEL-w4-I7w">
+                                <rect key="frame" x="113" y="8" width="442" height="31"/>
+                                <connections>
+                                    <action selector="slideBarValueChanged:" destination="WPt-kU-Ij9" eventType="valueChanged" id="m7L-8L-ksy"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FEL-w4-I7w" secondAttribute="trailing" constant="114" id="0VB-IN-8G6"/>
                             <constraint firstItem="g5Y-rO-bn0" firstAttribute="top" secondItem="eKX-Cr-exZ" secondAttribute="bottom" id="0k6-qx-XkO"/>
                             <constraint firstItem="dSi-Bh-ya3" firstAttribute="leading" secondItem="g5Y-rO-bn0" secondAttribute="trailing" constant="-64" id="6qK-9r-5Kx"/>
                             <constraint firstItem="wTl-O4-4ZE" firstAttribute="leading" secondItem="g5Y-rO-bn0" secondAttribute="trailing" constant="-64" id="BI4-wh-h9A"/>
@@ -926,19 +933,22 @@
                             <constraint firstItem="g5Y-rO-bn0" firstAttribute="leading" secondItem="fiN-Ge-gRp" secondAttribute="leadingMargin" constant="-20" id="GDO-dC-nfI"/>
                             <constraint firstItem="Vkh-BG-13Z" firstAttribute="top" secondItem="g5Y-rO-bn0" secondAttribute="bottom" id="T1n-7p-yHz"/>
                             <constraint firstAttribute="leadingMargin" secondItem="pk0-Mc-kUi" secondAttribute="leading" id="b9R-cE-nf5"/>
+                            <constraint firstItem="FEL-w4-I7w" firstAttribute="top" secondItem="eKX-Cr-exZ" secondAttribute="bottom" constant="8" id="bhi-3O-Dfl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g5Y-rO-bn0" secondAttribute="trailing" constant="-20" id="mJO-hW-Yhs"/>
                             <constraint firstItem="g5Y-rO-bn0" firstAttribute="top" secondItem="dSi-Bh-ya3" secondAttribute="bottom" constant="-64" id="oO1-BM-Hd2"/>
+                            <constraint firstItem="FEL-w4-I7w" firstAttribute="leading" secondItem="fiN-Ge-gRp" secondAttribute="leading" constant="115" id="tUa-vv-pPZ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ADS-B" image="Tab Bar ADS-B Radar" id="gja-Sp-FVS"/>
                     <connections>
                         <outlet property="mapView" destination="g5Y-rO-bn0" id="wOn-DP-5bt"/>
+                        <outlet property="slideBar" destination="FEL-w4-I7w" id="PYp-uw-mY4"/>
                         <segue destination="zki-1B-29W" kind="show" id="MxH-WB-54I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ge7-YR-PBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2687" y="2105"/>
+            <point key="canvasLocation" x="-2687.4062968515746" y="2104.8000000000002"/>
         </scene>
         <!--ADS-B-->
         <scene sceneID="fAE-sr-eIb">

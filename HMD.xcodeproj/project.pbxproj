@@ -12,8 +12,11 @@
 		A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */; };
 		A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
 		A225299A1EDADEA800A971B8 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; };
+		A229E5C01EF2594900DB3AB9 /* DroneAeroChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A229E5BF1EF2594900DB3AB9 /* DroneAeroChartViewController.swift */; };
+		A229E5C41EF29EA400DB3AB9 /* Geometric.swift in Sources */ = {isa = PBXBuildFile; fileRef = A229E5C31EF29EA400DB3AB9 /* Geometric.swift */; };
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
 		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
+		A22CCF871EF237FF0070AFC3 /* UIImage+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */; };
 		A258C8301EDAF94600B3F499 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A26222B11EF0B90B00E87DC2 /* CLLocation+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */; };
 		A26222B31EF1111C00E87DC2 /* ADSBMiscellanious.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */; };
@@ -156,8 +159,11 @@
 		A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedInterfaceViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = SOURCE_ROOT; };
 		A22529911EDADBB300A971B8 /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = VideoPreviewer.xcodeproj; sourceTree = "<group>"; };
+		A229E5BF1EF2594900DB3AB9 /* DroneAeroChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DroneAeroChartViewController.swift; path = HMD/DroneModule/DroneAeroChartViewController.swift; sourceTree = SOURCE_ROOT; };
+		A229E5C31EF29EA400DB3AB9 /* Geometric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Geometric.swift; path = "Siphty Extensions/Mathematics/Geometric.swift"; sourceTree = SOURCE_ROOT; };
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
+		A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Movement.swift"; sourceTree = "<group>"; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocation+Operator.swift"; path = "Siphty Extensions/CoreLocation/CLLocation+Operator.swift"; sourceTree = "<group>"; };
 		A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBMiscellanious.swift; path = HMD/ADSBModule/ADSBMiscellanious.swift; sourceTree = SOURCE_ROOT; };
@@ -390,12 +396,28 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A229E5C21EF29E0200DB3AB9 /* Mathamatics */ = {
+			isa = PBXGroup;
+			children = (
+				A229E5C31EF29EA400DB3AB9 /* Geometric.swift */,
+			);
+			path = Mathamatics;
+			sourceTree = "<group>";
+		};
 		A22BE7901ED67B500073678A /* VideoPreviewer */ = {
 			isa = PBXGroup;
 			children = (
 				A22529911EDADBB300A971B8 /* VideoPreviewer.xcodeproj */,
 			);
 			path = VideoPreviewer;
+			sourceTree = "<group>";
+		};
+		A22CCF851EF237AD0070AFC3 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */,
+			);
+			name = UIImage;
 			sourceTree = "<group>";
 		};
 		A24BBF231E56840300EBF428 = {
@@ -406,7 +428,6 @@
 				A24BBF2D1E56840300EBF428 /* Products */,
 				A2A1AABE1EBD89A0006970E1 /* Frameworks */,
 				A27358171EE3BB9100ECFC28 /* Support */,
-				A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */,
 				C3AF521D5CE153B9DC34AB06 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -440,6 +461,7 @@
 				A2048B501EC5BA7400C2413C /* POI Module */,
 				A269BF1C1ECAC911007ABB10 /* Blackbox Module */,
 				A2048B541EC5BF2000C2413C /* DJI Service */,
+				A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */,
 			);
 			name = HMD;
 			path = Stereoscopic;
@@ -556,6 +578,7 @@
 			children = (
 				A2048B031EC57F9D00C2413C /* Drone.storyboard */,
 				A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */,
+				A229E5BF1EF2594900DB3AB9 /* DroneAeroChartViewController.swift */,
 				A2D341D11EDBDEBE001DEF82 /* PilotHUDViewController.swift */,
 				A2D341D31EDBDF10001DEF82 /* PilotHMDViewController.swift */,
 			);
@@ -653,6 +676,8 @@
 		A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A229E5C21EF29E0200DB3AB9 /* Mathamatics */,
+				A22CCF851EF237AD0070AFC3 /* UIImage */,
 				A26222AE1EF0B75400E87DC2 /* CoreLocation */,
 				A2B54C3F1EEAB9D700215A18 /* String */,
 				A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */,
@@ -663,6 +688,7 @@
 				A2048AF51EC333C800C2413C /* UIKit */,
 			);
 			name = "Siphty Extensions";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A2B3B2B81EE92AF500A1EB0B /* UIControl */ = {
@@ -965,6 +991,7 @@
 				A2DA58031EE25EDC0088E1A9 /* DemoVirtualStickView.m in Sources */,
 				A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */,
 				A2A1AAE31EBF401F006970E1 /* CALayer+Extensions.swift in Sources */,
+				A229E5C01EF2594900DB3AB9 /* DroneAeroChartViewController.swift in Sources */,
 				A2DA58011EE25EDC0088E1A9 /* DemoSettingItem.m in Sources */,
 				A2A1AAEB1EBF5FC9006970E1 /* CGFloat+Extensions.swift in Sources */,
 				A2A1AAD11EBDE340006970E1 /* HMDSideslipLayer.swift in Sources */,
@@ -972,10 +999,12 @@
 				A2A1AACD1EBDD2A9006970E1 /* HMDBankScaleLayer.swift in Sources */,
 				A2A1AAB11EBD6EF0006970E1 /* HMDAltitudeRenderer.swift in Sources */,
 				A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */,
+				A229E5C41EF29EA400DB3AB9 /* Geometric.swift in Sources */,
 				A2DA57D71EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter.m in Sources */,
 				A26222B11EF0B90B00E87DC2 /* CLLocation+Operator.swift in Sources */,
 				A2C93A6E1EF00E2B00DDE914 /* ADSBAnnotationView.swift in Sources */,
 				A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift in Sources */,
+				A22CCF871EF237FF0070AFC3 /* UIImage+Movement.swift in Sources */,
 				A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */,
 				A2C93AC91EF0157300DDE914 /* ADSBAnnotationCalloutView.swift in Sources */,
 				A2A6B9151EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift in Sources */,

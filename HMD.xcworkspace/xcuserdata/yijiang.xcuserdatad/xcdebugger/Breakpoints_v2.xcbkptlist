@@ -226,7 +226,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/PilotMode/DroneCockpitViewController.swift"
-            timestampString = "518676620.398862"
+            timestampString = "519227900.596741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
@@ -242,7 +242,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/PilotMode/DroneCockpitViewController.swift"
-            timestampString = "518676620.398862"
+            timestampString = "519227900.597116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "185"
@@ -268,24 +268,83 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            symbolName = "UIViewAlertForUnsatisfiableConstraints"
-            moduleName = "">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UIViewAlertForUnsatisfiableConstraints"
-                  moduleName = "UIKit"
-                  usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
-               </Location>
-            </Locations>
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.59726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.598273"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "ADSBAeroChartViewController"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.599211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "mapView(_:didSelect:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.599954"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "mapView(_:didSelect:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.600687"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "locationManager(_:didChangeAuthorization:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -295,13 +354,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
-            timestampString = "519125451.893286"
+            timestampString = "519227900.601411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "centerMapOnLocation(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -311,13 +370,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
-            timestampString = "519125523.192318"
+            timestampString = "519227900.602126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "mapView(_:viewFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.602869"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "mapView(_:viewFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.603598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "165"
             endingLineNumber = "165"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "mapView(_:viewFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.604309"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "mapView(_:viewFor:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -327,13 +434,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
-            timestampString = "519125919.808248"
+            timestampString = "519227900.604994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "remoteButtonTouchUpInside(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -343,13 +450,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
-            timestampString = "519125939.947707"
+            timestampString = "519227900.605868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "mapView(_:viewFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/ADSBModule/ADSBAnnotationView.swift"
+            timestampString = "519227900.606505"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "init(annotation:reuseIdentifier:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -359,13 +482,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
-            timestampString = "519125940.635421"
+            timestampString = "519227900.606762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "mapView(_:viewFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519227900.607398"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "slideBarValueChanged(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

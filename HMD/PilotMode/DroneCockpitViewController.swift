@@ -25,7 +25,7 @@ class DroneCockpitViewController: UIViewController {
     let preflightCheckViewController = DULPreflightChecklistController()
     let cameraMenuViewController    = DULCameraSettingsController()
     let mapThumbnailView            = MKMapView()
-    var AeroChartVC                 = ADSBAeroChartViewController()
+    var AeroChartVC                 = DroneAeroChartViewController()
 //    var preflightChecklistController = DUL
    
     @IBOutlet weak var statusBarContainingView: UIView!
@@ -46,7 +46,7 @@ class DroneCockpitViewController: UIViewController {
         previewerAdapter.start()
         view.bringSubview(toFront: returnButton)
         initialCockpitViewControllers()
-        AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! ADSBAeroChartViewController
+        AeroChartVC = storyboard?.instantiateViewController(withIdentifier: "AeroChartVC") as! DroneAeroChartViewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
