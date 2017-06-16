@@ -55,6 +55,7 @@
 		A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */; };
 		A27878421EE535D000636B9D /* DroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27878411EE535D000636B9D /* DroneViewController.swift */; };
 		A2821A291EEF6FE2009F6266 /* ADS-B.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2821A281EEF6FE2009F6266 /* ADS-B.storyboard */; };
+		A288689F1EF40B29008E3631 /* ADSBDictKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */; };
 		A291DB791EE3D199003C52C2 /* DroneCockpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */; };
 		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
@@ -203,6 +204,7 @@
 		A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Frame.swift"; sourceTree = SOURCE_ROOT; };
 		A27878411EE535D000636B9D /* DroneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneViewController.swift; path = HMD/DroneModule/DroneViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2821A281EEF6FE2009F6266 /* ADS-B.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "ADS-B.storyboard"; path = "HMD/ADSBModule/ADS-B.storyboard"; sourceTree = SOURCE_ROOT; };
+		A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBDictKeys.swift; path = HMD/ADSBModule/ADSB/ADSBDictKeys.swift; sourceTree = SOURCE_ROOT; };
 		A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCockpitViewController.swift; path = HMD/PilotMode/DroneCockpitViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayer.swift; path = HMD/HMDHeadingCursorLayer.swift; sourceTree = SOURCE_ROOT; };
@@ -585,6 +587,16 @@
 			name = "Drone UI";
 			sourceTree = "<group>";
 		};
+		A288689C1EF40ABB008E3631 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */,
+				A2B54C4F1EED7B2600215A18 /* ADSBJson.swift */,
+				A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		A28BF8EB1EB05F200097EB4D /* HMDHeading */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,8 +731,6 @@
 			isa = PBXGroup;
 			children = (
 				A2B54C4A1EED65F100215A18 /* Models */,
-				A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */,
-				A2B54C4F1EED7B2600215A18 /* ADSBJson.swift */,
 				A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */,
 				A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */,
 				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
@@ -733,6 +743,7 @@
 		A2B54C4A1EED65F100215A18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A288689C1EF40ABB008E3631 /* Utils */,
 				A2B54C481EED659C00215A18 /* ADSBFlight.swift */,
 				A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */,
 				A2B54C4D1EED7A6800215A18 /* ADSBXResponse.swift */,
@@ -1016,6 +1027,7 @@
 				A2B54C501EED7B2600215A18 /* ADSBJson.swift in Sources */,
 				A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */,
+				A288689F1EF40B29008E3631 /* ADSBDictKeys.swift in Sources */,
 				A272BC7E1EC2F74300577941 /* HMDCentreDatumLayer.swift in Sources */,
 				A2A1AADF1EBF3177006970E1 /* HMDAltitudeStickLayer.swift in Sources */,
 				A2A1AA571EBA1C2A006970E1 /* HMDMisc.swift in Sources */,

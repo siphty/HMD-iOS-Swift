@@ -153,6 +153,7 @@
 		9AC2749D1E544E7700DFBE85 /* DJILiveViewRenderDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AC2740F1E544E7700DFBE85 /* DJILiveViewRenderDataSource.h */; };
 		9AC2749E1E544E7700DFBE85 /* DJILiveViewRenderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC274101E544E7700DFBE85 /* DJILiveViewRenderDataSource.m */; };
 		9ACA4AC61E5D4068005ADDDE /* VideoPreviewer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9ACA4AC51E5D4068005ADDDE /* VideoPreviewer.bundle */; };
+		A288689B1EF407D2008E3631 /* text in Resources */ = {isa = PBXBuildFile; fileRef = A288689A1EF407D2008E3631 /* text */; };
 		B828932F1C9867AB00CCBD3B /* SoftwareDecodeProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B828932B1C9867AB00CCBD3B /* SoftwareDecodeProcessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B82893301C9867AB00CCBD3B /* SoftwareDecodeProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B828932C1C9867AB00CCBD3B /* SoftwareDecodeProcessor.m */; };
 		B82893311C9867AB00CCBD3B /* VideoPreviewerQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B828932D1C9867AB00CCBD3B /* VideoPreviewerQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -321,6 +322,7 @@
 		9AC2740F1E544E7700DFBE85 /* DJILiveViewRenderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJILiveViewRenderDataSource.h; sourceTree = "<group>"; };
 		9AC274101E544E7700DFBE85 /* DJILiveViewRenderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJILiveViewRenderDataSource.m; sourceTree = "<group>"; };
 		9ACA4AC51E5D4068005ADDDE /* VideoPreviewer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VideoPreviewer.bundle; path = VideoPreviewer/VideoPreviewer.bundle; sourceTree = "<group>"; };
+		A288689A1EF407D2008E3631 /* text */ = {isa = PBXFileReference; lastKnownFileType = text; name = text; path = ../../../Documents/text; sourceTree = "<group>"; };
 		B828932B1C9867AB00CCBD3B /* SoftwareDecodeProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoftwareDecodeProcessor.h; path = VideoPreviewer/SoftwareDecodeProcessor.h; sourceTree = "<group>"; };
 		B828932C1C9867AB00CCBD3B /* SoftwareDecodeProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoftwareDecodeProcessor.m; path = VideoPreviewer/SoftwareDecodeProcessor.m; sourceTree = "<group>"; };
 		B828932D1C9867AB00CCBD3B /* VideoPreviewerQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoPreviewerQueue.h; path = VideoPreviewer/VideoPreviewerQueue.h; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 		02A543F31C3C51CB0083C11B = {
 			isa = PBXGroup;
 			children = (
+				A288689A1EF407D2008E3631 /* text */,
 				9ACA4AC51E5D4068005ADDDE /* VideoPreviewer.bundle */,
 				9AC2735B1E54455000DFBE85 /* H1Camera */,
 				9AC273701E544E7700DFBE85 /* ffmpeg */,
@@ -949,6 +952,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACA4AC61E5D4068005ADDDE /* VideoPreviewer.bundle in Resources */,
+				A288689B1EF407D2008E3631 /* text in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

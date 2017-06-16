@@ -13,20 +13,20 @@ import Foundation
 //
 // MARK: - Data Model
 //
-struct RootType: CreatableFromJSON { // TODO: Rename this struct
-    let acList: [AcList]
-    let feeds: [Feeds]
-    let flgH: Int
-    let flgW: Int
-    let lastDv: String
-    let showFlg: Bool
-    let showPic: Bool
-    let showSil: Bool
-    let shtTrlSec: Int
-    let src: Int
-    let srcFeed: Int
-    let stm: Int
-    let totalAc: Int
+struct ADSBXResponse: CreatableFromJSON { // TODO: Rename this struct
+    let acList: [AcList]?
+    let feeds: [Feeds]?
+    let flgH: Int?
+    let flgW: Int?
+    let lastDv: String?
+    let showFlg: Bool?
+    let showPic: Bool?
+    let showSil: Bool?
+    let shtTrlSec: Int?
+    let src: Int?
+    let srcFeed: Int?
+    let stm: Int?
+    let totalAc: Int?
     init(acList: [AcList], feeds: [Feeds], flgH: Int, flgW: Int, lastDv: String, showFlg: Bool, showPic: Bool, showSil: Bool, shtTrlSec: Int, src: Int, srcFeed: Int, stm: Int, totalAc: Int) {
         self.acList = acList
         self.feeds = feeds
@@ -59,7 +59,7 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
         self.init(acList: acList, feeds: feeds, flgH: flgH, flgW: flgW, lastDv: lastDv, showFlg: showFlg, showPic: showPic, showSil: showSil, shtTrlSec: shtTrlSec, src: src, srcFeed: srcFeed, stm: stm, totalAc: totalAc)
     }
     struct AcList: CreatableFromJSON { // TODO: Rename this struct
-        let alt: Int?
+        let alt: Int
         let altT: Int
         let bad: Bool
         let brng: Double
@@ -74,8 +74,7 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
         let engines: String
         let fSeen: String
         let flightsCount: Int
-        let from: String?
-        let gAlt: Int?
+        let gAlt: Int
         let gnd: Bool
         let hasPic: Bool
         let hasSig: Bool
@@ -91,26 +90,24 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
         let mil: Bool
         let mlat: Bool
         let op: String
-        let opIcao: String
         let posTime: Int
         let rcvr: Int
         let reg: String
-        let spd: Double?
+        let spd: Int
         let spdTyp: Int
         let species: Int
         let sqk: String
         let tSecs: Int
         let tisb: Bool
-        let to: String?
-        let trak: Double?
+        let trak: Double
         let trkH: Bool
         let trt: Int
         let type: String
-        let vsi: Int?
+        let vsi: Int
         let vsiT: Int
         let wTC: Int
         let year: String
-        init(alt: Int?, altT: Int, bad: Bool, brng: Double, cMsgs: Int, cNum: String, call: String, callSus: Bool, cou: String, dst: Double, engMount: Int, engType: Int, engines: String, fSeen: String, flightsCount: Int, from: String?, gAlt: Int?, gnd: Bool, hasPic: Bool, hasSig: Bool, help: Bool, icao: String, id: Int, inHg: Double, interested: Bool, lat: Double, long: Double, man: String, mdl: String, mil: Bool, mlat: Bool, op: String, opIcao: String, posTime: Int, rcvr: Int, reg: String, spd: Double?, spdTyp: Int, species: Int, sqk: String, tSecs: Int, tisb: Bool, to: String?, trak: Double?, trkH: Bool, trt: Int, type: String, vsi: Int?, vsiT: Int, wTC: Int, year: String) {
+        init(alt: Int, altT: Int, bad: Bool, brng: Double, cMsgs: Int, cNum: String, call: String, callSus: Bool, cou: String, dst: Double, engMount: Int, engType: Int, engines: String, fSeen: String, flightsCount: Int, gAlt: Int, gnd: Bool, hasPic: Bool, hasSig: Bool, help: Bool, icao: String, id: Int, inHg: Double, interested: Bool, lat: Double, long: Double, man: String, mdl: String, mil: Bool, mlat: Bool, op: String, posTime: Int, rcvr: Int, reg: String, spd: Int, spdTyp: Int, species: Int, sqk: String, tSecs: Int, tisb: Bool, trak: Double, trkH: Bool, trt: Int, type: String, vsi: Int, vsiT: Int, wTC: Int, year: String) {
             self.alt = alt
             self.altT = altT
             self.bad = bad
@@ -126,7 +123,6 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
             self.engines = engines
             self.fSeen = fSeen
             self.flightsCount = flightsCount
-            self.from = from
             self.gAlt = gAlt
             self.gnd = gnd
             self.hasPic = hasPic
@@ -143,7 +139,6 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
             self.mil = mil
             self.mlat = mlat
             self.op = op
-            self.opIcao = opIcao
             self.posTime = posTime
             self.rcvr = rcvr
             self.reg = reg
@@ -153,7 +148,6 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
             self.sqk = sqk
             self.tSecs = tSecs
             self.tisb = tisb
-            self.to = to
             self.trak = trak
             self.trkH = trkH
             self.trt = trt
@@ -164,6 +158,7 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
             self.year = year
         }
         init?(json: [String: Any]) {
+            guard let alt = json["Alt"] as? Int else { return nil }
             guard let altT = json["AltT"] as? Int else { return nil }
             guard let bad = json["Bad"] as? Bool else { return nil }
             guard let brng = Double(json: json, key: "Brng") else { return nil }
@@ -178,6 +173,7 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
             guard let engines = json["Engines"] as? String else { return nil }
             guard let fSeen = json["FSeen"] as? String else { return nil }
             guard let flightsCount = json["FlightsCount"] as? Int else { return nil }
+            guard let gAlt = json["GAlt"] as? Int else { return nil }
             guard let gnd = json["Gnd"] as? Bool else { return nil }
             guard let hasPic = json["HasPic"] as? Bool else { return nil }
             guard let hasSig = json["HasSig"] as? Bool else { return nil }
@@ -193,29 +189,24 @@ struct RootType: CreatableFromJSON { // TODO: Rename this struct
             guard let mil = json["Mil"] as? Bool else { return nil }
             guard let mlat = json["Mlat"] as? Bool else { return nil }
             guard let op = json["Op"] as? String else { return nil }
-            guard let opIcao = json["OpIcao"] as? String else { return nil }
             guard let posTime = json["PosTime"] as? Int else { return nil }
             guard let rcvr = json["Rcvr"] as? Int else { return nil }
             guard let reg = json["Reg"] as? String else { return nil }
+            guard let spd = json["Spd"] as? Int else { return nil }
             guard let spdTyp = json["SpdTyp"] as? Int else { return nil }
             guard let species = json["Species"] as? Int else { return nil }
             guard let sqk = json["Sqk"] as? String else { return nil }
             guard let tSecs = json["TSecs"] as? Int else { return nil }
             guard let tisb = json["Tisb"] as? Bool else { return nil }
+            guard let trak = Double(json: json, key: "Trak") else { return nil }
             guard let trkH = json["TrkH"] as? Bool else { return nil }
             guard let trt = json["Trt"] as? Int else { return nil }
             guard let type = json["Type"] as? String else { return nil }
+            guard let vsi = json["Vsi"] as? Int else { return nil }
             guard let vsiT = json["VsiT"] as? Int else { return nil }
             guard let wTC = json["WTC"] as? Int else { return nil }
             guard let year = json["Year"] as? String else { return nil }
-            let alt = json["Alt"] as? Int
-            let from = json["From"] as? String
-            let gAlt = json["GAlt"] as? Int
-            let spd = Double(json: json, key: "Spd")
-            let to = json["To"] as? String
-            let trak = Double(json: json, key: "Trak")
-            let vsi = json["Vsi"] as? Int
-            self.init(alt: alt, altT: altT, bad: bad, brng: brng, cMsgs: cMsgs, cNum: cNum, call: call, callSus: callSus, cou: cou, dst: dst, engMount: engMount, engType: engType, engines: engines, fSeen: fSeen, flightsCount: flightsCount, from: from, gAlt: gAlt, gnd: gnd, hasPic: hasPic, hasSig: hasSig, help: help, icao: icao, id: id, inHg: inHg, interested: interested, lat: lat, long: long, man: man, mdl: mdl, mil: mil, mlat: mlat, op: op, opIcao: opIcao, posTime: posTime, rcvr: rcvr, reg: reg, spd: spd, spdTyp: spdTyp, species: species, sqk: sqk, tSecs: tSecs, tisb: tisb, to: to, trak: trak, trkH: trkH, trt: trt, type: type, vsi: vsi, vsiT: vsiT, wTC: wTC, year: year)
+            self.init(alt: alt, altT: altT, bad: bad, brng: brng, cMsgs: cMsgs, cNum: cNum, call: call, callSus: callSus, cou: cou, dst: dst, engMount: engMount, engType: engType, engines: engines, fSeen: fSeen, flightsCount: flightsCount, gAlt: gAlt, gnd: gnd, hasPic: hasPic, hasSig: hasSig, help: help, icao: icao, id: id, inHg: inHg, interested: interested, lat: lat, long: long, man: man, mdl: mdl, mil: mil, mlat: mlat, op: op, posTime: posTime, rcvr: rcvr, reg: reg, spd: spd, spdTyp: spdTyp, species: species, sqk: sqk, tSecs: tSecs, tisb: tisb, trak: trak, trkH: trkH, trt: trt, type: type, vsi: vsi, vsiT: vsiT, wTC: wTC, year: year)
         }
     }
     struct Feeds: CreatableFromJSON { // TODO: Rename this struct

@@ -13,7 +13,11 @@ import DJISDK
 class ADSBAeroChartViewController: UIViewController {
     
     let locationManager = CLLocationManager()
-    fileprivate var homeLocation: CLLocation?
+    fileprivate var homeLocation: CLLocation? {
+        didSet {
+            ADSBAPIClient.sharedInstance.adsbLoction = homeLocation
+        }
+    }
     fileprivate var aircraftLocation: CLLocation?
     fileprivate var distanceBackToHome = Float()
     fileprivate var regionRadius: CLLocationDistance = 1000
@@ -71,11 +75,17 @@ class ADSBAeroChartViewController: UIViewController {
         //Aircraft Location and Annotation
         startUpdatingAircraftLocationData()
         startUpdatingAircraftHeadingData()
+        
+        //Start keep requesting flights
+        let apiClient = ADSBAPIClient.sharedInstance
+        apiClient.adsbLoction = homeLocation
+        apiClient.startUpdateFlights()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         stopUpdatingAircraftAltitudeData()
         stopUpdatingAircraftHeadingData()
+        ADSBAPIClient.sharedInstance.stopUpdateFlights()
     }
     
     //Update DJI Aircraft flight control details
