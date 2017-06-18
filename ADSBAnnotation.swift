@@ -18,4 +18,5 @@ open class ADSBAnnotation: MKPointAnnotation {
     public var heading: CGFloat = CGFloat()
     public var altitude: CGFloat = CGFloat()
     public var speed: CGFloat = CGFloat()
+    public var watchDog: Int = 3
 }

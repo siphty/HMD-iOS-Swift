@@ -13,40 +13,38 @@ import DJISDK
 class ADSBAeroChartViewController: UIViewController {
     
     let locationManager = CLLocationManager()
+    let notificationCenter = NotificationCenter.default
+    
     fileprivate var homeLocation: CLLocation? {
         didSet {
             ADSBAPIClient.sharedInstance.adsbLoction = homeLocation
         }
     }
-    fileprivate var aircraftLocation: CLLocation?
+    fileprivate var uavLocation: CLLocation?
     fileprivate var distanceBackToHome = Float()
     fileprivate var regionRadius: CLLocationDistance = 1000
+    fileprivate var aircrafts: [ADSBAircraft]?
     
-    fileprivate let kAircraftAnnotationId   = "Aircraft"
-    fileprivate let kFlightAnnotationId     = "Flight"
+    fileprivate let kUAVAnnotationId   = "uav"
+    fileprivate let kAircraftAnnotationId = "Aircraft"
     fileprivate let kAerodromeAnnotationId  = "Aerodrome"
     fileprivate let kRemoteAnnotationId  = "Remote"
     
     enum MapLockOn {
         case none
         case home
+        case uav
         case aircraft
-        case flight
     }
     var mapLockOn = MapLockOn.home
     
     @IBOutlet weak var slideBar: UISlider!
     @IBAction func slideBarValueChanged(_ sender: Any) {
-        self.UpdateAnnotation("FlightABCDE", withHeading: Double(slideBar.value * 360))
+        
     }
     @IBOutlet weak var mapView: MKMapView!
-    @IBAction func aircraftButtomTouchUpInside(_ sender: Any) {
-        mapLockOn = .aircraft
-        let randomLocation = CLLocation(latitude: (homeLocation?.coordinate.latitude)! + 0.0001 * Double(arc4random_uniform(100)),
-                                        longitude: (homeLocation?.coordinate.longitude)! - 0.0001 * Double(arc4random_uniform(100)))
-        
-        let newAnnotation = createAnnotation("FlightABCDE", location: randomLocation, heading: 48, speed: 100)
-        mapView.addAnnotation(newAnnotation)
+    @IBAction func uavButtomTouchUpInside(_ sender: Any) {
+        mapLockOn = .uav
     }
     
     @IBAction func remoteButtonTouchUpInside(_ sender: Any) {
@@ -55,7 +53,6 @@ class ADSBAeroChartViewController: UIViewController {
             return
         }
         centerMapOnLocation(homeLocation!)
-        UpdateAnnotation("FlightABCDE", withHeading: Double(drand48() * 360))
     }
     
     
@@ -72,53 +69,58 @@ class ADSBAeroChartViewController: UIViewController {
         }
         mapView.delegate = self
         
-        //Aircraft Location and Annotation
-        startUpdatingAircraftLocationData()
-        startUpdatingAircraftHeadingData()
+        //uav Location and Annotation
+        startUpdatingUAVLocationData()
+        startUpdatingUAVHeadingData()
         
-        //Start keep requesting flights
+        //Start updating aircrafts
+        notificationCenter.addObserver(self,
+                                       selector: #selector(aircraftListHasBeenUpdated),
+                                       name: ADSBNotification.NewAircraftListKey,
+                                       object: nil)
         let apiClient = ADSBAPIClient.sharedInstance
         apiClient.adsbLoction = homeLocation
-        apiClient.startUpdateFlights()
+        apiClient.startUpdateAircrafts()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        stopUpdatingAircraftAltitudeData()
-        stopUpdatingAircraftHeadingData()
-        ADSBAPIClient.sharedInstance.stopUpdateFlights()
+        stopUpdatingUAVAltitudeData()
+        stopUpdatingUAVHeadingData()
+        ADSBAPIClient.sharedInstance.stopUpdateAircrafts()
+        notificationCenter.removeObserver(self, name: ADSBNotification.NewAircraftListKey, object: nil)
     }
     
-    //Update DJI Aircraft flight control details
-    let aircraftLocationKey = DJIFlightControllerKey(param: DJIFlightControllerParamAircraftLocation)
-    func startUpdatingAircraftLocationData(){
-        DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftLocationKey!,
+    //Update DJI uav flight control details
+    let uavLocationKey = DJIFlightControllerKey(param: DJIFlightControllerParamAircraftLocation)
+    func startUpdatingUAVLocationData(){
+        DJISDKManager.keyManager()?.startListeningForChanges(on: uavLocationKey!,
                                                              withListener: self,
                                                              andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
                                                                 if newValue == nil {
                                                                     return
                                                                 }
-                                                                let aircraftLocation =  newValue!.value! as! CLLocation
-                                                                self.UpdateAnnotation(self.kAircraftAnnotationId, withLocation: aircraftLocation)
+                                                                let uavLocation =  newValue!.value! as! CLLocation
+                                                                self.UpdateAnnotation(self.kUAVAnnotationId, withLocation: uavLocation)
         })
     }
-    func stopUpdatingAircraftAltitudeData(){
-        DJISDKManager.keyManager()?.stopListening(on: aircraftLocationKey!, ofListener: self)
+    func stopUpdatingUAVAltitudeData(){
+        DJISDKManager.keyManager()?.stopListening(on: uavLocationKey!, ofListener: self)
     }
     
-    let aircraftHeadingKey = DJIFlightControllerKey(param: DJIFlightControllerParamCompassHeading)
-    func startUpdatingAircraftHeadingData(){
-        DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftHeadingKey!,
+    let uavHeadingKey = DJIFlightControllerKey(param: DJIFlightControllerParamCompassHeading)
+    func startUpdatingUAVHeadingData(){
+        DJISDKManager.keyManager()?.startListeningForChanges(on: uavHeadingKey!,
                                                              withListener: self,
                                                              andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
                                                                 if newValue == nil {
                                                                     return
                                                                 }
-                                                                let aircraftHeading =  newValue!.value! as! Double
-                                                                self.UpdateAnnotation(self.kAircraftAnnotationId, withHeading: aircraftHeading)
+                                                                let uavHeading =  newValue!.value! as! Double
+                                                                self.UpdateAnnotation(self.kUAVAnnotationId, withHeading: uavHeading)
         })
     }
-    func stopUpdatingAircraftHeadingData(){
-        DJISDKManager.keyManager()?.stopListening(on: aircraftLocationKey!, ofListener: self)
+    func stopUpdatingUAVHeadingData(){
+        DJISDKManager.keyManager()?.stopListening(on: uavLocationKey!, ofListener: self)
     }
 
 }
@@ -144,9 +146,9 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
             callout.titleLabel.text = "Test Label"
             if self.isLocationAvailabe() {
                 callout.startLoading()
-                self.getFlightDescription(adsbAnnotation.identifier, completion: { (flightDescription) in
+                self.getAircraftDescription(adsbAnnotation.identifier, completion: { (aircraft) in
                     callout.stopLoading()
-                    callout.titleLabel.text = flightDescription.title
+                    callout.titleLabel.text = aircraft?.icaoId ?? "NULL"
                 })
                 
             }
@@ -157,15 +159,16 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
         var theAnnotationView: ADSBAnnotationView?
         if annotation is ADSBAnnotation {
             let theAnnotation = annotation as! ADSBAnnotation
-            if theAnnotation.identifier == kAircraftAnnotationId {
+            if theAnnotation.identifier == kUAVAnnotationId {
                 theAnnotation.image = #imageLiteral(resourceName: "AeroChartDroneIcon").rotatedByDegrees(degrees: theAnnotation.heading, flip: false)!
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
-                    theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kAircraftAnnotationId)
+                    theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kUAVAnnotationId)
                 }
-            } else if theAnnotation.identifier.range(of: kFlightAnnotationId) != nil {
+            } else if theAnnotation.identifier.range(of: kAircraftAnnotationId) != nil {
                 theAnnotation.image = #imageLiteral(resourceName: "AeroChartFlightIcon").rotatedByDegrees(degrees: theAnnotation.heading, flip: false)!
-                theAnnotationView = mapView.view(for: theAnnotation) as? ADSBAnnotationView
+//                theAnnotationView = mapView.view(for: theAnnotation) as? ADSBAnnotationView
+                theAnnotationView =  mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: theAnnotation.identifier)
                 }
@@ -271,7 +274,6 @@ extension ADSBAeroChartViewController{
     
     func createAnnotation(_ identifier: String, location: CLLocation, heading: Float, speed: Float) -> ADSBAnnotation {
         let mapPin = ADSBAnnotation()
-        mapPin.image = #imageLiteral(resourceName: "testImage")
         // if the location services is on we will show the travel time, so we give a blank title to mapPin to draw a bigger callout for AnnotationView loader
         mapPin.title = String("TITLE")
         mapPin.identifier = identifier
@@ -305,11 +307,39 @@ extension ADSBAeroChartViewController{
         return isLocationAuthorized() && CLLocationManager.locationServicesEnabled()
     }
     
-    fileprivate func getFlightDescription(_ identifier: String, completion : @escaping (_ flightDescription: ADSBFlightDescription) -> Void) {
+    fileprivate func getAircraftDescription(_ identifier: String, completion : @escaping (_ aircraft: ADSBAircraft?) -> Void) {
+        //Search aircraft list by identifier
         
+        completion(nil)
     }
     
-    fileprivate func getFlightType(of identifier: String) -> String {
+    fileprivate func getAircraftType(of identifier: String) -> String {
         return "normal airplane"
     }
+    
+    @objc func aircraftListHasBeenUpdated(){
+        let aircraftList = ADSBCacheManager.sharedInstance.adsbAircrafts
+        for aircraft in aircraftList {
+            let annotationId = kAircraftAnnotationId + (aircraft.icaoId ?? "") + (aircraft.registration ?? "")
+            if aircraft.latitude == nil || aircraft.longitude == nil { continue }
+            let latitude = CLLocationDegrees(aircraft.latitude!)
+            let longitude = CLLocationDegrees(aircraft.longitude!)
+            let coordination = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let altitude = CLLocationDistance(aircraft.gndPresAltitude ?? 0)
+            let speed = CLLocationSpeed(aircraft.groundSpeed ?? 0)
+            let heading = CLLocationDirection(aircraft.trackHeading ?? 0)
+            UpdateAnnotation(annotationId, withLocation: CLLocation(coordinate: coordination, altitude: altitude, horizontalAccuracy: CLLocationAccuracy(10), verticalAccuracy:  CLLocationAccuracy(10), course: heading, speed: speed, timestamp: Date()) )
+            UpdateAnnotation(annotationId, withHeading: aircraft.trackHeading ?? 0)
+            
+        }
+        
+        //Remove all annotation
+    }
 }
+
+
+
+
+
+
+

@@ -19,7 +19,6 @@
 		A22CCF871EF237FF0070AFC3 /* UIImage+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */; };
 		A258C8301EDAF94600B3F499 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A26222B11EF0B90B00E87DC2 /* CLLocation+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */; };
-		A26222B31EF1111C00E87DC2 /* ADSBMiscellanious.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */; };
 		A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */; };
 		A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */; };
 		A269BF221ECADF2B007ABB10 /* CommonDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A269BF211ECADF2B007ABB10 /* CommonDetailTableViewCell.xib */; };
@@ -56,6 +55,8 @@
 		A27878421EE535D000636B9D /* DroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27878411EE535D000636B9D /* DroneViewController.swift */; };
 		A2821A291EEF6FE2009F6266 /* ADS-B.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2821A281EEF6FE2009F6266 /* ADS-B.storyboard */; };
 		A288689F1EF40B29008E3631 /* ADSBDictKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */; };
+		A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */; };
+		A28868A61EF54466008E3631 /* ADSBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A51EF54466008E3631 /* ADSBCommon.swift */; };
 		A291DB791EE3D199003C52C2 /* DroneCockpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */; };
 		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
@@ -96,10 +97,9 @@
 		A2B3B2BF1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */; };
 		A2B54C421EEABA1E00215A18 /* String+UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */; };
 		A2B54C471EECE0F300215A18 /* ADSBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */; };
-		A2B54C491EED659C00215A18 /* ADSBFlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C481EED659C00215A18 /* ADSBFlight.swift */; };
+		A2B54C491EED659C00215A18 /* ADSBAircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C481EED659C00215A18 /* ADSBAircraft.swift */; };
 		A2B54C4C1EED66BA00215A18 /* ADSBAerodrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */; };
 		A2B54C4E1EED7A6800215A18 /* ADSBXResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C4D1EED7A6800215A18 /* ADSBXResponse.swift */; };
-		A2B54C501EED7B2600215A18 /* ADSBJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C4F1EED7B2600215A18 /* ADSBJson.swift */; };
 		A2B567DB1EE5A240002E4806 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B567DA1EE5A240002E4806 /* StoreTableViewController.swift */; };
 		A2C93A6E1EF00E2B00DDE914 /* ADSBAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */; };
 		A2C93AC91EF0157300DDE914 /* ADSBAnnotationCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */; };
@@ -167,7 +167,6 @@
 		A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Movement.swift"; sourceTree = "<group>"; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocation+Operator.swift"; path = "Siphty Extensions/CoreLocation/CLLocation+Operator.swift"; sourceTree = "<group>"; };
-		A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBMiscellanious.swift; path = HMD/ADSBModule/ADSBMiscellanious.swift; sourceTree = SOURCE_ROOT; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SystemInfor.storyboard; path = HMD/SystemInfor.storyboard; sourceTree = SOURCE_ROOT; };
@@ -205,6 +204,8 @@
 		A27878411EE535D000636B9D /* DroneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneViewController.swift; path = HMD/DroneModule/DroneViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2821A281EEF6FE2009F6266 /* ADS-B.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "ADS-B.storyboard"; path = "HMD/ADSBModule/ADS-B.storyboard"; sourceTree = SOURCE_ROOT; };
 		A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBDictKeys.swift; path = HMD/ADSBModule/ADSB/ADSBDictKeys.swift; sourceTree = SOURCE_ROOT; };
+		A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCacheManager.swift; path = HMD/ADSBModule/ADSB/ADSBCacheManager.swift; sourceTree = SOURCE_ROOT; };
+		A28868A51EF54466008E3631 /* ADSBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCommon.swift; path = HMD/ADSBModule/ADSB/ADSBCommon.swift; sourceTree = SOURCE_ROOT; };
 		A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCockpitViewController.swift; path = HMD/PilotMode/DroneCockpitViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayer.swift; path = HMD/HMDHeadingCursorLayer.swift; sourceTree = SOURCE_ROOT; };
@@ -247,10 +248,9 @@
 		A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAeroChartViewController.swift; path = HMD/DroneModule/ADSBAeroChartViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UserLogin.swift"; sourceTree = "<group>"; };
 		A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAPIClient.swift; path = HMD/ADSBModule/ADSB/ADSBAPIClient.swift; sourceTree = SOURCE_ROOT; };
-		A2B54C481EED659C00215A18 /* ADSBFlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBFlight.swift; path = HMD/ADSBModule/ADSB/ADSBFlight.swift; sourceTree = SOURCE_ROOT; };
+		A2B54C481EED659C00215A18 /* ADSBAircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAircraft.swift; path = HMD/ADSBModule/ADSB/ADSBAircraft.swift; sourceTree = SOURCE_ROOT; };
 		A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAerodrome.swift; path = HMD/ADSBModule/ADSB/ADSBAerodrome.swift; sourceTree = SOURCE_ROOT; };
 		A2B54C4D1EED7A6800215A18 /* ADSBXResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBXResponse.swift; path = HMD/ADSBModule/ADSB/ADSBXResponse.swift; sourceTree = SOURCE_ROOT; };
-		A2B54C4F1EED7B2600215A18 /* ADSBJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBJson.swift; path = HMD/ADSBModule/ADSB/ADSBJson.swift; sourceTree = SOURCE_ROOT; };
 		A2B567DA1EE5A240002E4806 /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreTableViewController.swift; path = HMD/StoreModule/StoreTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBAnnotationView.swift; path = HMD/ADSBModule/ADSBAnnotationView.swift; sourceTree = SOURCE_ROOT; };
 		A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBAnnotationCalloutView.swift; path = HMD/ADSBModule/ADSBAnnotationCalloutView.swift; sourceTree = SOURCE_ROOT; };
@@ -587,16 +587,6 @@
 			name = "Drone UI";
 			sourceTree = "<group>";
 		};
-		A288689C1EF40ABB008E3631 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */,
-				A2B54C4F1EED7B2600215A18 /* ADSBJson.swift */,
-				A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */,
-			);
-			name = Utils;
-			sourceTree = "<group>";
-		};
 		A28BF8EB1EB05F200097EB4D /* HMDHeading */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,11 +733,13 @@
 		A2B54C4A1EED65F100215A18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A288689C1EF40ABB008E3631 /* Utils */,
-				A2B54C481EED659C00215A18 /* ADSBFlight.swift */,
-				A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */,
+				A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */,
+				A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */,
 				A2B54C4D1EED7A6800215A18 /* ADSBXResponse.swift */,
-				A26222B21EF1111C00E87DC2 /* ADSBMiscellanious.swift */,
+				A2B54C481EED659C00215A18 /* ADSBAircraft.swift */,
+				A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */,
+				A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */,
+				A28868A51EF54466008E3631 /* ADSBCommon.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1001,6 +993,7 @@
 				A2DA57D81EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter+Lightbridge2.m in Sources */,
 				A2DA58031EE25EDC0088E1A9 /* DemoVirtualStickView.m in Sources */,
 				A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */,
+				A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */,
 				A2A1AAE31EBF401F006970E1 /* CALayer+Extensions.swift in Sources */,
 				A229E5C01EF2594900DB3AB9 /* DroneAeroChartViewController.swift in Sources */,
 				A2DA58011EE25EDC0088E1A9 /* DemoSettingItem.m in Sources */,
@@ -1023,14 +1016,13 @@
 				A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */,
 				A2C93ACD1EF019EB00DDE914 /* ADSBAnnotation.swift in Sources */,
 				A2DA57F81EE25EDC0088E1A9 /* DemoUtilityMethod.m in Sources */,
-				A26222B31EF1111C00E87DC2 /* ADSBMiscellanious.swift in Sources */,
-				A2B54C501EED7B2600215A18 /* ADSBJson.swift in Sources */,
 				A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */,
 				A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */,
 				A288689F1EF40B29008E3631 /* ADSBDictKeys.swift in Sources */,
 				A272BC7E1EC2F74300577941 /* HMDCentreDatumLayer.swift in Sources */,
 				A2A1AADF1EBF3177006970E1 /* HMDAltitudeStickLayer.swift in Sources */,
 				A2A1AA571EBA1C2A006970E1 /* HMDMisc.swift in Sources */,
+				A28868A61EF54466008E3631 /* ADSBCommon.swift in Sources */,
 				A2A1AA531EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift in Sources */,
 				A2DA57F91EE25EDC0088E1A9 /* DemoAlertView.m in Sources */,
 				A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */,
@@ -1053,7 +1045,7 @@
 				A2D341D41EDBDF10001DEF82 /* PilotHMDViewController.swift in Sources */,
 				A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */,
 				A2B54C4E1EED7A6800215A18 /* ADSBXResponse.swift in Sources */,
-				A2B54C491EED659C00215A18 /* ADSBFlight.swift in Sources */,
+				A2B54C491EED659C00215A18 /* ADSBAircraft.swift in Sources */,
 				A27878421EE535D000636B9D /* DroneViewController.swift in Sources */,
 				A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */,
 				A2B54C4C1EED66BA00215A18 /* ADSBAerodrome.swift in Sources */,
