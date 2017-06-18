@@ -16,7 +16,6 @@
 		A229E5C41EF29EA400DB3AB9 /* Geometric.swift in Sources */ = {isa = PBXBuildFile; fileRef = A229E5C31EF29EA400DB3AB9 /* Geometric.swift */; };
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
 		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
-		A22CCF871EF237FF0070AFC3 /* UIImage+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */; };
 		A258C8301EDAF94600B3F499 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */; };
 		A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */; };
@@ -24,7 +23,7 @@
 		A269BF251ECAE06A007ABB10 /* CommonDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF241ECAE06A007ABB10 /* CommonDetailTableViewCell.swift */; };
 		A269BF271ECAE351007ABB10 /* StatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF261ECAE351007ABB10 /* StatusTableViewCell.swift */; };
 		A26C6F151EE19E8000F92588 /* DJIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26C6F141EE19E8000F92588 /* DJIBaseViewController.swift */; };
-		A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F24541EC19AE400653846 /* CGRect+Resize.swift */; };
+		A26F11A91EF6A362003379EC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26F11A81EF6A362003379EC /* MapKit.framework */; };
 		A272BC7E1EC2F74300577941 /* HMDCentreDatumLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */; };
 		A27358621EE3BBFB00ECFC28 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A273584A1EE3BBFB00ECFC28 /* Gotham-Black.otf */; };
 		A27358631EE3BBFB00ECFC28 /* Gotham-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A273584B1EE3BBFB00ECFC28 /* Gotham-BlackItalic.otf */; };
@@ -50,7 +49,6 @@
 		A27358771EE3BBFB00ECFC28 /* GothamRnd-LightIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = A273585F1EE3BBFB00ECFC28 /* GothamRnd-LightIta.otf */; };
 		A27358781EE3BBFB00ECFC28 /* GothamRnd-MedIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = A27358601EE3BBFB00ECFC28 /* GothamRnd-MedIta.otf */; };
 		A27358791EE3BBFB00ECFC28 /* GothamRnd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A27358611EE3BBFB00ECFC28 /* GothamRnd-Medium.otf */; };
-		A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */; };
 		A27878421EE535D000636B9D /* DroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27878411EE535D000636B9D /* DroneViewController.swift */; };
 		A2821A291EEF6FE2009F6266 /* ADS-B.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2821A281EEF6FE2009F6266 /* ADS-B.storyboard */; };
 		A288689F1EF40B29008E3631 /* ADSBDictKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */; };
@@ -83,16 +81,13 @@
 		A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */; };
 		A2A1AADF1EBF3177006970E1 /* HMDAltitudeStickLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */; };
 		A2A1AAE11EBF3CE5006970E1 /* HMDVerticalVelocityCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE01EBF3CE5006970E1 /* HMDVerticalVelocityCursorLayer.swift */; };
-		A2A1AAE31EBF401F006970E1 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */; };
 		A2A1AAE51EBF49DD006970E1 /* HMDRadarAltitudeLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */; };
 		A2A1AAE71EBF5066006970E1 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */; };
 		A2A1AAE91EBF52A3006970E1 /* HMDSafetySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */; };
-		A2A1AAEB1EBF5FC9006970E1 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */; };
 		A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */; };
 		A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */; };
 		A2A6B9151EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B9141EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift */; };
 		A2A6B9171EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B9161EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift */; };
-		A2B3B2BA1EE92B1D00A1EB0B /* UIControl+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2B91EE92B1D00A1EB0B /* UIControl+Closure.swift */; };
 		A2B3B2BD1EE92E2B00A1EB0B /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2BC1EE92E2B00A1EB0B /* UIViewController+Child.swift */; };
 		A2B3B2BF1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */; };
 		A2B54C421EEABA1E00215A18 /* String+UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */; };
@@ -164,7 +159,6 @@
 		A229E5C31EF29EA400DB3AB9 /* Geometric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Geometric.swift; path = "Siphty Extensions/Mathematics/Geometric.swift"; sourceTree = SOURCE_ROOT; };
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
-		A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Movement.swift"; sourceTree = "<group>"; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -173,7 +167,13 @@
 		A269BF241ECAE06A007ABB10 /* CommonDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDetailTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		A269BF261ECAE351007ABB10 /* StatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusTableViewCell.swift; path = HMD/StatusTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		A26C6F141EE19E8000F92588 /* DJIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DJIBaseViewController.swift; path = VideoPreviewerAdapter/DJIBaseViewController.swift; sourceTree = SOURCE_ROOT; };
-		A26F24541EC19AE400653846 /* CGRect+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Resize.swift"; sourceTree = SOURCE_ROOT; };
+		A26F11A81EF6A362003379EC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A26F11AA1EF6A519003379EC /* UIControl+Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Closure.swift"; sourceTree = "<group>"; };
+		A26F11AB1EF6A646003379EC /* UIImage+Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Movement.swift"; sourceTree = "<group>"; };
+		A26F11AE1EF6A920003379EC /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		A26F11AF1EF6A920003379EC /* CGRect+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Resize.swift"; sourceTree = "<group>"; };
+		A26F11B11EF6A933003379EC /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
+		A26F11B21EF6A933003379EC /* CATextLayer+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Frame.swift"; sourceTree = "<group>"; };
 		A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDCentreDatumLayer.swift; sourceTree = SOURCE_ROOT; };
 		A273584A1EE3BBFB00ECFC28 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
 		A273584B1EE3BBFB00ECFC28 /* Gotham-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-BlackItalic.otf"; sourceTree = "<group>"; };
@@ -199,14 +199,12 @@
 		A273585F1EE3BBFB00ECFC28 /* GothamRnd-LightIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-LightIta.otf"; sourceTree = "<group>"; };
 		A27358601EE3BBFB00ECFC28 /* GothamRnd-MedIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-MedIta.otf"; sourceTree = "<group>"; };
 		A27358611EE3BBFB00ECFC28 /* GothamRnd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Medium.otf"; sourceTree = "<group>"; };
-		A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATextLayer+Frame.swift"; sourceTree = SOURCE_ROOT; };
 		A27878411EE535D000636B9D /* DroneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneViewController.swift; path = HMD/DroneModule/DroneViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2821A281EEF6FE2009F6266 /* ADS-B.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "ADS-B.storyboard"; path = "HMD/ADSBModule/ADS-B.storyboard"; sourceTree = SOURCE_ROOT; };
 		A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBDictKeys.swift; path = HMD/ADSBModule/ADSB/ADSBDictKeys.swift; sourceTree = SOURCE_ROOT; };
 		A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCacheManager.swift; path = HMD/ADSBModule/ADSB/ADSBCacheManager.swift; sourceTree = SOURCE_ROOT; };
 		A28868A51EF54466008E3631 /* ADSBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCommon.swift; path = HMD/ADSBModule/ADSB/ADSBCommon.swift; sourceTree = SOURCE_ROOT; };
 		A28868AF1EF65BF2008E3631 /* Date+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Utility.swift"; path = "Siphty Extensions/DateTime/Date+Utility.swift"; sourceTree = SOURCE_ROOT; };
-		A28868B41EF6999B008E3631 /* CoreLocation */ = {isa = PBXFileReference; lastKnownFileType = text; name = CoreLocation; path = "Siphty Extensions/CoreLocation"; sourceTree = "<group>"; };
 		A28868B71EF69B77008E3631 /* CLLocation+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocation+Operator.swift"; path = "Siphty Extensions/CoreLocation/CLLocation+Operator.swift"; sourceTree = SOURCE_ROOT; };
 		A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCockpitViewController.swift; path = HMD/PilotMode/DroneCockpitViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -236,19 +234,16 @@
 		A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHoverVectorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAltitudeStickLayer.swift; path = HMD/HMDAltitudeStickLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAE01EBF3CE5006970E1 /* HMDVerticalVelocityCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDVerticalVelocityCursorLayer.swift; path = HMD/HMDVerticalVelocityCursorLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAE41EBF49DC006970E1 /* HMDRadarAltitudeLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRadarAltitudeLabelLayer.swift; path = HMD/HMDRadarAltitudeLabelLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extensions.swift"; path = "Siphty Extensions/String/String+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDSafetySetting.swift; path = HMD/HMDSafetySetting.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = SOURCE_ROOT; };
-		A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = SOURCE_ROOT; };
-		A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MoreColors.swift"; sourceTree = SOURCE_ROOT; };
+		A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+RGB.swift"; path = "Siphty Extensions/UIColor/UIColor+RGB.swift"; sourceTree = SOURCE_ROOT; };
+		A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+MoreColors.swift"; path = "Siphty Extensions/UIColor/UIColor+MoreColors.swift"; sourceTree = SOURCE_ROOT; };
 		A2A6B9141EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDBatteryThresholdLabelLayer.swift; path = HMD/HMDBatteryThresholdLabelLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A6B9161EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHomeDistanceLabelLayer.swift; path = HMD/HMDHomeDistanceLabelLayer.swift; sourceTree = SOURCE_ROOT; };
-		A2B3B2B91EE92B1D00A1EB0B /* UIControl+Closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Closure.swift"; sourceTree = "<group>"; };
-		A2B3B2BC1EE92E2B00A1EB0B /* UIViewController+Child.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Child.swift"; sourceTree = "<group>"; };
+		A2B3B2BC1EE92E2B00A1EB0B /* UIViewController+Child.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Child.swift"; path = "../UIViewController/UIViewController+Child.swift"; sourceTree = "<group>"; };
 		A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAeroChartViewController.swift; path = HMD/DroneModule/ADSBAeroChartViewController.swift; sourceTree = SOURCE_ROOT; };
-		A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UserLogin.swift"; sourceTree = "<group>"; };
+		A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+UserLogin.swift"; path = "String/String+UserLogin.swift"; sourceTree = "<group>"; };
 		A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAPIClient.swift; path = HMD/ADSBModule/ADSB/ADSBAPIClient.swift; sourceTree = SOURCE_ROOT; };
 		A2B54C481EED659C00215A18 /* ADSBAircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAircraft.swift; path = HMD/ADSBModule/ADSB/ADSBAircraft.swift; sourceTree = SOURCE_ROOT; };
 		A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAerodrome.swift; path = HMD/ADSBModule/ADSB/ADSBAerodrome.swift; sourceTree = SOURCE_ROOT; };
@@ -307,6 +302,7 @@
 			files = (
 				A225299A1EDADEA800A971B8 /* VideoPreviewer.framework in Frameworks */,
 				A2A1AAC41EBD89AD006970E1 /* CoreLocation.framework in Frameworks */,
+				A26F11A91EF6A362003379EC /* MapKit.framework in Frameworks */,
 				A2A1AAC21EBD89A7006970E1 /* CoreMotion.framework in Frameworks */,
 				15AFE288986A219508A56C4A /* Pods_HMD.framework in Frameworks */,
 			);
@@ -321,27 +317,7 @@
 				A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */,
 				A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */,
 			);
-			name = UIColor;
-			path = Stereoscopic;
-			sourceTree = "<group>";
-		};
-		A2048AF41EC333B300C2413C /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-				A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */,
-			);
-			name = Swift;
-			path = Stereoscopic;
-			sourceTree = "<group>";
-		};
-		A2048AF51EC333C800C2413C /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				A2A1AAEA1EBF5FC9006970E1 /* CGFloat+Extensions.swift */,
-				A26F24541EC19AE400653846 /* CGRect+Resize.swift */,
-			);
-			name = UIKit;
-			path = Stereoscopic;
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 		A2048B4E1EC5BA1100C2413C /* ADS-B Module */ = {
@@ -353,13 +329,6 @@
 			name = "ADS-B Module";
 			sourceTree = "<group>";
 		};
-		A2048B4F1EC5BA4C00C2413C /* Airfield Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Airfield Module";
-			sourceTree = "<group>";
-		};
 		A2048B501EC5BA7400C2413C /* POI Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,7 +336,7 @@
 			name = "POI Module";
 			sourceTree = "<group>";
 		};
-		A2048B511EC5BCC000C2413C /* System Infor UI */ = {
+		A2048B511EC5BCC000C2413C /* DJI SDK Test Module */ = {
 			isa = PBXGroup;
 			children = (
 				A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */,
@@ -375,7 +344,7 @@
 				A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */,
 				A269BF231ECAE01C007ABB10 /* System Infor Cells */,
 			);
-			name = "System Infor UI";
+			name = "DJI SDK Test Module";
 			sourceTree = "<group>";
 		};
 		A2048B541EC5BF2000C2413C /* DJI Service */ = {
@@ -400,12 +369,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A229E5C21EF29E0200DB3AB9 /* Mathamatics */ = {
+		A229E5C21EF29E0200DB3AB9 /* Mathematics */ = {
 			isa = PBXGroup;
 			children = (
 				A229E5C31EF29EA400DB3AB9 /* Geometric.swift */,
 			);
-			path = Mathamatics;
+			path = Mathematics;
 			sourceTree = "<group>";
 		};
 		A22BE7901ED67B500073678A /* VideoPreviewer */ = {
@@ -419,10 +388,9 @@
 		A22CCF851EF237AD0070AFC3 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
-				A28868B41EF6999B008E3631 /* CoreLocation */,
-				A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */,
+				A26F11AB1EF6A646003379EC /* UIImage+Movement.swift */,
 			);
-			name = UIImage;
+			path = UIImage;
 			sourceTree = "<group>";
 		};
 		A24BBF231E56840300EBF428 = {
@@ -457,14 +425,11 @@
 				A27878411EE535D000636B9D /* DroneViewController.swift */,
 				A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */,
 				A2048B4E1EC5BA1100C2413C /* ADS-B Module */,
-				A2DD2EDB1ED2627100727B64 /* HomeStation UI */,
-				A278783F1EE534F200636B9D /* Drone UI */,
-				A2048B511EC5BCC000C2413C /* System Infor UI */,
 				A254BF051EAA2785005E70D9 /* HMD Module */,
+				A278783F1EE534F200636B9D /* Drone Module */,
+				A2048B511EC5BCC000C2413C /* DJI SDK Test Module */,
 				A2B567D91EE5A211002E4806 /* Store Module */,
-				A2048B4F1EC5BA4C00C2413C /* Airfield Module */,
 				A2048B501EC5BA7400C2413C /* POI Module */,
-				A269BF1C1ECAC911007ABB10 /* Blackbox Module */,
 				A2048B541EC5BF2000C2413C /* DJI Service */,
 				A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */,
 			);
@@ -495,13 +460,6 @@
 			name = "HMD Module";
 			sourceTree = "<group>";
 		};
-		A269BF1C1ECAC911007ABB10 /* Blackbox Module */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Blackbox Module";
-			sourceTree = "<group>";
-		};
 		A269BF231ECAE01C007ABB10 /* System Infor Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +469,26 @@
 			);
 			name = "System Infor Cells";
 			sourceTree = "<group>";
+		};
+		A26F11AD1EF6A920003379EC /* CoreGraphic */ = {
+			isa = PBXGroup;
+			children = (
+				A26F11AE1EF6A920003379EC /* CGFloat+Extensions.swift */,
+				A26F11AF1EF6A920003379EC /* CGRect+Resize.swift */,
+			);
+			name = CoreGraphic;
+			path = "Siphty Extensions/CoreGraphic";
+			sourceTree = SOURCE_ROOT;
+		};
+		A26F11B01EF6A933003379EC /* CoreAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				A26F11B11EF6A933003379EC /* CALayer+Extensions.swift */,
+				A26F11B21EF6A933003379EC /* CATextLayer+Frame.swift */,
+			);
+			name = CoreAnimation;
+			path = "Siphty Extensions/CoreAnimation";
+			sourceTree = SOURCE_ROOT;
 		};
 		A27358171EE3BB9100ECFC28 /* Support */ = {
 			isa = PBXGroup;
@@ -560,17 +538,7 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
-		A275B6861EC1E85B0034A0E9 /* CALayer */ = {
-			isa = PBXGroup;
-			children = (
-				A2A1AAE21EBF401F006970E1 /* CALayer+Extensions.swift */,
-				A275B6871EC1E8A90034A0E9 /* CATextLayer+Frame.swift */,
-			);
-			name = CALayer;
-			path = Stereoscopic;
-			sourceTree = "<group>";
-		};
-		A278783F1EE534F200636B9D /* Drone UI */ = {
+		A278783F1EE534F200636B9D /* Drone Module */ = {
 			isa = PBXGroup;
 			children = (
 				A2048B031EC57F9D00C2413C /* Drone.storyboard */,
@@ -579,7 +547,7 @@
 				A2D341D11EDBDEBE001DEF82 /* PilotHUDViewController.swift */,
 				A2D341D31EDBDF10001DEF82 /* PilotHMDViewController.swift */,
 			);
-			name = "Drone UI";
+			name = "Drone Module";
 			sourceTree = "<group>";
 		};
 		A27EE2CC1EF69C1F00F7C703 /* CoreLocation */ = {
@@ -587,8 +555,7 @@
 			children = (
 				A28868B71EF69B77008E3631 /* CLLocation+Operator.swift */,
 			);
-			name = CoreLocation;
-			path = "Siphty Extensions/CoreLocation";
+			path = CoreLocation;
 			sourceTree = "<group>";
 		};
 		A28868A81EF60589008E3631 /* MapRenderer */ = {
@@ -681,6 +648,7 @@
 		A2A1AABE1EBD89A0006970E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A26F11A81EF6A362003379EC /* MapKit.framework */,
 				A22BE7901ED67B500073678A /* VideoPreviewer */,
 				A26841491ECBE8AD003512FE /* CFNetwork.framework */,
 				A2A1AAC31EBD89AD006970E1 /* CoreLocation.framework */,
@@ -701,28 +669,26 @@
 		A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A26F11B01EF6A933003379EC /* CoreAnimation */,
+				A26F11AD1EF6A920003379EC /* CoreGraphic */,
 				A27EE2CC1EF69C1F00F7C703 /* CoreLocation */,
 				A28868AE1EF65B9B008E3631 /* DateTime */,
-				A229E5C21EF29E0200DB3AB9 /* Mathamatics */,
-				A22CCF851EF237AD0070AFC3 /* UIImage */,
+				A229E5C21EF29E0200DB3AB9 /* Mathematics */,
 				A2B54C3F1EEAB9D700215A18 /* String */,
-				A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */,
-				A2B3B2B81EE92AF500A1EB0B /* UIControl */,
 				A2048AF31EC3339600C2413C /* UIColor */,
-				A275B6861EC1E85B0034A0E9 /* CALayer */,
-				A2048AF41EC333B300C2413C /* Swift */,
-				A2048AF51EC333C800C2413C /* UIKit */,
+				A2B3B2B81EE92AF500A1EB0B /* UIControl */,
+				A22CCF851EF237AD0070AFC3 /* UIImage */,
+				A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */,
 			);
-			name = "Siphty Extensions";
-			path = ..;
+			path = "Siphty Extensions";
 			sourceTree = "<group>";
 		};
 		A2B3B2B81EE92AF500A1EB0B /* UIControl */ = {
 			isa = PBXGroup;
 			children = (
-				A2B3B2B91EE92B1D00A1EB0B /* UIControl+Closure.swift */,
+				A26F11AA1EF6A519003379EC /* UIControl+Closure.swift */,
 			);
-			name = UIControl;
+			path = UIControl;
 			sourceTree = "<group>";
 		};
 		A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */ = {
@@ -731,12 +697,14 @@
 				A2B3B2BC1EE92E2B00A1EB0B /* UIViewController+Child.swift */,
 			);
 			name = UIViewController;
+			path = UIControl;
 			sourceTree = "<group>";
 		};
 		A2B54C3F1EEAB9D700215A18 /* String */ = {
 			isa = PBXGroup;
 			children = (
 				A2B54C411EEABA1E00215A18 /* String+UserLogin.swift */,
+				A2A1AAE61EBF5066006970E1 /* String+Extensions.swift */,
 			);
 			name = String;
 			sourceTree = "<group>";
@@ -816,13 +784,6 @@
 			path = UIUtility;
 			sourceTree = "<group>";
 		};
-		A2DD2EDB1ED2627100727B64 /* HomeStation UI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "HomeStation UI";
-			sourceTree = "<group>";
-		};
 		C3AF521D5CE153B9DC34AB06 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +836,11 @@
 						DevelopmentTeam = DQK83PW4RV;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1015,10 +981,8 @@
 				A2DA58031EE25EDC0088E1A9 /* DemoVirtualStickView.m in Sources */,
 				A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */,
 				A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */,
-				A2A1AAE31EBF401F006970E1 /* CALayer+Extensions.swift in Sources */,
 				A229E5C01EF2594900DB3AB9 /* DroneAeroChartViewController.swift in Sources */,
 				A2DA58011EE25EDC0088E1A9 /* DemoSettingItem.m in Sources */,
-				A2A1AAEB1EBF5FC9006970E1 /* CGFloat+Extensions.swift in Sources */,
 				A2A1AAD11EBDE340006970E1 /* HMDSideslipLayer.swift in Sources */,
 				A2DA58041EE25EDC0088E1A9 /* MBProgressHUD.m in Sources */,
 				A2A1AACD1EBDD2A9006970E1 /* HMDBankScaleLayer.swift in Sources */,
@@ -1028,7 +992,6 @@
 				A2DA57D71EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter.m in Sources */,
 				A2C93A6E1EF00E2B00DDE914 /* ADSBAnnotationView.swift in Sources */,
 				A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift in Sources */,
-				A22CCF871EF237FF0070AFC3 /* UIImage+Movement.swift in Sources */,
 				A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */,
 				A2C93AC91EF0157300DDE914 /* ADSBAnnotationCalloutView.swift in Sources */,
 				A2A6B9151EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift in Sources */,
@@ -1045,7 +1008,6 @@
 				A28868A61EF54466008E3631 /* ADSBCommon.swift in Sources */,
 				A2A1AA531EBA1C2A006970E1 /* HMDHeadingScaleLayer.swift in Sources */,
 				A2DA57F91EE25EDC0088E1A9 /* DemoAlertView.m in Sources */,
-				A26F24551EC19AE400653846 /* CGRect+Resize.swift in Sources */,
 				A2B567DB1EE5A240002E4806 /* StoreTableViewController.swift in Sources */,
 				A2A1AAB31EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift in Sources */,
 				A2A1AAB71EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
@@ -1068,13 +1030,11 @@
 				A2B54C4E1EED7A6800215A18 /* ADSBXResponse.swift in Sources */,
 				A2B54C491EED659C00215A18 /* ADSBAircraft.swift in Sources */,
 				A27878421EE535D000636B9D /* DroneViewController.swift in Sources */,
-				A275B6881EC1E8A90034A0E9 /* CATextLayer+Frame.swift in Sources */,
 				A2B54C4C1EED66BA00215A18 /* ADSBAerodrome.swift in Sources */,
 				A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */,
 				A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */,
 				A2A1AAD31EBDE3C6006970E1 /* HMDAviationStatusRenderer.swift in Sources */,
 				A2A1AAE71EBF5066006970E1 /* String+Extensions.swift in Sources */,
-				A2B3B2BA1EE92B1D00A1EB0B /* UIControl+Closure.swift in Sources */,
 				A2A1AAD51EBDE4D2006970E1 /* HMDAirSpeedLabelLayer.swift in Sources */,
 				A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */,
 				A2DA57FD1EE25EDC0088E1A9 /* DemoPushInfoViewController.m in Sources */,

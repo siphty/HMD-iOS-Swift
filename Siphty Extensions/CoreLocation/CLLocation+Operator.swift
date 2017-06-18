@@ -11,8 +11,16 @@ import CoreLoaction
 
 extension CLLocation{
     
-    func updateLocation(_ location: CLLocation, with course: CLLocation.course) -> <#return type#> {
-        <#function body#>
+    func updateCourse(_ course: CLLocation.course) -> CLLocation {
+        self.course = course
+        let newLocation = CLLocation(coordinate: self.coordination,
+                                      altitude: self.altitude,
+                                      horizontalAccuracy: self.horizontalAccuracy,
+                                      verticalAccuracy:  self.verticalAccuracy,
+                                      course: course,
+                                      speed: self.speed,
+                                      timestamp: self.timestamp)
+        return newLocation
     }
 }
 

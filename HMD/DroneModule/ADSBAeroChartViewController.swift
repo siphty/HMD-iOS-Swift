@@ -117,14 +117,11 @@ class ADSBAeroChartViewController: UIViewController {
                                                                     return
                                                                 }
                                                                 let uavHeading =  newValue!.value! as! Double
-                                                                self.UpdateAnnotation(self.kUAVAnnotationId, withHeading: uavHeading)
-                                                                for anAnnotation in mapView.annotations {
+                                                                for anAnnotation in self.mapView.annotations {
                                                                     if anAnnotation is ADSBAnnotation {
                                                                         let theAnnotation = anAnnotation as! ADSBAnnotation
-                                                                        theAnnotation.location.
-                                                                        
-                                                                        if theAnnotation.identifier == kUAVAnnotationId {
-                                                                            var location = CLLocation(
+                                                                        if theAnnotation.identifier == self.kUAVAnnotationId {
+                                                                            theAnnotation.location = theAnnotation.location.updateCourse(CLLocationDirection(uavHeading))
                                                                         }
                                                                     }
                                                                 }
