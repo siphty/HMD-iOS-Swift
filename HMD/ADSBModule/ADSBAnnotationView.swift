@@ -30,6 +30,7 @@ class ADSBAnnotationView: MKAnnotationView {
             annotationImage = customPin.image
         }
         annotationImageView = UIImageView(image: annotationImage)
+        annotationImageView?.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         addSubview(annotationImageView!)
         image = nil
     }

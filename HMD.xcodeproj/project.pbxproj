@@ -18,7 +18,6 @@
 		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
 		A22CCF871EF237FF0070AFC3 /* UIImage+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */; };
 		A258C8301EDAF94600B3F499 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A26222B11EF0B90B00E87DC2 /* CLLocation+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */; };
 		A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */; };
 		A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */; };
 		A269BF221ECADF2B007ABB10 /* CommonDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A269BF211ECADF2B007ABB10 /* CommonDetailTableViewCell.xib */; };
@@ -57,6 +56,7 @@
 		A288689F1EF40B29008E3631 /* ADSBDictKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */; };
 		A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */; };
 		A28868A61EF54466008E3631 /* ADSBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A51EF54466008E3631 /* ADSBCommon.swift */; };
+		A28868B01EF65BF2008E3631 /* Date+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868AF1EF65BF2008E3631 /* Date+Utility.swift */; };
 		A291DB791EE3D199003C52C2 /* DroneCockpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */; };
 		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
@@ -166,7 +166,6 @@
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Movement.swift"; sourceTree = "<group>"; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocation+Operator.swift"; path = "Siphty Extensions/CoreLocation/CLLocation+Operator.swift"; sourceTree = "<group>"; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SystemInfor.storyboard; path = HMD/SystemInfor.storyboard; sourceTree = SOURCE_ROOT; };
@@ -206,6 +205,9 @@
 		A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBDictKeys.swift; path = HMD/ADSBModule/ADSB/ADSBDictKeys.swift; sourceTree = SOURCE_ROOT; };
 		A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCacheManager.swift; path = HMD/ADSBModule/ADSB/ADSBCacheManager.swift; sourceTree = SOURCE_ROOT; };
 		A28868A51EF54466008E3631 /* ADSBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCommon.swift; path = HMD/ADSBModule/ADSB/ADSBCommon.swift; sourceTree = SOURCE_ROOT; };
+		A28868AF1EF65BF2008E3631 /* Date+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Utility.swift"; path = "Siphty Extensions/DateTime/Date+Utility.swift"; sourceTree = SOURCE_ROOT; };
+		A28868B41EF6999B008E3631 /* CoreLocation */ = {isa = PBXFileReference; lastKnownFileType = text; name = CoreLocation; path = "Siphty Extensions/CoreLocation"; sourceTree = "<group>"; };
+		A28868B71EF69B77008E3631 /* CLLocation+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CLLocation+Operator.swift"; path = "Siphty Extensions/CoreLocation/CLLocation+Operator.swift"; sourceTree = SOURCE_ROOT; };
 		A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCockpitViewController.swift; path = HMD/PilotMode/DroneCockpitViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayer.swift; path = HMD/HMDHeadingCursorLayer.swift; sourceTree = SOURCE_ROOT; };
@@ -417,6 +419,7 @@
 		A22CCF851EF237AD0070AFC3 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				A28868B41EF6999B008E3631 /* CoreLocation */,
 				A22CCF861EF237FF0070AFC3 /* UIImage+Movement.swift */,
 			);
 			name = UIImage;
@@ -453,11 +456,11 @@
 				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
 				A27878411EE535D000636B9D /* DroneViewController.swift */,
 				A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */,
+				A2048B4E1EC5BA1100C2413C /* ADS-B Module */,
 				A2DD2EDB1ED2627100727B64 /* HomeStation UI */,
 				A278783F1EE534F200636B9D /* Drone UI */,
 				A2048B511EC5BCC000C2413C /* System Infor UI */,
 				A254BF051EAA2785005E70D9 /* HMD Module */,
-				A2048B4E1EC5BA1100C2413C /* ADS-B Module */,
 				A2B567D91EE5A211002E4806 /* Store Module */,
 				A2048B4F1EC5BA4C00C2413C /* Airfield Module */,
 				A2048B501EC5BA7400C2413C /* POI Module */,
@@ -490,14 +493,6 @@
 				A254BEFD1EA8DDE6005E70D9 /* HMD */,
 			);
 			name = "HMD Module";
-			sourceTree = "<group>";
-		};
-		A26222AE1EF0B75400E87DC2 /* CoreLocation */ = {
-			isa = PBXGroup;
-			children = (
-				A26222B01EF0B90B00E87DC2 /* CLLocation+Operator.swift */,
-			);
-			name = CoreLocation;
 			sourceTree = "<group>";
 		};
 		A269BF1C1ECAC911007ABB10 /* Blackbox Module */ = {
@@ -585,6 +580,34 @@
 				A2D341D31EDBDF10001DEF82 /* PilotHMDViewController.swift */,
 			);
 			name = "Drone UI";
+			sourceTree = "<group>";
+		};
+		A27EE2CC1EF69C1F00F7C703 /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				A28868B71EF69B77008E3631 /* CLLocation+Operator.swift */,
+			);
+			name = CoreLocation;
+			path = "Siphty Extensions/CoreLocation";
+			sourceTree = "<group>";
+		};
+		A28868A81EF60589008E3631 /* MapRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */,
+				A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */,
+				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
+				A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */,
+			);
+			name = MapRenderer;
+			sourceTree = "<group>";
+		};
+		A28868AE1EF65B9B008E3631 /* DateTime */ = {
+			isa = PBXGroup;
+			children = (
+				A28868AF1EF65BF2008E3631 /* Date+Utility.swift */,
+			);
+			path = DateTime;
 			sourceTree = "<group>";
 		};
 		A28BF8EB1EB05F200097EB4D /* HMDHeading */ = {
@@ -678,9 +701,10 @@
 		A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A27EE2CC1EF69C1F00F7C703 /* CoreLocation */,
+				A28868AE1EF65B9B008E3631 /* DateTime */,
 				A229E5C21EF29E0200DB3AB9 /* Mathamatics */,
 				A22CCF851EF237AD0070AFC3 /* UIImage */,
-				A26222AE1EF0B75400E87DC2 /* CoreLocation */,
 				A2B54C3F1EEAB9D700215A18 /* String */,
 				A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */,
 				A2B3B2B81EE92AF500A1EB0B /* UIControl */,
@@ -720,11 +744,8 @@
 		A2B54C441EECE05F00215A18 /* ADS-B */ = {
 			isa = PBXGroup;
 			children = (
+				A28868A81EF60589008E3631 /* MapRenderer */,
 				A2B54C4A1EED65F100215A18 /* Models */,
-				A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */,
-				A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */,
-				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
-				A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */,
 				A2C93ACA1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib */,
 			);
 			name = "ADS-B";
@@ -1005,7 +1026,6 @@
 				A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */,
 				A229E5C41EF29EA400DB3AB9 /* Geometric.swift in Sources */,
 				A2DA57D71EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter.m in Sources */,
-				A26222B11EF0B90B00E87DC2 /* CLLocation+Operator.swift in Sources */,
 				A2C93A6E1EF00E2B00DDE914 /* ADSBAnnotationView.swift in Sources */,
 				A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift in Sources */,
 				A22CCF871EF237FF0070AFC3 /* UIImage+Movement.swift in Sources */,
@@ -1031,6 +1051,7 @@
 				A2A1AAB71EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
 				A2B54C471EECE0F300215A18 /* ADSBAPIClient.swift in Sources */,
 				A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */,
+				A28868B01EF65BF2008E3631 /* Date+Utility.swift in Sources */,
 				A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */,
 				A2DA57F71EE25EDC0088E1A9 /* DemoComponentHelper.m in Sources */,
 				A269BF251ECAE06A007ABB10 /* CommonDetailTableViewCell.swift in Sources */,

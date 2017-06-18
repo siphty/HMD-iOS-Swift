@@ -19,7 +19,7 @@ final class ADSBAPIClient {
     static let sharedInstance = ADSBAPIClient()
     private init(){}
     var adsbLoction: CLLocation?
-    var scanDistance: Float = 40   // KM
+    var scanDistance: Float = 20   // KM
     var scanFrequency: Int = 7
     
     fileprivate let adsbexchangeBaseUrl = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json"
@@ -85,26 +85,29 @@ final class ADSBAPIClient {
                 print("Error from URL session data task: \(error.debugDescription)")
                 return
             }
-            self.isLastResponseProceseed = false
-            do {
-                let responseDict: [String: Any] = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
-                let adsbXResponseObj: ADSBXResponse = ADSBXResponse.init(responseDict: responseDict)!
-                guard let adsbAircrafts = adsbXResponseObj.aircraftList else { return }
-                print("Aircrafts above: \(adsbAircrafts.count)")
-                if adsbAircrafts.count < 5 {
-                    self.scanDistance = self.scanDistance + 5
-                } else if adsbAircrafts.count > 35 {
-                    self.scanDistance = self.scanDistance - 5
-                    if self.scanDistance < 10 {
-                        self.scanDistance = 10
+            DispatchQueue.main.async(){
+                self.isLastResponseProceseed = false
+                do {
+                    let responseDict: [String: Any] = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
+                    let adsbXResponseObj: ADSBXResponse = ADSBXResponse.init(responseDict: responseDict)!
+                    guard let adsbAircrafts = adsbXResponseObj.aircraftList else { return }
+                    print("Aircrafts above: \(adsbAircrafts.count)")
+                    if adsbAircrafts.count < 5 {
+                        self.scanDistance = self.scanDistance + 5
+                    } else if adsbAircrafts.count > 35 {
+                        self.scanDistance = self.scanDistance - 5
+                        if self.scanDistance < 10 {
+                            self.scanDistance = 10
+                        }
                     }
+                    print("Next Scan range: \(self.scanDistance)")
+                    complition(adsbAircrafts, nil)
+                } catch let error {
+                    complition([], error)
                 }
-                print("Next Scan range: \(self.scanDistance)")
-                complition(adsbAircrafts, nil)
-            } catch let error {
-                complition([], error)
+                self.isLastResponseProceseed = true
+                
             }
-            self.isLastResponseProceseed = true
         })
         task.resume()
     }

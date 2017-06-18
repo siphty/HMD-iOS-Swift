@@ -24,6 +24,7 @@ class ADSBAeroChartViewController: UIViewController {
     fileprivate var distanceBackToHome = Float()
     fileprivate var regionRadius: CLLocationDistance = 1000
     fileprivate var aircrafts: [ADSBAircraft]?
+    fileprivate var expireSeconds: Int = 33
     
     fileprivate let kUAVAnnotationId   = "uav"
     fileprivate let kAircraftAnnotationId = "Aircraft"
@@ -117,6 +118,16 @@ class ADSBAeroChartViewController: UIViewController {
                                                                 }
                                                                 let uavHeading =  newValue!.value! as! Double
                                                                 self.UpdateAnnotation(self.kUAVAnnotationId, withHeading: uavHeading)
+                                                                for anAnnotation in mapView.annotations {
+                                                                    if anAnnotation is ADSBAnnotation {
+                                                                        let theAnnotation = anAnnotation as! ADSBAnnotation
+                                                                        theAnnotation.location.
+                                                                        
+                                                                        if theAnnotation.identifier == kUAVAnnotationId {
+                                                                            var location = CLLocation(
+                                                                        }
+                                                                    }
+                                                                }
         })
     }
     func stopUpdatingUAVHeadingData(){
@@ -160,26 +171,26 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
         if annotation is ADSBAnnotation {
             let theAnnotation = annotation as! ADSBAnnotation
             if theAnnotation.identifier == kUAVAnnotationId {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartDroneIcon").rotatedByDegrees(degrees: theAnnotation.heading, flip: false)!
+                theAnnotation.image = #imageLiteral(resourceName: "AeroChartDroneIcon").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kUAVAnnotationId)
                 }
             } else if theAnnotation.identifier.range(of: kAircraftAnnotationId) != nil {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartFlightIcon").rotatedByDegrees(degrees: theAnnotation.heading, flip: false)!
+                theAnnotation.image = #imageLiteral(resourceName: "AeroChartFlightIcon").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
 //                theAnnotationView = mapView.view(for: theAnnotation) as? ADSBAnnotationView
                 theAnnotationView =  mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: theAnnotation.identifier)
                 }
             } else if theAnnotation.identifier == kAerodromeAnnotationId {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartRunwayIcon").rotatedByDegrees(degrees: theAnnotation.heading, flip: false)!
+                theAnnotation.image = #imageLiteral(resourceName: "AeroChartRunwayIcon").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kAerodromeAnnotationId)
                 }
             } else {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartHomeBottom").rotatedByDegrees(degrees: theAnnotation.heading, flip: false)!
+                theAnnotation.image = #imageLiteral(resourceName: "AeroChartHomeBottom").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kRemoteAnnotationId)
@@ -235,53 +246,39 @@ extension ADSBAeroChartViewController{
         
         //If there is no such annotation, creat one.
         for exsitingAnnotation in mapView.annotations{
-            guard let annotaion = exsitingAnnotation as? ADSBAnnotation else {
+            guard let annotation = exsitingAnnotation as? ADSBAnnotation else {
                 continue
             }
             //If there is an annotation, update it.
-            if annotaion.identifier == identifier {
+            if annotation.identifier == identifier {
                 //Just update location of the annotation in this stage
-                annotaion.coordinate = location.coordinate
+                
+                let angleDiff: CGFloat = CGFloat(annotation.location.course - location.course)
+                let annotationView =  mapView.view(for: annotation) as? ADSBAnnotationView
+                if annotationView != nil {
+                    annotationView?.annotationImageView?.transform = (annotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(angleDiff)))!
+                    print("Angle: \(location.course)")
+                }
+                annotation.coordinate = location.coordinate
+                annotation.location = location
+                annotation.timeStamp = Date()
                 return
             }
         }
         // there is no annotation have sameidentifiier
-        let newAnnotation = createAnnotation(identifier, location: location, heading: 0, speed: 0)
+        let newAnnotation = createAnnotation(identifier, location: location)
         mapView.addAnnotation(newAnnotation)
     }
     
     
-    func UpdateAnnotation(_ identifier: String, withHeading heading: Double){
-        //Check exsiting annotation with given annotation id.
-        
-        //If there is no such annotation, creat one.
-        for annotation in mapView.annotations{
-            guard let annotation = annotation as? ADSBAnnotation else {
-                continue
-            }
-            if annotation.identifier == identifier {
-                let angleDiff = CGFloat(heading) - annotation.heading
-                annotation.heading = CGFloat(heading)
-                let annotationView =  mapView.view(for: annotation) as? ADSBAnnotationView
-                if annotationView != nil {
-                    annotationView?.annotationImageView?.transform = (annotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(angleDiff)))!
-                    print("Angle: \(heading)")
-                }
-            }
-        }
-        
-    }
-    
-    func createAnnotation(_ identifier: String, location: CLLocation, heading: Float, speed: Float) -> ADSBAnnotation {
+    func createAnnotation(_ identifier: String, location: CLLocation) -> ADSBAnnotation {
         let mapPin = ADSBAnnotation()
         // if the location services is on we will show the travel time, so we give a blank title to mapPin to draw a bigger callout for AnnotationView loader
         mapPin.title = String("TITLE")
         mapPin.identifier = identifier
         mapPin.subtitle = "subtitle"
         mapPin.coordinate = location.coordinate
-        mapPin.heading = CGFloat(heading)
-        mapPin.altitude = CGFloat(location.altitude)
-        mapPin.speed = CGFloat(speed)
+        mapPin.location = location
         return mapPin
     }
     
@@ -328,12 +325,30 @@ extension ADSBAeroChartViewController{
             let altitude = CLLocationDistance(aircraft.gndPresAltitude ?? 0)
             let speed = CLLocationSpeed(aircraft.groundSpeed ?? 0)
             let heading = CLLocationDirection(aircraft.trackHeading ?? 0)
-            UpdateAnnotation(annotationId, withLocation: CLLocation(coordinate: coordination, altitude: altitude, horizontalAccuracy: CLLocationAccuracy(10), verticalAccuracy:  CLLocationAccuracy(10), course: heading, speed: speed, timestamp: Date()) )
-            UpdateAnnotation(annotationId, withHeading: aircraft.trackHeading ?? 0)
+            UpdateAnnotation(annotationId, withLocation: CLLocation(coordinate: coordination,
+                                                                    altitude: altitude,
+                                                                    horizontalAccuracy: CLLocationAccuracy(10),
+                                                                    verticalAccuracy:  CLLocationAccuracy(10),
+                                                                    course: heading,
+                                                                    speed: speed,
+                                                                    timestamp: Date()) )
             
         }
         
-        //Remove all annotation
+    }
+    
+    //Remove all annotation
+    func cleareExpiredAnnotation(){
+        for anAnnotation in mapView.annotations {
+            if anAnnotation is ADSBAnnotation {
+                let theAnnotation = anAnnotation as! ADSBAnnotation
+                let secondsInterval = Date.timeIntervalSince(theAnnotation.timeStamp)
+                print("secondsInterval: \(secondsInterval)")
+//                if secondsInterval > expireSeconds {
+//                    mapView.removeAnnotation(theAnnotation)
+//                }
+            }
+        }
     }
 }
 

@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import CoreLoaction
 
 extension CLLocation{
     
-    
+    func updateLocation(_ location: CLLocation, with course: CLLocation.course) -> <#return type#> {
+        <#function body#>
+    }
 }
 
 
