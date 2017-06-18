@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import CoreLoaction
 
 extension CLLocation{
     
-    func updateCourse(_ course: CLLocation.course) -> CLLocation {
-        self.course = course
-        let newLocation = CLLocation(coordinate: self.coordination,
+    func updateCourse(_ course: CLLocationDirection) -> CLLocation {
+        let newLocation = CLLocation(coordinate: self.coordinate,
                                       altitude: self.altitude,
                                       horizontalAccuracy: self.horizontalAccuracy,
                                       verticalAccuracy:  self.verticalAccuracy,

@@ -121,7 +121,8 @@ class ADSBAeroChartViewController: UIViewController {
                                                                     if anAnnotation is ADSBAnnotation {
                                                                         let theAnnotation = anAnnotation as! ADSBAnnotation
                                                                         if theAnnotation.identifier == self.kUAVAnnotationId {
-                                                                            theAnnotation.location = theAnnotation.location.updateCourse(CLLocationDirection(uavHeading))
+//                                                                            theAnnotation.location = theAnnotation.location.updateCourse(CLLocationDirection(uavHeading))
+                                                                            
                                                                         }
                                                                     }
                                                                 }

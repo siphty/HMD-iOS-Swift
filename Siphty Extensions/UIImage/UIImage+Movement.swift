@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIImage {
-    public func rotatedByDegrees(degrees: CGFloat, flip: Bool)   -> UIImage? {
+    func rotatedByDegrees(degrees: CGFloat, flip: Bool)   -> UIImage? {
         //        let radiansToDegrees: (CGFloat) -> CGFloat = {
         //         return $0 * (180.0 / CGFloat(M_PI))
         //     }

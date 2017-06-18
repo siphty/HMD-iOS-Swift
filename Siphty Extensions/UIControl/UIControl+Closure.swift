@@ -22,6 +22,12 @@ extension UIControl {
         }
     }
     
+    
+    /// Add closure handler for control events
+    ///
+    /// - Parameters:
+    ///   - controlEvents: UIControlEvents
+    ///   - closure: Handler
     func add (for controlEvents: UIControlEvents, _ closure: @escaping ()->()) {
         let sleeve = ClosureSleeve(closure)
         addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: controlEvents)
