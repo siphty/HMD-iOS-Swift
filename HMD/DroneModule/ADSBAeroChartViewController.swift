@@ -24,11 +24,11 @@ class ADSBAeroChartViewController: UIViewController {
     fileprivate var distanceBackToHome = Float()
     fileprivate var regionRadius: CLLocationDistance = 1000
     fileprivate var aircrafts: [ADSBAircraft]?
-    fileprivate var expireSeconds: Int = 33
+    fileprivate var expireSeconds: Double = 33.0
     
-    fileprivate let kUAVAnnotationId   = "uav"
-    fileprivate let kAircraftAnnotationId = "Aircraft"
-    fileprivate let kAerodromeAnnotationId  = "Aerodrome"
+    fileprivate let kUAVAnnotationId   = "UAV"
+    fileprivate let kAircraftAnnotationId = "Aircraft:"
+    fileprivate let kAerodromeAnnotationId  = "Aerodrome:"
     fileprivate let kRemoteAnnotationId  = "Remote"
     
     enum MapLockOn {
@@ -43,7 +43,8 @@ class ADSBAeroChartViewController: UIViewController {
     @IBAction func slideBarValueChanged(_ sender: Any) {
         
     }
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: ADSBMapView!
+    
     @IBAction func uavButtomTouchUpInside(_ sender: Any) {
         mapLockOn = .uav
     }
@@ -68,6 +69,7 @@ class ADSBAeroChartViewController: UIViewController {
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
         }
+        mapView.listener = self
         mapView.delegate = self
         
         //uav Location and Annotation
@@ -121,7 +123,7 @@ class ADSBAeroChartViewController: UIViewController {
                                                                     if anAnnotation is ADSBAnnotation {
                                                                         let theAnnotation = anAnnotation as! ADSBAnnotation
                                                                         if theAnnotation.identifier == self.kUAVAnnotationId {
-//                                                                            theAnnotation.location = theAnnotation.location.updateCourse(CLLocationDirection(uavHeading))
+                                                                            theAnnotation.location = theAnnotation.location.updateCourse(CLLocationDirection(uavHeading))
                                                                             
                                                                         }
                                                                     }
@@ -164,34 +166,51 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("callout accessary ")
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var theAnnotationView: ADSBAnnotationView?
         if annotation is ADSBAnnotation {
             let theAnnotation = annotation as! ADSBAnnotation
             if theAnnotation.identifier == kUAVAnnotationId {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartDroneIcon").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
+                    theAnnotation.image = #imageLiteral(resourceName: "AeroChartDroneIcon")//.rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kUAVAnnotationId)
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
                 }
             } else if theAnnotation.identifier.range(of: kAircraftAnnotationId) != nil {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartFlightIcon").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
-//                theAnnotationView = mapView.view(for: theAnnotation) as? ADSBAnnotationView
                 theAnnotationView =  mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
-                    theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: theAnnotation.identifier)
+                    theAnnotation.image = #imageLiteral(resourceName: "AeroChartFlightIcon")//.rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
+                    theAnnotationView = ADSBAnnotationView(annotation: theAnnotation, reuseIdentifier: theAnnotation.identifier)
+                    
+                    theAnnotationView?.canShowCallout = true
+                    theAnnotationView?.centerOffset = CGPoint(x: -10, y: -10)
+//                    theAnnotationView?.annotationImageView?.transform = (theAnnotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
+//                    theAnnotationView?.annotationImageView?.layer.anchorPoint = CGPoint(x: (theAnnotationView?.frame.size.width)!/2,
+//                                                                                     y: (theAnnotationView?.frame.size.height)!/2)
+//                    theAnnotationView?.annotationImageView?.layer.position = CGPoint(x: (theAnnotationView?.frame.size.width)!/2,
+//                                                                                  y: (theAnnotationView?.frame.size.height)!/2)
+                    
+//                    theAnnotationView?.annotationImageView?.transform = CGAffineTransform(rotationAngle: Geometric.degreeToRadian(Geometric.degreeToRadian(theAnnotation.location.course)))
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
                 }
             } else if theAnnotation.identifier == kAerodromeAnnotationId {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartRunwayIcon").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
+                    theAnnotation.image = #imageLiteral(resourceName: "AeroChartRunwayIcon")//.rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kAerodromeAnnotationId)
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
                 }
             } else {
-                theAnnotation.image = #imageLiteral(resourceName: "AeroChartHomeBottom").rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
+                    theAnnotation.image = #imageLiteral(resourceName: "AeroChartHomeBottom")//.rotatedByDegrees(degrees: CGFloat(theAnnotation.location.course), flip: false)!
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kRemoteAnnotationId)
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
                 }
             }
         } else {
@@ -231,6 +250,18 @@ extension ADSBAeroChartViewController: CLLocationManagerDelegate {
     }
 }
 
+//MARK: ADSBMapViewListener
+extension ADSBAeroChartViewController: ADSBMapViewListener {
+    func mapView(_ mapView: ADSBMapView, rotationDidChange rotation: Double) {
+        //Process map rotation
+        
+        //Rotate Annotation icons
+        var theAnnotationView: ADSBAnnotationView?
+        print("Rotation angle: \(rotation)")
+
+    }
+}
+
 //MARK: Miscellaneous
 extension ADSBAeroChartViewController{
     func centerMapOnLocation(_ location: CLLocation) {
@@ -249,17 +280,30 @@ extension ADSBAeroChartViewController{
             }
             //If there is an annotation, update it.
             if annotation.identifier == identifier {
-                //Just update location of the annotation in this stage
                 
-                let angleDiff: CGFloat = CGFloat(annotation.location.course - location.course)
-                let annotationView =  mapView.view(for: annotation) as? ADSBAnnotationView
+                //Rotate AnnotationView by angle different
+                let angleDiff: CGFloat = CGFloat(location.course - annotation.location.course)
+                var annotationView =  mapView.view(for: annotation) as? ADSBAnnotationView
                 if annotationView != nil {
+//                    annotationView?.annotationImageView?.layer.anchorPoint = CGPoint(x: (annotationView?.frame.size.width)!/2,
+//                                                                                     y: (annotationView?.frame.size.height)!/2)
+//                    annotationView?.annotationImageView?.layer.position = CGPoint(x: (annotationView?.frame.size.width)!/2,
+//                                                                                     y: (annotationView?.frame.size.height)!/2)
+//                                        annotationView?.annotationImageView?.transform = CGAffineTransform(rotationAngle: Geometric.degreeToRadian(angleDiff))
+                    annotationView?.canShowCallout = true
+                    annotationView?.centerOffset = CGPoint(x: -10, y: -10)
                     annotationView?.annotationImageView?.transform = (annotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(angleDiff)))!
-                    print("Angle: \(location.course)")
+                    print("\(annotation.identifier) Angle: \(location.course)")
+                } else {
+                    annotationView = ADSBAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                    
+                    annotationView?.canShowCallout = true
+                    annotationView?.centerOffset = CGPoint(x: -10, y: -10)
+                    annotationView?.annotationImageView?.transform = (annotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(angleDiff)))!
                 }
+                //Update coordinate and others
                 annotation.coordinate = location.coordinate
                 annotation.location = location
-                annotation.timeStamp = Date()
                 return
             }
         }
@@ -270,14 +314,14 @@ extension ADSBAeroChartViewController{
     
     
     func createAnnotation(_ identifier: String, location: CLLocation) -> ADSBAnnotation {
-        let mapPin = ADSBAnnotation()
+        let annotation = ADSBAnnotation()
         // if the location services is on we will show the travel time, so we give a blank title to mapPin to draw a bigger callout for AnnotationView loader
-        mapPin.title = String("TITLE")
-        mapPin.identifier = identifier
-        mapPin.subtitle = "subtitle"
-        mapPin.coordinate = location.coordinate
-        mapPin.location = location
-        return mapPin
+        annotation.title = String("TITLE")
+        annotation.identifier = identifier
+        annotation.subtitle = identifier
+        annotation.coordinate = location.coordinate
+        annotation.location = location
+        return annotation
     }
     
     
@@ -332,6 +376,7 @@ extension ADSBAeroChartViewController{
                                                                     timestamp: Date()) )
             
         }
+        cleareExpiredAnnotation()
         
     }
     
@@ -340,11 +385,11 @@ extension ADSBAeroChartViewController{
         for anAnnotation in mapView.annotations {
             if anAnnotation is ADSBAnnotation {
                 let theAnnotation = anAnnotation as! ADSBAnnotation
-                let secondsInterval = Date.timeIntervalSince(theAnnotation.timeStamp)
-                print("secondsInterval: \(secondsInterval)")
-//                if secondsInterval > expireSeconds {
-//                    mapView.removeAnnotation(theAnnotation)
-//                }
+                let secondsInterval = Date().timeIntervalSince(theAnnotation.location.timestamp)
+                print("\(theAnnotation.identifier) Interval: \(secondsInterval)")
+                if secondsInterval > expireSeconds {
+                    mapView.removeAnnotation(theAnnotation)
+                }
             }
         }
     }

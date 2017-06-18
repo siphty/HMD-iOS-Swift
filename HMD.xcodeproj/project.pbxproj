@@ -65,6 +65,7 @@
 		A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */; };
 		A28868A61EF54466008E3631 /* ADSBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A51EF54466008E3631 /* ADSBCommon.swift */; };
 		A291DB791EE3D199003C52C2 /* DroneCockpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */; };
+		A296FF2E1EF6EB03008D4094 /* ADSBMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */; };
 		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
 		A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */; };
@@ -216,6 +217,7 @@
 		A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCacheManager.swift; path = HMD/ADSBModule/ADSB/ADSBCacheManager.swift; sourceTree = SOURCE_ROOT; };
 		A28868A51EF54466008E3631 /* ADSBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCommon.swift; path = HMD/ADSBModule/ADSB/ADSBCommon.swift; sourceTree = SOURCE_ROOT; };
 		A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCockpitViewController.swift; path = HMD/PilotMode/DroneCockpitViewController.swift; sourceTree = SOURCE_ROOT; };
+		A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBMapView.swift; path = HMD/ADSBModule/ADSBMapView.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayer.swift; path = HMD/HMDHeadingCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingRenderer.swift; path = HMD/HMDHeadingRenderer.swift; sourceTree = SOURCE_ROOT; };
@@ -572,6 +574,7 @@
 				A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */,
 				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
 				A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */,
+				A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */,
 			);
 			name = MapRenderer;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				A2DA58011EE25EDC0088E1A9 /* DemoSettingItem.m in Sources */,
 				A201DEF11EF6B49000EEEE6F /* CGRect+Resize.swift in Sources */,
 				A2A1AAD11EBDE340006970E1 /* HMDSideslipLayer.swift in Sources */,
+				A296FF2E1EF6EB03008D4094 /* ADSBMapView.swift in Sources */,
 				A2DA58041EE25EDC0088E1A9 /* MBProgressHUD.m in Sources */,
 				A2A1AACD1EBDD2A9006970E1 /* HMDBankScaleLayer.swift in Sources */,
 				A2A1AAB11EBD6EF0006970E1 /* HMDAltitudeRenderer.swift in Sources */,

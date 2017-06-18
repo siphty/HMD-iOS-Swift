@@ -19,7 +19,7 @@ final class ADSBAPIClient {
     static let sharedInstance = ADSBAPIClient()
     private init(){}
     var adsbLoction: CLLocation?
-    var scanDistance: Float = 20   // KM
+    var scanDistance: Float = 35  // KM
     var scanFrequency: Int = 7
     
     fileprivate let adsbexchangeBaseUrl = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json"

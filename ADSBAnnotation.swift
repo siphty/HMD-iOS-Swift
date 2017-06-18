@@ -15,6 +15,6 @@ open class ADSBAnnotation: MKPointAnnotation {
     public var image: UIImage = UIImage()
     public var clusterAnnotation: ADSBAnnotation!
     public var containedAnnotations: [ADSBAnnotation]?
+    
     public var location: CLLocation = CLLocation()
-    public var timeStamp: Date = Date()
 }
