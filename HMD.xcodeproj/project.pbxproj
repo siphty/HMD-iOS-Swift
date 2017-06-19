@@ -572,8 +572,8 @@
 			children = (
 				A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */,
 				A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */,
-				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
 				A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */,
+				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
 				A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */,
 			);
 			name = MapRenderer;
@@ -732,13 +732,13 @@
 		A2B54C4A1EED65F100215A18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A28868A51EF54466008E3631 /* ADSBCommon.swift */,
 				A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */,
 				A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */,
 				A2B54C4D1EED7A6800215A18 /* ADSBXResponse.swift */,
 				A2B54C481EED659C00215A18 /* ADSBAircraft.swift */,
 				A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */,
 				A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */,
-				A28868A51EF54466008E3631 /* ADSBCommon.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";

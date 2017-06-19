@@ -30,15 +30,21 @@ class ADSBAnnotationView: MKAnnotationView {
             annotationImage = customPin.image
         }
         annotationImageView = UIImageView(image: annotationImage)
-        self.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        annotationImageView?.alpha = 0.5
         let aLayer = CALayer()
-        aLayer.frame = self.bounds
-        aLayer.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor
-        aLayer.borderColor =  #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1).cgColor
+        aLayer.frame = CGRect(x: self.frame.width/2 - 1, y: self.frame.height/2 - 1, width: 2, height: 2)
+        aLayer.backgroundColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+        aLayer.borderColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
         aLayer.borderWidth = 2
         self.layer.addSublayer(aLayer)
-        annotationImageView?.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-//        annotationImageView?.frame = self.bounds
+      
+//        let cLayer = CALayer()
+//        cLayer.frame = CGRect(x: self.frame.width/2 - 1, y: self.frame.height/2 - 1, width: 2, height: 2)
+//        cLayer.borderColor =  #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1).cgColor
+//        cLayer.borderWidth = 2
+//        annotationImageView?.layer.addSublayer(cLayer)
+
+        annotationImageView?.center = CGPoint(x: 0, y: 0)
         addSubview(annotationImageView!)
         image = nil
     }

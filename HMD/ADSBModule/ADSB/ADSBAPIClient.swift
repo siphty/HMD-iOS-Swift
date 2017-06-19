@@ -19,8 +19,8 @@ final class ADSBAPIClient {
     static let sharedInstance = ADSBAPIClient()
     private init(){}
     var adsbLoction: CLLocation?
-    var scanDistance: Float = 35  // KM
-    var scanFrequency: Int = 7
+    var scanDistance: Float = ADSBConfig.scanRangeBase  // KM
+    var scanFrequency: Int = ADSBConfig.scanFrequencyBase
     
     fileprivate let adsbexchangeBaseUrl = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json"
     fileprivate var requestTimer: Timer?
@@ -92,11 +92,11 @@ final class ADSBAPIClient {
                     let adsbXResponseObj: ADSBXResponse = ADSBXResponse.init(responseDict: responseDict)!
                     guard let adsbAircrafts = adsbXResponseObj.aircraftList else { return }
                     print("Aircrafts above: \(adsbAircrafts.count)")
-                    if adsbAircrafts.count < 5 {
+                    if adsbAircrafts.count < ADSBConfig.minimumAircraftsTracking {
                         self.scanDistance = self.scanDistance + 5
-                    } else if adsbAircrafts.count > 35 {
+                    } else if adsbAircrafts.count > ADSBConfig.maximumAircraftsTracking {
                         self.scanDistance = self.scanDistance - 5
-                        if self.scanDistance < 10 {
+                        if self.scanDistance < ADSBConfig.minimumScanRange {
                             self.scanDistance = 10
                         }
                     }
