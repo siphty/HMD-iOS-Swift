@@ -129,7 +129,7 @@ class ADSBAeroChartViewController: UIViewController {
                                                                     if anAnnotation is ADSBAnnotation {
                                                                         let theAnnotation = anAnnotation as! ADSBAnnotation
                                                                         if theAnnotation.identifier == self.kUAVAnnotationId {
-                                                                            theAnnotation.location = theAnnotation.location.updateCourse(CLLocationDirection(uavHeading))
+                                                                            theAnnotation.location = theAnnotation.location?.updateCourse(CLLocationDirection(uavHeading))
                                                                         }
                                                                     }
                                                                 }
@@ -182,29 +182,34 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
                 if theAnnotationView == nil {
                     theAnnotation.image = #imageLiteral(resourceName: "AeroChartDroneIcon")
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kUAVAnnotationId)
-                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
+                    guard (theAnnotation.location != nil) else { return nil }
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian((theAnnotation.location?.course)!)))!
                 }
             } else if theAnnotation.identifier.range(of: kAircraftAnnotationId) != nil {
                 theAnnotationView =  mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
+                    let aircraftSpecies = theAnnotation.aircraft?.aircraftSpecies ?? 0
                     theAnnotation.image = #imageLiteral(resourceName: "AeroChartFlightIcon")
                     theAnnotationView = ADSBAnnotationView(annotation: theAnnotation, reuseIdentifier: theAnnotation.identifier)
-                    theAnnotationView?.canShowCallout = true
-                    theAnnotationView?.annotationImageView?.transform = (theAnnotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course + mapHeading)))!
+//                    theAnnotationView?.canShowCallout = true
+                    guard (theAnnotation.location != nil) else { return nil }
+                    let turnRadian = Geometric.degreeToRadian((theAnnotation.location?.course)! + mapHeading)
+                    let transform = theAnnotationView?.annotationImageView?.transform.rotated(by: turnRadian)
+                    theAnnotationView?.annotationImageView?.transform = transform!
                 }
             } else if theAnnotation.identifier == kAerodromeAnnotationId {
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotation.image = #imageLiteral(resourceName: "AeroChartRunwayIcon")
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kAerodromeAnnotationId)
-                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian((theAnnotation.location?.course)!)))!
                 }
             } else {
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotation.image = #imageLiteral(resourceName: "AeroChartHomeBottom")
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kRemoteAnnotationId)
-                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian(theAnnotation.location.course)))!
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian((theAnnotation.location?.course)!)))!
                 }
             }
         } else {
@@ -281,7 +286,7 @@ extension ADSBAeroChartViewController{
                 continue
             }
             if annotation.identifier == identifier {
-                let angleDiff: CGFloat = CGFloat(location.course - annotation.location.course)
+                let angleDiff: CGFloat = CGFloat(location.course - annotation.location!.course)
                 let annotationView =  mapView.view(for: annotation) as? ADSBAnnotationView
                 if annotationView != nil {
                     annotationView?.canShowCallout = true
@@ -372,7 +377,7 @@ extension ADSBAeroChartViewController{
         for anAnnotation in mapView.annotations {
             if anAnnotation is ADSBAnnotation {
                 let theAnnotation = anAnnotation as! ADSBAnnotation
-                let secondsInterval = Date().timeIntervalSince(theAnnotation.location.timestamp)
+                let secondsInterval = Date().timeIntervalSince((theAnnotation.location?.timestamp)!)
                 print("\(theAnnotation.identifier) Interval: \(secondsInterval)")
                 if secondsInterval > expireSeconds {
                     mapView.removeAnnotation(theAnnotation)
@@ -386,7 +391,18 @@ extension ADSBAeroChartViewController{
             }
         }
     }
-}
+    
+//    func getAircraftIcon(by type: Int) -> UIImage {
+////        let aircraftType: ADSBAircraftType = type as ADSBAircraftType
+//        let species: ADSBSpecies = type as ADSBSpecies
+//        switch species {
+//        case .none:
+//            return
+//        default:
+//            <#code#>
+//        }
+//    }
+//}
 
 
 

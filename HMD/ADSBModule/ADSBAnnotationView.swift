@@ -11,8 +11,8 @@ import MapKit
 import UIKit
 
 class ADSBAnnotationView: MKAnnotationView {
-    public var calloutView: ADSBAnnotationCalloutView?
-    public var annotationImage: UIImage?
+    var calloutView: ADSBAnnotationCalloutView?
+    var annotationImage: UIImage?
     var annotationImageView: UIView?
     
     override open var annotation: MKAnnotation? {
@@ -37,12 +37,6 @@ class ADSBAnnotationView: MKAnnotationView {
         aLayer.borderColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
         aLayer.borderWidth = 2
         self.layer.addSublayer(aLayer)
-      
-//        let cLayer = CALayer()
-//        cLayer.frame = CGRect(x: self.frame.width/2 - 1, y: self.frame.height/2 - 1, width: 2, height: 2)
-//        cLayer.borderColor =  #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1).cgColor
-//        cLayer.borderWidth = 2
-//        annotationImageView?.layer.addSublayer(cLayer)
 
         annotationImageView?.center = CGPoint(x: 0, y: 0)
         addSubview(annotationImageView!)

@@ -11,10 +11,11 @@ import MapKit
 
 open class ADSBAnnotation: MKPointAnnotation {
 //    override dynamic open var coordinate : CLLocationCoordinate2D
-    public var identifier: String = ""
-    public var image: UIImage = UIImage()
-    public var clusterAnnotation: ADSBAnnotation!
-    public var containedAnnotations: [ADSBAnnotation]?
+    var identifier: String = ""
+    var image: UIImage = UIImage()
+    var clusterAnnotation: ADSBAnnotation!
+    var containedAnnotations: [ADSBAnnotation]?
     
-    public var location: CLLocation = CLLocation()
+    var location: CLLocation?
+    var aircraft: ADSBAircraft?
 }
