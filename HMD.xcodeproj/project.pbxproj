@@ -66,6 +66,7 @@
 		A28868A61EF54466008E3631 /* ADSBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A51EF54466008E3631 /* ADSBCommon.swift */; };
 		A291DB791EE3D199003C52C2 /* DroneCockpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */; };
 		A296FF2E1EF6EB03008D4094 /* ADSBMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */; };
+		A296FF311EF8B307008D4094 /* ADSBAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A296FF301EF8B307008D4094 /* ADSBAssets.xcassets */; };
 		A2A1AA4E1EBA1C2A006970E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */; };
 		A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */; };
 		A2A1AA521EBA1C2A006970E1 /* HMDHeadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */; };
@@ -218,6 +219,7 @@
 		A28868A51EF54466008E3631 /* ADSBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCommon.swift; path = HMD/ADSBModule/ADSB/ADSBCommon.swift; sourceTree = SOURCE_ROOT; };
 		A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCockpitViewController.swift; path = HMD/PilotMode/DroneCockpitViewController.swift; sourceTree = SOURCE_ROOT; };
 		A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBMapView.swift; path = HMD/ADSBModule/ADSBMapView.swift; sourceTree = SOURCE_ROOT; };
+		A296FF301EF8B307008D4094 /* ADSBAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ADSBAssets.xcassets; path = HMD/ADSBModule/ADSBAssets.xcassets; sourceTree = SOURCE_ROOT; };
 		A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HMD/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA461EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingCursorLayer.swift; path = HMD/HMDHeadingCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AA471EBA1C2A006970E1 /* HMDHeadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHeadingRenderer.swift; path = HMD/HMDHeadingRenderer.swift; sourceTree = SOURCE_ROOT; };
@@ -722,6 +724,7 @@
 		A2B54C441EECE05F00215A18 /* ADS-B */ = {
 			isa = PBXGroup;
 			children = (
+				A296FF301EF8B307008D4094 /* ADSBAssets.xcassets */,
 				A28868A81EF60589008E3631 /* MapRenderer */,
 				A2B54C4A1EED65F100215A18 /* Models */,
 				A2C93ACA1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib */,
@@ -927,6 +930,7 @@
 				A273586E1EE3BBFB00ECFC28 /* Gotham-Ultra.otf in Resources */,
 				A27358651EE3BBFB00ECFC28 /* Gotham-BoldItalic.otf in Resources */,
 				A27358661EE3BBFB00ECFC28 /* Gotham-Book.otf in Resources */,
+				A296FF311EF8B307008D4094 /* ADSBAssets.xcassets in Resources */,
 				A269BF221ECADF2B007ABB10 /* CommonDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

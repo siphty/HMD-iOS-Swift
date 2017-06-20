@@ -392,17 +392,60 @@ extension ADSBAeroChartViewController{
         }
     }
     
-//    func getAircraftIcon(by type: Int) -> UIImage {
-////        let aircraftType: ADSBAircraftType = type as ADSBAircraftType
-//        let species: ADSBSpecies = type as ADSBSpecies
-//        switch species {
-//        case .none:
-//            return
-//        default:
-//            <#code#>
-//        }
-//    }
-//}
+    func getAircraftIcon(by aircraft: ADSBAircraft) -> UIImage {
+        var fileName: String = ADSBAircraftType.none.rawValue + ".png"
+        let wtc = ADSBWakeTurbulenceCategory(rawValue: aircraft.wTC ?? 0)!
+        let species = ADSBSpecies(rawValue: aircraft.aircraftSpecies ?? 0)!
+        let engineType = ADSBEngineType(rawValue: aircraft.engineType ?? 0)!
+        let engineCount = aircraft.engineCount ?? 1
+        let isMilitary = aircraft.isMilitary ?? false
+        var isFixedWing: Bool = true
+        var isGroundObject: Bool = false
+        switch species {
+        case .None, .LandPlane, .SeaPlane, .Amphibian:
+            isFixedWing = true
+            isGroundObject = false
+        case .Helicopter, .Gyrocopter, .Tiltwing:
+            isFixedWing = false
+            isGroundObject = false
+        case .GroundVehicle, .Tower:
+            isFixedWing = false
+            isGroundObject = true
+        }
+        if isGroundObject {
+            if aircraft.aircraftSpecies == ADSBSpecies.GroundVehicle.rawValue {
+                fileName = ADSBAircraftType.groundVehicle.rawValue + ".png"
+            } else if aircraft.aircraftSpecies == ADSBSpecies.Tower.rawValue {
+                fileName = ADSBAircraftType.tower.rawValue + ".png"
+            }
+        }else if isMilitary {
+            fileName = ADSBAircraftType.militaryJet.rawValue + ".png"
+        }
+        
+        else if engineCount == 2 && engineType == .Jet && wtc == .Light {
+            fileName = ADSBAircraftType.jetTwoEngLight.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Turbo && wtc == .Medium {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Turbo && wtc == .Heavy {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
+            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
+        }
+        
+        
+        return UIImage(contentsOfFile: fileName)!
+    }
+}
 
 
 
