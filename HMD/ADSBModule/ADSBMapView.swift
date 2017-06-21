@@ -23,23 +23,37 @@ class ADSBMapView: MKMapView {
     private var rotation : Double = 0 // saved map rotation
     private var changesTimer : Timer? // timer to track map changes; nil when changes are not tracked
     public var listener : ADSBMapViewListener?
-    
+    var altitudeStick = CALayer()
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        self.mapContainerView = self.findViewOfType("MKScrollContainerView", inView: self)
-        self.startTrackingChanges()
+        mapContainerView = self.findViewOfType("MKScrollContainerView", inView: self)
+        startTrackingChanges()
+        drawAltitudeReferenceColorStick()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.mapContainerView = self.findViewOfType("MKScrollContainerView", inView: self)
-        self.startTrackingChanges()
+        mapContainerView = self.findViewOfType("MKScrollContainerView", inView: self)
+        startTrackingChanges()
+    }
+    
+    //MARK:-
+    //MARK: Draw Altitude color stick
+    func drawAltitudeReferenceColorStick(){
+        altitudeStick.frame = CGRect(x: 10, y: 10, width: 30, height: bounds.height - 10)
+        altitudeStick.borderColor = UIColor.red.cgColor
+        altitudeStick.borderWidth = 2
+        
+        
+        
+        
+        layer.addSublayer(altitudeStick)
     }
     
     
-    //    *****
-    //    GETTING MAP PROPERTIES
-    
+    //MARK:-
+    //MARK:    GETTING MAP PROPERTIES
+
     public func getZoom() -> Double {
         // function returns current zoom of the map
         var angleCamera = self.rotation

@@ -70,16 +70,6 @@ class ADSBAeroChartViewController: UIViewController {
         }
         mapView.listener = self
         mapView.delegate = self
-        
-        
-        //Start updating aircrafts
-        notificationCenter.addObserver(self,
-                                       selector: #selector(aircraftListHasBeenUpdated),
-                                       name: ADSBNotification.NewAircraftListKey,
-                                       object: nil)
-        let apiClient = ADSBAPIClient.sharedInstance
-        apiClient.adsbLoction = homeLocation
-        apiClient.startUpdateAircrafts()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,6 +77,10 @@ class ADSBAeroChartViewController: UIViewController {
         startUpdatingUAVLocationData()
         startUpdatingUAVHeadingData()
         //Start updating ADS-B aircrafts
+        notificationCenter.addObserver(self,
+                                       selector: #selector(aircraftListHasBeenUpdated),
+                                       name: ADSBNotification.NewAircraftListKey,
+                                       object: nil)
         let apiClient = ADSBAPIClient.sharedInstance
         apiClient.adsbLoction = homeLocation
         apiClient.startUpdateAircrafts()
@@ -109,7 +103,7 @@ class ADSBAeroChartViewController: UIViewController {
                                                                     return
                                                                 }
                                                                 let uavLocation =  newValue!.value! as! CLLocation
-                                                                self.UpdateAnnotation(self.kUAVAnnotationId, withLocation: uavLocation)
+                                                                self.UpdateAnnotation(self.kUAVAnnotationId, withLocation: uavLocation, aircraft: nil)
         })
     }
     func stopUpdatingUAVAltitudeData(){
@@ -160,7 +154,7 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
             callout.titleLabel.text = "Test Label"
             if self.isLocationAvailabe() {
                 callout.startLoading()
-                self.getAircraftDescription(adsbAnnotation.identifier, completion: { (aircraft) in
+                self.getAircraft(by: adsbAnnotation.identifier, completion: { (aircraft) in
                     callout.stopLoading()
                     callout.titleLabel.text = aircraft?.icaoId ?? "NULL"
                 })
@@ -188,8 +182,8 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
             } else if theAnnotation.identifier.range(of: kAircraftAnnotationId) != nil {
                 theAnnotationView =  mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
-                    let aircraftSpecies = theAnnotation.aircraft?.aircraftSpecies ?? 0
-                    theAnnotation.image = #imageLiteral(resourceName: "AeroChartFlightIcon")
+//                    theAnnotation.image = theAnnotation.getAircraftIcon(by: theAnnotation.aircraft!)
+//                    theAnnotation.setAircraftIcon()
                     theAnnotationView = ADSBAnnotationView(annotation: theAnnotation, reuseIdentifier: theAnnotation.identifier)
 //                    theAnnotationView?.canShowCallout = true
                     guard (theAnnotation.location != nil) else { return nil }
@@ -279,7 +273,7 @@ extension ADSBAeroChartViewController{
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    func UpdateAnnotation(_ identifier: String, withLocation location: CLLocation){
+    func UpdateAnnotation(_ identifier: String, withLocation location: CLLocation, aircraft: ADSBAircraft?){
         
         for exsitingAnnotation in mapView.annotations{
             guard let annotation = exsitingAnnotation as? ADSBAnnotation else {
@@ -291,19 +285,18 @@ extension ADSBAeroChartViewController{
                 if annotationView != nil {
                     annotationView?.canShowCallout = true
                     annotationView?.annotationImageView?.transform = (annotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(angleDiff)))!
-                    print("\(annotation.identifier) Angle: \(location.course)")
                 }
                 annotation.coordinate = location.coordinate
                 annotation.location = location
                 return
             }
         }
-        let newAnnotation = createAnnotation(identifier, location: location)
+        let newAnnotation = createAnnotation(identifier, location: location, aircraft: aircraft)
         mapView.addAnnotation(newAnnotation)
     }
     
     
-    func createAnnotation(_ identifier: String, location: CLLocation) -> ADSBAnnotation {
+    func createAnnotation(_ identifier: String, location: CLLocation, aircraft: ADSBAircraft?) -> ADSBAnnotation {
         let annotation = ADSBAnnotation()
         // if the location services is on we will show the travel time, so we give a blank title to mapPin to draw a bigger callout for AnnotationView loader
         annotation.title = String("TITLE")
@@ -311,6 +304,7 @@ extension ADSBAeroChartViewController{
         annotation.subtitle = identifier
         annotation.coordinate = location.coordinate
         annotation.location = location
+        annotation.aircraft = aircraft
         return annotation
     }
     
@@ -337,9 +331,15 @@ extension ADSBAeroChartViewController{
         return isLocationAuthorized() && CLLocationManager.locationServicesEnabled()
     }
     
-    fileprivate func getAircraftDescription(_ identifier: String, completion : @escaping (_ aircraft: ADSBAircraft?) -> Void) {
+    fileprivate func getAircraft(by identifier: String, completion : @escaping (_ aircraft: ADSBAircraft?) -> Void) {
         //Search aircraft list by identifier
-        
+        let aircraftList = ADSBCacheManager.sharedInstance.adsbAircrafts
+        for aircraft in aircraftList {
+            let aircraftIdentifier = kAircraftAnnotationId + (aircraft.icaoId ?? "") + (aircraft.registration ?? "")
+            if aircraftIdentifier == identifier {
+                completion(aircraft)
+            }
+        }
         completion(nil)
     }
     
@@ -359,13 +359,15 @@ extension ADSBAeroChartViewController{
             let altitude = CLLocationDistance(aircraft.gndPresAltitude ?? 0)
             let speed = CLLocationSpeed(aircraft.groundSpeed ?? 0)
             let heading = CLLocationDirection(aircraft.trackHeading ?? 0)
-            UpdateAnnotation(annotationId, withLocation: CLLocation(coordinate: coordination,
-                                                                    altitude: altitude,
-                                                                    horizontalAccuracy: CLLocationAccuracy(10),
-                                                                    verticalAccuracy:  CLLocationAccuracy(10),
-                                                                    course: heading,
-                                                                    speed: speed,
-                                                                    timestamp: Date()) )
+            UpdateAnnotation(annotationId,
+                             withLocation: CLLocation(coordinate: coordination,
+                                                        altitude: altitude,
+                                                        horizontalAccuracy: CLLocationAccuracy(10),
+                                                        verticalAccuracy:  CLLocationAccuracy(10),
+                                                        course: heading,
+                                                        speed: speed,
+                                                        timestamp: Date()),
+                             aircraft: aircraft)
             
         }
         cleareExpiredAnnotation()
@@ -378,7 +380,6 @@ extension ADSBAeroChartViewController{
             if anAnnotation is ADSBAnnotation {
                 let theAnnotation = anAnnotation as! ADSBAnnotation
                 let secondsInterval = Date().timeIntervalSince((theAnnotation.location?.timestamp)!)
-                print("\(theAnnotation.identifier) Interval: \(secondsInterval)")
                 if secondsInterval > expireSeconds {
                     mapView.removeAnnotation(theAnnotation)
                 } else if secondsInterval > 1 {
@@ -392,59 +393,6 @@ extension ADSBAeroChartViewController{
         }
     }
     
-    func getAircraftIcon(by aircraft: ADSBAircraft) -> UIImage {
-        var fileName: String = ADSBAircraftType.none.rawValue + ".png"
-        let wtc = ADSBWakeTurbulenceCategory(rawValue: aircraft.wTC ?? 0)!
-        let species = ADSBSpecies(rawValue: aircraft.aircraftSpecies ?? 0)!
-        let engineType = ADSBEngineType(rawValue: aircraft.engineType ?? 0)!
-        let engineCount = aircraft.engineCount ?? 1
-        let isMilitary = aircraft.isMilitary ?? false
-        var isFixedWing: Bool = true
-        var isGroundObject: Bool = false
-        switch species {
-        case .None, .LandPlane, .SeaPlane, .Amphibian:
-            isFixedWing = true
-            isGroundObject = false
-        case .Helicopter, .Gyrocopter, .Tiltwing:
-            isFixedWing = false
-            isGroundObject = false
-        case .GroundVehicle, .Tower:
-            isFixedWing = false
-            isGroundObject = true
-        }
-        if isGroundObject {
-            if aircraft.aircraftSpecies == ADSBSpecies.GroundVehicle.rawValue {
-                fileName = ADSBAircraftType.groundVehicle.rawValue + ".png"
-            } else if aircraft.aircraftSpecies == ADSBSpecies.Tower.rawValue {
-                fileName = ADSBAircraftType.tower.rawValue + ".png"
-            }
-        }else if isMilitary {
-            fileName = ADSBAircraftType.militaryJet.rawValue + ".png"
-        }
-        
-        else if engineCount == 2 && engineType == .Jet && wtc == .Light {
-            fileName = ADSBAircraftType.jetTwoEngLight.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Turbo && wtc == .Medium {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Turbo && wtc == .Heavy {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }else if engineCount == 2 && engineType == .Jet && wtc == .Medium {
-            fileName = ADSBAircraftType.jetTwoEngMedium.rawValue + ".png"
-        }
-        
-        
-        return UIImage(contentsOfFile: fileName)!
-    }
 }
 
 
