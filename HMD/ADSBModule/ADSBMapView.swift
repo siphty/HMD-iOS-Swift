@@ -23,31 +23,39 @@ class ADSBMapView: MKMapView {
     private var rotation : Double = 0 // saved map rotation
     private var changesTimer : Timer? // timer to track map changes; nil when changes are not tracked
     public var listener : ADSBMapViewListener?
-    var altitudeStick = CALayer()
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        mapContainerView = self.findViewOfType("MKScrollContainerView", inView: self)
-        startTrackingChanges()
-        drawAltitudeReferenceColorStick()
-    }
+//    override public init(frame: CGRect) {
+//        super.init(frame: frame)
+//    }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         mapContainerView = self.findViewOfType("MKScrollContainerView", inView: self)
         startTrackingChanges()
+        drawAltitudeReferenceColorStick()
     }
+    
     
     //MARK:-
     //MARK: Draw Altitude color stick
     func drawAltitudeReferenceColorStick(){
-        altitudeStick.frame = CGRect(x: 10, y: 10, width: 30, height: bounds.height - 10)
-        altitudeStick.borderColor = UIColor.red.cgColor
-        altitudeStick.borderWidth = 2
+        let altitudeStickLayer = CALayer()
+        altitudeStickLayer.borderWidth = 1
+        altitudeStickLayer.borderColor = UIColor.blue.cgColor
+        altitudeStickLayer.frame = CGRect(x: 10, y: 10, width: 40, height: bounds.height - 20)
+        let colorStickLayer = CAGradientLayer()
+        colorStickLayer.frame = CGRect(x: 0, y: 5, width: 8, height: altitudeStickLayer.bounds.height - 10)
+        colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 1).cgColor as AnyObject,
+                                  UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor as AnyObject,
+                                  UIColor(red: 0, green: 1, blue: 1, alpha: 1).cgColor as AnyObject,
+                                  UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
+                                  UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
+                                  UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor as AnyObject]
+        colorStickLayer.locations = [0, 0.2, 0.4, 0.6, 0.8, 1] as [NSNumber]?
+        colorStickLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        colorStickLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        altitudeStickLayer.addSublayer(colorStickLayer)
         
-        
-        
-        
-        layer.addSublayer(altitudeStick)
+        layer.addSublayer(altitudeStickLayer)
     }
     
     

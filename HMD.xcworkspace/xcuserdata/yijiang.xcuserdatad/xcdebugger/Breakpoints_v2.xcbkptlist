@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519705332.244156"
+            timestampString = "519797373.813288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -73,7 +73,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519705999.163859"
+            timestampString = "519797373.81378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -89,7 +89,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519734429.326377"
+            timestampString = "519797373.814152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
@@ -105,7 +105,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519734429.326377"
+            timestampString = "519797373.814516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -121,7 +121,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519734429.326377"
+            timestampString = "519797373.814905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -137,13 +137,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519734429.326377"
+            timestampString = "519797373.81522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "setAircraftIcon()"
-            landmarkType = "7">
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "ADSBAnnotation"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,28 +154,12 @@
             condition = "aircraft?.icaoId == &quot;7C39F1&quot;"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519734429.326377"
+            timestampString = "519797373.815523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "setAircraftIcon()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HMD/ADSBModule/ADSBMapView.swift"
-            timestampString = "519740810.24564"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "ADSBMapView"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "ADSBAnnotation"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>

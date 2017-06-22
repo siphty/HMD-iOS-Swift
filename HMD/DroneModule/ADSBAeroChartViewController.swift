@@ -93,6 +93,8 @@ class ADSBAeroChartViewController: UIViewController {
         notificationCenter.removeObserver(self, name: ADSBNotification.NewAircraftListKey, object: nil)
     }
     
+
+    
     //DJI SDK
     let uavLocationKey = DJIFlightControllerKey(param: DJIFlightControllerParamAircraftLocation)
     func startUpdatingUAVLocationData(){

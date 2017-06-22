@@ -29,23 +29,23 @@ public struct ADSBConfig{
 
 public enum ADSBAircraftType: String {
     case none = "ADSBUnknownAirplane_35m"
-    
+    //Conditions: Engines = 2; EngType = .Turbo; WTC = .Light; Species = (not tower or car); EngMount =
     case jetTwoEngLight = "ADSBJetTwoEngLight_20.9m"
-    //⭕️(20.90m)    Engines = 2; EngType = .Turbo; WTC = .Light; Species = (not tower or car); EngMount =
-    case jetTwoEngMediumB = "ADSBJetTwoEngMedium_31.2m" //⭕️(31.20m)    Engines = 2; EngType = .Turbo; WTC = .Medium; Species = (not tower or car); EngMount =
+    //⭕️(20.90m)
+    case jetTwoEngMediumB = "ADSBJetTwoEngMedium_31.2m" //⭕️(31.20m)
 
-    case jetTwoEngMediumC = "ADSBJetTwoEngMedium_36.4m" //⭕️(36.40m)    Engines = 2; EngType = .Turbo; WTC = .Medium; Species = (not tower or car); EngMount =
-    case jetTwoEngHeavy = "ADSBJetTwoEngHeavy_73.78m" //⭕️(73.78m)    Engines = 2; EngType = .Turbo; WTC = .Heavy; Species = (not tower or car); EngMount =
+    case jetTwoEngMediumC = "ADSBJetTwoEngMedium_36.4m" //⭕️(36.40m)
+    case jetTwoEngHeavy = "ADSBJetTwoEngHeavy_73.78m" //⭕️(73.78m)
     
-    case jetFourEngMedium = "ADSBJetFourEngMedium_59.4m"//⭕️(59.40m)    Engines = 4; EngType = .Turbo; WTC = .Light; Species = (not tower or car); EngMount =
-    case jetFourEngHeavy =  "ADSBJetFourEngHeavy_72.72m"//⭕️(72.72m)    Engines = 4; EngType = .Turbo; WTC = .Heavy; Species = (not tower or car); EngMount =
+    case jetFourEngMedium = "ADSBJetFourEngMedium_59.4m"//⭕️(59.40m)
+    case jetFourEngHeavy =  "ADSBJetFourEngHeavy_72.72m"//⭕️(72.72m)
     
     
-    case pistonOneEngLight = "ADSBPistonOneEngLight_9.75m"  //⭕️(09.75m)    Engines = 1; EngType = .Piston; WTC = .Light; Species = (not tower or car); EngMount =
+    case pistonOneEngLight = "ADSBPistonOneEngLight_9.75m"  //⭕️(09.75m)
     
-    case pistonTwoEngLight = "ADSBPistonTwoEngLight_15.81m"   //⭕️(15.81m)    Engines = 2; EngType = .Piston; WTC = .Light; Species = (not tower or car); EngMount =
-    case turboTwoEngMedium = "ADSBPistonTwoEngMedium_27m"  //⭕️(32.80m)    Engines = 2; EngType = .Piston; WTC = .Medum; Species = (not tower or car); EngMount =
-    case turboTwoEngHeavy  = "ADSBPistonTwoEngHeavy_32.80m" //(15.81m)    Engines = 2; EngType = .Piston; WTC = .Heavy; Species = (not tower or car); EngMount =
+    case pistonTwoEngLight = "ADSBPistonTwoEngLight_15.81m"   //⭕️(15.81m)
+    case turboTwoEngMedium = "ADSBTurboTwoEngMedium_27m"  //⭕️(32.80m)
+    case turboTwoEngHeavy  = "ADSBTurboTwoEngHeavy_32.80m" //(15.81m)
     
 //    case propFourEngMedium =
 //    case propFourEngHeavy
