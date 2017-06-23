@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594165"
+            timestampString = "519887189.593739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "aircraft"
-            landmarkType = "24">
+            landmarkName = "setAircraftIcon()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -73,27 +73,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594253"
+            timestampString = "519887189.594105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "aircraft"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594316"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
             landmarkName = "setAircraftIcon()"
             landmarkType = "7">
          </BreakpointContent>
@@ -105,45 +89,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594373"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "setAircraftIcon()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594428"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "setAircraftIcon()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594482"
+            timestampString = "519887189.594175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "ADSBAnnotation"
-            landmarkType = "3">
+            endingLineNumber = "188">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,45 +104,75 @@
             condition = "aircraft?.icaoId == &quot;7C39F1&quot;"
             continueAfterRunningActions = "No"
             filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594535"
+            timestampString = "519887189.594239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "ADSBAnnotation"
-            landmarkType = "3">
+            endingLineNumber = "184">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594589"
+            filePath = "HMD/ADSBModule/ADSBAnnotationView.swift"
+            timestampString = "519909789.134164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "setAircraftIcon()"
-            landmarkType = "7">
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "annotationImage"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ADSBAnnotation.swift"
-            timestampString = "519884063.594643"
+            filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
+            timestampString = "519909789.134476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "updateIconColor()"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "UpdateAnnotation(_:withLocation:aircraft:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HMD.ADSBAeroChartViewController.UpdateAnnotation(Swift.String, withLocation: __C.CLLocation, aircraft: Swift.Optional&lt;HMD.ADSBAircraft&gt;) -&gt; ()"
+                  moduleName = "HMD"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yijiang/ARVR/HMD/HMD/DroneModule/ADSBAeroChartViewController.swift"
+                  timestampString = "519909121.655519"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "8284">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HMD.ADSBAeroChartViewController.UpdateAnnotation(Swift.String, withLocation: __C.CLLocation, aircraft: Swift.Optional&lt;HMD.ADSBAircraft&gt;) -&gt; ()"
+                  moduleName = "HMD"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yijiang/ARVR/HMD/HMD/DroneModule/ADSBAeroChartViewController.swift"
+                  timestampString = "519909121.657904"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "14396">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

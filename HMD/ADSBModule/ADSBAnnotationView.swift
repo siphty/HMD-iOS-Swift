@@ -12,7 +12,17 @@ import UIKit
 
 class ADSBAnnotationView: MKAnnotationView {
     var calloutView: ADSBAnnotationCalloutView?
-    var annotationImage: UIImage?
+    var annotationImage: UIImage?{
+        didSet{
+            let angle = annotationImageView?.transform
+            let center = annotationImageView?.center
+            annotationImageView?.removeFromSuperview()
+            annotationImageView = UIImageView(image: annotationImage!)  //  .maskWithColor(color: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
+            annotationImageView?.transform = angle!
+            annotationImageView?.center = center!
+            addSubview(annotationImageView!)
+        }
+    }
     var annotationImageView: UIView?
     
     override open var annotation: MKAnnotation? {

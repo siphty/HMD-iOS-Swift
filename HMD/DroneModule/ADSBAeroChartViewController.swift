@@ -285,19 +285,21 @@ extension ADSBAeroChartViewController{
                 let angleDiff: CGFloat = CGFloat(location.course - annotation.location!.course)
                 let annotationView =  mapView.view(for: annotation) as? ADSBAnnotationView
                 if annotationView != nil {
-                    annotationView?.canShowCallout = true
+                    annotationView?.canShowCallout = false
+                    let altitudeX = mapView.getLayerHeight(by: CGFloat((aircraft?.presAltitude) ?? 0), on: mapView.altitudeStickLayer)
+                    let altitudeColor = mapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
+                    annotationView?.annotationImage = annotation.image.maskWithColor(color: altitudeColor)!
                     annotationView?.annotationImageView?.transform = (annotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(angleDiff)))!
                 }
                 annotation.coordinate = location.coordinate
                 annotation.location = location
-                annotation.colorStickLayer = mapView.altitudeStickLayer
+                
                 return
             }
         }
         let newAnnotation = createAnnotation(identifier, location: location, aircraft: aircraft)
         mapView.addAnnotation(newAnnotation)
     }
-    
     
     func createAnnotation(_ identifier: String, location: CLLocation, aircraft: ADSBAircraft?) -> ADSBAnnotation {
         let annotation = ADSBAnnotation()
@@ -359,7 +361,7 @@ extension ADSBAeroChartViewController{
             let latitude = CLLocationDegrees(aircraft.latitude!)
             let longitude = CLLocationDegrees(aircraft.longitude!)
             let coordination = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let altitude = CLLocationDistance(aircraft.gndPresAltitude ?? 0)
+            let altitude = CLLocationDistance(aircraft.presAltitude ?? 0)
             let speed = CLLocationSpeed(aircraft.groundSpeed ?? 0)
             let heading = CLLocationDirection(aircraft.trackHeading ?? 0)
             UpdateAnnotation(annotationId,
