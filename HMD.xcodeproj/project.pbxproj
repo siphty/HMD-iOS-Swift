@@ -447,8 +447,7 @@
 				A2048B541EC5BF2000C2413C /* DJI Service */,
 				A2B3B2B71EE92AAF00A1EB0B /* Siphty Extensions */,
 			);
-			name = HMD;
-			path = Stereoscopic;
+			path = HMD;
 			sourceTree = "<group>";
 		};
 		A254BEFD1EA8DDE6005E70D9 /* HMD */ = {
@@ -695,7 +694,8 @@
 				A22CCF851EF237AD0070AFC3 /* UIImage */,
 				A2B3B2BB1EE92DFA00A1EB0B /* UIViewController */,
 			);
-			path = "Siphty Extensions";
+			name = "Siphty Extensions";
+			path = "../Siphty Extensions";
 			sourceTree = "<group>";
 		};
 		A2B3B2B81EE92AF500A1EB0B /* UIControl */ = {
@@ -711,8 +711,7 @@
 			children = (
 				A201DEF81EF6B4EF00EEEE6F /* UIViewController+Child.swift */,
 			);
-			name = UIViewController;
-			path = UIControl;
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		A2B54C3F1EEAB9D700215A18 /* String */ = {

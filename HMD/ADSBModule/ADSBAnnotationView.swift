@@ -29,7 +29,7 @@ class ADSBAnnotationView: MKAnnotationView {
         if let customPin = annotation as? ADSBAnnotation {
             annotationImage = customPin.image
         }
-        annotationImageView = UIImageView(image: annotationImage?.maskWithColor(color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
+        annotationImageView = UIImageView(image: annotationImage!)//.maskWithColor(color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
         annotationImageView?.alpha = 0.85
         let aLayer = CALayer()
         aLayer.frame = CGRect(x: self.frame.width/2 - 1, y: self.frame.height/2 - 1, width: 2, height: 2)

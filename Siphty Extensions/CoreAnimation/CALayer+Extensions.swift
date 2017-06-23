@@ -12,6 +12,27 @@ extension CALayer {
     
 //Properties
     
+    func getColorfromPixel(_ pixelPoint:CGPoint) -> UIColor{
+        var pixel: [CUnsignedChar] = [0, 0, 0, 0]
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        
+        let context = CGContext(data: &pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+        
+        context!.translateBy(x: -pixelPoint.x, y: -pixelPoint.y)
+        
+        render(in: context!)
+        
+        let red: CGFloat   = CGFloat(pixel[0]) / 255.0
+        let green: CGFloat = CGFloat(pixel[1]) / 255.0
+        let blue: CGFloat  = CGFloat(pixel[2]) / 255.0
+        let alpha: CGFloat = CGFloat(pixel[3]) / 255.0
+        
+        let color = UIColor(red:red, green: green, blue:blue, alpha:alpha)
+        
+        return color
+    }
     
     
 //Draw Section
@@ -129,7 +150,15 @@ extension CALayer {
     }
     
     func doMask(by imageMask: UIImage) {
-        
+        let maskLayer = CAShapeLayer()
+        maskLayer.bounds = CGRect(x: 0, y: 0, width: imageMask.size.width, height: imageMask.size.height)
+        bounds = maskLayer.bounds
+        maskLayer.contents = imageMask.cgImage
+        maskLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        mask = maskLayer
+    }
+    
+    func doMaskWithBoard(by imageMask: UIImage) {
         let maskLayer = CAShapeLayer()
         maskLayer.bounds = CGRect(x: 0, y: 0, width: imageMask.size.width, height: imageMask.size.height)
         bounds = maskLayer.bounds

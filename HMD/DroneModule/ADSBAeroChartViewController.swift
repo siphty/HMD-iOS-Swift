@@ -290,6 +290,7 @@ extension ADSBAeroChartViewController{
                 }
                 annotation.coordinate = location.coordinate
                 annotation.location = location
+                annotation.colorStickLayer = mapView.altitudeStickLayer
                 return
             }
         }

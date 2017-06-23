@@ -15,11 +15,15 @@ open class ADSBAnnotation: MKPointAnnotation {
     var image: UIImage = UIImage()
     var clusterAnnotation: ADSBAnnotation!
     var containedAnnotations: [ADSBAnnotation]?
-    
+    var colorStickLayer: CALayer? {
+        didSet{
+           updateIconColor()
+        }
+    }
     var location: CLLocation?
     var aircraft: ADSBAircraft? {
         didSet{
-            self.setAircraftIcon()
+            setAircraftIcon()
         }
     }
     
@@ -116,9 +120,24 @@ open class ADSBAnnotation: MKPointAnnotation {
         }else {
             imageName = ADSBAircraftType.none.rawValue
         }
-        image = (UIImage(named: imageName))!
+        image = (UIImage(named: imageName))!//.maskWithColor(color: UIColor.red)!
     }
     
+    func updateIconColor() {
+        let altitudeX = getLayerHeight(by: CGFloat((aircraft?.presAltitude) ?? 0), on: colorStickLayer!)
+        let altitudeColor = colorStickLayer?.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
+//        let altitudeColor = colorStickLayer?.getColorfromPixel(CGPoint(x: 2, y: 100.0))
+        var iconImage = image.maskWithColor(color: altitudeColor!)!
+        
+        image = iconImage
+    }
+    
+    
+    func getLayerHeight(by altitude: CGFloat, on layer: CALayer) -> CGFloat{
+        let maxiumAltitude: CGFloat = 40000.0
+        let scaleY = CGFloat(1 - sqrt(100 * altitude / maxiumAltitude) / 10) * layer.frame.height
+        return scaleY
+    }
     
 //    image = (UIImage(named: imageName)!.maskWithColor(color: altitudeColor()))!
 /// Test aircrat icon and details

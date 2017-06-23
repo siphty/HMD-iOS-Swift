@@ -13,12 +13,19 @@ extension UIImage {
     
     func maskWithColor(color: UIColor) -> UIImage? {
         
+        let shadowLayer = CALayer()
+        shadowLayer.bounds = CGRect(x: -1, y: -1, width: size.width + 2, height: size.height + 2)
+        shadowLayer.backgroundColor = UIColor.black.cgColor
+        shadowLayer.contentsGravity = kCAGravityResizeAspect
+        shadowLayer.doMask(by: self)
         let maskLayer = CALayer()
-        maskLayer.bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        maskLayer.frame = CGRect(x: 1, y: 1, width: size.width - 2, height: size.height - 2)
         maskLayer.backgroundColor = color.cgColor
+        maskLayer.contentsGravity = kCAGravityResizeAspect
         maskLayer.doMask(by: self)
-        let maskImage = maskLayer.toImage()
-        return maskImage
+        shadowLayer.addSublayer(maskLayer)
+        let maskShadowImage = shadowLayer.toImage()
+        return maskShadowImage
     }
     
 }

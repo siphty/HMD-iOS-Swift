@@ -23,6 +23,7 @@ class ADSBMapView: MKMapView {
     private var rotation : Double = 0 // saved map rotation
     private var changesTimer : Timer? // timer to track map changes; nil when changes are not tracked
     public var listener : ADSBMapViewListener?
+    let altitudeStickLayer = CALayer()
 //    override public init(frame: CGRect) {
 //        super.init(frame: frame)
 //    }
@@ -38,26 +39,73 @@ class ADSBMapView: MKMapView {
     //MARK:-
     //MARK: Draw Altitude color stick
     func drawAltitudeReferenceColorStick(){
-        let altitudeStickLayer = CALayer()
-        altitudeStickLayer.borderWidth = 1
-        altitudeStickLayer.borderColor = UIColor.blue.cgColor
-        altitudeStickLayer.frame = CGRect(x: 10, y: 10, width: 40, height: bounds.height - 20)
+//        altitudeStickLayer.borderWidth = 1
+//        altitudeStickLayer.borderColor = UIColor.blue.cgColor
+        altitudeStickLayer.frame = CGRect(x: 10, y: 6, width: 50, height: bounds.height - 25)
         let colorStickLayer = CAGradientLayer()
         colorStickLayer.frame = CGRect(x: 0, y: 5, width: 8, height: altitudeStickLayer.bounds.height - 10)
-        colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 1).cgColor as AnyObject,
+        colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 0.6).cgColor as AnyObject,
                                   UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor as AnyObject,
                                   UIColor(red: 0, green: 1, blue: 1, alpha: 1).cgColor as AnyObject,
                                   UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
                                   UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
                                   UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor as AnyObject]
-        colorStickLayer.locations = [0, 0.2, 0.4, 0.6, 0.8, 1] as [NSNumber]?
+        colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 0.91, 1] as [NSNumber]?
         colorStickLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         colorStickLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         altitudeStickLayer.addSublayer(colorStickLayer)
         
+        drawAltitudeScale(by: [0, 400, 2000, 5000, 10000, 20000, 40000], on: colorStickLayer)
         layer.addSublayer(altitudeStickLayer)
     }
     
+    func drawAltitudeScale(by altitudeArray: [CGFloat], on layer: CALayer){
+        for altitude in altitudeArray {
+            let scaleY = getLayerHeight(by: altitude, on: layer)
+            layer.drawLine(fromPoint: CGPoint(x: 0, y: scaleY),
+                           toPoint: CGPoint(x: 10, y: scaleY ),
+                           width: 1)
+            let altitudeLabel: CATextLayer = CATextLayer()
+            altitudeLabel.frame = CGRect(x: 8, y: scaleY - 7, width: 40, height: 15)
+            altitudeLabel.string = String("\(Int(altitude)) ")
+            altitudeLabel.fontSize = 12
+            altitudeLabel.contentsScale = UIScreen.main.scale
+//            altitudeLabel.borderColor = UIColor.red.cgColor
+//            altitudeLabel.borderWidth = 1
+            altitudeLabel.alignmentMode = kCAAlignmentCenter
+            altitudeLabel.foregroundColor = UIColor.blue.cgColor
+            layer.addSublayer(altitudeLabel)
+        }
+    }
+    
+    func getLayerHeight(by altitude: CGFloat, on layer: CALayer) -> CGFloat{
+        let maxiumAltitude: CGFloat = 40000.0
+        let scaleY = CGFloat(1 - sqrt(100 * altitude / maxiumAltitude) / 10) * layer.frame.height
+        return scaleY
+    }
+    
+//    
+//    func getColorfromPixel(_ pixelPoint:CGPoint, from layer: CALayer) -> UIColor{
+//        var pixel: [CUnsignedChar] = [0, 0, 0, 0]
+//        
+//        let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+//        
+//        let context = CGContext(data: &pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
+//        
+//        context!.translateBy(x: -pixelPoint.x, y: -pixelPoint.y)
+//        
+//        layer.render(in: context!)
+//        
+//        let red: CGFloat   = CGFloat(pixel[0]) / 255.0
+//        let green: CGFloat = CGFloat(pixel[1]) / 255.0
+//        let blue: CGFloat  = CGFloat(pixel[2]) / 255.0
+//        let alpha: CGFloat = CGFloat(pixel[3]) / 255.0
+//        
+//        let color = UIColor(red:red, green: green, blue:blue, alpha:alpha)
+//        
+//        return color
+//    }
     
     //MARK:-
     //MARK:    GETTING MAP PROPERTIES
