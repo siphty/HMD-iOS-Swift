@@ -17,13 +17,24 @@ class ADSBAnnotationView: MKAnnotationView {
             let angle = annotationImageView?.transform
             let center = annotationImageView?.center
             annotationImageView?.removeFromSuperview()
-            annotationImageView = UIImageView(image: annotationImage!)  //  .maskWithColor(color: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)))
+            annotationImageView = UIImageView(image: annotationImage!)
+            annotationImageView?.alpha = 0.99
             annotationImageView?.transform = angle!
             annotationImageView?.center = center!
+            let dotLayer : CALayer = CALayer()
+            dotLayer.backgroundColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+            dotLayer.borderColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+            dotLayer.borderWidth = 2
+            dotLayer.frame = CGRect(x: (annotationImage?.size.width )! / 2 - 1, y: (annotationImage?.size.height )! / 2 - 1, width: 2, height: 2)
+//            dotLayer.frame = CGRect(x: 20, y: 20, width: 2, height: 2)
+            annotationImageView?.layer.addSublayer(dotLayer)
             addSubview(annotationImageView!)
+            annotationImageView?.sendSubview(toBack: self)
         }
     }
     var annotationImageView: UIView?
+    
+    
     
     override open var annotation: MKAnnotation? {
         willSet {
@@ -39,16 +50,16 @@ class ADSBAnnotationView: MKAnnotationView {
         if let customPin = annotation as? ADSBAnnotation {
             annotationImage = customPin.image
         }
-        annotationImageView = UIImageView(image: annotationImage!)//.maskWithColor(color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
-        annotationImageView?.alpha = 0.85
-        let aLayer = CALayer()
-        aLayer.frame = CGRect(x: self.frame.width/2 - 1, y: self.frame.height/2 - 1, width: 2, height: 2)
-        aLayer.backgroundColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
-        aLayer.borderColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
-        aLayer.borderWidth = 2
-        self.layer.addSublayer(aLayer)
-
+        annotationImageView = UIImageView(image: annotationImage!)
+        annotationImageView?.alpha = 0.99
+//        self.layer.addSublayer(dotLayer)
         annotationImageView?.center = CGPoint(x: 0, y: 0)
+        let dotLayer : CALayer = CALayer()
+        dotLayer.backgroundColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+        dotLayer.borderColor =  #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+        dotLayer.borderWidth = 2
+        dotLayer.frame = CGRect(x: (annotationImageView?.center.x )!  - 1, y: (annotationImageView?.center.y )!  - 1, width: 2, height: 2)
+        annotationImageView?.layer.addSublayer(dotLayer)
         addSubview(annotationImageView!)
         image = nil
     }
@@ -64,7 +75,8 @@ class ADSBAnnotationView: MKAnnotationView {
         
         if selected {
             self.calloutView?.removeFromSuperview()
-            let aCalloutView = ADSBAnnotationCalloutView(annotation: annotation as! MKShape)
+            let aCalloutView = ADSBAnnotationCalloutView(annotation: annotation as? ADSBAnnotation)
+//            aCalloutView.bounds = CGRect(x: 0, y: 0, width: 40, height: 200)
             aCalloutView.add(to: self)
             self.calloutView = aCalloutView
             if animated {

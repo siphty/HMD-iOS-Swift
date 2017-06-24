@@ -35,7 +35,7 @@ open class ADSBCalloutView: UIView {
     
     private let bubbleLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.strokeColor = UIColor.black.cgColor
+        layer.strokeColor = UIColor.red.cgColor
         layer.fillColor = UIColor.black.cgColor
         layer.lineWidth = 0.5
         return layer
@@ -131,17 +131,20 @@ open class ADSBCalloutView: UIView {
             path.addQuadCurve(to: point, controlPoint: controlPoint)
         case .straight(let angle):
             // lower right
-            point = CGPoint(x: bounds.size.width / 2.0 + tan(angle) * inset.bottom, y: bounds.size.height - inset.bottom)
+            point = CGPoint(x: bounds.size.width / 2.0 + tan(angle) * inset.bottom,
+                            y: bounds.size.height - inset.bottom)
             path.addLine(to: point)
             
             // right side of arrow
             
-            point = CGPoint(x: bounds.size.width / 2.0, y: bounds.size.height)
+            point = CGPoint(x: bounds.size.width / 2.0,
+                            y: bounds.size.height)
             path.addLine(to: point)
             
             // left of pointer
             
-            point = CGPoint(x: bounds.size.width / 2.0 - tan(angle) * inset.bottom, y: bounds.size.height - inset.bottom)
+            point = CGPoint(x: bounds.size.width / 2.0 - tan(angle) * inset.bottom,
+                            y: bounds.size.height - inset.bottom)
             path.addLine(to: point)
         }
         

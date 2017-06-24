@@ -41,7 +41,7 @@ class ADSBMapView: MKMapView {
     func drawAltitudeReferenceColorStick(){
 //        altitudeStickLayer.borderWidth = 1
 //        altitudeStickLayer.borderColor = UIColor.blue.cgColor
-        altitudeStickLayer.frame = CGRect(x: 10, y: 6, width: 50, height: bounds.height - 25)
+        altitudeStickLayer.frame = CGRect(x: 10, y: 6, width: 50, height: bounds.height - 35)
         let colorStickLayer = CAGradientLayer()
         colorStickLayer.frame = CGRect(x: 0, y: 5, width: 8, height: altitudeStickLayer.bounds.height - 10)
         colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 0.6).cgColor as AnyObject,
@@ -51,6 +51,7 @@ class ADSBMapView: MKMapView {
                                   UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
                                   UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor as AnyObject]
         colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 0.91, 1] as [NSNumber]?
+//        colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 1] as [NSNumber]?
         colorStickLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         colorStickLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         altitudeStickLayer.addSublayer(colorStickLayer)

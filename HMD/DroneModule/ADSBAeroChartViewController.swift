@@ -27,7 +27,6 @@ class ADSBAeroChartViewController: UIViewController {
     fileprivate var expireSeconds: Double = 33.0
     fileprivate var mapHeading: Double = 0.0
     fileprivate var isRotatingAnnotations: Bool = false
-//    fileprivate var isUpdatingAnnotations: Bool = false
     
     fileprivate let kUAVAnnotationId   = "UAV"
     fileprivate let kAircraftAnnotationId = "Aircraft:"
@@ -153,12 +152,10 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
         if view.annotation is ADSBAnnotation {
             let adsbAnnotation = view.annotation as! ADSBAnnotation
             guard let callout: ADSBAnnotationCalloutView = (view as! ADSBAnnotationView).calloutView else { return }
-            callout.titleLabel.text = "Test Label"
             if self.isLocationAvailabe() {
                 callout.startLoading()
                 self.getAircraft(by: adsbAnnotation.identifier, completion: { (aircraft) in
                     callout.stopLoading()
-                    callout.titleLabel.text = aircraft?.icaoId ?? "NULL"
                 })
                 
             }
@@ -179,16 +176,21 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
                     theAnnotation.image = #imageLiteral(resourceName: "AeroChartDroneIcon")
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kUAVAnnotationId)
                     guard (theAnnotation.location != nil) else { return nil }
-                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian((theAnnotation.location?.course)!)))!
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian((theAnnotation.location?.course)! + mapHeading)))!
                 }
             } else if theAnnotation.identifier.range(of: kAircraftAnnotationId) != nil {
                 theAnnotationView =  mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
-//                    theAnnotation.image = theAnnotation.getAircraftIcon(by: theAnnotation.aircraft!)
-//                    theAnnotation.setAircraftIcon()
                     theAnnotationView = ADSBAnnotationView(annotation: theAnnotation, reuseIdentifier: theAnnotation.identifier)
 //                    theAnnotationView?.canShowCallout = true
                     guard (theAnnotation.location != nil) else { return nil }
+                    let adsbMapView = mapView as! ADSBMapView
+                    let altitudeX = adsbMapView.getLayerHeight(by: CGFloat((theAnnotation.aircraft?.presAltitude) ?? 0), on: adsbMapView.altitudeStickLayer)
+                    var altitudeColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                    if !(theAnnotation.aircraft?.isOnGround)! {
+                        altitudeColor = adsbMapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
+                    }
+                    theAnnotationView?.annotationImage = theAnnotation.image.maskWithColor(color: altitudeColor)!
                     let turnRadian = Geometric.degreeToRadian((theAnnotation.location?.course)! + mapHeading)
                     let transform = theAnnotationView?.annotationImageView?.transform.rotated(by: turnRadian)
                     theAnnotationView?.annotationImageView?.transform = transform!
@@ -198,14 +200,16 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
                 if theAnnotationView == nil {
                     theAnnotation.image = #imageLiteral(resourceName: "AeroChartRunwayIcon")
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kAerodromeAnnotationId)
-                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian((theAnnotation.location?.course)!)))!
+                    let turnRadian = Geometric.degreeToRadian((theAnnotation.location?.course)! + mapHeading)
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:turnRadian))!
                 }
             } else {
                 theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView
                 if theAnnotationView == nil {
                     theAnnotation.image = #imageLiteral(resourceName: "AeroChartHomeBottom")
                     theAnnotationView = ADSBAnnotationView.init(annotation: theAnnotation, reuseIdentifier: kRemoteAnnotationId)
-                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:Geometric.degreeToRadian((theAnnotation.location?.course)!)))!
+                    let turnRadian = Geometric.degreeToRadian((theAnnotation.location?.course)! + mapHeading)
+                    theAnnotationView?.transform = (theAnnotationView?.transform.rotated(by:turnRadian))!
                 }
             }
         } else {
@@ -287,7 +291,10 @@ extension ADSBAeroChartViewController{
                 if annotationView != nil {
                     annotationView?.canShowCallout = false
                     let altitudeX = mapView.getLayerHeight(by: CGFloat((aircraft?.presAltitude) ?? 0), on: mapView.altitudeStickLayer)
-                    let altitudeColor = mapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
+                    var altitudeColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                    if !(annotation.aircraft?.isOnGround)! {
+                        altitudeColor = mapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
+                    }
                     annotationView?.annotationImage = annotation.image.maskWithColor(color: altitudeColor)!
                     annotationView?.annotationImageView?.transform = (annotationView?.annotationImageView?.transform.rotated(by:Geometric.degreeToRadian(angleDiff)))!
                 }

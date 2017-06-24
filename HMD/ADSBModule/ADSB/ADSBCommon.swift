@@ -17,7 +17,7 @@ public struct  ADSBNotification {
 }
 
 public struct ADSBConfig{
-    static let isGroundAircraftFilterOn = true
+    static let isGroundAircraftFilterOn = false
     static let scanRangeBase: Float = 55  // KM
     static let minimumScanRange: Float = 10
     static let scanFrequencyBase: Int = 7

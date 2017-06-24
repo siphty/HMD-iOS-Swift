@@ -574,11 +574,11 @@
 		A28868A81EF60589008E3631 /* MapRenderer */ = {
 			isa = PBXGroup;
 			children = (
-				A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */,
-				A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */,
-				A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */,
-				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
 				A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */,
+				A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */,
+				A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */,
+				A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */,
+				A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */,
 			);
 			name = MapRenderer;
 			sourceTree = "<group>";
@@ -729,7 +729,6 @@
 				A296FF301EF8B307008D4094 /* ADSBAssets.xcassets */,
 				A28868A81EF60589008E3631 /* MapRenderer */,
 				A2B54C4A1EED65F100215A18 /* Models */,
-				A2C93ACA1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib */,
 			);
 			name = "ADS-B";
 			sourceTree = "<group>";
@@ -744,6 +743,7 @@
 				A2B54C481EED659C00215A18 /* ADSBAircraft.swift */,
 				A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */,
 				A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */,
+				A2C93ACA1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib */,
 			);
 			name = Models;
 			sourceTree = "<group>";
