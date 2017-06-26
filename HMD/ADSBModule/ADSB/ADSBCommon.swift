@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 
-
+//Annotation Type
+public let kUAVAnnotationId   = "UAV"
+public let kAircraftAnnotationId = "Aircraft:"
+public let kAerodromeAnnotationId  = "Aerodrome:"
+public let kRemoteAnnotationId  = "Remote"
 //Notification Center Keys
 public struct  ADSBNotification {
     static let  NewAircraftListKey = Notification.Name(rawValue:"ADSBExchangeResponseAircraftList")
@@ -19,12 +24,18 @@ public struct  ADSBNotification {
 public struct ADSBConfig{
     static let isGroundAircraftFilterOn = false
     static let scanRangeBase: Float = 55  // KM
-    static let minimumScanRange: Float = 10
+    static let minimumScanRange: Float = 10  //KM
     static let scanFrequencyBase: Int = 7
     static let minimumAircraftsTracking: Int = 5
     static let maximumAircraftsTracking: Int = 80
+    static let expireSeconds: Double = 33.0
+    static let thumbnailMapHight: CGFloat = 90.0
+    static let maxAltitudeHeight: CGFloat = 40000  //Feet
+    static let minimumMapViewRange: CLLocationDistance = 1000.0  //Feet
     
 }
+
+
 
 
 public enum ADSBAircraftType: String {
@@ -88,4 +99,16 @@ public enum ADSBWakeTurbulenceCategory: Int {
     case Light
     case Medium
     case Heavy
+}
+
+
+/// enum to hold gesture type on a mapView
+///
+/// - pan: gesture type pan
+/// - swipe: gesture type swipe
+/// - pinch: gesture type pinch
+enum GestureType {
+    case pan
+    case swipe
+    case pinch
 }

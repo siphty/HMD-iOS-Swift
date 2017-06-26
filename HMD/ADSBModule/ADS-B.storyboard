@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Aero Chart View Controller-->
         <scene sceneID="FAd-21-MEG">
             <objects>
-                <viewController id="TY1-wy-6Mh" sceneMemberID="viewController">
+                <viewController id="TY1-wy-6Mh" customClass="ADSBAeroChartViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ff5-Lg-jxO"/>
                         <viewControllerLayoutGuide type="bottom" id="a5W-kI-FtH"/>

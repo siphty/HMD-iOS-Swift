@@ -23,16 +23,27 @@ class ADSBMapView: MKMapView {
     private var rotation : Double = 0 // saved map rotation
     private var changesTimer : Timer? // timer to track map changes; nil when changes are not tracked
     public var listener : ADSBMapViewListener?
+    public var isFullScreen: Bool = true
     let altitudeStickLayer = CALayer()
-//    override public init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    override var bounds: CGRect {
+        didSet{
+            print("\(bounds)")
+            drawAltitudeReferenceColorStick()
+        }
+    }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         mapContainerView = self.findViewOfType("MKScrollContainerView", inView: self)
         startTrackingChanges()
-        drawAltitudeReferenceColorStick()
+    }
+    
+    override func didMoveToSuperview() {
+        print("is Full Scree \(isFullScreen)")
+        print("screen size \(superview?.frame)")
     }
     
     
@@ -41,34 +52,63 @@ class ADSBMapView: MKMapView {
     func drawAltitudeReferenceColorStick(){
 //        altitudeStickLayer.borderWidth = 1
 //        altitudeStickLayer.borderColor = UIColor.blue.cgColor
-        altitudeStickLayer.frame = CGRect(x: 10, y: 6, width: 50, height: bounds.height - 35)
-        let colorStickLayer = CAGradientLayer()
-        colorStickLayer.frame = CGRect(x: 0, y: 5, width: 8, height: altitudeStickLayer.bounds.height - 10)
-        colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 0.6).cgColor as AnyObject,
-                                  UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor as AnyObject,
-                                  UIColor(red: 0, green: 1, blue: 1, alpha: 1).cgColor as AnyObject,
-                                  UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
-                                  UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
-                                  UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor as AnyObject]
-        colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 0.91, 1] as [NSNumber]?
-//        colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 1] as [NSNumber]?
-        colorStickLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        colorStickLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        altitudeStickLayer.addSublayer(colorStickLayer)
-        
-        drawAltitudeScale(by: [0, 400, 2000, 5000, 10000, 20000, 40000], on: colorStickLayer)
+        altitudeStickLayer.removeFromSuperlayer()
+        altitudeStickLayer.sublayers = nil
+        if bounds.height > 100 {
+            altitudeStickLayer.frame = CGRect(x: 10, y: 49, width: 50, height: bounds.height - 73)
+            let colorStickLayer = CAGradientLayer()
+            colorStickLayer.frame = CGRect(x: 0, y: 5, width: 8, height: altitudeStickLayer.bounds.height - 10)
+            colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 0.6).cgColor as AnyObject,
+                                      UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 0, green: 1, blue: 1, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor as AnyObject]
+            colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 0.91, 1] as [NSNumber]?
+            //        colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 1] as [NSNumber]?
+            colorStickLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+            colorStickLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+            altitudeStickLayer.addSublayer(colorStickLayer)
+            
+            drawAltitudeScale(by: [0, 400, 2000, 5000, 10000, 20000, 40000], on: colorStickLayer)
+        } else {
+            
+            altitudeStickLayer.frame = CGRect(x: 2, y: 2, width: 40, height: bounds.height - 2)
+            let colorStickLayer = CAGradientLayer()
+            colorStickLayer.frame = CGRect(x: 0, y: 5, width: 8, height: altitudeStickLayer.bounds.height - 10)
+            colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 0.6).cgColor as AnyObject,
+                                      UIColor(red: 0, green: 0, blue: 1, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 0, green: 1, blue: 1, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor as AnyObject,
+                                      UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor as AnyObject]
+            colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 0.91, 1] as [NSNumber]?
+            //        colorStickLayer.locations = [0, 0.21, 0.67, 0.79, 1] as [NSNumber]?
+            colorStickLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+            colorStickLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+            altitudeStickLayer.addSublayer(colorStickLayer)
+            drawAltitudeScale(by: [ 400, 10000, 40000], on: colorStickLayer)
+            
+//            altitudeStickLayer.frame = CGRect(x: 2, y: 2, width: , height: <#T##CGFloat#>)
+        }
         layer.addSublayer(altitudeStickLayer)
     }
     
     func drawAltitudeScale(by altitudeArray: [CGFloat], on layer: CALayer){
         for altitude in altitudeArray {
-            let scaleY = getLayerHeight(by: altitude, on: layer)
+            let scaleY = getScaleHeight(by: altitude, on: layer)
             layer.drawLine(fromPoint: CGPoint(x: 0, y: scaleY),
                            toPoint: CGPoint(x: 10, y: scaleY ),
                            width: 1)
             let altitudeLabel: CATextLayer = CATextLayer()
             altitudeLabel.frame = CGRect(x: 8, y: scaleY - 7, width: 40, height: 15)
-            altitudeLabel.string = String("\(Int(altitude)) ")
+            var altutudeNumber: Int
+            if altitude > 1000 {
+                altutudeNumber = Int(altitude / 1000)
+                altitudeLabel.string = String("\(altutudeNumber)k ")
+            } else {
+                altitudeLabel.string = String("\(Int(altitude)) ")
+            }
             altitudeLabel.fontSize = 12
             altitudeLabel.contentsScale = UIScreen.main.scale
 //            altitudeLabel.borderColor = UIColor.red.cgColor
@@ -79,8 +119,8 @@ class ADSBMapView: MKMapView {
         }
     }
     
-    func getLayerHeight(by altitude: CGFloat, on layer: CALayer) -> CGFloat{
-        let maxiumAltitude: CGFloat = 40000.0
+    func getScaleHeight(by altitude: CGFloat, on layer: CALayer) -> CGFloat{
+        let maxiumAltitude: CGFloat = ADSBConfig.maxAltitudeHeight
         let scaleY = CGFloat(1 - sqrt(100 * altitude / maxiumAltitude) / 10) * layer.frame.height
         return scaleY
     }

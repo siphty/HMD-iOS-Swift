@@ -246,30 +246,30 @@
                         <viewControllerLayoutGuide type="bottom" id="pQo-1u-8Zg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ji5-FC-dWJ">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KYN-h7-syB">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="VQt-tv-6hy"/>
-                                </constraints>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KYN-h7-syB" customClass="ADSBMapView" customModule="HMD" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pQo-1u-8Zg" firstAttribute="top" secondItem="KYN-h7-syB" secondAttribute="bottom" id="5XV-BP-rp2"/>
                             <constraint firstItem="KYN-h7-syB" firstAttribute="leading" secondItem="ji5-FC-dWJ" secondAttribute="leading" id="Drd-ut-L9i"/>
-                            <constraint firstItem="pQo-1u-8Zg" firstAttribute="top" secondItem="KYN-h7-syB" secondAttribute="bottom" id="RVs-j7-dO4"/>
                             <constraint firstAttribute="trailing" secondItem="KYN-h7-syB" secondAttribute="trailing" id="fhK-2h-hgn"/>
                             <constraint firstItem="KYN-h7-syB" firstAttribute="top" secondItem="ji5-FC-dWJ" secondAttribute="top" id="h3E-fm-MQV"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="50"/>
+                    <size key="freeformSize" width="150" height="90"/>
+                    <connections>
+                        <outlet property="mapView" destination="KYN-h7-syB" id="J3a-VG-Nki"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjd-ae-cTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="-72"/>
+            <point key="canvasLocation" x="1004" y="-214"/>
         </scene>
         <!--Leading Bar View Controller-->
         <scene sceneID="HSm-lI-yWo">
@@ -287,7 +287,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDq-jS-Q6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="288"/>
+            <point key="canvasLocation" x="1012" y="293"/>
+        </scene>
+        <!--ADS-B-->
+        <scene sceneID="31X-91-Hu0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ADS-B" id="hFH-Uq-ZOs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Yx-Bt-sa4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="542"/>
         </scene>
         <!--PilotHUD View Controller-->
         <scene sceneID="HS0-oG-Voi">

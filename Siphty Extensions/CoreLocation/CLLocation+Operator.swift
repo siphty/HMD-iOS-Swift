@@ -20,6 +20,12 @@ extension CLLocation{
                                       timestamp: self.timestamp)
         return newLocation
     }
+    
+    func getMidpointTo(_ targetLocation: CLLocation) -> CLLocation {
+        let newLocation = CLLocation(latitude: (self.coordinate.latitude + targetLocation.coordinate.latitude) / 2,
+                                     longitude: (self.coordinate.longitude + targetLocation.coordinate.longitude) / 2)
+        return newLocation
+    }
 }
 
 

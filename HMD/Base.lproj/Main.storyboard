@@ -889,11 +889,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="e0X-Oy-BlL"/>
                                     <constraint firstAttribute="width" constant="44" id="gcg-zb-jew"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="u47-9u-Zxx"/>
                                 </constraints>
                                 <state key="normal" image="AeroChartDroneButton"/>
                                 <connections>
-                                    <action selector="aircraftButtomTouchUpInside:" destination="WPt-kU-Ij9" eventType="touchUpInside" id="mHg-pn-vuK"/>
                                     <action selector="uavButtomTouchUpInside:" destination="WPt-kU-Ij9" eventType="touchUpInside" id="NGN-4q-kKJ"/>
                                 </connections>
                             </button>
@@ -912,13 +910,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="g5Y-rO-bn0" firstAttribute="top" secondItem="eKX-Cr-exZ" secondAttribute="bottom" id="0k6-qx-XkO"/>
-                            <constraint firstItem="dSi-Bh-ya3" firstAttribute="leading" secondItem="g5Y-rO-bn0" secondAttribute="trailing" constant="-45" id="6qK-9r-5Kx"/>
-                            <constraint firstItem="wTl-O4-4ZE" firstAttribute="leading" secondItem="g5Y-rO-bn0" secondAttribute="trailing" constant="-45" id="BI4-wh-h9A"/>
                             <constraint firstItem="wTl-O4-4ZE" firstAttribute="top" secondItem="dSi-Bh-ya3" secondAttribute="bottom" constant="4" id="Fx2-Br-1nD"/>
                             <constraint firstItem="g5Y-rO-bn0" firstAttribute="leading" secondItem="fiN-Ge-gRp" secondAttribute="leadingMargin" constant="-20" id="GDO-dC-nfI"/>
                             <constraint firstItem="Vkh-BG-13Z" firstAttribute="top" secondItem="g5Y-rO-bn0" secondAttribute="bottom" id="T1n-7p-yHz"/>
+                            <constraint firstAttribute="trailing" secondItem="wTl-O4-4ZE" secondAttribute="trailing" constant="1" id="Tdw-qs-zuN"/>
+                            <constraint firstAttribute="trailing" secondItem="dSi-Bh-ya3" secondAttribute="trailing" constant="1" id="cRy-MV-pGl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g5Y-rO-bn0" secondAttribute="trailing" constant="-20" id="mJO-hW-Yhs"/>
-                            <constraint firstItem="g5Y-rO-bn0" firstAttribute="top" secondItem="dSi-Bh-ya3" secondAttribute="bottom" constant="-90" id="oO1-BM-Hd2"/>
+                            <constraint firstItem="dSi-Bh-ya3" firstAttribute="top" secondItem="eKX-Cr-exZ" secondAttribute="bottom" constant="46" id="zlk-Xn-Ap1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ADS-B" image="Tab Bar ADS-B Radar" id="gja-Sp-FVS"/>

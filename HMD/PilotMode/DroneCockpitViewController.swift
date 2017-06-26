@@ -209,6 +209,7 @@ class DroneCockpitViewController: UIViewController {
     
     func compassWidgetTouchUpInside(){
         self.displayChildViewController(AeroChartVC)
+        AeroChartVC.mapView.isFullScreen = false
         AeroChartVC.view.translatesAutoresizingMaskIntoConstraints = false
         AeroChartVC.view.topAnchor.constraint(equalTo: dockContainingView.topAnchor).isActive = true
         AeroChartVC.view.leftAnchor.constraint(equalTo: dockContainingView.leftAnchor, constant: -18).isActive = true
@@ -244,7 +245,7 @@ class DroneCockpitViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToFullAeroChart" {
-            let aeroChartViewController = segue.destination as! ADSBAeroChartViewController
+            let aeroChartViewController = segue.destination as! DroneAeroChartViewController
             let dismissButton = UIButton()
             dismissButton.setImage(#imageLiteral(resourceName: "UICancelIconB"), for: .normal)
             dismissButton.backgroundColor = UIColor.clear

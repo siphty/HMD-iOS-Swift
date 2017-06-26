@@ -24,14 +24,12 @@ class ADSBAeroChartViewController: UIViewController {
     fileprivate var distanceBackToHome = Float()
     fileprivate var regionRadius: CLLocationDistance = 1000
     fileprivate var aircrafts: [ADSBAircraft]?
-    fileprivate var expireSeconds: Double = 33.0
     fileprivate var mapHeading: Double = 0.0
     fileprivate var isRotatingAnnotations: Bool = false
+    fileprivate var uavAnnotation: ADSBAnnotation?
+    fileprivate var homeAnnotation: MKAnnotation?
+    fileprivate var mapChangedFromUserInteraction = false
     
-    fileprivate let kUAVAnnotationId   = "UAV"
-    fileprivate let kAircraftAnnotationId = "Aircraft:"
-    fileprivate let kAerodromeAnnotationId  = "Aerodrome:"
-    fileprivate let kRemoteAnnotationId  = "Remote"
     
     enum MapLockOn {
         case none
@@ -44,15 +42,35 @@ class ADSBAeroChartViewController: UIViewController {
     @IBOutlet weak var mapView: ADSBMapView!
     
     @IBAction func uavButtomTouchUpInside(_ sender: Any) {
-        mapLockOn = .uav
+        if mapLockOn == .uav {
+            mapChangedFromUserInteraction = true
+            mapLockOn = .none
+            centerMapOnUAVAndHome()
+            return
+        } else {
+            mapChangedFromUserInteraction = false
+            mapLockOn = .uav
+        }
+        
+        if uavLocation != nil {
+            centerMapOnLocation(uavLocation!)
+        }
     }
     
     @IBAction func remoteButtonTouchUpInside(_ sender: Any) {
-        mapLockOn = .home
-        if homeLocation == nil {
+        if mapLockOn == .home {
+            mapChangedFromUserInteraction = true
+            mapLockOn = .none
+            centerMapOnUAVAndHome()
             return
+        } else {
+            mapChangedFromUserInteraction = false
+            mapLockOn = .home
         }
-        centerMapOnLocation(homeLocation!)
+        if homeLocation != nil {
+            centerMapOnLocation(homeLocation!)
+        }
+        
     }
     
     
@@ -92,9 +110,8 @@ class ADSBAeroChartViewController: UIViewController {
         notificationCenter.removeObserver(self, name: ADSBNotification.NewAircraftListKey, object: nil)
     }
     
-
     
-    //DJI SDK
+    //MARK: DJI SDK
     let uavLocationKey = DJIFlightControllerKey(param: DJIFlightControllerParamAircraftLocation)
     func startUpdatingUAVLocationData(){
         DJISDKManager.keyManager()?.startListeningForChanges(on: uavLocationKey!,
@@ -103,8 +120,11 @@ class ADSBAeroChartViewController: UIViewController {
                                                                 if newValue == nil {
                                                                     return
                                                                 }
-                                                                let uavLocation =  newValue!.value! as! CLLocation
-                                                                self.UpdateAnnotation(self.kUAVAnnotationId, withLocation: uavLocation, aircraft: nil)
+                                                                self.uavLocation =  newValue!.value! as? CLLocation
+                                                                self.UpdateAnnotation(kUAVAnnotationId, withLocation: self.uavLocation!, aircraft: nil)
+                                                                if self.mapLockOn == .uav {
+                                                                    self.centerMapOnLocation(self.uavLocation!)
+                                                                }
         })
     }
     func stopUpdatingUAVAltitudeData(){
@@ -123,7 +143,7 @@ class ADSBAeroChartViewController: UIViewController {
                                                                 for anAnnotation in self.mapView.annotations {
                                                                     if anAnnotation is ADSBAnnotation {
                                                                         let theAnnotation = anAnnotation as! ADSBAnnotation
-                                                                        if theAnnotation.identifier == self.kUAVAnnotationId {
+                                                                        if theAnnotation.identifier == kUAVAnnotationId {
                                                                             theAnnotation.location = theAnnotation.location?.updateCourse(CLLocationDirection(uavHeading))
                                                                         }
                                                                     }
@@ -133,14 +153,27 @@ class ADSBAeroChartViewController: UIViewController {
     func stopUpdatingUAVHeadingData(){
         DJISDKManager.keyManager()?.stopListening(on: uavLocationKey!, ofListener: self)
     }
-}
-//MARK: UIGestureRecognizerDelegate
-extension ADSBAeroChartViewController: UIGestureRecognizerDelegate{
     
+    //MARK: UIGestureRecognizerDelegate
+    fileprivate func mapViewRegionDidChangeFromUserInteraction() -> Bool {
+        let view = mapView.subviews[0]
+        //  Look through gesture recognizers to determine whether this region change is from user interaction
+        if let gestureRecognizers = view.gestureRecognizers {
+            for recognizer in gestureRecognizers {
+                if( recognizer.state == UIGestureRecognizerState.began || recognizer.state == UIGestureRecognizerState.ended ) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 }
 
 //MARK: MKMapViewDelegate
 extension ADSBAeroChartViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        mapChangedFromUserInteraction = mapViewRegionDidChangeFromUserInteraction()
+    }
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
     }
@@ -185,7 +218,7 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
 //                    theAnnotationView?.canShowCallout = true
                     guard (theAnnotation.location != nil) else { return nil }
                     let adsbMapView = mapView as! ADSBMapView
-                    let altitudeX = adsbMapView.getLayerHeight(by: CGFloat((theAnnotation.aircraft?.presAltitude) ?? 0), on: adsbMapView.altitudeStickLayer)
+                    let altitudeX = adsbMapView.getScaleHeight(by: CGFloat((theAnnotation.aircraft?.presAltitude) ?? 0), on: adsbMapView.altitudeStickLayer)
                     var altitudeColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
                     if !(theAnnotation.aircraft?.isOnGround)! {
                         altitudeColor = adsbMapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
@@ -261,22 +294,39 @@ extension ADSBAeroChartViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if homeLocation == nil {
-            homeLocation = locations.last
+        homeLocation = locations.last
+        if mapLockOn == .home && !mapChangedFromUserInteraction{
             centerMapOnLocation(homeLocation!)
-        } else {
         }
-        
-        
     }
 }
 
 //MARK: Miscellaneous
 extension ADSBAeroChartViewController{
     func centerMapOnLocation(_ location: CLLocation) {
+        if mapChangedFromUserInteraction {
+            return
+        }
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func centerMapOnUAVAndHome() {
+        if mapChangedFromUserInteraction {
+            return
+        }
+        guard (uavLocation != nil) else {
+            return
+        }
+        guard (homeLocation != nil) else {
+            return
+        }
+        let regionRadius = homeLocation!.distance(from: uavLocation!)
+        let region = MKCoordinateRegionMakeWithDistance(homeLocation!.getMidpointTo(uavLocation!).coordinate,
+                                                        regionRadius * 2.2 + ADSBConfig.minimumMapViewRange,
+                                                        regionRadius * 2.2 + ADSBConfig.minimumMapViewRange)
+        mapView.setRegion(region, animated: true)
     }
     
     func UpdateAnnotation(_ identifier: String, withLocation location: CLLocation, aircraft: ADSBAircraft?){
@@ -290,7 +340,7 @@ extension ADSBAeroChartViewController{
                 let annotationView =  mapView.view(for: annotation) as? ADSBAnnotationView
                 if annotationView != nil {
                     annotationView?.canShowCallout = false
-                    let altitudeX = mapView.getLayerHeight(by: CGFloat((aircraft?.presAltitude) ?? 0), on: mapView.altitudeStickLayer)
+                    let altitudeX = mapView.getScaleHeight(by: CGFloat((aircraft?.presAltitude) ?? 0), on: mapView.altitudeStickLayer)
                     var altitudeColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
                     if !(annotation.aircraft?.isOnGround)! {
                         altitudeColor = mapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
@@ -392,7 +442,7 @@ extension ADSBAeroChartViewController{
             if anAnnotation is ADSBAnnotation {
                 let theAnnotation = anAnnotation as! ADSBAnnotation
                 let secondsInterval = Date().timeIntervalSince((theAnnotation.location?.timestamp)!)
-                if secondsInterval > expireSeconds {
+                if secondsInterval > ADSBConfig.expireSeconds {
                     mapView.removeAnnotation(theAnnotation)
                 } else if secondsInterval > 1 {
                     guard let theAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: theAnnotation.identifier) as? ADSBAnnotationView else {

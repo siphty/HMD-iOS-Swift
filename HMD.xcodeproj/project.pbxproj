@@ -108,7 +108,6 @@
 		A2B567DB1EE5A240002E4806 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B567DA1EE5A240002E4806 /* StoreTableViewController.swift */; };
 		A2C93A6E1EF00E2B00DDE914 /* ADSBAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */; };
 		A2C93AC91EF0157300DDE914 /* ADSBAnnotationCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */; };
-		A2C93ACB1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C93ACA1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib */; };
 		A2C93ACD1EF019EB00DDE914 /* ADSBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */; };
 		A2C93ACF1EF022DA00DDE914 /* ADSBCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */; };
 		A2D341D01EDB07D2001DEF82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */; };
@@ -264,7 +263,6 @@
 		A2B567DA1EE5A240002E4806 /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreTableViewController.swift; path = HMD/StoreModule/StoreTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2C93A6D1EF00E2B00DDE914 /* ADSBAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBAnnotationView.swift; path = HMD/ADSBModule/ADSBAnnotationView.swift; sourceTree = SOURCE_ROOT; };
 		A2C93AC81EF0157300DDE914 /* ADSBAnnotationCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBAnnotationCalloutView.swift; path = HMD/ADSBModule/ADSBAnnotationCalloutView.swift; sourceTree = SOURCE_ROOT; };
-		A2C93ACA1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ADSBAnnotationCalloutView.xib; path = HMD/ADSBModule/ADSBAnnotationCalloutView.xib; sourceTree = SOURCE_ROOT; };
 		A2C93ACC1EF019EB00DDE914 /* ADSBAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADSBAnnotation.swift; sourceTree = SOURCE_ROOT; };
 		A2C93ACE1EF022DA00DDE914 /* ADSBCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCalloutView.swift; path = HMD/ADSBModule/ADSBCalloutView.swift; sourceTree = SOURCE_ROOT; };
 		A2D341D11EDBDEBE001DEF82 /* PilotHUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PilotHUDViewController.swift; path = HMD/PilotMode/PilotHUDViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -743,7 +741,6 @@
 				A2B54C481EED659C00215A18 /* ADSBAircraft.swift */,
 				A2B54C4B1EED66BA00215A18 /* ADSBAerodrome.swift */,
 				A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */,
-				A2C93ACA1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -925,7 +922,6 @@
 				A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */,
 				A27358731EE3BBFB00ECFC28 /* GothamRnd-BoldIta.otf in Resources */,
 				A273586A1EE3BBFB00ECFC28 /* Gotham-Medium.otf in Resources */,
-				A2C93ACB1EF015F300DDE914 /* ADSBAnnotationCalloutView.xib in Resources */,
 				A2DA57FE1EE25EDC0088E1A9 /* DemoPushInfoViewController.xib in Resources */,
 				A2A1AA5A1EBA1C39006970E1 /* Assets.xcassets in Resources */,
 				A27358771EE3BBFB00ECFC28 /* GothamRnd-LightIta.otf in Resources */,
