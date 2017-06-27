@@ -36,6 +36,7 @@ final class ADSBAPIClient {
     
     func stopUpdateAircrafts(){
         requestTimer?.invalidate()
+        requestTimer = nil
         isUpdatingAircrafts = false
     }
     
@@ -49,6 +50,8 @@ final class ADSBAPIClient {
                 selector    : #selector(updateAircrafts),
                 userInfo    : nil,
                 repeats     : true)
+        } else {
+            requestTimer?.fire()
         }
         isUpdatingAircrafts = true
     }

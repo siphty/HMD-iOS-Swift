@@ -40,6 +40,10 @@ extension CALayer {
     
 //Draw Section
     func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
+        drawLine(fromPoint: start, toPoint: end, width: width, color: HMDColor.scale)
+    }
+    
+    func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int, color: CGColor){
         let line = CAShapeLayer()
         let linePath = UIBezierPath()
         linePath.move(to: start)
@@ -48,7 +52,7 @@ extension CALayer {
         line.fillColor = nil
         line.opacity = 1.0
         line.lineWidth = CGFloat(width)
-        line.strokeColor = HMDColor.scale
+        line.strokeColor = color
         addSublayer(line)
     }
     

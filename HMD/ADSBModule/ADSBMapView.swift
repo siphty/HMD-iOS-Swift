@@ -55,7 +55,7 @@ class ADSBMapView: MKMapView {
         altitudeStickLayer.removeFromSuperlayer()
         altitudeStickLayer.sublayers = nil
         if bounds.height > 100 {
-            altitudeStickLayer.frame = CGRect(x: 10, y: 49, width: 50, height: bounds.height - 73)
+            altitudeStickLayer.frame = CGRect(x: 18, y: 49, width: 50, height: bounds.height - 73)
             let colorStickLayer = CAGradientLayer()
             colorStickLayer.frame = CGRect(x: 0, y: 5, width: 8, height: altitudeStickLayer.bounds.height - 10)
             colorStickLayer.colors = [UIColor(red: 1, green: 0, blue: 1, alpha: 0.6).cgColor as AnyObject,

@@ -144,7 +144,9 @@ class DroneAeroChartViewController: UIViewController {
 extension DroneAeroChartViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        mapChangedFromUserInteraction = mapViewRegionDidChangeFromUserInteraction()
+        if mapViewRegionDidChangeFromUserInteraction() {
+            mapChangedFromUserInteraction = true
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -269,6 +271,9 @@ extension DroneAeroChartViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         homeLocation = locations.last
+        if mapChangedFromUserInteraction {
+            return
+        }
         if uavLocation != nil && homeLocation != nil{
             centerMapOnUAVAndHome()
         } else if homeLocation != nil && uavLocation == nil{

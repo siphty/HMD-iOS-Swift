@@ -172,7 +172,10 @@ class ADSBAeroChartViewController: UIViewController {
 //MARK: MKMapViewDelegate
 extension ADSBAeroChartViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        mapChangedFromUserInteraction = mapViewRegionDidChangeFromUserInteraction()
+        if mapViewRegionDidChangeFromUserInteraction() {
+            mapChangedFromUserInteraction = true
+        }
+        
     }
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         

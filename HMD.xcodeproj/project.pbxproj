@@ -437,7 +437,6 @@
 				A27878411EE535D000636B9D /* DroneViewController.swift */,
 				A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */,
 				A2048B4E1EC5BA1100C2413C /* ADS-B Module */,
-				A254BF051EAA2785005E70D9 /* HMD Module */,
 				A278783F1EE534F200636B9D /* Drone Module */,
 				A2048B511EC5BCC000C2413C /* DJI SDK Test Module */,
 				A2B567D91EE5A211002E4806 /* Store Module */,
@@ -461,14 +460,6 @@
 				A2A1AAAD1EBD6DBD006970E1 /* HMDMiscellaneous */,
 			);
 			name = HMD;
-			sourceTree = "<group>";
-		};
-		A254BF051EAA2785005E70D9 /* HMD Module */ = {
-			isa = PBXGroup;
-			children = (
-				A254BEFD1EA8DDE6005E70D9 /* HMD */,
-			);
-			name = "HMD Module";
 			sourceTree = "<group>";
 		};
 		A269BF231ECAE01C007ABB10 /* System Infor Cells */ = {
@@ -552,6 +543,7 @@
 		A278783F1EE534F200636B9D /* Drone Module */ = {
 			isa = PBXGroup;
 			children = (
+				A254BEFD1EA8DDE6005E70D9 /* HMD */,
 				A2048B031EC57F9D00C2413C /* Drone.storyboard */,
 				A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */,
 				A229E5BF1EF2594900DB3AB9 /* DroneAeroChartViewController.swift */,
