@@ -46,6 +46,9 @@ class misc {
         
         //Transition mode: HMD can only control gimbal, but not the drone body. Operator needs use remote to control flight path.
         case Trans
+        
+        //Demo mode: User phone camera to display binocular view
+        case Camera
     }
 }
 

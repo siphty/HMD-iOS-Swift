@@ -52,26 +52,6 @@ class HMDHeadingRenderer: CALayer {
             locationManager.headingOrientation = self.orientation
         }
     }
-    
-    
-//    public override init(){
-//        super.init()
-//    }
-//    
-//    public init(_ mode: misc.operationMode){
-//        super.init()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//
-//    override func layoutSublayers() {
-//        if !didSetup {
-//            didSetup = true
-//            setup()
-//        }
-//    }
         
     func setup () {
         switch operationMode {
@@ -84,6 +64,9 @@ class HMDHeadingRenderer: CALayer {
             locationManager.startUpdatingHeading()
             locationManager.delegate = self
         case misc.operationMode.Hover, misc.operationMode.Cruise, misc.operationMode.Trans:
+            startUpdatingAircraftHeadingData()
+            startUpdatingGimbalHeadingData()
+        case .Camera:
             startUpdatingAircraftHeadingData()
             startUpdatingGimbalHeadingData()
         }
@@ -167,6 +150,11 @@ class HMDHeadingRenderer: CALayer {
             addSublayer(aircraftCursor)
             homeCursor.removeFromSuperlayer()
         case .Cruise,.Hover, .Trans:
+            addSublayer(homeCursor)
+            aircraftCursor.removeFromSuperlayer()
+            startUpdatingAircraftHeadingData()
+            startUpdatingGimbalHeadingData()
+        case .Camera:
             addSublayer(homeCursor)
             aircraftCursor.removeFromSuperlayer()
             startUpdatingAircraftHeadingData()

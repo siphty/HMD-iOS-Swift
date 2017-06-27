@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SU0-NX-vDc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="i2y-dr-3Xn">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -188,7 +188,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PSF-I4-4VY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Uby-Ya-PgD">
-                        <rect key="frame" x="0.0" y="0.0" width="60" height="256"/>
+                        <rect key="frame" x="0.0" y="0.0" width="48" height="181"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -379,6 +379,6 @@
         <image name="Viewfinder" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fCS-Lr-uou"/>
+        <segue reference="pOD-yC-E3e"/>
     </inferredMetricsTieBreakers>
 </document>

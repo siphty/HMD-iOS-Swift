@@ -1,5 +1,5 @@
 //
-//  HMDBatteryThresholdLabelLayer.swift
+//  HMDBatteryLabelLayer.swift
 //  HMD
 //
 //  Created by Yi JIANG on 31/5/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HMDBatteryThresholdLabelLayer: CATextLayer {
+class HMDBatteryLabelLayer: CATextLayer {
     
     
     

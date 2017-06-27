@@ -25,6 +25,8 @@ class HMDAircraftReferenceLayer: CAShapeLayer {
             drawSimpleAircraftReference()
         case .Cruise:
             drawSimpleAircraftReference()
+        case .Camera:
+            drawSimpleAircraftReference()
         }
         
     }

@@ -51,28 +51,7 @@ class HMDAltitudeRenderer: CALayer{
         }
     }
     
-    
-//    public override init() {
-//        super.init()
-////        if !didSetup {
-////            didSetup = true
-////            setup()
-////        }
-//        
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//    
-//    override func layoutSublayers() {
-//        if !didSetup {
-//            didSetup = true
-//            setup()
-//        }
-//        
-//    }
-    
+        
     func setup() {
         drawAltitudeScales()
         drawAltitudeLabels()
@@ -83,6 +62,12 @@ class HMDAltitudeRenderer: CALayer{
             registerLocationManagerDelegate()
         case .Cruise,.Hover, .Trans:
 //            registerLocationManagerDelegate()
+            startUpdatingAircraftAltitudeData()
+            startUpdatingRemoteControllerThrustData()
+            startUpdatingHomeAltitudeData()
+            startUpdatingAircraftAltitudeData()
+            startUpdatingAircraftVerticalVelocityData()
+        case .Camera:
             startUpdatingAircraftAltitudeData()
             startUpdatingRemoteControllerThrustData()
             startUpdatingHomeAltitudeData()

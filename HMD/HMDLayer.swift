@@ -16,6 +16,7 @@ class HMDLayer: CALayer, CALayerDelegate {
     let altitudeScale   = HMDAltitudeRenderer()
     let attitudeLayer   = HMDAttitudeRenderer()
     let statusLayer     = HMDAviationStatusRenderer()
+    let losLayer        = HMDLineOfSightRenderer()
     
     public var operationMode = misc.operationMode.Hover {
         didSet
@@ -69,16 +70,28 @@ class HMDLayer: CALayer, CALayerDelegate {
         addSublayer(attitudeLayer)
         
         statusLayer.frame = CGRect(x: frame.width.half() - 160,
-                                  y: frame.height.half() - 135,
-                                  width: 40,
-                                  height: 50)
-        statusLayer.borderWidth = 1
-        statusLayer.borderColor = UIColor.white.cgColor
+                                  y: frame.height.half() - 145,
+                                  width: 60,
+                                  height: frame.height - 85)
+//        statusLayer.borderWidth = 1
+//        statusLayer.borderColor = UIColor.white.cgColor
         statusLayer.operationMode = operationMode
         statusLayer.setup()
         addSublayer(statusLayer)
         
-        //TODO: Sideslip
+        let losLayerOriginY = attitudeLayer.frame.origin.y + attitudeLayer.frame.size.height
+        let losLayerFrameHeight = (frame.height - losLayerOriginY) * 0.8
+        let losLayerFrameFill: CGFloat = bounds.size.width * 0.25
+        let losLayerFrameWidth = frame.width - losLayerFrameFill * 2
+        losLayer.frame = CGRect(x: losLayerFrameFill,
+                                y: losLayerOriginY,
+                                width: losLayerFrameWidth,
+                                height: losLayerFrameHeight)
+        losLayer.borderWidth = 1
+        losLayer.borderColor = HMDColor.scale
+        losLayer.operationMode = operationMode
+        losLayer.setup()
+        addSublayer(losLayer)
     }
     
     func unSetup() {

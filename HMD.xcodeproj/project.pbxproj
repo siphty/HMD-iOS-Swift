@@ -64,6 +64,7 @@
 		A288689F1EF40B29008E3631 /* ADSBDictKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */; };
 		A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */; };
 		A28868A61EF54466008E3631 /* ADSBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28868A51EF54466008E3631 /* ADSBCommon.swift */; };
+		A28FD2DF1F0298F700681E8E /* HMDMinutesToHomeLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28FD2DE1F0298F700681E8E /* HMDMinutesToHomeLabelLayer.swift */; };
 		A291DB791EE3D199003C52C2 /* DroneCockpitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */; };
 		A296FF2E1EF6EB03008D4094 /* ADSBMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */; };
 		A296FF311EF8B307008D4094 /* ADSBAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A296FF301EF8B307008D4094 /* ADSBAssets.xcassets */; };
@@ -88,7 +89,6 @@
 		A2A1AACF1EBDD56D006970E1 /* HMDPitchLadderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AACE1EBDD56D006970E1 /* HMDPitchLadderLayer.swift */; };
 		A2A1AAD11EBDE340006970E1 /* HMDSideslipLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */; };
 		A2A1AAD31EBDE3C6006970E1 /* HMDAviationStatusRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD21EBDE3C6006970E1 /* HMDAviationStatusRenderer.swift */; };
-		A2A1AAD51EBDE4D2006970E1 /* HMDAirSpeedLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD41EBDE4D2006970E1 /* HMDAirSpeedLabelLayer.swift */; };
 		A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD71EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift */; };
 		A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */; };
 		A2A1AADF1EBF3177006970E1 /* HMDAltitudeStickLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */; };
@@ -98,7 +98,7 @@
 		A2A1AAE91EBF52A3006970E1 /* HMDSafetySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */; };
 		A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */; };
 		A2A1AAEF1EBF62D1006970E1 /* UIColor+MoreColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */; };
-		A2A6B9151EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B9141EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift */; };
+		A2A6B9151EDEF7D300192CF8 /* HMDBatteryLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B9141EDEF7D300192CF8 /* HMDBatteryLabelLayer.swift */; };
 		A2A6B9171EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A6B9161EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift */; };
 		A2B3B2BF1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */; };
 		A2B54C471EECE0F300215A18 /* ADSBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */; };
@@ -130,6 +130,7 @@
 		A2DA58031EE25EDC0088E1A9 /* DemoVirtualStickView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DA57F41EE25EDC0088E1A9 /* DemoVirtualStickView.m */; };
 		A2DA58041EE25EDC0088E1A9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DA57F61EE25EDC0088E1A9 /* MBProgressHUD.m */; };
 		A2DD2EDD1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */; };
+		A2F1FFA81F02318C001104F2 /* HMDLineOfSightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1FFA71F02318C001104F2 /* HMDLineOfSightRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +218,7 @@
 		A288689E1EF40B29008E3631 /* ADSBDictKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBDictKeys.swift; path = HMD/ADSBModule/ADSB/ADSBDictKeys.swift; sourceTree = SOURCE_ROOT; };
 		A28868A21EF53FB7008E3631 /* ADSBCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCacheManager.swift; path = HMD/ADSBModule/ADSB/ADSBCacheManager.swift; sourceTree = SOURCE_ROOT; };
 		A28868A51EF54466008E3631 /* ADSBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ADSBCommon.swift; path = HMD/ADSBModule/ADSB/ADSBCommon.swift; sourceTree = SOURCE_ROOT; };
+		A28FD2DE1F0298F700681E8E /* HMDMinutesToHomeLabelLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDMinutesToHomeLabelLayer.swift; sourceTree = "<group>"; };
 		A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DroneCockpitViewController.swift; path = HMD/PilotMode/DroneCockpitViewController.swift; sourceTree = SOURCE_ROOT; };
 		A296FF2D1EF6EB03008D4094 /* ADSBMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBMapView.swift; path = HMD/ADSBModule/ADSBMapView.swift; sourceTree = SOURCE_ROOT; };
 		A296FF301EF8B307008D4094 /* ADSBAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ADSBAssets.xcassets; path = HMD/ADSBModule/ADSBAssets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -243,7 +245,6 @@
 		A2A1AACE1EBDD56D006970E1 /* HMDPitchLadderLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDPitchLadderLayer.swift; path = HMD/HMDPitchLadderLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDSideslipLayer.swift; path = HMD/HMDSideslipLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD21EBDE3C6006970E1 /* HMDAviationStatusRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAviationStatusRenderer.swift; path = HMD/HMDAviationStatusRenderer.swift; sourceTree = SOURCE_ROOT; };
-		A2A1AAD41EBDE4D2006970E1 /* HMDAirSpeedLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAirSpeedLabelLayer.swift; path = HMD/HMDAirSpeedLabelLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD71EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDGroundSpeedLabelLayer.swift; path = HMD/HMDGroundSpeedLabelLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDHoverVectorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AADE1EBF3177006970E1 /* HMDAltitudeStickLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAltitudeStickLayer.swift; path = HMD/HMDAltitudeStickLayer.swift; sourceTree = SOURCE_ROOT; };
@@ -253,7 +254,7 @@
 		A2A1AAE81EBF52A3006970E1 /* HMDSafetySetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDSafetySetting.swift; path = HMD/HMDSafetySetting.swift; sourceTree = SOURCE_ROOT; };
 		A2A1AAEC1EBF6216006970E1 /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+RGB.swift"; path = "Siphty Extensions/UIColor/UIColor+RGB.swift"; sourceTree = SOURCE_ROOT; };
 		A2A1AAEE1EBF62D1006970E1 /* UIColor+MoreColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+MoreColors.swift"; path = "Siphty Extensions/UIColor/UIColor+MoreColors.swift"; sourceTree = SOURCE_ROOT; };
-		A2A6B9141EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDBatteryThresholdLabelLayer.swift; path = HMD/HMDBatteryThresholdLabelLayer.swift; sourceTree = SOURCE_ROOT; };
+		A2A6B9141EDEF7D300192CF8 /* HMDBatteryLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDBatteryLabelLayer.swift; path = HMD/HMDBatteryLabelLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2A6B9161EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDHomeDistanceLabelLayer.swift; path = HMD/HMDHomeDistanceLabelLayer.swift; sourceTree = SOURCE_ROOT; };
 		A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAeroChartViewController.swift; path = HMD/DroneModule/ADSBAeroChartViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2B54C461EECE0F300215A18 /* ADSBAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ADSBAPIClient.swift; path = HMD/ADSBModule/ADSB/ADSBAPIClient.swift; sourceTree = SOURCE_ROOT; };
@@ -300,6 +301,7 @@
 		A2DA57F51EE25EDC0088E1A9 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A2DA57F61EE25EDC0088E1A9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftRollCursorLayer.swift; path = HMD/HMDAircraftRollCursorLayer.swift; sourceTree = SOURCE_ROOT; };
+		A2F1FFA71F02318C001104F2 /* HMDLineOfSightRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDLineOfSightRenderer.swift; sourceTree = "<group>"; };
 		E36DCA2046E21FF5EE6FBF91 /* Pods-HMDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3313448B465684DFD2FC829 /* Pods-HMDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HMDTests/Pods-HMDTests.release.xcconfig"; sourceTree = "<group>"; };
 		F4F1C7AA6B0B6D324A53B408 /* Pods-HMD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HMD/Pods-HMD.debug.xcconfig"; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				A2A1AAAC1EBD6D8B006970E1 /* HMDEnginAndFuel */,
 				A2A1AAAB1EBD6D40006970E1 /* HMDAviationStatus */,
 				A2A1AAD61EBDE4E7006970E1 /* HMDMission */,
+				A2F1FFA51F022EA2001104F2 /* HMDLineOfSightLayer */,
 				A2A1AAAD1EBD6DBD006970E1 /* HMDMiscellaneous */,
 			);
 			name = HMD;
@@ -612,11 +615,11 @@
 				A2A1AACA1EBDD266006970E1 /* HMDAttitudeRenderer.swift */,
 				A2A1AACC1EBDD2A9006970E1 /* HMDBankScaleLayer.swift */,
 				A2A1AACE1EBDD56D006970E1 /* HMDPitchLadderLayer.swift */,
-				A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */,
 				A2A1AAD91EBF2CB7006970E1 /* HMDHoverVectorLayer.swift */,
 				A272BC7D1EC2F74300577941 /* HMDCentreDatumLayer.swift */,
 				A2DD2EDC1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift */,
 				A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */,
+				A2A1AAD01EBDE340006970E1 /* HMDSideslipLayer.swift */,
 			);
 			name = HMDAttitude;
 			sourceTree = "<group>";
@@ -625,10 +628,10 @@
 			isa = PBXGroup;
 			children = (
 				A2A1AAD21EBDE3C6006970E1 /* HMDAviationStatusRenderer.swift */,
-				A2A1AAD41EBDE4D2006970E1 /* HMDAirSpeedLabelLayer.swift */,
 				A2A1AAD71EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift */,
-				A2A6B9141EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift */,
+				A2A6B9141EDEF7D300192CF8 /* HMDBatteryLabelLayer.swift */,
 				A2A6B9161EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift */,
+				A28FD2DE1F0298F700681E8E /* HMDMinutesToHomeLabelLayer.swift */,
 			);
 			name = HMDAviationStatus;
 			sourceTree = "<group>";
@@ -786,6 +789,14 @@
 				A2DA57F61EE25EDC0088E1A9 /* MBProgressHUD.m */,
 			);
 			path = UIUtility;
+			sourceTree = "<group>";
+		};
+		A2F1FFA51F022EA2001104F2 /* HMDLineOfSightLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A2F1FFA71F02318C001104F2 /* HMDLineOfSightRenderer.swift */,
+			);
+			name = HMDLineOfSightLayer;
 			sourceTree = "<group>";
 		};
 		C3AF521D5CE153B9DC34AB06 /* Pods */ = {
@@ -983,6 +994,7 @@
 				A269BF271ECAE351007ABB10 /* StatusTableViewCell.swift in Sources */,
 				A2DA57D81EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter+Lightbridge2.m in Sources */,
 				A2DA58031EE25EDC0088E1A9 /* DemoVirtualStickView.m in Sources */,
+				A2F1FFA81F02318C001104F2 /* HMDLineOfSightRenderer.swift in Sources */,
 				A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */,
 				A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */,
 				A229E5C01EF2594900DB3AB9 /* DroneAeroChartViewController.swift in Sources */,
@@ -1002,7 +1014,7 @@
 				A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift in Sources */,
 				A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */,
 				A2C93AC91EF0157300DDE914 /* ADSBAnnotationCalloutView.swift in Sources */,
-				A2A6B9151EDEF7D300192CF8 /* HMDBatteryThresholdLabelLayer.swift in Sources */,
+				A2A6B9151EDEF7D300192CF8 /* HMDBatteryLabelLayer.swift in Sources */,
 				A2D341D21EDBDEBE001DEF82 /* PilotHUDViewController.swift in Sources */,
 				A2A1AA511EBA1C2A006970E1 /* HMDHeadingCursorLayer.swift in Sources */,
 				A2C93ACD1EF019EB00DDE914 /* ADSBAnnotation.swift in Sources */,
@@ -1022,6 +1034,7 @@
 				A2A1AAB71EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
 				A2B54C471EECE0F300215A18 /* ADSBAPIClient.swift in Sources */,
 				A201DEEC1EF6B48200EEEE6F /* CALayer+Extensions.swift in Sources */,
+				A28FD2DF1F0298F700681E8E /* HMDMinutesToHomeLabelLayer.swift in Sources */,
 				A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */,
 				A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */,
 				A2DA57F71EE25EDC0088E1A9 /* DemoComponentHelper.m in Sources */,
@@ -1047,7 +1060,6 @@
 				A2A1AAE71EBF5066006970E1 /* String+Extensions.swift in Sources */,
 				A201DEF31EF6B49D00EEEE6F /* CLLocation+Operator.swift in Sources */,
 				A201DEF01EF6B49000EEEE6F /* CGFloat+Extensions.swift in Sources */,
-				A2A1AAD51EBDE4D2006970E1 /* HMDAirSpeedLabelLayer.swift in Sources */,
 				A201DEF91EF6B4EF00EEEE6F /* UIViewController+Child.swift in Sources */,
 				A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */,
 				A2DA57FD1EE25EDC0088E1A9 /* DemoPushInfoViewController.m in Sources */,

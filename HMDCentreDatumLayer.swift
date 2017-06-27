@@ -27,7 +27,10 @@ class HMDCentreDatumLayer: CALayer {
             drawCrossReticle()
         case .Cruise:
             drawBoxReticle()
+        case .Camera:
+            drawCrossReticle()
         }
+        
         
     }
     

@@ -33,7 +33,6 @@ class HMDAttitudeRenderer: CALayer {
     //Fixed Layers
     var sideslip = HMDSideslipLayer()
     var hoverVector = CAShapeLayer()
-    var viewAreaReference = CALayer()
     
     var previousGimbalAttitudeRollDegree : CGFloat = 0.0
 
@@ -70,9 +69,18 @@ class HMDAttitudeRenderer: CALayer {
         centreDatum.setup()
         addSublayer(centreDatum)
         
+        let sideslipFrameHeight = bounds.height / 15
+        let cursorFrameFill = bounds.width * 0.2
+        let sideslipOriginX =  cursorFrameFill
+        let sideslipOriginY = bounds.height - sideslipFrameHeight
+        let sideslipFrameWidth = bounds.width - cursorFrameFill * 2
+        sideslip.frame = CGRect(x: sideslipOriginX, y: sideslipOriginY, width: sideslipFrameWidth, height: sideslipFrameHeight)
+        sideslip.setup()
+        addSublayer(sideslip)
+        
         
         switch operationMode {
-        case misc.operationMode.Home:
+        case .Home:
             locationManager.requestWhenInUseAuthorization()
             orientation = misc.getCLDeviceOrientation(by: UIDevice.current.orientation)
             locationManager.headingOrientation =  orientation
@@ -82,14 +90,19 @@ class HMDAttitudeRenderer: CALayer {
 //            locationManager.delegate = self
             
             motionManager.accelerometerUpdateInterval = 0.01
-        case misc.operationMode.Hover, misc.operationMode.Cruise, misc.operationMode.Trans:
+        case .Hover, .Cruise, .Trans:
 //            let aircraft = DJISDKManager.product() as? DJIAircraft
 //            aircraft?.gimbal?.delegate = self
             //            aircraft?.flightController?.delegate = self
             startUpdatingGimbalAttitude()
             startUpdatingAircraftAttitude()
             startUpdateRemoteRightHorizontal()
+        case .Camera:
+            startUpdatingGimbalAttitude()
+            startUpdatingAircraftAttitude()
+            startUpdateRemoteRightHorizontal()
         }
+        
         
     }
     
@@ -163,7 +176,7 @@ class HMDAttitudeRenderer: CALayer {
     }
 
     func startUpdateRemoteRightHorizontal(){
-            DJISDKManager.keyManager()?.startListeningForChanges(on: remoteRightHorizontalKey!,
+        DJISDKManager.keyManager()?.startListeningForChanges(on: remoteRightHorizontalKey!,
                                                                  withListener: self,
                                                                  andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
                                                                     if newValue == nil {
