@@ -202,25 +202,56 @@ class HMDAltitudeRenderer: CALayer{
     let remoteRightHorizontalKey = DJIRemoteControllerKey(param: DJIRemoteControllerParamRightHorizontalValue)
     
     let aircraftAltitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamAltitudeInMeters)
+    let aircraftUltraSonicAltitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamUltrasonicHeightInMeters)
+    let aircraftUltraSonicBeingUsedKey = DJIFlightControllerKey(param: DJIFlightControllerParamIsUltrasonicBeingUsed)
     let remoteLeftVerticalKey = DJIRemoteControllerKey(param: DJIRemoteControllerParamLeftVerticalValue)
     let verticalVelocityKey = DJIFlightControllerKey(param: DJIFlightControllerParamVelocity)
     let homeAltitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamTakeoffLocationAltitude)
     
+    var altitudeLock = false
+    var isUltraSonicBeingUsed = false
+    
     func startUpdatingAircraftAltitudeData(){
+        
         DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftAltitudeKey!,
                                                              withListener: self,
                                                              andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
-                                                                if newValue == nil {
-                                                                    return
-                                                                }
+                                                                guard newValue != nil && self.isUltraSonicBeingUsed else { return }
+                                                                if self.altitudeLock == true { return }
                                                                 let altitudeInMeters =  newValue!.value! as! NSNumber
                                                                 self.updateRadarAltitudeLabel(CGFloat(altitudeInMeters))
                                                                 self.updateBarometricAltitudeLabel(CGFloat(altitudeInMeters) + CGFloat(self.previousHomeAltitude))
                                                                 self.changeAltitudeStickHeight(CGFloat(altitudeInMeters))
         })
+        startUpdatingUltraSonicHeight()
     }
+    
+    func checkUltraSonicBeingUsed() -> Bool{
+        return DJISDKManager.keyManager()?.getValueFor(aircraftUltraSonicBeingUsedKey!)?.value as! Bool
+    }
+    
     func stopUpdatingAircraftAltitudeData(){
         DJISDKManager.keyManager()?.stopListening(on: aircraftAltitudeKey!, ofListener: self)
+        stopUpdatingUltraSonicHeight()
+    }
+    
+    func startUpdatingUltraSonicHeight(){
+        DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftUltraSonicAltitudeKey!, withListener: self, andUpdate: { (oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
+            guard newValue != nil else { return }
+            let altitudeInMeters =  newValue!.value! as! NSNumber
+            if Double(altitudeInMeters) > 4.9 {
+                self.altitudeLock = false
+            } else {
+                self.altitudeLock = true
+                self.updateRadarAltitudeLabel(CGFloat(altitudeInMeters))
+                self.updateBarometricAltitudeLabel(CGFloat(altitudeInMeters) + CGFloat(self.previousHomeAltitude))
+                self.changeAltitudeStickHeight(CGFloat(altitudeInMeters))
+            }
+        })
+    }
+    
+    func stopUpdatingUltraSonicHeight(){
+        DJISDKManager.keyManager()?.stopListening(on: aircraftUltraSonicAltitudeKey!, ofListener: self)
     }
     
     func startUpdatingAircraftVerticalVelocityData(){

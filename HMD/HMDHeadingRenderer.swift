@@ -85,7 +85,7 @@ class HMDHeadingRenderer: CALayer {
         headingScaleSouth.isFacingNorth = false
         headingScaleSouth.backgroundColor = UIColor.clear.cgColor
         headingScaleSouth.frame = scrollLayer.bounds
-        headingScaleNorth.labelFontSize = labelFontSize
+        headingScaleSouth.labelFontSize = labelFontSize
         headingScaleSouth.setup()
         scrollLayer.addSublayer(headingScaleSouth)
         
@@ -259,14 +259,39 @@ class HMDHeadingRenderer: CALayer {
                 self.headingScaleNorth.isHidden = false
                 self.headingScaleSouth.isHidden = true
                 headingPointX = ((headingDegree + 180).truncatingRemainder(dividingBy: 360.0)) * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
+                CALayer.performWithoutAnimation ({
+                    let animation = CABasicAnimation(keyPath: "position")  //TODO: Something must be wrong here, but the result is good for now.
+                    animation.fillMode = kCAFillModeForwards
+                    animation.isRemovedOnCompletion = true
+                    animation.fromValue = self.scrollLayer.frame
+                    animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
+                    self.scrollLayer.add(animation, forKey: "position")
+                    print("Facing North")
+                },completionHandler: {
+                    self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
+                    self.scrollLock = false
+                })
             case 90 ... 270:
                 
                 //Facing South//
                 self.headingScaleSouth.isHidden = false
                 self.headingScaleNorth.isHidden = true
                 headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
-                self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
+                CALayer.performWithoutAnimation ({
+                    let animation = CABasicAnimation(keyPath: "position")
+                    animation.fillMode = kCAFillModeForwards
+                    animation.isRemovedOnCompletion = true
+                    animation.fromValue = self.scrollLayer.frame
+                    animation.toValue = CGRect(x: headingPointX,
+                                               y : 0,
+                                               width: self.scrollLayer.frame.width,
+                                               height: self.scrollLayer.frame.height)
+                    self.scrollLayer.add(animation, forKey: "position")
+                    print("Facing South")
+                },completionHandler: {
+                    self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
+                    self.scrollLock = false
+                })
             default:
                 print("Something is wrong")
             }
@@ -315,19 +340,42 @@ class HMDHeadingRenderer: CALayer {
                     headingPointX = headingDegree * self.pixelPerUnit * -1 + self.middleLayer.frame.width / 2
                 }
             }
+            CALayer.performWithAnimation({
+                let animation = CABasicAnimation(keyPath: "frame")
+                animation.fillMode = kCAFillModeForwards
+                animation.isRemovedOnCompletion = true
+                animation.fromValue = self.scrollLayer.frame
+                animation.toValue = CGRect(x: headingPointX,
+                                           y: 0,
+                                           width: self.scrollLayer.frame.width,
+                                           height: self.scrollLayer.frame.height)
+                
+                self.scrollLayer.add(animation, forKey: "frame")
+            },completionHandler: {
                 self.scrollLayer.frame = CGRect(x: headingPointX,
                                                 y: 0,
                                                 width: self.scrollLayer.frame.width,
                                                 height: self.scrollLayer.frame.height)
                 self.scrollLock = false
-//            })
+            })
             
         }
     }
     
     func shiftAircraftHeadingCursor(_ headingDifference: CGFloat){
+        CALayer.performWithAnimation({
+            let animation =  CABasicAnimation(keyPath: "position")
+            animation.fillMode = kCAFillModeRemoved
+            animation.isRemovedOnCompletion = true
+            animation.fromValue = self.aircraftHeadingCursor.position
+            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+                                        y: self.aircraftHeadingCursor.position.y)
+//            print("diff: \(headingDifference * self.pixelPerUnit)")
+            self.aircraftHeadingCursor.add(animation, forKey:  "position")
+        }, completionHandler: {
             self.aircraftHeadingCursor.position = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
                                                       y: self.aircraftHeadingCursor.position.y)
+        })
     }
     
     //TODO: Update home direction based on drone location and given home location.

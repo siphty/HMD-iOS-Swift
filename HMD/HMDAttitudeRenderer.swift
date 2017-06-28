@@ -30,6 +30,12 @@ class HMDAttitudeRenderer: CALayer {
     var aircraftRollCursor = HMDAircraftRollCursorLayer()
     var aircraftReference = HMDAircraftReferenceLayer()
     
+    // DJI Key Manager
+    let aircraftAttitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamAttitude)
+    let gimbalAttitudeKey = DJIGimbalKey(param: DJIGimbalParamAttitudeInDegrees)
+    let remoteRightHorizontalKey = DJIRemoteControllerKey(param: DJIRemoteControllerParamRightHorizontalValue)
+    let aircraftVelocityKey = DJIFlightControllerKey(param: DJIFlightControllerParamVelocity)
+    
     //Fixed Layers
     var sideslip = HMDSideslipLayer()
     var hoverVector = CAShapeLayer()
@@ -96,11 +102,11 @@ class HMDAttitudeRenderer: CALayer {
             //            aircraft?.flightController?.delegate = self
             startUpdatingGimbalAttitude()
             startUpdatingAircraftAttitude()
-            startUpdateRemoteRightHorizontal()
+            startUpdatingSideslipVelocity()
         case .Camera:
             startUpdatingGimbalAttitude()
             startUpdatingAircraftAttitude()
-            startUpdateRemoteRightHorizontal()
+            startUpdatingSideslipVelocity()
         }
         
         
@@ -109,7 +115,7 @@ class HMDAttitudeRenderer: CALayer {
     func unSetup() {
         stopUpdatingAircraftAttitude()
         stopUpdatingGimbalHeadingData()
-        stopUpdateRemoteRightHorizontal()
+        stopUpdatingSideslipVelocity()
         sublayers = nil
     }
     
@@ -119,9 +125,6 @@ class HMDAttitudeRenderer: CALayer {
 //    }
     
     
-    let aircraftAttitudeKey = DJIFlightControllerKey(param: DJIFlightControllerParamAttitude)
-    let gimbalAttitudeKey = DJIGimbalKey(param: DJIGimbalParamAttitudeInDegrees)
-    let remoteRightHorizontalKey = DJIRemoteControllerKey(param: DJIRemoteControllerParamRightHorizontalValue)
     
     //Data source updating
     func startUpdatingAircraftAttitude(){
@@ -143,7 +146,7 @@ class HMDAttitudeRenderer: CALayer {
                                                                     rollingDifference = rollingDifference - 360
                                                                 }
 //                                                                print(" body to roll degree: \(rollingDifference)")
-                                                                self.spinAircraftAttitudeLayer(angle: rollingDifference)
+                                                                self.rollAircraftAttitudeLayer(angle: rollingDifference)
                                                                 self.moveAircraftReference(byRoll: AircraftRollDegree,
                                                                                            pitch: AircraftPitchDegree)
         })
@@ -175,31 +178,54 @@ class HMDAttitudeRenderer: CALayer {
         DJISDKManager.keyManager()?.stopListening(on: gimbalAttitudeKey!, ofListener: self)
     }
 
-    func startUpdateRemoteRightHorizontal(){
-        DJISDKManager.keyManager()?.startListeningForChanges(on: remoteRightHorizontalKey!,
-                                                                 withListener: self,
-                                                                 andUpdate: {(oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?) in
-                                                                    if newValue == nil {
-                                                                        return
-                                                                    }
-                                                                    let sideSliperValue = newValue!.value! as! NSNumber
-                                                                    self.moveSidesliperCursor(to: sideSliperValue)
-            })
+    func startUpdatingSideslipVelocity(){
+        DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftVelocityKey!,
+                                                             withListener: self,
+                                                             andUpdate: { (oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?)  in
+                                                                guard newValue != nil  else{
+                                                                    return
+                                                                }
+                                                                let velocity = newValue!.value! as! DJISDKVector3D
+                                                                self.moveSidesliperCursor(to: Float(velocity.y))
+        })
     }
     
-    func stopUpdateRemoteRightHorizontal(){
-        DJISDKManager.keyManager()?.stopListening(on: remoteRightHorizontalKey!, ofListener: self)
+    func stopUpdatingSideslipVelocity(){
+        DJISDKManager.keyManager()?.stopListening(on: aircraftVelocityKey!, ofListener: self)
     }
+    
     
     // Animation actions
-    func spinAircraftAttitudeLayer(angle degrees: CGFloat){
+    func rollAircraftAttitudeLayer(angle degrees: CGFloat){
+//        print("Roll cusor turning to : \(degrees)")
+//        CALayer.performWithAnimation({
             let radians = self.degree2radian(degrees)
-            self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
+            self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians, 0.0, 0.0, 1.0)
+//        }, completionHandler: {
+////            let radians = self.degree2radian(degrees)
+////            self.aircraftAttiSpinLayer.transform = CATransform3DMakeRotation(radians, 0.0, 0.0, 1.0)
+//        })
     }
     
     func spinGimbalAttitudeLayer(angle degrees: CGFloat){
+//        print("Gimbal Roll cusor turning to : \(degrees)")
+        
+//        CALayer.performWithAnimation({
+//            let radians = self.degree2radian(degrees)
+//            self.gimbalAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
+////            let animation =  CABasicAnimation(keyPath: "position")
+////            animation.fillMode = kCAFillModeRemoved
+////            animation.isRemovedOnCompletion = true
+////            animation.fromValue = self.aircraftHeadingCursor.position
+////            animation.toValue = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+////                                        y: self.aircraftHeadingCursor.position.y)
+////            //            print("diff: \(headingDifference * self.pixelPerUnit)")
+////            self.aircraftHeadingCursor.add(animation, forKey:  "position")
+//        }, completionHandler: {
             let radians = self.degree2radian(degrees)
             self.gimbalAttiSpinLayer.transform = CATransform3DMakeRotation(radians * -1, 0.0, 0.0, 1.0)
+//        })
+        
     }
     
     func shiftGimbalAttitudePitchLadder(angle degrees: CGFloat){
@@ -220,9 +246,24 @@ class HMDAttitudeRenderer: CALayer {
 
     }
     
-    func moveSidesliperCursor(to sideSliperValue:NSNumber){
-        
-        print("\(sideSliperValue)")
+    func moveSidesliperCursor(to sideSlipValue:Float){
+        print("\(sideSlipValue)")
+        CALayer.performWithAnimation({
+            let animation =  CABasicAnimation(keyPath: "position")
+            animation.fillMode = kCAFillModeRemoved
+            animation.isRemovedOnCompletion = false
+            animation.fromValue = self.sideslip.sideslipCursor.position
+            let sideslipVelocityValueToPixel = CGFloat(sideSlipValue) * (self.sideslip.frame.width / 30.0)
+            animation.toValue = CGPoint(x: self.sideslip.position.x + sideslipVelocityValueToPixel,
+                                        y: 0)
+            self.sideslip.sideslipCursor.add(animation, forKey:  "position")
+            self.sideslip.sideslipCursor.position = animation.toValue as! CGPoint
+        }, completionHandler: {
+//            let sideslipVelocityValueToPixel = CGFloat(sideSlipValue) * (self.sideslip.frame.width / 30.0)
+//            let toPosition = CGPoint(x: self.sideslip.position.x + sideslipVelocityValueToPixel,
+//                                     y: 0)
+//            self.sideslip.sideslipCursor.position = toPosition
+        })
     }
     
     func degree2radian(_ degree:CGFloat) -> CGFloat {

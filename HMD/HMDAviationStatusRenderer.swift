@@ -18,9 +18,10 @@ class HMDAviationStatusRenderer: CALayer {
     
     
     var batteryLabel = HMDBatteryLabelLayer()
+    var remainingFlightTimeLabel = HMDRemainingFlightTimeLabelLayer()
     var groundSpeedLabel = HMDGroundSpeedLabelLayer()
     var homeDistanceLabel = HMDHomeDistanceLabelLayer()
-    var minutesToHomeLabel = HMDHomeDistanceLabelLayer()
+    var missionTimeLabel = HMDMissionTimeLabelLayer()
     
     //Default values
     var labelHeight = CGFloat(16)
@@ -28,6 +29,7 @@ class HMDAviationStatusRenderer: CALayer {
     
     func setup() {
         drawBattery()
+        drawRemainingFlightTime()
         drawGroundSpeed()
         drawMission()
         
@@ -55,15 +57,29 @@ class HMDAviationStatusRenderer: CALayer {
         batteryLabel.fontSize = labelFontSize
         batteryLabel.foregroundColor = StateColor.Normal
         batteryLabel.string = "100 %"
+        batteryLabel.setup()
         addSublayer(batteryLabel)
     }
+    func drawRemainingFlightTime() {
+        remainingFlightTimeLabel.frame = CGRect(x: 0, y: labelHeight + 1, width: bounds.width, height: labelHeight)
+        remainingFlightTimeLabel.contentsScale = UIScreen.main.scale
+        remainingFlightTimeLabel.font = "Tahoma" as CFTypeRef
+        remainingFlightTimeLabel.fontSize = labelFontSize
+        remainingFlightTimeLabel.foregroundColor = StateColor.Normal
+        remainingFlightTimeLabel.string = "--:--:--"
+        remainingFlightTimeLabel.setup()
+        addSublayer(remainingFlightTimeLabel)
+    }
+    
     func drawGroundSpeed() {
         groundSpeedLabel.frame = CGRect(x: 0, y: bounds.height.middle() - labelHeight.half(), width: bounds.width, height: labelHeight)
         groundSpeedLabel.contentsScale = UIScreen.main.scale
         groundSpeedLabel.font = "Tahoma" as CFTypeRef
         groundSpeedLabel.fontSize = labelFontSize
         groundSpeedLabel.foregroundColor = StateColor.Normal
-        groundSpeedLabel.string = "100 m/s"
+        groundSpeedLabel.string = "--- m/s"
+        groundSpeedLabel.contentsGravity = kCAAlignmentRight
+        groundSpeedLabel.setup()
         addSublayer(groundSpeedLabel)
     }
     
@@ -73,16 +89,18 @@ class HMDAviationStatusRenderer: CALayer {
         homeDistanceLabel.font = "Tahoma" as CFTypeRef
         homeDistanceLabel.fontSize = labelFontSize
         homeDistanceLabel.foregroundColor = StateColor.Normal
-        homeDistanceLabel.string = "H: 8.8 Km"
+        homeDistanceLabel.string = "H: -- Km"
+        homeDistanceLabel.setup()
         addSublayer(homeDistanceLabel)
         
-        minutesToHomeLabel.frame = CGRect(x: 0, y: bounds.height - labelHeight, width: bounds.width, height: labelHeight)
-        minutesToHomeLabel.contentsScale = UIScreen.main.scale
-        minutesToHomeLabel.font = "Tahoma" as CFTypeRef
-        minutesToHomeLabel.fontSize = labelFontSize
-        minutesToHomeLabel.foregroundColor = StateColor.Normal
-        minutesToHomeLabel.string = "00:04:47"
-        addSublayer(minutesToHomeLabel)
+        missionTimeLabel.frame = CGRect(x: 0, y: bounds.height - labelHeight, width: bounds.width, height: labelHeight)
+        missionTimeLabel.contentsScale = UIScreen.main.scale
+        missionTimeLabel.font = "Tahoma" as CFTypeRef
+        missionTimeLabel.fontSize = labelFontSize
+        missionTimeLabel.foregroundColor = StateColor.Normal
+        missionTimeLabel.string = "--:--:--"
+        missionTimeLabel.setup()
+        addSublayer(missionTimeLabel)
     }
     //Data source updating
     let groundSpeedKey      = DJIFlightControllerKey(param: DJIFlightControllerParamVelocity)
