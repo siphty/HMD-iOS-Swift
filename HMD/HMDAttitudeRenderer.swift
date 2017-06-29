@@ -253,16 +253,13 @@ class HMDAttitudeRenderer: CALayer {
             animation.fillMode = kCAFillModeRemoved
             animation.isRemovedOnCompletion = false
             animation.fromValue = self.sideslip.sideslipCursor.position
-            let sideslipVelocityValueToPixel = CGFloat(sideSlipValue) * (self.sideslip.frame.width / 30.0)
-            animation.toValue = CGPoint(x: self.sideslip.position.x + sideslipVelocityValueToPixel,
+            let sideslipVelocityValueToPixel = CGFloat(sideSlipValue) * (self.sideslip.frame.width / 4.0 * -1)
+            animation.toValue = CGPoint(x: sideslipVelocityValueToPixel,
                                         y: 0)
             self.sideslip.sideslipCursor.add(animation, forKey:  "position")
             self.sideslip.sideslipCursor.position = animation.toValue as! CGPoint
         }, completionHandler: {
-//            let sideslipVelocityValueToPixel = CGFloat(sideSlipValue) * (self.sideslip.frame.width / 30.0)
-//            let toPosition = CGPoint(x: self.sideslip.position.x + sideslipVelocityValueToPixel,
-//                                     y: 0)
-//            self.sideslip.sideslipCursor.position = toPosition
+            
         })
     }
     

@@ -79,11 +79,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/HMDHeadingRenderer.swift"
-            timestampString = "520346614.401724"
+            timestampString = "520412800.856361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "shiftAircraftHeadingCursor(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -123,16 +123,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/HMDLineOfSightRenderer.swift"
+            timestampString = "520412800.856518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "moveLineOfSightBox(by:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HMD/HMDAttitudeRenderer.swift"
-            timestampString = "520346614.401938"
+            filePath = "HMD/HMDLineOfSightRenderer.swift"
+            timestampString = "520412800.856888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "moveSidesliperCursor(to:)"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "moveLineOfSightBox(by:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -73,9 +73,7 @@ class HMDAltitudeRenderer: CALayer{
             startUpdatingHomeAltitudeData()
             startUpdatingAircraftAltitudeData()
             startUpdatingAircraftVerticalVelocityData()
-            
         }
-
     }
     
     func unSetup() {
@@ -137,9 +135,10 @@ class HMDAltitudeRenderer: CALayer{
         altitudeScale.addSublayer(highAltitudeScale)
         
         altitudeStick.frame = CGRect(x: altitudeScale.frame.width * 3/8,
-                                     y: 0.0,
+                                     y: altitudeScale.frame.height,
                                      width: altitudeScale.frame.width * 2/8,
                                      height: altitudeScale.frame.height)
+        altitudeStick.anchorPoint = CGPoint(x: 0.0, y: 0.0)
         altitudeStick.borderColor = UIColor.green.cgColor
         altitudeStick.borderWidth = 1
         altitudeScale.addSublayer(altitudeStick)
@@ -327,10 +326,18 @@ class HMDAltitudeRenderer: CALayer{
         } else {
             newYInPixels = frame.height
         }
-        self.altitudeStick.frame  = CGRect(x: self.altitudeStick.frame.origin.x,
-                                           y: newYInPixels,
-                                           width: self.altitudeStick.frame.size.width,
-                                           height: self.altitudeScale.frame.height - newYInPixels)
+        
+        
+        CALayer.performWithAnimation({
+            let animation =  CABasicAnimation(keyPath: "position")
+            animation.isRemovedOnCompletion = true
+            animation.fromValue = self.altitudeStick.position
+            print("altitudeStick.position from: \(self.altitudeStick.position)")
+            animation.toValue = CGPoint(x: self.altitudeStick.frame.origin.x,
+                                        y: newYInPixels )
+            self.altitudeStick.position = animation.toValue as! CGPoint
+            self.altitudeStick.add(animation, forKey:  "position")
+        }, completionHandler: {})
     }
     
     func updateRadarAltitudeLabel(_ altitude: CGFloat){

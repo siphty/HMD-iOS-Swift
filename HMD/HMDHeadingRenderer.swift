@@ -267,8 +267,8 @@ class HMDHeadingRenderer: CALayer {
                     animation.toValue = CGRect(x: headingPointX, y : 0, width: self.scrollLayer.frame.width, height: self.scrollLayer.frame.height)
                     self.scrollLayer.add(animation, forKey: "position")
                     print("Facing North")
-                },completionHandler: {
                     self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
+                },completionHandler: {
                     self.scrollLock = false
                 })
             case 90 ... 270:
@@ -287,9 +287,9 @@ class HMDHeadingRenderer: CALayer {
                                                width: self.scrollLayer.frame.width,
                                                height: self.scrollLayer.frame.height)
                     self.scrollLayer.add(animation, forKey: "position")
+                     self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
                     print("Facing South")
                 },completionHandler: {
-                    self.scrollLayer.position = CGPoint(x: headingPointX, y : self.scrollLayer.position.y)
                     self.scrollLock = false
                 })
             default:
@@ -351,11 +351,12 @@ class HMDHeadingRenderer: CALayer {
                                            height: self.scrollLayer.frame.height)
                 
                 self.scrollLayer.add(animation, forKey: "frame")
+                self.scrollLayer.frame = animation.toValue as! CGRect
             },completionHandler: {
-                self.scrollLayer.frame = CGRect(x: headingPointX,
-                                                y: 0,
-                                                width: self.scrollLayer.frame.width,
-                                                height: self.scrollLayer.frame.height)
+//                self.scrollLayer.frame = CGRect(x: headingPointX,
+//                                                y: 0,
+//                                                width: self.scrollLayer.frame.width,
+//                                                height: self.scrollLayer.frame.height)
                 self.scrollLock = false
             })
             
@@ -372,9 +373,10 @@ class HMDHeadingRenderer: CALayer {
                                         y: self.aircraftHeadingCursor.position.y)
 //            print("diff: \(headingDifference * self.pixelPerUnit)")
             self.aircraftHeadingCursor.add(animation, forKey:  "position")
+            self.aircraftHeadingCursor.position = animation.toValue as! CGPoint
         }, completionHandler: {
-            self.aircraftHeadingCursor.position = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
-                                                      y: self.aircraftHeadingCursor.position.y)
+//            self.aircraftHeadingCursor.position = CGPoint(x: (self.frame.width / 2) - headingDifference * self.pixelPerUnit,
+//                                                      y: self.aircraftHeadingCursor.position.y)
         })
     }
     
