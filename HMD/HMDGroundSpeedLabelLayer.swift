@@ -17,6 +17,7 @@ class HMDGroundSpeedLabelLayer: CATextLayer {
     let aircraftVelocityKey = DJIFlightControllerKey(param: DJIFlightControllerParamVelocity)  // Speed
     
     func setup() {
+        alignmentMode = kCAAlignmentRight
         switch operationMode {
         case .Camera, .Home:
             startUpdatingPhoneSpeed()

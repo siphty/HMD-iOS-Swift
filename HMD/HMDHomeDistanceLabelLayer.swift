@@ -33,12 +33,12 @@ class HMDHomeDistanceLabelLayer: CATextLayer {
         DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftLocationKey!,
                                                              withListener: self,
                                                              andUpdate: { (oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?)  in
-                                                                guard let aLocation = newValue!.value as? CLLocation else {
+                                                                guard let aLocation = newValue!.value  else {
                                                                     return
                                                                 }
-                                                                self.aircraftLocation = aLocation
+                                                                self.aircraftLocation = aLocation as? CLLocation
                                                                 guard self.homeLocation != nil else { return }
-                                                                let distance = aLocation.distance(from: self.homeLocation!)
+                                                                let distance = self.aircraftLocation!.distance(from: self.homeLocation!)
                                                                 print("H:\(self.formatDistance(distance))")
                                                                 self.string = String("H:\(self.formatDistance(distance))")
         })

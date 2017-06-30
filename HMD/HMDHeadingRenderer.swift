@@ -191,6 +191,8 @@ class HMDHeadingRenderer: CALayer {
                                                                 var headingDifference = self.previousGimbalHeadingDegree - bodyHeadingDegree
                                                                 if headingDifference > 180 {
                                                                     headingDifference = headingDifference - 360
+                                                                }else if headingDifference < -180 {
+                                                                    headingDifference = headingDifference + 360
                                                                 }
 //                                                                print(" body to gimbal degree: \(headingDifference)")
                                                                 self.shiftAircraftHeadingCursor(headingDifference)

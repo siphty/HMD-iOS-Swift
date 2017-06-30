@@ -11,12 +11,15 @@ import CoreLocation
 import CoreMotion
 import DJISDK
 import VideoPreviewer
+import CoreMotion
 
 class PilotHUDViewController: UIViewController {
     var isRecording : Bool!
     var hmdLayer = HMDLayer()
     var isSettingMode:Bool = false
     var previewerAdapter = VideoPreviewerSDKAdapter()
+    let motionManager = CMMotionManager()
+    var coreMotionTimer: Timer!
     
 //    @IBOutlet weak var fpvView : UIView!
 //    @IBOutlet weak var fpvTemView : UIView!
@@ -41,6 +44,8 @@ class PilotHUDViewController: UIViewController {
                                 height: hmdHeight)
         view.layer.addSublayer(hmdLayer)
         view.bringSubview(toFront: returnButton)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +59,12 @@ class PilotHUDViewController: UIViewController {
         VideoPreviewer.instance().enableHardwareDecode = false
         VideoPreviewer.instance().setEnableBinocular(false)
         VideoPreviewer.instance().setView(self.view)
+        
+        motionManager.startAccelerometerUpdates()
+        motionManager.startGyroUpdates()
+        motionManager.startMagnetometerUpdates()
+        motionManager.startDeviceMotionUpdates()
+        coreMotionTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(setGimbal), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,6 +74,14 @@ class PilotHUDViewController: UIViewController {
         VideoPreviewer.instance().clearRender()
         VideoPreviewer.instance().clearVideoData()
         previewerAdapter.stop()
+        
+        
+        motionManager.stopAccelerometerUpdates()
+        motionManager.stopGyroUpdates()
+        motionManager.stopMagnetometerUpdates()
+        motionManager.stopDeviceMotionUpdates()
+        coreMotionTimer.invalidate()
+        coreMotionTimer = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,6 +110,11 @@ class PilotHUDViewController: UIViewController {
         dateFormatter.dateFormat = "mm:ss"
         return(dateFormatter.string(from: date))
     }
+    
+    func setGimbal() {
+        
+    }
+    
 }
 
 extension PilotHUDViewController: DJICameraDelegate{

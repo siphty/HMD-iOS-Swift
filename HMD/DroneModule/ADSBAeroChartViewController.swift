@@ -345,7 +345,7 @@ extension ADSBAeroChartViewController{
                     annotationView?.canShowCallout = false
                     let altitudeX = mapView.getScaleHeight(by: CGFloat((aircraft?.presAltitude) ?? 0), on: mapView.altitudeStickLayer)
                     var altitudeColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-                    if !(annotation.aircraft?.isOnGround)! {
+                    if !(annotation.aircraft?.isOnGround ?? false)! {
                         altitudeColor = mapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
                     }
                     annotationView?.annotationImage = annotation.image.maskWithColor(color: altitudeColor)!
