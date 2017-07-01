@@ -27,6 +27,7 @@
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
 		A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */; };
 		A258C8301EDAF94600B3F499 /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A263C55A1F0732AB00FC8FAF /* DJIGimbal+CapabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A263C5591F0732AB00FC8FAF /* DJIGimbal+CapabilityCheck.swift */; };
 		A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */; };
 		A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */; };
 		A269BF221ECADF2B007ABB10 /* CommonDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A269BF211ECADF2B007ABB10 /* CommonDetailTableViewCell.xib */; };
@@ -181,6 +182,7 @@
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7881ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDRemoteControllerThrustCursorLayer.swift; path = HMD/HMDRemoteControllerThrustCursorLayer.swift; sourceTree = SOURCE_ROOT; };
 		A24BBF2C1E56840300EBF428 /* HMD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A263C5591F0732AB00FC8FAF /* DJIGimbal+CapabilityCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "DJIGimbal+CapabilityCheck.swift"; path = "DJI Extensions/DJIGimbal+CapabilityCheck.swift"; sourceTree = "<group>"; };
 		A26841491ECBE8AD003512FE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A269BF181ECABBBD007ABB10 /* SystemInforTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemInforTableViewController.swift; path = HMD/SystemInforTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A269BF1A1ECAC359007ABB10 /* SystemInfor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SystemInfor.storyboard; path = HMD/SystemInfor.storyboard; sourceTree = SOURCE_ROOT; };
@@ -372,6 +374,7 @@
 				A2DA57D51EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter+Lightbridge2.h */,
 				A2DA57D61EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter+Lightbridge2.m */,
 				A2DA57DA1EE25EDC0088E1A9 /* DemoUtility */,
+				A263C5571F0721B100FC8FAF /* DJI Extensions */,
 			);
 			name = "DJI Service";
 			sourceTree = "<group>";
@@ -463,6 +466,14 @@
 				A2A1AAAD1EBD6DBD006970E1 /* HMDMiscellaneous */,
 			);
 			name = HMD;
+			sourceTree = "<group>";
+		};
+		A263C5571F0721B100FC8FAF /* DJI Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A263C5591F0732AB00FC8FAF /* DJIGimbal+CapabilityCheck.swift */,
+			);
+			name = "DJI Extensions";
 			sourceTree = "<group>";
 		};
 		A269BF231ECAE01C007ABB10 /* System Infor Cells */ = {
@@ -1040,6 +1051,7 @@
 				A2B54C4E1EED7A6800215A18 /* ADSBXResponse.swift in Sources */,
 				A201DEFD1EF6B59400EEEE6F /* UIImage+Movement.swift in Sources */,
 				A2B54C491EED659C00215A18 /* ADSBAircraft.swift in Sources */,
+				A263C55A1F0732AB00FC8FAF /* DJIGimbal+CapabilityCheck.swift in Sources */,
 				A27878421EE535D000636B9D /* DroneViewController.swift in Sources */,
 				A2B54C4C1EED66BA00215A18 /* ADSBAerodrome.swift in Sources */,
 				A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */,
