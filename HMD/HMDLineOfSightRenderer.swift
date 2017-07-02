@@ -132,7 +132,7 @@ class HMDLineOfSightRenderer: CALayer {
             }
             let animation = CABasicAnimation(keyPath: "position")
             animation.fromValue = self.sightBox.position
-            print("sight box position: \(self.sightBox.position)")
+//            print("sight box position: \(self.sightBox.position)")
             let yawPixel = headingDifference * widthPixelPerDegree + sightBoxOriginPosition!.x
             let pitchPixel = CGFloat(attitude.pitch - 30.0) * heightPixelPerDegree * -1 + sightBox.bounds.height.half()
             animation.toValue = CGPoint(x: yawPixel, y: pitchPixel)

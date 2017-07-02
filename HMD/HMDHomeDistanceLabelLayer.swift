@@ -33,6 +33,7 @@ class HMDHomeDistanceLabelLayer: CATextLayer {
         DJISDKManager.keyManager()?.startListeningForChanges(on: aircraftLocationKey!,
                                                              withListener: self,
                                                              andUpdate: { (oldValue: DJIKeyedValue?, newValue: DJIKeyedValue?)  in
+                                                                guard newValue != nil else { return }
                                                                 guard let aLocation = newValue!.value  else {
                                                                     return
                                                                 }
