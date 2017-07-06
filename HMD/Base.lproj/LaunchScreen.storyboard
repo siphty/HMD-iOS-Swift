@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,14 +27,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siphty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsV-hA-Qyl">
-                                <rect key="frame" x="0.0" y="108" width="736" height="162"/>
-                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="88"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head-Mounted Display" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JB7-ph-nXt">
-                                <rect key="frame" x="330" y="278" width="290" height="34"/>
+                                <rect key="frame" x="330" y="274" width="290" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="ucP-7v-Ixz"/>
                                 </constraints>
@@ -42,22 +36,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Siphty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsV-hA-Qyl">
+                                <rect key="frame" x="179" y="149" width="378" height="117"/>
+                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="100"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bsV-hA-Qyl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0rF-xg-2ep"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JB7-ph-nXt" secondAttribute="trailing" constant="96" id="6As-4D-nIP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bsV-hA-Qyl" secondAttribute="trailing" constant="-20" id="Cbe-CA-0Qt"/>
-                            <constraint firstItem="bsV-hA-Qyl" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="108" id="EiA-EM-oE3"/>
+                            <constraint firstItem="bsV-hA-Qyl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7Po-Il-h6z"/>
                             <constraint firstItem="JB7-ph-nXt" firstAttribute="top" secondItem="bsV-hA-Qyl" secondAttribute="bottom" constant="8" id="I6K-of-cJI"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="JB7-ph-nXt" secondAttribute="bottom" constant="102" id="Mhe-0F-4Kh"/>
-                            <constraint firstItem="bsV-hA-Qyl" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="UBU-Ez-Thh"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="bsV-hA-Qyl" secondAttribute="bottom" constant="144" id="pxl-AA-TqY"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122.78860569715144" y="376.80000000000001"/>
+            <point key="canvasLocation" x="122.28260869565219" y="375.36231884057975"/>
         </scene>
     </scenes>
 </document>

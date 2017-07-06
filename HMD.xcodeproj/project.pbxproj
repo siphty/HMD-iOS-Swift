@@ -824,6 +824,7 @@
 				2EF3F4B14B7ECB98A8DB3CF7 /* [CP] Embed Pods Frameworks */,
 				FC52CC2669D4874F623C68FD /* [CP] Copy Pods Resources */,
 				A25D57AB1EDAF902005B8822 /* Embed Frameworks */,
+				A2703C961F0B5C2500A2C280 /* Prepare DJISDK Framework for AppStore Upload */,
 			);
 			buildRules = (
 			);
@@ -846,7 +847,7 @@
 				TargetAttributes = {
 					A24BBF2B1E56840300EBF428 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = DQK83PW4RV;
+						DevelopmentTeam = GZQL33LF2B;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -951,6 +952,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HMD/Pods-HMD-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A2703C961F0B5C2500A2C280 /* Prepare DJISDK Framework for AppStore Upload */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare DJISDK Framework for AppStore Upload";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework/strip-frameworks.sh\"";
 		};
 		FB567B39C3BF59B11E909FAB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1215,7 +1230,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = DQK83PW4RV;
+				DEVELOPMENT_TEAM = GZQL33LF2B;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1231,7 +1246,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.hmd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.adsb.hmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HMD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1248,7 +1263,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = DQK83PW4RV;
+				DEVELOPMENT_TEAM = GZQL33LF2B;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1264,7 +1279,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.hmd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.siphty.adsb.hmd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HMD-Bridging-Header.h";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;

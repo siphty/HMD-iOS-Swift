@@ -59,7 +59,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/ADSBModule/ADSB/ADSBAPIClient.swift"
@@ -117,6 +117,22 @@
             startingLineNumber = "37"
             endingLineNumber = "37"
             landmarkName = "startUpdatingBatteryRemain()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMD/ADSBModule/ADSB/ADSBAPIClient.swift"
+            timestampString = "520778601.143768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "updateAircrafts()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

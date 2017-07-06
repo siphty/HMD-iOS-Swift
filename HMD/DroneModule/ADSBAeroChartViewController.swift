@@ -223,7 +223,7 @@ extension ADSBAeroChartViewController: MKMapViewDelegate {
                     let adsbMapView = mapView as! ADSBMapView
                     let altitudeX = adsbMapView.getScaleHeight(by: CGFloat((theAnnotation.aircraft?.presAltitude) ?? 0), on: adsbMapView.altitudeStickLayer)
                     var altitudeColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-                    if !(theAnnotation.aircraft?.isOnGround)! {
+                    if !(theAnnotation.aircraft?.isOnGround ?? false) {
                         altitudeColor = adsbMapView.altitudeStickLayer.getColorfromPixel(CGPoint(x: 2, y: altitudeX))
                     }
                     theAnnotationView?.annotationImage = theAnnotation.image.maskWithColor(color: altitudeColor)!

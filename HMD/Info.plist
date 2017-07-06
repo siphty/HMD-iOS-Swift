@@ -21,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>DJISDKAppKey</key>
 	<string>091dd73122989e508e6ae321</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -32,7 +32,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>You will see AR view through camera.</string>
+	<string>You will see HUD/HMD view through iPhone camera.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need help drone to fly back to the point you stand on. :)</string>
 	<key>UILaunchStoryboardName</key>
