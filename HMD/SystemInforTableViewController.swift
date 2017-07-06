@@ -158,7 +158,7 @@ class SystemInforTableViewController: UITableViewController {
             case AppAndiPhone.ipAddress.rawValue:
                 cell.title.text = "iPhone IP Address"
 //                cell.details.text = getIFAddresses()[1]
-                cell.details.text = "10.0.0.20xz"
+                cell.details.text = "10.0.0.20"
             case AppAndiPhone.appRegistered.rawValue:
                 cell.title.text = "Registered"
                 if DJISDKManager.hasSDKRegistered() {
