@@ -169,16 +169,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Some products (e.g. Mavic Pro, Inspire 2, Phantom 4 Pro) make use of both 2.4
- *  GHz and 5 GHz spectrums for wireless communication. While 5 GHz will not
+ *  The SDK will automatically try to determine the country in which the product is
+ *  operating and decide  the behaviour accordingly. The process of determining in
+ *  which country the product is flying uses  location information. This method can
+ *  be used to disable this check, but must be called before
+ *  `registerAppWithDelegate` to take effect. Influenced features includes:
+ *   - Some products (e.g.  Mavic Pro, Inspire 2, Phantom 4 Pro) make use of both
+ *  2.4 GHz and 5 GHz spectrums for wireless  communication. While 5 GHz will not
  *  necessarily have the same range as 2.4 GHz, it can be useful  if the 2.4 GHz
  *  band has a lot of existing interference. However, as some countries do not
- *  permit the use of the 5 GHz spectrum, the SDK will automatically try to
- *  determine the country in which the product is operating and enable or disable
- *  the 5 GHz option accordingly. The process of determining in which country the
- *  product is flying uses location information. This method can be used to disable
- *  this check, but must  be called before `registerAppWithDelegate` to take effect.
- *  If  disabled, only 2.4 GHz will be available as an option.
+ *  permit  the use of the 5 GHz spectrum. If country code check is disabled, only
+ *  2.4 GHz will be available  as an option.
+ *   - `appActivationManager` uses country information to  determine whether the
+ *  user needs to log into their DJI account to activate the application. If  the
+ *  country code check is disabled, the user will need to log into their DJI account
+ *  by default.
  *  
  *  @param disableCountryCodeCheck `YES` if the country code check is disabled.
  */

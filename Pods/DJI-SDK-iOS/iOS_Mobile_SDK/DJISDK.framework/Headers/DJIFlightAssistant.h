@@ -6,6 +6,7 @@
 //
 
 #import <DJISDK/DJIBaseProduct.h>
+#import <DJISDK/DJIVisionTypes.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,6 +44,26 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)flightAssistant:(DJIFlightAssistant *)assistant
        didUpdateVisionControlState:(DJIVisionControlState *)state;
+
+
+/**
+ *  Callback function that updates the FaceAware state. When starting a PalmLaunch,
+ *  the aircraft will  start FaceAware. If FaceAware activates successfully, the
+ *  motors will start spinning and the  aircraft will hover after releasing it.
+ *  
+ *  @param assistant Flight assistant that has the updated state.
+ *  @param state The FaceAware state.
+ */
+- (void)flightAssistant:(DJIFlightAssistant *)assistant didUpdateVisionFaceAwareState:(DJIVisionFaceAwareState)state;
+
+
+/**
+ *  Callback function that updates the palm control state.
+ *  
+ *  @param assistant Flight assistant that has the updated state.
+ *  @param state The palm control state.
+ */
+- (void)flightAssistant:(DJIFlightAssistant *)assistant didUpdateVisionPalmControlState:(DJIVisionPalmControlState)state;
 
 @end
 
@@ -171,6 +192,37 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion Completion block to receive the result.
  */
 - (void)getUpwardsAvoidanceEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables/disables advanced gesture control. When enabled, users can use
+ *  PalmLaunch, PalmLand, PalmControl  and Beckon. When enabled, the various modes
+ *  can be initiated by the user. In summary:
+ *   - Aircraft starts idle on users hand
+ *   - User double clicks the power button and  FaceAware becomes active
+ *   - Once a face is regonized, PalmLaunch will happen
+ *   -  When flying, the user can control the aircraft position by moving their palm
+ *   - If the  user waves one hand, the aircraft will fly up and backwards and start
+ *  following the user.
+ *   - If the user waves both hands, the aircraft will execute Bekon and return to
+ *  the user.
+ *   It is only supported by Spark.
+ *  
+ *  @param enabled `YES` to enable advanced gesture control.
+ *  @param completion The `completion block` with the returned execution result.
+ */
+- (void)setAdvancedGestureControlEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets if advanced gesture control is enabled. When enabled, users can use
+ *  PalmLaunch, PalmLand,  PalmControl and Beckon. It is only supported by Spark.
+ *  
+ *  @param enabled `YES` to enable advanced gesture control.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getAdvancedGestureControlEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
 
 @end
 

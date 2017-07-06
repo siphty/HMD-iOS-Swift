@@ -111,8 +111,6 @@ typedef NS_ENUM(NSInteger, DJITapFlyMissionState) {
 
 /**
  *  The encountered error if any. Otherwise, it is `nil`.
- *  
- *  @return The
  */
 @property (nonatomic, readonly, nullable) NSError *error;
 

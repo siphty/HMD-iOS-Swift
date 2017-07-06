@@ -28,6 +28,7 @@ EXTERN_KEY NSString *const DJIGimbalParamMode;
 EXTERN_KEY NSString *const DJIGimbalParamRotate;
 EXTERN_KEY NSString *const DJIGimbalParamStartCalibration;
 EXTERN_KEY NSString *const DJIGimbalParamFineTuneRollInDegrees;
+EXTERN_KEY NSString *const DJIGimbalParamFineTunePitchInDegrees;
 EXTERN_KEY NSString *const DJIGimbalParamStartBalanceTest;
 EXTERN_KEY NSString *const DJIGimbalParamMovementSettingsProfile;
 EXTERN_KEY NSString *const DJIGimbalParamRestoreFactorySettings;

@@ -108,7 +108,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  aircraft's  location, the GEO system will be enabled.  This setting can be
  *  changed when the aircraft is in the air, however it will not take effect until
  *  the aircraft lands. When the GEO system is disabled, the aircraft  reverts to
- *  the NFZ (No Fly Zone) system. This interface may be deprecated in the future.
+ *  the NFZ (No Fly Zone) system. This interface may be deprecated in the future. It
+ *  is only supported when `isIndividualUnlockZoneSupported` returns `NO`.
+ *  Otherwise, GEO system is always enabled when the current location supports it.
  *  
  *  @param enabled `YES` to enable GEO system.
  *  @param completion The execution block with the returned execution result.

@@ -15,15 +15,6 @@
 
 #define DJI_API_DEPRECATED(_msg_) __attribute__((deprecated(_msg_)))
 
-// These macros are to define SDKCache Keys in their .h and implement in their .m
-#define CACHE_KEY_DECLARE(_key_name_)                       extern NSString *const _key_name_
-
-#ifdef KEY_DOCUMENTATION_TEST
-#define CACHE_KEY_IMPLEMENT(_key_name_, _key_value_)        NSString *const _key_name_ = @"" #_key_name_
-#else
-#define CACHE_KEY_IMPLEMENT(_key_name_, _key_value_)        NSString *const _key_name_ = @"" #_key_value_
-#endif
-
 /**
  *  Completion block for asynchronous operations. This completion block is used for methods that return at an unknown future time.
  *

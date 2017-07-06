@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define EXTERN_KEY       extern __attribute__((visibility("default")))
 
+
+/**
+ *  Param to check product's and components' connection state. It can be used with
+ *  `DJIProductKey` or other component key classes (e.g. `DJICameraKey`).
+ */
 EXTERN_KEY NSString *const DJIParamConnection;
 
 

@@ -56,6 +56,18 @@
 
 
 /**
+ *  `YES` when the camera is performing a ShallowFocus capture.
+ */
+@property(nonatomic, readonly) BOOL isShootingShallowFocusPhoto;
+
+
+/**
+ *  `YES` when the camera is performing a Panorama capture.
+ */
+@property(nonatomic, readonly) BOOL isShootingPanoramaPhoto;
+
+
+/**
  *  `YES` if the camera is recording video.
  */
 @property(nonatomic, readonly) BOOL isRecording;
@@ -92,9 +104,14 @@
 
 
 /**
- *  The duration, in seconds, of the video currently being recorded by the camera in
- *  seconds.
+ *  The duration, in seconds, of the video currently being recorded by the camera.
  */
 @property(nonatomic, readonly) NSUInteger currentVideoRecordingTimeInSeconds;
+
+
+/**
+ *  The current completed photo count of the executing panorama shot.
+ */
+@property(nonatomic, readonly) NSUInteger currentPanoramaPhotoCount;
 
 @end

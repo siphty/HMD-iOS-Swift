@@ -165,6 +165,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
+ *  The gimbal pitch can be fine tuned with a custom offset. The range for the
+ *  custom offset  is [-2.0, 2.0] degrees. If the offset is negative, the gimbal
+ *  will be fine tuned the specified  number of degrees in the counterclockwise
+ *  direction. It is only supported by Spark.
+ *  
+ *  @param offset Fine-tuned offset, in degrees, to be tuned.
+ *  @param completion Completion block.
+ */
+- (void)fineTunePitchInDegrees:(float)offset withCompletion:(DJICompletionBlock)completion;
+
+
+/**
  *  Starts testing the balance of the gimbal payload. For gimbals that allow
  *  payloads to be  changed, a balance test should be performed to ensure the camera
  *  is mounted correctly.  The product should be stationary (not flying, or being

@@ -140,7 +140,28 @@ typedef NS_ENUM (NSUInteger, DJICameraShootPhotoMode){
      *  how many photos have been shot. Only supported by X5S.
      */
     DJICameraShootPhotoModeRAWBurst,
- 
+    
+
+    /**
+     *  Sets the camera to take a series of photos while the aircraft moves up and down
+     *  automatically. The image's depth  of field can be computed with a third-party
+     *  library to produce a photo with the bokeh effect. Note:
+     *   1. It is only  suitable for shooting still scenes.
+     *   2. The aircraft will ascend about 20cm before shooting. Ensure that there is
+     *  no obstacle about the aircraft.
+     *   3. The suitable range of shooting is within 30m.
+     *   It is only supported by Spark.
+     */
+    DJICameraShootPhotoModeShallowFocus,
+    
+
+    /**
+     *  In panorama mode, the aircraft takes a series of photos with different gimbal
+     *  and aircraft heading positions.  The photos can be stitched with a third-party
+     *  library. It is only supported by Spark.
+     */
+    DJICameraShootPhotoModePanorama,
+    
 
     /**
      *  The shoot photo mode is unknown.
@@ -815,6 +836,34 @@ typedef struct {
 } DJICameraPhotoTimeLapseSettings;
 
 /*********************************************************************************/
+#pragma mark DJICameraPhotoPanoramaMode
+/*********************************************************************************/
+
+/**
+ *  Panorama photo modes.
+ */
+typedef NS_ENUM(NSUInteger, DJICameraPhotoPanoramaMode) {
+
+    /**
+     *  Camera will shoot 3 rows of 3 photos. Each photo in a row will be taken with a
+     *  different aircraft heading. Each row of photos is taken with a different gimbal
+     *  pitch.
+     */
+    DJICameraPhotoPanoramaMode3x3,
+
+    /**
+     *  Camera will shoot 3 photos with the same aircraft heading and different gimbal
+     *  pitch.
+     */
+    DJICameraPhotoPanoramaMode3x1,
+
+    /**
+     *  Unknown.
+     */
+    DJICameraPhotoPanoramaModeUnknown = 0xFF,
+};
+
+/*********************************************************************************/
 #pragma mark - Camera advanced settings
 /*********************************************************************************/
 
@@ -911,6 +960,12 @@ typedef NS_ENUM (NSUInteger, DJICameraShutterSpeed) {
      *  Camera's shutter speed 1/800 s.
      */
     DJICameraShutterSpeed1_800,
+    
+
+    /**
+     *  Camera's shutter speed 1/750 s.
+     */
+    DJICameraShutterSpeed1_750,
  
 
     /**
@@ -1019,6 +1074,12 @@ typedef NS_ENUM (NSUInteger, DJICameraShutterSpeed) {
      *  Camera's shutter speed 1/50 s.
      */
     DJICameraShutterSpeed1_50,
+    
+
+    /**
+     *  Camera's shutter speed 1/45 s.
+     */
+    DJICameraShutterSpeed1_45,
  
 
     /**
@@ -1073,6 +1134,12 @@ typedef NS_ENUM (NSUInteger, DJICameraShutterSpeed) {
      *  Camera's shutter speed 1/6.25 s.
      */
     DJICameraShutterSpeed1_6Dot25,
+    
+
+    /**
+     *  Camera's shutter speed 1/6 s.
+     */
+    DJICameraShutterSpeed1_6,
  
 
     /**
@@ -1097,6 +1164,12 @@ typedef NS_ENUM (NSUInteger, DJICameraShutterSpeed) {
      *  Camera's shutter speed 1/2.5 s.
      */
     DJICameraShutterSpeed1_2Dot5,
+    
+
+    /**
+     *  Camera's shutter speed 0.3 s.
+     */
+    DJICameraShutterSpeed0Dot3,
  
 
     /**
@@ -1115,121 +1188,151 @@ typedef NS_ENUM (NSUInteger, DJICameraShutterSpeed) {
      *  Camera's shutter speed 1/1.25 s.
      */
     DJICameraShutterSpeed1_1Dot25,
+    
+
+    /**
+     *  Camera's shutter speed 0.7 s.
+     */
+    DJICameraShutterSpeed0Dot7,
  
 
     /**
-     *  Camera's shutter speed 1/1.0 s.
+     *  Camera's shutter speed 1.0 s.
      */
     DJICameraShutterSpeed1,
  
 
     /**
-     *  Camera's shutter speed 1/1.3 s.
+     *  Camera's shutter speed 1.3 s.
      */
     DJICameraShutterSpeed1Dot3,
+    
+
+    /**
+     *  Camera's shutter speed 1.4 s.
+     */
+    DJICameraShutterSpeed1Dot4,
  
 
     /**
-     *  Camera's shutter speed 1/1.6 s.
+     *  Camera's shutter speed 1.6 s.
      */
     DJICameraShutterSpeed1Dot6,
  
 
     /**
-     *  Camera's shutter speed 1/2.0 s.
+     *  Camera's shutter speed 2.0 s.
      */
     DJICameraShutterSpeed2,
  
 
     /**
-     *  Camera's shutter speed 1/2.5 s.
+     *  Camera's shutter speed 2.5 s.
      */
     DJICameraShutterSpeed2Dot5,
  
 
     /**
-     *  Camera's shutter speed 1/3.0 s.
+     *  Camera's shutter speed 3.0 s.
      */
     DJICameraShutterSpeed3,
  
 
     /**
-     *  Camera's shutter speed 1/3.2 s.
+     *  Camera's shutter speed 3.2 s.
      */
     DJICameraShutterSpeed3Dot2,
  
 
     /**
-     *  Camera's shutter speed 1/4.0 s.
+     *  Camera's shutter speed 4.0 s.
      */
     DJICameraShutterSpeed4,
  
 
     /**
-     *  Camera's shutter speed 1/5.0 s.
+     *  Camera's shutter speed 5.0 s.
      */
     DJICameraShutterSpeed5,
  
 
     /**
-     *  Camera's shutter speed 1/6.0 s.
+     *  Camera's shutter speed 6.0 s.
      */
     DJICameraShutterSpeed6,
  
 
     /**
-     *  Camera's shutter speed 1/7.0 s.
+     *  Camera's shutter speed 7.0 s.
      */
     DJICameraShutterSpeed7,
  
 
     /**
-     *  Camera's shutter speed 1/8.0 s.
+     *  Camera's shutter speed 8.0 s.
      */
     DJICameraShutterSpeed8,
  
 
     /**
-     *  Camera's shutter speed 1/9.0 s.
+     *  Camera's shutter speed 9.0 s.
      */
     DJICameraShutterSpeed9,
  
 
     /**
-     *  Camera's shutter speed 1/10.0 s.
+     *  Camera's shutter speed 10.0 s.
      */
     DJICameraShutterSpeed10,
+    
+
+    /**
+     *  Camera's shutter speed 11.0 s.
+     */
+    DJICameraShutterSpeed11,
  
 
     /**
-     *  Camera's shutter speed 1/13.0 s.
+     *  Camera's shutter speed 13.0 s.
      */
     DJICameraShutterSpeed13,
  
 
     /**
-     *  Camera's shutter speed 1/15.0 s.
+     *  Camera's shutter speed 15.0 s.
      */
     DJICameraShutterSpeed15,
+    
+
+	/**
+	 *  Camera's shutter speed 16.0 s.
+	 */
+    DJICameraShutterSpeed16,
  
 
     /**
-     *  Camera's shutter speed 1/20.0 s.
+     *  Camera's shutter speed 20.0 s.
      */
     DJICameraShutterSpeed20,
+    
+
+    /**
+     *  Camera's shutter speed 23.0 s.
+     */
+    DJICameraShutterSpeed23,
  
 
     /**
-     *  Camera's shutter speed 1/25.0 s.
+     *  Camera's shutter speed 25.0 s.
      */
     DJICameraShutterSpeed25,
  
 
     /**
-     *  Camera's shutter speed 1/30.0 s.
+     *  Camera's shutter speed 30.0 s.
      */
     DJICameraShutterSpeed30,
-
+	
 
     /**
      *  Camera's shutter speed unknown.
@@ -1368,6 +1471,12 @@ typedef NS_ENUM (NSUInteger, DJICameraAperture) {
      *  The Aperture value is f/2.5.
      */
     DJICameraApertureF2Dot5,
+    
+    //Doc key: DJICamera_DJICameraAperture_F2p6
+    /**
+     *  The Aperture value is f/2.6.
+     */
+    DJICameraApertureF2Dot6,
  
 
     /**
@@ -1452,6 +1561,12 @@ typedef NS_ENUM (NSUInteger, DJICameraAperture) {
      *  The Aperture value is f/9.
      */
     DJICameraApertureF9,
+    
+
+    /**
+     *  The Aperture value is f/9.
+     */
+    DJICameraApertureF9Dot5,
  
 
     /**
@@ -1496,6 +1611,10 @@ typedef NS_ENUM (NSUInteger, DJICameraAperture) {
     DJICameraApertureF18,
  
 
+    /**
+     *  The Aperture value is f/20.
+     */
+    DJICameraApertureF19,
     /**
      *  The Aperture value is f/20.
      */

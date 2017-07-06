@@ -457,6 +457,11 @@ typedef NS_ENUM (NSInteger, DJISDKCameraError){
      *  Camera has no SSD.
      */
     DJISDKCameraErrorSSDError = -3019L,
+
+    /**
+     *  Media file is reset. The operation cannot be executed.
+     */
+    DJISDKCameraErrorMediaFileReset = -3020L,
 };
 
 /*********************************************************************************/

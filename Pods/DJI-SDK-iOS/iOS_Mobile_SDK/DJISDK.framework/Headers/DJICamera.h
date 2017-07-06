@@ -85,9 +85,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  available on Osmo with firmware version v1.5.2.0 or above.
  *  
  *  @param camera Camera that generates the time-lapse preview image.
- *  @param previewImage The new generated preview image.
+ *  @param preview The new generated preview image.
  */
-- (void)camera:(DJICamera *_Nonnull)camera didGenerateTimeLapsePreview:(UIImage *_Nonnull)previewImage;
+- (void)camera:(DJICamera *_Nonnull)camera didGenerateTimeLapsePreview:(UIImage *_Nonnull)preview;
 
 
 /**
@@ -664,6 +664,26 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param completion Completion block to receive the result.
  */
 - (void)getPhotoTimeLapseSettingsWithCompletion:(void (^_Nonnull)(DJICameraPhotoTimeLapseSettings settings, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the panorama mode. It is used when `setShootPhotoMode:withCompletion` is
+ *  called with  `DJICameraShootPhotoModePanorama`.  It is only  supported by Spark.
+ *  
+ *  @param mode The panorama mode to set.
+ *  @param completion `completion block` to receive the result.
+ */
+- (void)setPhotoPanoramaMode:(DJICameraPhotoPanoramaMode)mode withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the panorama mode. It is only supported by Spark.
+ *  
+ *  @param mode The current panorama mode.
+ *  @param error Error retrieving the value.
+ *  @param completion `completion block` to receive the result.
+ */
+- (void)getPhotoPanoramaModeWithCompletion:(void (^_Nonnull)(DJICameraPhotoPanoramaMode mode, NSError *_Nullable error))completion;
 
 /*********************************************************************************/
 #pragma mark Exposure Settings
@@ -2253,7 +2273,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the spot metering target point which then changes the
- *  camera:didUpdateTemperatureData: delegate call to  return. This method requires
+ *  `camera:didUpdateTemperatureData` delegate call to  return. This method requires
  *  a relative point that is proportional  to the dimension of the camera video
  *  dimension, the x, and y values must all be between 0 and 1.0. Supported only  by
  *  Zenmuse XT containing Advanced Radiometry capabilities.

@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger, DJIGoToActionError) {
  *  
  *  @return An instance of `DJIGoToAction`.
  */
-- (instancetype _Nullable)initWithCoordinate:(CLLocationCoordinate2D)coordinate altitude:(float)altitude;
+- (instancetype _Nullable)initWithCoordinate:(CLLocationCoordinate2D)coordinate altitude:(CLLocationDistance)altitude;
 
 
 

@@ -51,19 +51,13 @@ typedef NS_ENUM (NSUInteger, DJIMediaType){
 
 
     /**
-     *  Video of M4V format.
-     */
-    DJIMediaTypeM4V,
-
-
-    /**
      *  Image of DNG format.
      */
     DJIMediaTypeRAWDNG,
 
 
     /**
-     *  PANORAMA file type.
+     *  Panorama file type.
      */
     DJIMediaTypePanorama,
 
@@ -71,7 +65,13 @@ typedef NS_ENUM (NSUInteger, DJIMediaType){
     /**
      *  Tiff file type.
      */
-    DJIMediaTypeTIFF
+    DJIMediaTypeTIFF,
+
+
+    /**
+     *  ShallowFocus file type. ShallowFocus files have a shallow depth of field.
+     */
+    DJIMediaTypeShallowFocus,
 };
 
 /*********************************************************************************/
@@ -148,17 +148,16 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 
 /**
- *  Get the file index used in the camera.
+ *  `YES` if the media file is still valid. If a media file is from the file list of
+ *  the  media manager, the file will become invalid after the file list is reset.
  */
-@property(nonatomic, readonly) NSUInteger ID;
+@property(nonatomic, readonly) BOOL valid; 
 
 
 /**
- *  ID only used for sub-media files. For a sub-media, it will the same ID as its
- *  parent media.  Each sub-media file is distinguished by the sub-ID. For the other
- *  media file, it is always 0.
+ *  Get the file index used in the camera.
  */
-@property(nonatomic, readonly) NSUInteger subID;
+@property(nonatomic, readonly) NSUInteger index;
 
 
 /**
@@ -194,13 +193,6 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 
 /**
- *  Returns the thumbnail for this media. If this property returns nil, call
- *  `fetchThumbnailWithCompletion`.
- */
-@property(nonatomic, nullable, readonly) UIImage *thumbnail;
-
-
-/**
  *  The orientation of the camera when the video file was first recorded. If the
  *  camera orientation changes during a  video capture, this will report the initial
  *  orientation. Will be `DJICameraOrientationLandscape` if  the media file is a
@@ -225,14 +217,26 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
 
 
 /**
+ *  Returns the thumbnail for this media. If this property returns nil, call
+ *  `fetchThumbnailWithCompletion`.
+ */
+@property(nonatomic, nullable, readonly) UIImage *thumbnail;
+
+
+/**
+ *  Returns the preview image for this media. If this property returns `nil`,  call
+ *  `fetchPreviewWithCompletion`.
+ */
+@property(nonatomic, nullable, readonly) UIImage *preview;
+
+
+/**
  *  Custom information can be stored in media file's XMP meta data using
- *  `setMediaFileCustomInformation:withCompletion`. This property contains the
+ *  `setMediaFileCustomInformation:withCompletion` . This property contains the
  *  information that was written to this media file. If this property returns `nil`,
  *  use `fetchCustomInformationWithCompletion` to populate it. Only supported  by
  *  Phantom 4 Pro, Phantom 4 Advanced and Inspire 2 with firmware versions from
  *  after  May 23 2017.
- *  
- *  @return An int value.
  */
 @property(nonatomic, nullable, readonly) NSString *customInformation;
 
@@ -248,50 +252,34 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
  *   This method will start to download the media thumbnail in the SD card. The
  *  content  can be videos or images.
  *  
- *  @param completion Completion block.
+ *  @param completion The `completion block` with the returned execution result.
  */
 - (void)fetchThumbnailWithCompletion:(DJICompletionBlock)completion;
 
 
 /**
- *  Fetches this media's data from the SD card. The difference between fetching the
- *  media data and fetching the  thumbnail is that fetching the thumbnail will
- *  return a low-resolution image of the actual picture, while fetching  the media
- *  data will return all data for a video or image.
- *  
- *  @param data The media's data.
- *  @param stop The BOOL value.
- *  @param error Error retrieving the value.
- *  @param completion Completion block to receive the result.
+ *  Free memory by setting cached thumbnail to `nil`. This does not need to be
+ *  called before `fetchThumbnailWithCompletion` and is provided  for convenience.
  */
-- (void)fetchMediaDataWithCompletion:(void (^_Nonnull)(NSData *_Nullable data, BOOL *_Nullable stop, NSError *_Nullable error))completion;
+- (void)resetThumbnail;
 
 
 /**
  *  Fetch media's preview image. The preview image is a lower resolution (960 x 540)
- *  version of a still picture or the first frame of a video. The `DJIMediaType` of
- *  this media object should be `DJIMediaTypeJPEG`. It is not available if the media
- *  type is `DJIMediaTypePanorama`.
+ *  version of  a photo. The `DJIMediaType` of this media object should be
+ *  `DJIMediaTypeJPEG` or  `DJIMediaTypeTIFF`. The preview will be stored in
+ *  `preview`.
  *  
- *  @param image The UIImage object.
- *  @param error Error retrieving the value.
- *  @param completion Completion block to receive the result.
+ *  @param completion The `completion block` with the returned execution result.
  */
-- (void)fetchPreviewImageWithCompletion:(void (^_Nonnull)(UIImage *image, NSError *_Nullable error))completion;
+- (void)fetchPreviewWithCompletion:(DJICompletionBlock)completion;
 
 
 /**
- *  Fetch sub media files. It is available only when the media type is
- *  `DJIMediaTypePanorama`.  User should use this method to fetch the set of photos
- *  shot in a panorama mission.
- *   Precondition:
- *   The camera  mode should be set as `DJICameraModeMediaDownload` mode.
- *  
- *  @param mediaList The array of the DJIMedia objects.
- *  @param error Error retrieving the value.
- *  @param completion Completion block to receive the result.
+ *  Free memory by setting cached preview image to `nil`. This does not need to be
+ *  called before `fetchPreviewWithCompletion` and is provided  for convenience.
  */
-- (void)fetchSubMediaFileListWithCompletion:(void (^_Nonnull)(NSArray<DJIMediaFile *> *_Nullable mediaList, NSError *_Nullable error))completion;
+- (void)resetPreview;
 
 
 /**
@@ -300,9 +288,50 @@ typedef NS_ENUM(uint8_t, DJIMediaVideoPlaybackStatus) {
  *  in  `customInformation`. Only supported by Phantom 4 Pro, Phantom 4  Advanced
  *  and Inspire 2 with firmware released after May 23 2017.
  *  
- *  @param completion Completion block to receive the result.
+ *  @param completion The `completion block` with the returned execution result.
  */
 - (void)fetchCustomInformationWithCompletion:(DJICompletionBlock)completion;
+
+
+
+/**
+ *  Fetches this media file's full resolution data from the SD card. The  difference
+ *  between fetching the media data and fetching the thumbnail is  that fetching the
+ *  thumbnail will return a low-resolution image of the actual  picture, while
+ *  fetching the media data will return all data for a video or  image. If last
+ *  download action is aborted, it will continue to download the data  from where
+ *  the file download has been aborted.
+ *  
+ *  @param offset Offset in bytes. Pass 0 to fetch all data from the beginning. Pass the  already fetched bytes to continue the previous download.
+ *  @param queue Queue to call the update block on.
+ *  @param data A chunk of binary data of the file.
+ *  @param isComplete `YES` if the last byte of the file is returned and thus fetching is complete.
+ *  @param error Error retrieving the value.
+ *  @param updateBlock Block to receive file data. It will be called multiple times and each time  will return the data received since the last call.
+ */
+- (void)fetchFileDataWithOffset:(NSUInteger)offset
+                    updateQueue:(dispatch_queue_t)queue
+                    updateBlock:(void (^_Nonnull)(NSData *_Nullable data, BOOL isComplete, NSError *_Nullable error))updateBlock;
+
+
+/**
+ *  Stops a currently executing call of
+ *  `fetchFileDataWithOffset:updateQueue:updateBlock`.
+ *  
+ *  @param completion The `completion block` with the returned execution result.
+ */
+- (void)stopFetchingFileDataWithCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Fetch the file data of the sub media files. It is available only when
+ *  `mediaType` is  `DJIMediaTypePanorama` or  `DJIMediaTypeShallowFocus`.
+ *  
+ *  @param dataList Sub media files' data. They are files are in JPEG format.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)fetchSubFileDataListWithCompletion:(void (^_Nonnull)(NSArray<NSData *> *_Nullable dataList, NSError *_Nullable error))completion;
 
 @end
 

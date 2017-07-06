@@ -130,6 +130,12 @@ extern NSString *const DJIAircraftModelNamePhantom4Advanced;
 
 
 /**
+ *  The aircraft's model name is Spark.
+ */
+extern NSString *const DJIAircraftModelNameSpark;
+
+
+/**
  *  Aircraft product class, which includes basic product information and access to
  *  all components (such as flight controller, battery etc.). This object is
  *  accessed  from `product` in `DJISDKManager`. Aircraft components are defined in

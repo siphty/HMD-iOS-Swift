@@ -104,6 +104,11 @@ typedef NS_ENUM(NSInteger, DJIActiveTrackMissionState) {
      *  the previously found target.
      */
     DJIActiveTrackMissionStateFindingTrackedTarget,
+
+	/**
+	 *  The operator is executing a QuickShot ActiveTrack mission.
+	 */
+	DJIActiveTrackMissionStatePerformingQuickShot,
 };
 
 

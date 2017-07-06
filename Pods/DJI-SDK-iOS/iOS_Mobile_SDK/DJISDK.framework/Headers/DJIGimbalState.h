@@ -37,6 +37,16 @@
 
 
 /**
+ *  Returns the gimbal's pitch fine-tune value. The range for the fine-tuned value
+ *  is [-10, 10] degrees.  If the fine-tune value is negative, the gimbal will be
+ *  fine- tuned to the specified number of degrees  in the downward direction. It is
+ *  only supported by Spark.
+ */
+@property(nonatomic, readonly) float pitchFineTuneInDegrees;
+
+
+
+/**
  *  Returns the gimbal's current work mode.
  */
 @property(nonatomic, readonly) DJIGimbalMode mode;

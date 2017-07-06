@@ -101,6 +101,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJICameraCapabilities.h>
 #import <DJISDK/DJIMediaManager.h>
 #import <DJISDK/DJIMediaFile.h>
+#import <DJISDK/DJIFetchMediaTaskScheduler.h>
 #import <DJISDK/DJIPlaybackManager.h>
 //-----------------------------------------------------------------
 #pragma mark Gimbal

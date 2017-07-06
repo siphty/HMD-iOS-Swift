@@ -108,4 +108,11 @@ extern NSString *const DJICameraDisplayNameX5S;
  */
 extern NSString *const DJICameraDisplayNamePhantom4AdvancedCamera;
 
+
+/**
+ *  The display name for Spark camera.
+ */
+extern NSString *const DJICameraDisplayNameSparkCamera;
+
+
 #endif /* DJICameraDisplayNames_h */

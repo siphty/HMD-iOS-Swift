@@ -128,11 +128,55 @@ typedef NS_ENUM (NSInteger, DJIActiveTrackMode) {
     DJIActiveTrackModeSpotlightPro,
 
 
+	/**
+	 *  In QuickShot mode, the aircraft will fly in one of four preset paths (see
+	 *  `DJIActiveTrackQuickShotMode`)  while tracking the object recording a video.
+	 *  When a QuickShot mission ends, a 10-second video will be  generated. It is only
+	 *  supported by Spark.
+	 */
+	DJIActiveTrackModeQuickShot,
+	
+
     /**
      *  The active track mode is unknown.
      */
     DJIActiveTrackModeUnknown = 0xFF
 };
+
+
+/**
+ *  QuickShot modes, which define different preset path for a QuickShot mission.
+ */
+typedef NS_ENUM(NSUInteger, DJIActiveTrackQuickShotMode) {
+
+	/**
+	 *  Aircraft will circle around the object it is tracking.
+	 */
+	DJIActiveTrackQuickShotModeCircle,
+
+	/**
+	 *  Aircraft will fly backward and upward with camera locked on the objec it is
+	 *  tracking.
+	 */
+	DJIActiveTrackQuickShotModeDronie,
+
+	/**
+	 *  Aircraft will fly upward, spiraling around the object it is tracking.
+	 */
+	DJIActiveTrackQuickShotModeHelix,
+
+	/**
+	 *  The aircraft will ascend with the camera pointing downward on the object it is
+	 *  tracking.
+	 */
+	DJIActiveTrackQuickShotModeRocket,
+
+	/**
+	 *  Unknown.
+	 */
+	DJIActiveTrackQuickShotModeUnknown = 0xFF,
+};
+
 
 
 /**
@@ -231,6 +275,13 @@ typedef NS_ENUM (NSInteger, DJIActiveTrackCannotConfirmReason) {
  */
 @property (nonatomic, readonly) DJIActiveTrackCannotConfirmReason cannotConfirmReason;
 
+
+/**
+ *  The progress of the executing QuickShot mission. Only applicable when  `mode` is
+ *  `DJIActiveTrackModeQuickShot`.  For other modes, it is always 0.
+ */
+@property (nonatomic, readonly) NSUInteger progress;
+
 @end
 
 
@@ -255,6 +306,14 @@ typedef NS_ENUM (NSInteger, DJIActiveTrackCannotConfirmReason) {
  *  ActiveTrack Mission mode. Defaults to `DJIActiveTrackModeTrace`.
  */
 @property (nonatomic, readwrite) DJIActiveTrackMode mode;
+
+
+/**
+ *  The QuickShot mode determines the preset flight path. It is only used when
+ *  `mode`  is `DJIActiveTrackModeQuickShot`.  Defaults to
+ *  `DJIActiveTrackQuickShotModeUnknown`.  It is only supported by Spark.
+ */
+@property (nonatomic, readwrite) DJIActiveTrackQuickShotMode quickShotMode;
 
 @end
 

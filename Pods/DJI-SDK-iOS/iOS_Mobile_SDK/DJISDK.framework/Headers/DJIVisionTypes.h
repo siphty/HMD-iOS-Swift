@@ -135,6 +135,94 @@ typedef NS_ENUM (NSInteger, DJIVisionSystemWarning){
 
 
 /**
+ *  States of PalmControl.
+ */
+typedef NS_ENUM(NSUInteger, DJIVisionPalmControlState) {
+
+	/**
+	 *  The aircraft is initializing for PalmControl.
+	 */
+	DJIVisionPalmControlStateInitializing,
+
+	/**
+	 *  The aircraft is recognizing the palm.
+	 */
+	DJIVisionPalmControlStateRecognizingPalm,
+
+	/**
+	 *  The aircraft is moving into position for the PalmControl Follow command. In this
+	 *  state, the  aircraft is ascending and flying backward to a position that is 3m
+	 *  horizontally away from  the user and 2.3m above the ground. Once it has reached
+	 *  this position, the state will move  to `DJIVisionPalmControlStateFollowing` and
+	 *  the aircraft will then follow the user. The  Follow command can be initiated by
+	 *  raising one arm and quickly waving your hand at the camera.
+	 */
+	DJIVisionPalmControlStateStartingFollow,
+    
+
+	/**
+	 *  The aircraft is currently following the user. To reach this state, the user
+	 *  first raises  one arm and quickly waves their hand at the aircraft's camera. The
+	 *  aircraft will then move  into position (3m from the user and 2.3m above the
+	 *  ground), and reach this state.
+	 */
+	DJIVisionPalmControlStateFollowing,
+
+	/**
+	 *  The aircraft's position is being adjusted by the moving palm.
+	 */
+	DJIVisionPalmControlStateAdjustingPosition,
+
+	/**
+	 *  PalmControl is stopped. PalmControl can be stopped by moving the sticks on the
+	 *  physical remote  controller or sending commands through
+	 *  `DJIMobileRemoteController` when the physical remote  controller is absent.
+	 */
+	DJIVisionPalmControlStatePalmControlStopped,
+
+	/**
+	 *  Unknown.
+	 */
+	DJIVisionPalmControlStateUnknown = 0xFF
+};
+
+
+/**
+ *  FaceAware states. FaceAware is a step of PalmLaunch. Tapping the battery battery
+ *  power  button twice, FaceAware will start to work automatically. If FaceAware is
+ *  activated successfully,  the aircraft will takeoff from the palm.
+ */
+typedef NS_ENUM(NSUInteger, DJIVisionFaceAwareState) {
+
+	/**
+	 *  The aircraft is not executing FaceAware.
+	 */
+	DJIVisionFaceAwareStateIdle,
+
+	/**
+	 *  The aircraft is in the process of detecting a human face in front of the camera.
+	 */
+	DJIVisionFaceAwareStateActivating,
+
+	/**
+	 *  FaceAware has been activated. The aircraft will beep twice and the motors will
+	 *  start spinning.
+	 */
+	DJIVisionFaceAwareStateActivated,
+
+	/**
+	 *  FaceAware has failed to activate because no face was detected.
+	 */
+	DJIVisionFaceAwareStateFailedNoFaceDetected,
+
+	/**
+	 *  Unknown.
+	 */
+	DJIVisionFaceAwareStateUnknown = 0xFF,
+};
+
+
+/**
  *  The vision system can see in front of the aircraft with a 60 degree horizontal
  *  field of view (FOV) and 55 degree  vertical FOV. The horizontal FOV is split
  *  into four equal sectors, and this class gives the distance and warning  level
@@ -299,5 +387,6 @@ typedef NS_ENUM (NSInteger, DJIVisionLandingProtectionState){
 @property (nonatomic, readonly) DJIVisionLandingProtectionState landingProtectionState;
 
 @end
+
 
 NS_ASSUME_NONNULL_END

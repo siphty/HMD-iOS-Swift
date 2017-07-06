@@ -1117,7 +1117,7 @@ typedef struct
 
 
 /**
- *  This class is for master/slave connection.
+ *  Remote controller credentials.
  */
 @interface DJIRCCredentials : NSObject
 

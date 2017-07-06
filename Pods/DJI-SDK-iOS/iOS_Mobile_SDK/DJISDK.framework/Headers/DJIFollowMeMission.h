@@ -37,7 +37,8 @@ typedef NS_ENUM (uint8_t, DJIFollowMeHeading){
  *  is programmed to track and maintain a constant distant relative to some object,
  *  such as a person or a moving vehicle. You can use it to make the aircraft follow
  *  a GPS device, such as a remote controller with a GPS signal or a mobile device.
- *  It is not supported by Mavic Pro when using WiFi connection.
+ *  It is not supported by Mavic Pro when using WiFi connection. It is not supported
+ *  by Spark.
  */
 @interface DJIFollowMeMission : DJIMission
 

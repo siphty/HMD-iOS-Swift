@@ -11,47 +11,53 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  The video feed physical source.
+ *  The physical source of a video feed.
  */
 typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
 
     /**
-     *  Main Camera.
+     *  The video feed is from the main camera. It is the physical source used by most
+     *  of DJI products.
      */
     DJIVideoFeedPhysicalSourceMainCamera,
     
 
     /**
-     *  FPV Camera.
+     *  The video feed is from the FPV camera on Inspire 2 or M200 series.
      */
     DJIVideoFeedPhysicalSourceFPVCamera,
 
 
     /**
-     *  Lightbridge video channel.
+     *  The video feed is from one of the LB ports (AV or HDMI) while EXT Port is
+     *  enabled.  It is only used for Lightbridge 2 or aircrafts with Lightbridge 2
+     *  (e.g. M600).
      */
     DJIVideoFeedPhysicalSourceLB,
 
 
     /**
-     *  EXT video channel.
+     *  The video feed is from EXT port while EXT port is enabled. It is only used for
+     *  Lightbridge 2 or aircrafts with Lightbridge 2 (e.g. M600).
      */
     DJIVideoFeedPhysicalSourceEXT,
 
 
     /**
-     *  HDMI video channel.
+     *  The video feed is from HDMI port while EXT port is disabled. It is only used for
+     *  Lightbridge 2 or aircrafts with Lightbridge 2 (e.g. M600).
      */
     DJIVideoFeedPhysicalSourceHDMI,
 
 
     /**
-     *  AV video channel.
+     *  The video feed is from AV port while EXT port is disabled. It is only used for
+     *  Lightbridge 2 or aircrafts with Lightbridge 2 (e.g. M600).
      */
     DJIVideoFeedPhysicalSourceAV,
 
     /**
-     *  Unknown video channel.
+     *  Unknown video physical source.
      */
     DJIVideoFeedPhysicalSourceUnknown = 0xFF,
 };
@@ -87,7 +93,7 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
  *  Called when the video feed receives new video data.
  *  
  *  @param videoFeed A `DJIVideoFeed` object.
- *  @param videoData An NSData object of video data.
+ *  @param videoData New video data.
  */
 - (void)videoFeed:(nonnull DJIVideoFeed *)videoFeed didUpdateVideoData:(nonnull NSData *)videoData;
 
@@ -95,30 +101,30 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
 
 
 /**
- *  DJIVideoFeed.
+ *  Video feed. Use it to receive video data from a physical source.
  */
 @interface DJIVideoFeed : NSObject
 
 
 /**
- *  The video feed physical source.
+ *  The physical source of the video feed.
  */
 @property (nonatomic, assign, readonly) DJIVideoFeedPhysicalSource physicalSource;
 
 
 /**
- *  Add Listener for video feed.
+ *  Add listener to receive new video data.
  *  
- *  @param videoFeedListener The protocol of `DJIVideoFeedListener`.
- *  @param queue A dispatch_queue_t.
+ *  @param videoFeedListener Listener to receive video data.
+ *  @param queue The queue that `videoFeed:didUpdateVideoData` is called in.
  */
 - (void)addListener:(id <DJIVideoFeedListener>)videoFeedListener withQueue:(nullable dispatch_queue_t)queue;
 
 
 /**
- *  Remove Listener for video feed.
+ *  Remove listener to stop receiving new video data.
  *  
- *  @param videoFeedListener The protocol of `DJIVideoFeedListener`.
+ *  @param videoFeedListener Listener to remove.
  */
 - (void)removeListener:(id <DJIVideoFeedListener>)videoFeedListener;
 
@@ -132,35 +138,43 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
 
 
 /**
- *  Class that handles live video streams from product to mobile device.
+ *  Class that manage live video feed from DJI products to the mobile device.
  */
 @interface DJIVideoFeeder : NSObject
 
 
 /**
  *  The primary video feed.
+ *   The possilbe physical sources for the primary video feed include:
+ *   - `DJIVideoFeedPhysicalSourceMainCamera`
+ *   -  `DJIVideoFeedPhysicalSourceLB`
+ *   -  `DJIVideoFeedPhysicalSourceHDMI`
  */
 @property (nonatomic, strong, nonnull) DJIVideoFeed *primaryVideoFeed;
 
 
 /**
  *  The secondary video feed.
+ *   The possilbe physical sources for the secondary video feed include:
+ *   - `DJIVideoFeedPhysicalSourceFPVCamera`
+ *   -  `DJIVideoFeedPhysicalSourceEXT`
+ *   -  `DJIVideoFeedPhysicalSourceAV`
  */
 @property (nonatomic, strong, nonnull) DJIVideoFeed *secondaryVideoFeed;
 
 
 /**
- *  Add Video Feed Source Listener.
+ *  Add listener to receive the physical source changes.
  *  
- *  @param sourceListener The protocol of `DJIVideoFeedSourceListener`.
+ *  @param sourceListener Listener to add.
  */
 - (void)addVideoFeedSourceListener:(id <DJIVideoFeedSourceListener>)sourceListener;
 
 
 /**
- *  Remove Video Feed Source Listener.
+ *  Remove listener to stop receiving the physical source changes.
  *  
- *  @param sourceListener The protocol of `DJIVideoFeedSourceListener`.
+ *  @param sourceListener Listener to remove.
  */
 - (void)removeVideoFeedSourceListener:(id <DJIVideoFeedSourceListener>)sourceListener;
 

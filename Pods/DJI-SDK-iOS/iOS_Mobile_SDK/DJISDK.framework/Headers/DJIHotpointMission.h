@@ -21,8 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  will  repeatedly fly circles of a  constant radius around a specified point
  *  called a Hot Point. The user can control  the aircraft to fly around the
  *  Hotpoint with a specific radius and altitude. During  execution, the user can
- *  also use the physical remote controller to modify its radius  and speed. It is
- *  not supported by Mavic Pro when using a WiFi connection.
+ *  also use the physical remote controller to modify its radius  and speed.
+ *  It is not supported by Mavic Pro when using WiFi connection. It is not supported
+ *  by Spark.
  */
 @interface DJIHotpointMission : DJIMission
 
