@@ -435,8 +435,8 @@
 		A24BBF2E1E56840300EBF428 /* HMD */ = {
 			isa = PBXGroup;
 			children = (
-				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
 				A2DA57D91EE25DBA0088E1A9 /* HMD-Bridging-Header.h */,
+				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
 				A2A1AA4B1EBA1C2A006970E1 /* Info.plist */,
 				A2A1AA591EBA1C39006970E1 /* Assets.xcassets */,
 				A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */,

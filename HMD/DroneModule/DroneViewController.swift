@@ -26,35 +26,14 @@ class DroneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let connectedKey = DJIProductKey(param: DJIParamConnection) else {
-            NSLog("Error creating the connectedKey")
-            return;
-        }
+        showPhantomShadow()
+        productFirmwarePackageVersion.isHidden = true
         
+        connectProduct()
         bridgeModeLabel.isHidden = !appDelegate.djiProductCommunicationManager.enableBridgeMode
         if !bridgeModeLabel.isHidden {
             bridgeModeLabel.text = "Bridge: \(appDelegate.djiProductCommunicationManager.bridgeAppIP)"
         }
-        productFirmwarePackageVersion.isHidden = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            DJISDKManager.keyManager()?.startListeningForChanges(on: connectedKey,
-                                                                 withListener: self,
-                                                                 andUpdate: { (oldValue: DJIKeyedValue?, newValue : DJIKeyedValue?) in
-                if newValue != nil {
-                    if newValue!.boolValue {
-                        // At this point, a product is connected so we can show it.
-                        
-                        // UI goes on MT.
-                        DispatchQueue.main.async {
-                            self.productConnected()
-                        }
-                    } else {
-                        self.productDisconnected()
-                    }
-                }
-            })
-        }
-        showPhantomShadow()
     }
     
     func showPhantomShadow(){
@@ -69,7 +48,31 @@ class DroneViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
 //        droneImageView.image = getDroneImage(of: "Spark")
-        connectProduct()
+        //        connectProduct()
+        guard let connectedKey = DJIProductKey(param: DJIParamConnection) else {
+            NSLog("Error creating the connectedKey")
+            return;
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DJISDKManager.keyManager()?.startListeningForChanges(on: connectedKey,
+                                                                 withListener: self,
+                                                                 andUpdate: { (oldValue: DJIKeyedValue?, newValue : DJIKeyedValue?) in
+                                                                    guard newValue != nil else {
+                                                                        return
+                                                                    }
+                                                                    if newValue!.boolValue {
+                                                                        // At this point, a product is connected so we can show it.
+                                                                        
+                                                                        // UI goes on MT.
+                                                                        DispatchQueue.main.async {
+                                                                            self.productConnected()
+                                                                        }
+                                                                    } else {
+                                                                        self.productDisconnected()
+                                                                    }
+            })
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,8 +141,6 @@ class DroneViewController: UIViewController {
     }
     
     func productDisconnected() {
-        //        self.productConnectionStatus.text = "Status: No Product Connected"
-        //
         resetUI()
         NSLog("Product Disconnected")
     }

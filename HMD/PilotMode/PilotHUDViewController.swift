@@ -12,6 +12,8 @@ import CoreMotion
 import DJISDK
 import VideoPreviewer
 
+//MARK:-
+//MARK: UIViewController
 class PilotHUDViewController: UIViewController {
     var isRecording : Bool!
     var hmdLayer = HMDLayer()
@@ -124,7 +126,8 @@ class PilotHUDViewController: UIViewController {
 
     
 }
-
+//MARK:-
+//MARK: DJICameraDelegate
 extension PilotHUDViewController: DJICameraDelegate{
     func camera(_ camera: DJICamera, didReceiveVideoData videoBuffer: UnsafeMutablePointer<UInt8>, length size: Int){
         VideoPreviewer.instance().push(videoBuffer, length: Int32(size))
@@ -144,6 +147,8 @@ extension PilotHUDViewController: DJICameraDelegate{
     }
 }
 
+//MARK:-
+//MARK: Others
 extension PilotHUDViewController {
     func initialGimbal() -> Bool {
         guard DJISDKManager.product()?.gimbal != nil else {
@@ -163,13 +168,13 @@ extension PilotHUDViewController {
         isYawControllable = (gimbal?.isFeatureSupported(by: DJIGimbalParamAdjustYaw))!
         if isYawControllable {
             gimbal?.setControllerSpeedCoefficient(100, on: DJIGimbalAxis.yaw , withCompletion: nil)
-            gimbal?.setControllerSmoothingFactor(1, on: DJIGimbalAxis.yaw, withCompletion: nil)
-            gimbal?.setSmoothTrackAcceleration(1, on:  DJIGimbalAxis.yaw, withCompletion: nil)
+            gimbal?.setControllerSmoothingFactor(15, on: DJIGimbalAxis.yaw, withCompletion: nil)
+            gimbal?.setSmoothTrackAcceleration(15, on:  DJIGimbalAxis.yaw, withCompletion: nil)
         }
         if isPitchControllable {
             gimbal?.setControllerSpeedCoefficient(100, on: DJIGimbalAxis.pitch , withCompletion: nil)
-            gimbal?.setControllerSmoothingFactor(1, on: DJIGimbalAxis.pitch, withCompletion: nil)
-            gimbal?.setSmoothTrackAcceleration(1, on:  DJIGimbalAxis.pitch, withCompletion: nil)
+            gimbal?.setControllerSmoothingFactor(15, on: DJIGimbalAxis.pitch, withCompletion: nil)
+            gimbal?.setSmoothTrackAcceleration(15, on:  DJIGimbalAxis.pitch, withCompletion: nil)
         }
         if isRollControllable {
             gimbal?.setControllerSpeedCoefficient(100, on: DJIGimbalAxis.roll , withCompletion: nil)
