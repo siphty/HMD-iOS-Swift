@@ -824,6 +824,7 @@
 				2EF3F4B14B7ECB98A8DB3CF7 /* [CP] Embed Pods Frameworks */,
 				FC52CC2669D4874F623C68FD /* [CP] Copy Pods Resources */,
 				A25D57AB1EDAF902005B8822 /* Embed Frameworks */,
+				A21650F51F0F80D800E87C28 /* Prepare DJISDK Framework for AppStore Upload */,
 			);
 			buildRules = (
 			);
@@ -951,6 +952,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HMD/Pods-HMD-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A21650F51F0F80D800E87C28 /* Prepare DJISDK Framework for AppStore Upload */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare DJISDK Framework for AppStore Upload";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework/strip-frameworks.sh\"";
 		};
 		FB567B39C3BF59B11E909FAB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1129,6 +1144,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1182,6 +1198,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
