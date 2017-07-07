@@ -825,6 +825,7 @@
 				FC52CC2669D4874F623C68FD /* [CP] Copy Pods Resources */,
 				A25D57AB1EDAF902005B8822 /* Embed Frameworks */,
 				A21650F51F0F80D800E87C28 /* Prepare DJISDK Framework for AppStore Upload */,
+				A21650F71F0F8A6700E87C28 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -966,6 +967,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework/strip-frameworks.sh\"";
+		};
+		A21650F71F0F8A6700E87C28 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 74307a882f6e2ef5efd2515490d4afd121e739ab 1724e0496ae884fc01d1e1319f1a455a3746ce97c6aea428f00be67902973de4";
 		};
 		FB567B39C3BF59B11E909FAB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

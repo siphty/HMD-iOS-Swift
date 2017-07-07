@@ -5,6 +5,8 @@ target 'HMD' do
   use_frameworks!
     pod 'DJI-SDK-iOS'
     pod 'DJI-UILibrary-iOS'
+    pod 'Fabric'
+    pod 'Crashlytics'
     pod 'NVActivityIndicatorView'
     pod 'SnapKit'
 end
