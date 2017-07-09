@@ -24,6 +24,20 @@
 	<string>2</string>
 	<key>DJISDKAppKey</key>
 	<string>8b25a584f0bbd878ee6aa041</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>74307a882f6e2ef5efd2515490d4afd121e739ab</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

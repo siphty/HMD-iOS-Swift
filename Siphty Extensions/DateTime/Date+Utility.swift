@@ -18,3 +18,27 @@ extension Date {
     }
     
 }
+
+
+typealias UnixTime = Int64
+
+extension UnixTime {
+    private func formatType(form: String) -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
+        dateFormatter.dateFormat = form
+        return dateFormatter
+    }
+    var dateFull: NSDate {
+        return NSDate(timeIntervalSince1970: Double(self))
+    }
+    var toHour: String {
+        return formatType(form: "hh:mm").string(from: dateFull as Date)
+    }
+    var toDay: String {
+        return formatType(form: "MM/dd/yyyy").string(from: dateFull as Date)
+    }
+    var toDayAndHour: String {
+        return formatType(form: "MM/dd/yyyy hh:mm").string(from: dateFull as Date)
+    }
+}
