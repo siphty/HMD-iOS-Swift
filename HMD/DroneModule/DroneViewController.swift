@@ -10,6 +10,8 @@ import UIKit
 import DJISDK
 
 class DroneViewController: UIViewController {
+    let notificationCenter = NotificationCenter.default
+    
     weak var appDelegate: AppDelegate! = UIApplication.shared.delegate as? AppDelegate
     @IBOutlet weak var productConnectionStatus: UILabel!
     @IBOutlet weak var productModel: UILabel!
@@ -29,28 +31,19 @@ class DroneViewController: UIViewController {
         showPhantomShadow()
         productFirmwarePackageVersion.isHidden = true
         
-        connectProduct()
+        connectionStateDidChangedProduct()
         bridgeModeLabel.isHidden = !appDelegate.djiProductCommunicationManager.enableBridgeMode
         if !bridgeModeLabel.isHidden {
             bridgeModeLabel.text = "Bridge: \(appDelegate.djiProductCommunicationManager.bridgeAppIP)"
         }
-    }
-    
-    func showPhantomShadow(){
-        let shadowLayer = CALayer()
-        shadowLayer.bounds = CGRect(x: 0, y: 0, width:#imageLiteral(resourceName: "DJI P4").size.width, height: #imageLiteral(resourceName: "DJI P4").size.height)
-        shadowLayer.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
-        shadowLayer.doMask(by: #imageLiteral(resourceName: "DJI P4"))
-        let shadowImage = shadowLayer.toImage()
-        droneImageView.image = shadowImage
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         
-//        droneImageView.image = getDroneImage(of: "Spark")
-        //        connectProduct()
+        notificationCenter.addObserver(self,
+                                       selector: #selector(connectionStateDidChangedProduct),
+                                       name: Notification.Name(rawValue: ProductCommunicationManagerStateDidChange),
+                                       object: nil)
+       
         guard let connectedKey = DJIProductKey(param: DJIParamConnection) else {
-            NSLog("Error creating the connectedKey")
+            print("Error creating the connectedKey")
             return;
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -72,6 +65,22 @@ class DroneViewController: UIViewController {
                                                                     }
             })
         }
+    }
+    
+    func showPhantomShadow(){
+        let shadowLayer = CALayer()
+        shadowLayer.bounds = CGRect(x: 0, y: 0, width:#imageLiteral(resourceName: "DJI P4").size.width, height: #imageLiteral(resourceName: "DJI P4").size.height)
+        shadowLayer.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
+        shadowLayer.doMask(by: #imageLiteral(resourceName: "DJI P4"))
+        let shadowImage = shadowLayer.toImage()
+        droneImageView.image = shadowImage
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+//        droneImageView.image = getDroneImage(of: "Spark")
+        //        connectProduct()
+
 
     }
 
@@ -83,30 +92,31 @@ class DroneViewController: UIViewController {
     
     @IBAction func ConnectButtonTouchUpInside(_ sender: Any) {
         if self.appDelegate.djiProductCommunicationManager.enableBridgeMode {
-            NSLog("Connecting to Product using debug IP address: \(self.appDelegate.djiProductCommunicationManager.bridgeAppIP)...")
+            print("Connecting to Product using debug IP address: \(self.appDelegate.djiProductCommunicationManager.bridgeAppIP)...")
             DJISDKManager.enableBridgeMode(withBridgeAppIP: self.appDelegate.djiProductCommunicationManager.bridgeAppIP)
         }
         bridgeModeLabel.isHidden = !appDelegate.djiProductCommunicationManager.enableBridgeMode
         if appDelegate.djiProductCommunicationManager.enableBridgeMode {
             bridgeModeLabel.text = "Bridge: \(appDelegate.djiProductCommunicationManager.bridgeAppIP)"
         }
-        connectProduct()
+        connectionStateDidChangedProduct()
     }
     
-    func connectProduct(){
-        let startedResult = DJISDKManager.startConnectionToProduct()
+    func connectionStateDidChangedProduct(){
+//        let startedResult = DJISDKManager.startConnectionToProduct()
+        let startedResult = (DJISDKManager.product() != nil)
         if startedResult {
-            NSLog("Connecting to product started successfully!")
-            productConnected()
+            print("Connecting to product started successfully!")
+//            productConnected()
         } else {
-            NSLog("Connecting to product failed to start!")
-            productDisconnected()
+            print("Connecting to product failed to start!")
+//            productDisconnected()
         }
     }
     
     func productConnected() {
         guard let newProduct = DJISDKManager.product() else {
-            NSLog("Product is connected but DJISDKManager.product is nil -> something is wrong")
+            print("Product is connected but DJISDKManager.product is nil -> something is wrong")
             return;
         }
         
@@ -130,7 +140,7 @@ class DroneViewController: UIViewController {
         
         //Update backgound drone image
         droneImageView.image = getDroneImage(of: newProduct.model!)
-        NSLog("Product Connected")
+        print("Product Connected")
         
         //Update Bridge Moddl label
         
@@ -142,7 +152,7 @@ class DroneViewController: UIViewController {
     
     func productDisconnected() {
         resetUI()
-        NSLog("Product Disconnected")
+        print("Product Disconnected")
     }
     
     func resetUI() {

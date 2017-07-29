@@ -28,7 +28,7 @@ class ProductCommunicationManager: NSObject {
         let appKey = Bundle.main.object(forInfoDictionaryKey: SDK_APP_KEY_INFO_PLIST_KEY) as? String
         
         guard appKey != nil && appKey!.isEmpty == false else {
-            NSLog("Please enter your app key in the info.plist")
+            print("Please enter your app key in the info.plist")
             return
         }
         
@@ -66,7 +66,7 @@ extension ProductCommunicationManager : DJISDKManagerDelegate {
         if product != nil {
             self.connected = true
             NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: ProductCommunicationManagerStateDidChange)))
-            NSLog("Connection to new product succeeded!")
+            print("Connection to new product succeeded!")
             self.connectedProduct = product
         } else {
             print("product is nil: \(product.debugDescription)")
@@ -77,7 +77,7 @@ extension ProductCommunicationManager : DJISDKManagerDelegate {
     func productDisconnected() {
         self.connected = false
         NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: ProductCommunicationManagerStateDidChange)))
-        NSLog("Disconnected from product!");
+        print("Disconnected from product!");
     }
     
     func componentConnected(withKey key: String?, andIndex index: Int) {

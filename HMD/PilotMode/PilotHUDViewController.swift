@@ -11,6 +11,7 @@ import CoreLocation
 import CoreMotion
 import DJISDK
 import VideoPreviewer
+import DJIUILibrary
 
 //MARK:-
 //MARK: UIViewController
@@ -19,6 +20,7 @@ class PilotHUDViewController: UIViewController {
     var hmdLayer = HMDLayer()
     var isSettingMode:Bool = false
     var previewerAdapter = VideoPreviewerSDKAdapter()
+    let trailingBarViewController = DULTrailingBarViewController()
     let motionManager = CMMotionManager()
     var coreMotionTimer: Timer!
     var orientationAttitude: CMAttitude?
@@ -34,12 +36,14 @@ class PilotHUDViewController: UIViewController {
     var isRollControllable: Bool = false
     var isPitchControllable: Bool = false
     var isYawControllable: Bool = false
+    var isGimbalSycn: Bool = false
     
     let radiansToDegrees: (Double) -> Double = {
         return $0 * (180.0 / Double.pi)
     }
     
         
+    @IBOutlet var gimbalSyncButton: UIButton!
     @IBOutlet weak var returnButton: UIButton!
     
     @IBAction func close () {
@@ -61,7 +65,8 @@ class PilotHUDViewController: UIViewController {
         view.layer.addSublayer(hmdLayer)
         view.bringSubview(toFront: returnButton)
         
-        
+        //Init DJI UI SDK 
+        self.initialTrailingBarView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,6 +128,19 @@ class PilotHUDViewController: UIViewController {
         return(dateFormatter.string(from: date))
     }
     
+    @IBAction func gimbalSyncButtonTouchUpInside(_ sender: Any) {
+        if isGimbalSycn {
+            gimbalSyncButton.setImage(#imageLiteral(resourceName: "gimbal_normal"), for: .normal)
+            isGimbalSycn = false
+        } else {
+            if initialGimbal() {
+                gimbalSyncButton.setImage(#imageLiteral(resourceName: "gimbal_active"), for: .normal)
+            } else {
+                gimbalSyncButton.setImage(#imageLiteral(resourceName: "gimbal_error"), for: .normal)
+            }
+            isGimbalSycn = true
+        }
+    }
 
     
 }
@@ -148,7 +166,7 @@ extension PilotHUDViewController: DJICameraDelegate{
 }
 
 //MARK:-
-//MARK: Others
+//MARK: Gimbal
 extension PilotHUDViewController {
     func initialGimbal() -> Bool {
         guard DJISDKManager.product()?.gimbal != nil else {
@@ -200,6 +218,9 @@ extension PilotHUDViewController {
 
     
     func setGimbal(with iOSDeviceAttitude: CMAttitude) {
+        if !isGimbalSycn {
+            return
+        }
         if orientationAttitude == nil { resetOrientation() }
         if gimbalSettingLock == true { return }
         var djiAttitude = DJIAttitude()
@@ -273,4 +294,35 @@ extension PilotHUDViewController {
         }
     }
     
+}
+
+
+extension PilotHUDViewController {
+   
+    func initialTrailingBarView() {
+        // Trailing Bar View
+        for childViewController in childViewControllers {
+            if childViewController is DULTrailingBarViewController {
+                let trailingBarViewController = childViewController as! DULTrailingBarViewController
+                guard let djiExposureSettignsWidget = trailingBarViewController.widget(with: DULExposureSettingsMenu.self) as? DULExposureSettingsMenu else{
+                return
+                }
+                djiExposureSettignsWidget.action = {
+                self.exposureSettingsWidgetTouchUpInside()
+                }
+      
+            }
+        }
+    }
+    
+    func exposureSettingsWidgetTouchUpInside(){
+        let exposureSettingsVC = storyboard?.instantiateViewController(withIdentifier: "CameraExposureSettingsVC") as! DULExposureSettingsController
+        self.popoverChildViewController(exposureSettingsVC)
+        exposureSettingsVC.view.translatesAutoresizingMaskIntoConstraints = false
+        exposureSettingsVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 15).isActive = true
+        exposureSettingsVC.view.rightAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 250).isActive = true
+        exposureSettingsVC.view.leftAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        exposureSettingsVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -15).isActive = true
+    }
+
 }

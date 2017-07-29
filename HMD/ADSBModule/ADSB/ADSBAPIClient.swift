@@ -18,9 +18,17 @@ enum APIRequestType{
 final class ADSBAPIClient {
     static let sharedInstance = ADSBAPIClient()
     private init(){}
-    var adsbLoction: CLLocation?
+    var isFirstRoundUpdate = true
+    var adsbLoction: CLLocation? {
+        didSet {
+            if isFirstRoundUpdate && adsbLoction != nil{
+                print("isFirstRoundUpdate")
+                updateAircrafts()
+                isFirstRoundUpdate = false
+            }
+        }
+    }
     var scanDistance: Float = ADSBConfig.scanRangeBase  // KM
-    var scanFrequency: Int = ADSBConfig.scanFrequencyBase
     
     fileprivate let adsbexchangeBaseUrl = "http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json"
     fileprivate var requestTimer: Timer?
@@ -40,12 +48,12 @@ final class ADSBAPIClient {
         isUpdatingAircrafts = false
     }
     
-    func startUpdateAircrafts(){
+    func startUpdateAircrafts(every seconds: Double, range: Float){
         if isUpdatingAircrafts { return }
-        updateAircrafts()
+        ADSBConfig.scanRangeBase = range
         if requestTimer == nil {
             requestTimer =  Timer.scheduledTimer(
-                timeInterval: TimeInterval(scanFrequency),
+                timeInterval: TimeInterval(seconds),
                 target      : self,
                 selector    : #selector(updateAircrafts),
                 userInfo    : nil,
@@ -61,8 +69,9 @@ final class ADSBAPIClient {
             print("Location has not been set")
             return
         }
-        let urlSting = makeRequestUrl(with: adsbLoction!, in: scanDistance)
-        guard let url = URL(string: urlSting) else {
+        let urlString = makeRequestUrl(with: adsbLoction!, in: ADSBConfig.scanRangeBase)
+        print("url string: \(urlString)")
+        guard let url = URL(string: urlString) else {
             print("URL string can't be parsed")
             return
         }
@@ -95,15 +104,15 @@ final class ADSBAPIClient {
                     let adsbXResponseObj: ADSBXResponse = ADSBXResponse.init(responseDict: responseDict)!
                     guard let adsbAircrafts = adsbXResponseObj.aircraftList else { return }
                     print("Aircrafts above: \(adsbAircrafts.count)")
-                    if adsbAircrafts.count < ADSBConfig.minimumAircraftsTracking {
-                        self.scanDistance = self.scanDistance + 5
-                    } else if adsbAircrafts.count > ADSBConfig.maximumAircraftsTracking {
-                        self.scanDistance = self.scanDistance - 5
-                        if self.scanDistance < ADSBConfig.minimumScanRange {
-                            self.scanDistance = 10
-                        }
-                    }
-                    print("Next Scan range: \(self.scanDistance)")
+                    //                    if adsbAircrafts.count < ADSBConfig.minimumAircraftsTracking {
+                    //                        self.scanDistance = self.scanDistance + 5
+                    //                    } else if adsbAircrafts.count > ADSBConfig.maximumAircraftsTracking {
+                    //                        self.scanDistance = self.scanDistance - 5
+                    //                        if self.scanDistance < ADSBConfig.minimumScanRange {
+                    //                            self.scanDistance = 10
+                    //                        }
+                    //                    }
+                    //                    print("Next Scan range: \(self.scanDistance)")
                     complition(adsbAircrafts, nil)
                 } catch let error {
                     complition([], error)

@@ -23,7 +23,7 @@ public struct  ADSBNotification {
 
 public struct ADSBConfig{
     static let isGroundAircraftFilterOn = true
-    static let scanRangeBase: Float = 55  // KM
+    static var scanRangeBase: Float = 55  // KM
     static let minimumScanRange: Float = 10  //KM
     static let scanFrequencyBase: Int = 7
     static let minimumAircraftsTracking: Int = 5
@@ -52,7 +52,7 @@ public enum ADSBAircraftType: String {
     case jetFourEngHeavy =  "ADSBJetFourEngHeavy_72.72m"//⭕️(72.72m)
     
     
-    case pistonOneEngLight = "ADSBPistonOneEngLight_9.75m"  //⭕️(09.75m)
+    case pistonOneEngLight = "ADSBPistonOneEngLight_7.34m"  //⭕️(07.34m)
     
     case pistonTwoEngLight = "ADSBPistonTwoEngLight_15.81m"   //⭕️(15.81m)
     case turboTwoEngMedium = "ADSBTurboTwoEngMedium_27m"  //⭕️(32.80m)

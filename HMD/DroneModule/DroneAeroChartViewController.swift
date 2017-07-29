@@ -69,7 +69,7 @@ class DroneAeroChartViewController: UIViewController {
                                        object: nil)
         let apiClient = ADSBAPIClient.sharedInstance
         apiClient.adsbLoction = homeLocation
-        apiClient.startUpdateAircrafts()
+        apiClient.startUpdateAircrafts(every: 4, range: ADSBConfig.scanRangeBase)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,13 +143,50 @@ class DroneAeroChartViewController: UIViewController {
 //MARK: MKMapViewDelegate
 extension DroneAeroChartViewController: MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
+    {
+        if overlay is MKCircle
+        {
+            guard let overlayTitle: String = overlay.title! else { return MKOverlayRenderer(overlay: overlay) }
+            if (overlayTitle.range(of: "Scan" ) != nil) {
+                let regionCircleRenderer = MKCircleRenderer(overlay: overlay)
+                regionCircleRenderer.fillColor = UIColor.black.withAlphaComponent(0.2)
+                regionCircleRenderer.strokeColor = UIColor.green
+                regionCircleRenderer.lineWidth = 2
+                return regionCircleRenderer
+            } else if (overlayTitle.range(of: "Airport" ) != nil)  &&  (overlayTitle.range(of: "NFZ" ) != nil) {
+                let airportCircleRenderer = MKCircleRenderer(overlay: overlay)
+                airportCircleRenderer.fillColor = UIColor.red.withAlphaComponent(0.5)
+                return airportCircleRenderer
+            } else if (overlayTitle.range(of: "Airport" ) != nil)  &&  (overlayTitle.range(of: "NFA45" ) != nil) {
+                let airportCircleRenderer = MKCircleRenderer(overlay: overlay)
+                airportCircleRenderer.fillColor = UIColor.yellow.withAlphaComponent(0.4)
+                airportCircleRenderer.strokeColor = UIColor.yellow
+                airportCircleRenderer.lineWidth = 1
+                return airportCircleRenderer
+            } else if (overlayTitle.range(of: "Airport" ) != nil)  &&  (overlayTitle.range(of: "RESTRICT" ) != nil) {
+                let airportCircleRenderer = MKCircleRenderer(overlay: overlay)
+                airportCircleRenderer.fillColor = UIColor.yellow.withAlphaComponent(0.2)
+                airportCircleRenderer.strokeColor = UIColor.yellow
+                airportCircleRenderer.lineWidth = 1
+                return airportCircleRenderer
+            }
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+    
+
+    
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         if mapViewRegionDidChangeFromUserInteraction() {
             mapChangedFromUserInteraction = true
         }
     }
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {        
+        if mapView.region.span.latitudeDelta + mapView.region.span.longitudeDelta < 3 {
+            (mapView as! ADSBMapView).drawAirportRestrictRegion()
+        }
         
     }
     

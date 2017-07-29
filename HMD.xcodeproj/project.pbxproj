@@ -22,6 +22,27 @@
 		A2048B051EC57F9D00C2413C /* Drone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2048B031EC57F9D00C2413C /* Drone.storyboard */; };
 		A2048B531EC5BD2300C2413C /* KeyedInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */; };
 		A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */; };
+		A21597891F2C3DC200808103 /* DroneAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A21597881F2C3DC200808103 /* DroneAssets.xcassets */; };
+		A21597901F2C562400808103 /* AirdromeCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A215978C1F2C562400808103 /* AirdromeCommon.swift */; };
+		A21597911F2C562400808103 /* AirportNFZAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A215978D1F2C562400808103 /* AirportNFZAssets.xcassets */; };
+		A21597981F2C563500808103 /* airport.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A21597951F2C563500808103 /* airport.sqlite */; };
+		A215979E1F2C563A00808103 /* airportAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A215979C1F2C563A00808103 /* airportAnnotation.swift */; };
+		A215979F1F2C563A00808103 /* airportAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A215979D1F2C563A00808103 /* airportAnnotationView.swift */; };
+		A21597A11F2C56EB00808103 /* airport.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A21597A01F2C56EB00808103 /* airport.xcdatamodel */; };
+		A21597A71F2C5B3400808103 /* Airport+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597A31F2C5B3400808103 /* Airport+CoreDataClass.swift */; };
+		A21597A81F2C5B3400808103 /* Airport+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597A41F2C5B3400808103 /* Airport+CoreDataProperties.swift */; };
+		A21597A91F2C5B3400808103 /* Runway+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597A51F2C5B3400808103 /* Runway+CoreDataClass.swift */; };
+		A21597AA1F2C5B3400808103 /* Runway+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597A61F2C5B3400808103 /* Runway+CoreDataProperties.swift */; };
+		A21597B51F2C7D7C00808103 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597AC1F2C7D7C00808103 /* AnnotationView.swift */; };
+		A21597B61F2C7D7C00808103 /* ARConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597AD1F2C7D7C00808103 /* ARConfiguration.swift */; };
+		A21597B71F2C7D7C00808103 /* ARGeoCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597AE1F2C7D7C00808103 /* ARGeoCoordinate.swift */; };
+		A21597B81F2C7D7C00808103 /* ARTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597AF1F2C7D7C00808103 /* ARTrackingManager.swift */; };
+		A21597B91F2C7D7C00808103 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597B01F2C7D7C00808103 /* ARViewController.swift */; };
+		A21597BA1F2C7D7C00808103 /* FlightBubbleV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597B11F2C7D7C00808103 /* FlightBubbleV1.swift */; };
+		A21597BB1F2C7D7C00808103 /* FlightBubbleV1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21597B21F2C7D7C00808103 /* FlightBubbleV1.xib */; };
+		A21597BC1F2C7D7C00808103 /* FlightCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597B31F2C7D7C00808103 /* FlightCalloutView.swift */; };
+		A21597BD1F2C7D7C00808103 /* FlightCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A21597B41F2C7D7C00808103 /* FlightCalloutView.xib */; };
+		A21597C01F2C99E800808103 /* ARAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21597BF1F2C99E800808103 /* ARAnnotationView.swift */; };
 		A225299A1EDADEA800A971B8 /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22529961EDADBB400A971B8 /* VideoPreviewer.framework */; };
 		A229E5C01EF2594900DB3AB9 /* DroneAeroChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A229E5BF1EF2594900DB3AB9 /* DroneAeroChartViewController.swift */; };
 		A22BE7871ED30E270073678A /* HMDAircraftReferenceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */; };
@@ -79,7 +100,6 @@
 		A2A1AA571EBA1C2A006970E1 /* HMDMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA4C1EBA1C2A006970E1 /* HMDMisc.swift */; };
 		A2A1AA5A1EBA1C39006970E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA591EBA1C39006970E1 /* Assets.xcassets */; };
 		A2A1AA5F1EBA1C5C006970E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A1AA5B1EBA1C5C006970E1 /* LaunchScreen.storyboard */; };
-		A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */; };
 		A2A1AAB11EBD6EF0006970E1 /* HMDAltitudeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB01EBD6EF0006970E1 /* HMDAltitudeRenderer.swift */; };
 		A2A1AAB31EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB21EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift */; };
 		A2A1AAB51EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1AAB41EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift */; };
@@ -177,6 +197,27 @@
 		A2048B041EC57F9D00C2413C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HMD/Base.lproj/Drone.storyboard; sourceTree = SOURCE_ROOT; };
 		A2048B521EC5BD2300C2413C /* KeyedInterfaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedInterfaceViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2048B551EC5CB4800C2413C /* ProductCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCommunicationManager.swift; sourceTree = SOURCE_ROOT; };
+		A21597881F2C3DC200808103 /* DroneAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DroneAssets.xcassets; sourceTree = "<group>"; };
+		A215978C1F2C562400808103 /* AirdromeCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirdromeCommon.swift; path = "ADSBModule/Airport Sub-Module/AirdromeCommon.swift"; sourceTree = "<group>"; };
+		A215978D1F2C562400808103 /* AirportNFZAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AirportNFZAssets.xcassets; path = "ADSBModule/Airport Sub-Module/AirportNFZAssets.xcassets"; sourceTree = "<group>"; };
+		A21597951F2C563500808103 /* airport.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = airport.sqlite; path = "ADSBModule/Airport Sub-Module/Application Support/airport.sqlite"; sourceTree = "<group>"; };
+		A215979C1F2C563A00808103 /* airportAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = airportAnnotation.swift; sourceTree = "<group>"; };
+		A215979D1F2C563A00808103 /* airportAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = airportAnnotationView.swift; sourceTree = "<group>"; };
+		A21597A01F2C56EB00808103 /* airport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = airport.xcdatamodel; path = "ADSBModule/Airport Sub-Module/airport.xcdatamodel"; sourceTree = "<group>"; };
+		A21597A31F2C5B3400808103 /* Airport+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Airport+CoreDataClass.swift"; path = "ADSBModule/Airport Sub-Module/Models/Airport+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A21597A41F2C5B3400808103 /* Airport+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Airport+CoreDataProperties.swift"; path = "ADSBModule/Airport Sub-Module/Models/Airport+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A21597A51F2C5B3400808103 /* Runway+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Runway+CoreDataClass.swift"; path = "ADSBModule/Airport Sub-Module/Models/Runway+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A21597A61F2C5B3400808103 /* Runway+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Runway+CoreDataProperties.swift"; path = "ADSBModule/Airport Sub-Module/Models/Runway+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A21597AC1F2C7D7C00808103 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnnotationView.swift; path = "GeoAR Sub-Module/AnnotationView.swift"; sourceTree = "<group>"; };
+		A21597AD1F2C7D7C00808103 /* ARConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARConfiguration.swift; path = "GeoAR Sub-Module/ARConfiguration.swift"; sourceTree = "<group>"; };
+		A21597AE1F2C7D7C00808103 /* ARGeoCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARGeoCoordinate.swift; path = "GeoAR Sub-Module/ARGeoCoordinate.swift"; sourceTree = "<group>"; };
+		A21597AF1F2C7D7C00808103 /* ARTrackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARTrackingManager.swift; path = "GeoAR Sub-Module/ARTrackingManager.swift"; sourceTree = "<group>"; };
+		A21597B01F2C7D7C00808103 /* ARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARViewController.swift; path = "GeoAR Sub-Module/ARViewController.swift"; sourceTree = "<group>"; };
+		A21597B11F2C7D7C00808103 /* FlightBubbleV1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlightBubbleV1.swift; path = "GeoAR Sub-Module/FlightBubbleV1.swift"; sourceTree = "<group>"; };
+		A21597B21F2C7D7C00808103 /* FlightBubbleV1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FlightBubbleV1.xib; path = "GeoAR Sub-Module/FlightBubbleV1.xib"; sourceTree = "<group>"; };
+		A21597B31F2C7D7C00808103 /* FlightCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlightCalloutView.swift; path = "GeoAR Sub-Module/FlightCalloutView.swift"; sourceTree = "<group>"; };
+		A21597B41F2C7D7C00808103 /* FlightCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FlightCalloutView.xib; path = "GeoAR Sub-Module/FlightCalloutView.xib"; sourceTree = "<group>"; };
+		A21597BF1F2C99E800808103 /* ARAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARAnnotationView.swift; path = "GeoAR Sub-Module/ARAnnotationView.swift"; sourceTree = "<group>"; };
 		A22529911EDADBB300A971B8 /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = VideoPreviewer.xcodeproj; sourceTree = "<group>"; };
 		A229E5BF1EF2594900DB3AB9 /* DroneAeroChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DroneAeroChartViewController.swift; path = HMD/DroneModule/DroneAeroChartViewController.swift; sourceTree = SOURCE_ROOT; };
 		A22BE7861ED30E270073678A /* HMDAircraftReferenceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMDAircraftReferenceLayer.swift; path = HMD/HMDAircraftReferenceLayer.swift; sourceTree = SOURCE_ROOT; };
@@ -337,13 +378,13 @@
 			path = UIColor;
 			sourceTree = "<group>";
 		};
-		A2048B4E1EC5BA1100C2413C /* ADS-B Module */ = {
+		A2048B4E1EC5BA1100C2413C /* ADSB Map Module */ = {
 			isa = PBXGroup;
 			children = (
 				A2821A281EEF6FE2009F6266 /* ADS-B.storyboard */,
 				A2B54C441EECE05F00215A18 /* ADS-B */,
 			);
-			name = "ADS-B Module";
+			name = "ADSB Map Module";
 			sourceTree = "<group>";
 		};
 		A2048B501EC5BA7400C2413C /* POI Module */ = {
@@ -377,6 +418,65 @@
 				A263C5571F0721B100FC8FAF /* DJI Extensions */,
 			);
 			name = "DJI Service";
+			sourceTree = "<group>";
+		};
+		A215978B1F2C55BD00808103 /* Airport Sub-Module */ = {
+			isa = PBXGroup;
+			children = (
+				A215978D1F2C562400808103 /* AirportNFZAssets.xcassets */,
+				A215979B1F2C563A00808103 /* Views */,
+				A21597A21F2C5A0900808103 /* Models */,
+				A215978C1F2C562400808103 /* AirdromeCommon.swift */,
+			);
+			name = "Airport Sub-Module";
+			sourceTree = "<group>";
+		};
+		A215979B1F2C563A00808103 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A215979C1F2C563A00808103 /* airportAnnotation.swift */,
+				A215979D1F2C563A00808103 /* airportAnnotationView.swift */,
+			);
+			name = Views;
+			path = "ADSBModule/Airport Sub-Module/Views";
+			sourceTree = "<group>";
+		};
+		A21597A21F2C5A0900808103 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A21597A01F2C56EB00808103 /* airport.xcdatamodel */,
+				A21597A31F2C5B3400808103 /* Airport+CoreDataClass.swift */,
+				A21597A41F2C5B3400808103 /* Airport+CoreDataProperties.swift */,
+				A21597A51F2C5B3400808103 /* Runway+CoreDataClass.swift */,
+				A21597A61F2C5B3400808103 /* Runway+CoreDataProperties.swift */,
+				A21597951F2C563500808103 /* airport.sqlite */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A21597AB1F2C6CAD00808103 /* GeoAR Sub-Module */ = {
+			isa = PBXGroup;
+			children = (
+				A21597B01F2C7D7C00808103 /* ARViewController.swift */,
+				A21597BF1F2C99E800808103 /* ARAnnotationView.swift */,
+				A21597AC1F2C7D7C00808103 /* AnnotationView.swift */,
+				A21597AD1F2C7D7C00808103 /* ARConfiguration.swift */,
+				A21597AE1F2C7D7C00808103 /* ARGeoCoordinate.swift */,
+				A21597AF1F2C7D7C00808103 /* ARTrackingManager.swift */,
+				A21597BE1F2C7DA700808103 /* Model */,
+			);
+			name = "GeoAR Sub-Module";
+			sourceTree = "<group>";
+		};
+		A21597BE1F2C7DA700808103 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A21597B11F2C7D7C00808103 /* FlightBubbleV1.swift */,
+				A21597B21F2C7D7C00808103 /* FlightBubbleV1.xib */,
+				A21597B31F2C7D7C00808103 /* FlightCalloutView.swift */,
+				A21597B41F2C7D7C00808103 /* FlightCalloutView.xib */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		A22529921EDADBB300A971B8 /* Products */ = {
@@ -439,12 +539,12 @@
 				A2A1AA431EBA1C2A006970E1 /* AppDelegate.swift */,
 				A2A1AA4B1EBA1C2A006970E1 /* Info.plist */,
 				A2A1AA591EBA1C39006970E1 /* Assets.xcassets */,
-				A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */,
 				A2A1AA5D1EBA1C5C006970E1 /* Main.storyboard */,
 				A27878411EE535D000636B9D /* DroneViewController.swift */,
 				A2B3B2BE1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift */,
-				A2048B4E1EC5BA1100C2413C /* ADS-B Module */,
 				A278783F1EE534F200636B9D /* Drone Module */,
+				A2048B4E1EC5BA1100C2413C /* ADSB Map Module */,
+				A215978B1F2C55BD00808103 /* Airport Sub-Module */,
 				A2048B511EC5BCC000C2413C /* DJI SDK Test Module */,
 				A2B567D91EE5A211002E4806 /* Store Module */,
 				A2048B501EC5BA7400C2413C /* POI Module */,
@@ -557,6 +657,8 @@
 		A278783F1EE534F200636B9D /* Drone Module */ = {
 			isa = PBXGroup;
 			children = (
+				A21597AB1F2C6CAD00808103 /* GeoAR Sub-Module */,
+				A21597881F2C3DC200808103 /* DroneAssets.xcassets */,
 				A254BEFD1EA8DDE6005E70D9 /* HMD */,
 				A2048B031EC57F9D00C2413C /* Drone.storyboard */,
 				A291DB781EE3D199003C52C2 /* DroneCockpitViewController.swift */,
@@ -909,11 +1011,15 @@
 				A27358751EE3BBFB00ECFC28 /* GothamRnd-BookIta.otf in Resources */,
 				A27358791EE3BBFB00ECFC28 /* GothamRnd-Medium.otf in Resources */,
 				A27358721EE3BBFB00ECFC28 /* GothamRnd-Bold.otf in Resources */,
+				A21597911F2C562400808103 /* AirportNFZAssets.xcassets in Resources */,
 				A2048B051EC57F9D00C2413C /* Drone.storyboard in Resources */,
 				A273586C1EE3BBFB00ECFC28 /* Gotham-Thin.otf in Resources */,
 				A273586F1EE3BBFB00ECFC28 /* Gotham-UltraItalic.otf in Resources */,
 				A2DA58001EE25EDC0088E1A9 /* DemoScrollView.xib in Resources */,
+				A21597891F2C3DC200808103 /* DroneAssets.xcassets in Resources */,
+				A21597BB1F2C7D7C00808103 /* FlightBubbleV1.xib in Resources */,
 				A2DA57FC1EE25EDC0088E1A9 /* DemoGetSetViewController.xib in Resources */,
+				A21597BD1F2C7D7C00808103 /* FlightCalloutView.xib in Resources */,
 				A27358671EE3BBFB00ECFC28 /* Gotham-BookItalic.otf in Resources */,
 				A27358781EE3BBFB00ECFC28 /* GothamRnd-MedIta.otf in Resources */,
 				A27358711EE3BBFB00ECFC28 /* Gotham-XLightItalic.otf in Resources */,
@@ -922,6 +1028,7 @@
 				A27358641EE3BBFB00ECFC28 /* Gotham-Bold.otf in Resources */,
 				A27358691EE3BBFB00ECFC28 /* Gotham-LightItalic.otf in Resources */,
 				A2A1AA5F1EBA1C5C006970E1 /* LaunchScreen.storyboard in Resources */,
+				A21597981F2C563500808103 /* airport.sqlite in Resources */,
 				A269BF1B1ECAC359007ABB10 /* SystemInfor.storyboard in Resources */,
 				A27358731EE3BBFB00ECFC28 /* GothamRnd-BoldIta.otf in Resources */,
 				A273586A1EE3BBFB00ECFC28 /* Gotham-Medium.otf in Resources */,
@@ -1019,11 +1126,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A269BF271ECAE351007ABB10 /* StatusTableViewCell.swift in Sources */,
+				A21597B71F2C7D7C00808103 /* ARGeoCoordinate.swift in Sources */,
+				A21597B91F2C7D7C00808103 /* ARViewController.swift in Sources */,
 				A2DA57D81EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter+Lightbridge2.m in Sources */,
+				A215979F1F2C563A00808103 /* airportAnnotationView.swift in Sources */,
 				A28FD2E21F036F4200681E8E /* HMDRemainingFlightTimeLabelLayer.swift in Sources */,
 				A2DA58031EE25EDC0088E1A9 /* DemoVirtualStickView.m in Sources */,
 				A2F1FFA81F02318C001104F2 /* HMDLineOfSightRenderer.swift in Sources */,
 				A2A1AADA1EBF2CB7006970E1 /* HMDHoverVectorLayer.swift in Sources */,
+				A21597AA1F2C5B3400808103 /* Runway+CoreDataProperties.swift in Sources */,
+				A21597A91F2C5B3400808103 /* Runway+CoreDataClass.swift in Sources */,
 				A28868A31EF53FB7008E3631 /* ADSBCacheManager.swift in Sources */,
 				A229E5C01EF2594900DB3AB9 /* DroneAeroChartViewController.swift in Sources */,
 				A2DA58011EE25EDC0088E1A9 /* DemoSettingItem.m in Sources */,
@@ -1033,10 +1145,12 @@
 				A2DA58041EE25EDC0088E1A9 /* MBProgressHUD.m in Sources */,
 				A2A1AACD1EBDD2A9006970E1 /* HMDBankScaleLayer.swift in Sources */,
 				A2A1AAB11EBD6EF0006970E1 /* HMDAltitudeRenderer.swift in Sources */,
-				A2A1AA6D1EBA1CDA006970E1 /* HMD.xcdatamodeld in Sources */,
+				A21597BA1F2C7D7C00808103 /* FlightBubbleV1.swift in Sources */,
+				A21597A11F2C56EB00808103 /* airport.xcdatamodel in Sources */,
 				A201DEF71EF6B4B500EEEE6F /* Geometric.swift in Sources */,
 				A201DEE91EF6B44E00EEEE6F /* String+UserLogin.swift in Sources */,
 				A2DA57D71EE25D4B0088E1A9 /* VideoPreviewerSDKAdapter.m in Sources */,
+				A21597B51F2C7D7C00808103 /* AnnotationView.swift in Sources */,
 				A2C93A6E1EF00E2B00DDE914 /* ADSBAnnotationView.swift in Sources */,
 				A201DEED1EF6B48200EEEE6F /* CATextLayer+Frame.swift in Sources */,
 				A2A1AAD81EBDE6E3006970E1 /* HMDGroundSpeedLabelLayer.swift in Sources */,
@@ -1061,8 +1175,10 @@
 				A2A1AAB31EBD6F96006970E1 /* HMDLowAltitudeScaleLayer.swift in Sources */,
 				A2A1AAB71EBD7098006970E1 /* HMDBarometricAltitudeLabelLayer.swift in Sources */,
 				A2B54C471EECE0F300215A18 /* ADSBAPIClient.swift in Sources */,
+				A21597A81F2C5B3400808103 /* Airport+CoreDataProperties.swift in Sources */,
 				A201DEEC1EF6B48200EEEE6F /* CALayer+Extensions.swift in Sources */,
 				A28FD2DF1F0298F700681E8E /* HMDMissionTimeLabelLayer.swift in Sources */,
+				A21597B81F2C7D7C00808103 /* ARTrackingManager.swift in Sources */,
 				A22BE7891ED454B50073678A /* HMDRemoteControllerThrustCursorLayer.swift in Sources */,
 				A2A1AA541EBA1C2A006970E1 /* HMDLayer.swift in Sources */,
 				A2DA57F71EE25EDC0088E1A9 /* DemoComponentHelper.m in Sources */,
@@ -1075,12 +1191,15 @@
 				A2A1AAE91EBF52A3006970E1 /* HMDSafetySetting.swift in Sources */,
 				A2A1AAB51EBD6FC1006970E1 /* HMDHighAltitudeScaleLayer.swift in Sources */,
 				A2DD2EDD1ED2BB4C00727B64 /* HMDAircraftRollCursorLayer.swift in Sources */,
+				A215979E1F2C563A00808103 /* airportAnnotation.swift in Sources */,
 				A2D341D41EDBDF10001DEF82 /* PilotHMDViewController.swift in Sources */,
 				A269BF191ECABBBD007ABB10 /* SystemInforTableViewController.swift in Sources */,
 				A2B54C4E1EED7A6800215A18 /* ADSBXResponse.swift in Sources */,
+				A21597BC1F2C7D7C00808103 /* FlightCalloutView.swift in Sources */,
 				A201DEFD1EF6B59400EEEE6F /* UIImage+Movement.swift in Sources */,
 				A2B54C491EED659C00215A18 /* ADSBAircraft.swift in Sources */,
 				A263C55A1F0732AB00FC8FAF /* DJIGimbal+CapabilityCheck.swift in Sources */,
+				A21597C01F2C99E800808103 /* ARAnnotationView.swift in Sources */,
 				A27878421EE535D000636B9D /* DroneViewController.swift in Sources */,
 				A2B54C4C1EED66BA00215A18 /* ADSBAerodrome.swift in Sources */,
 				A2048B561EC5CB4800C2413C /* ProductCommunicationManager.swift in Sources */,
@@ -1093,6 +1212,7 @@
 				A2A1AAED1EBF6216006970E1 /* UIColor+RGB.swift in Sources */,
 				A2DA57FD1EE25EDC0088E1A9 /* DemoPushInfoViewController.m in Sources */,
 				A2DA57FB1EE25EDC0088E1A9 /* DemoGetSetViewController.m in Sources */,
+				A21597901F2C562400808103 /* AirdromeCommon.swift in Sources */,
 				A2A6B9171EDEFE4300192CF8 /* HMDHomeDistanceLabelLayer.swift in Sources */,
 				A26C6F151EE19E8000F92588 /* DJIBaseViewController.swift in Sources */,
 				A2DA57FF1EE25EDC0088E1A9 /* DemoScrollView.m in Sources */,
@@ -1100,6 +1220,8 @@
 				A2B3B2BF1EE9878D00A1EB0B /* ADSBAeroChartViewController.swift in Sources */,
 				A2DA57FA1EE25EDC0088E1A9 /* DemoComponentActionTableViewController.m in Sources */,
 				A2A1AAE51EBF49DD006970E1 /* HMDRadarAltitudeLabelLayer.swift in Sources */,
+				A21597B61F2C7D7C00808103 /* ARConfiguration.swift in Sources */,
+				A21597A71F2C5B3400808103 /* Airport+CoreDataClass.swift in Sources */,
 				A296FF331EFA78FE008D4094 /* UIImage+Mask.swift in Sources */,
 				A2A1AACB1EBDD266006970E1 /* HMDAttitudeRenderer.swift in Sources */,
 				A291DB791EE3D199003C52C2 /* DroneCockpitViewController.swift in Sources */,
@@ -1325,18 +1447,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A2A1AA6C1EBA1CDA006970E1 /* HMD.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-			);
-			name = HMD.xcdatamodeld;
-			path = ../HMD/HMD.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A24BBF241E56840300EBF428 /* Project object */;
 }

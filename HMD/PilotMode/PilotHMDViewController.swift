@@ -84,6 +84,14 @@ class PilotHMDViewController: UIViewController {
         VideoPreviewer.instance().start()
         VideoPreviewer.instance().enableHardwareDecode = false
         VideoPreviewer.instance().setView(self.view)
+        
+        
+        for _ in 0 ... 10 {
+            if initialGimbal() {
+                sleep(1)
+                break
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

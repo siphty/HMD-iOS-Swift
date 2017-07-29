@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SU0-NX-vDc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SU0-NX-vDc">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,24 +48,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8N-Yc-Z52">
-                                <rect key="frame" x="18" y="205" width="45" height="35"/>
+                                <rect key="frame" x="17.5" y="205" width="46" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="iV3-MS-GTE"/>
                                 </constraints>
                                 <state key="normal" image="Viewfinder"/>
                                 <connections>
                                     <segue destination="uCj-Iv-bGd" kind="presentation" id="ECZ-Ia-RVX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OH-ty-mEz">
-                                <rect key="frame" x="18" y="258" width="45" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="7Ce-2t-zm3"/>
-                                    <constraint firstAttribute="width" constant="45" id="gfW-rK-lzM"/>
-                                </constraints>
-                                <state key="normal" image="VR icon"/>
-                                <connections>
-                                    <segue destination="i2y-dr-3Xn" kind="presentation" id="eBN-nc-nOz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vq1-gL-3Xl">
@@ -136,6 +125,17 @@
                                     <segue destination="Teu-rz-b6q" kind="embed" id="fCS-Lr-uou"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OH-ty-mEz">
+                                <rect key="frame" x="14" y="251" width="52" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="7Ce-2t-zm3"/>
+                                    <constraint firstAttribute="width" constant="52" id="gfW-rK-lzM"/>
+                                </constraints>
+                                <state key="normal" image="VR icon"/>
+                                <connections>
+                                    <segue destination="i2y-dr-3Xn" kind="presentation" id="eBN-nc-nOz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -153,13 +153,13 @@
                             <constraint firstItem="kqU-SO-8IE" firstAttribute="top" secondItem="Vq1-gL-3Xl" secondAttribute="bottom" constant="29" id="K1b-Wa-xDw"/>
                             <constraint firstItem="WYK-Lc-SEJ" firstAttribute="leading" secondItem="I8p-eO-6ER" secondAttribute="leadingMargin" constant="112" id="LTu-zm-Das"/>
                             <constraint firstItem="WYK-Lc-SEJ" firstAttribute="top" secondItem="oQc-kW-Nhb" secondAttribute="top" id="NT6-Qp-c7G"/>
-                            <constraint firstItem="Vq1-gL-3Xl" firstAttribute="top" secondItem="9OH-ty-mEz" secondAttribute="bottom" constant="16" id="Nfj-GO-x87"/>
+                            <constraint firstItem="Vq1-gL-3Xl" firstAttribute="top" secondItem="9OH-ty-mEz" secondAttribute="bottom" constant="10" id="Nfj-GO-x87"/>
                             <constraint firstItem="7W4-H9-HnH" firstAttribute="centerY" secondItem="I8p-eO-6ER" secondAttribute="centerY" id="PiN-SR-V6I"/>
-                            <constraint firstItem="9OH-ty-mEz" firstAttribute="top" secondItem="z8N-Yc-Z52" secondAttribute="bottom" constant="18" id="Wxt-2k-Ofy"/>
+                            <constraint firstItem="9OH-ty-mEz" firstAttribute="top" secondItem="z8N-Yc-Z52" secondAttribute="bottom" constant="11" id="Wxt-2k-Ofy"/>
                             <constraint firstAttribute="trailing" secondItem="7W4-H9-HnH" secondAttribute="trailing" constant="10" id="bmt-10-gzx"/>
                             <constraint firstItem="b0U-Jb-iiw" firstAttribute="leading" secondItem="Vq1-gL-3Xl" secondAttribute="trailing" constant="20" id="ccq-Kf-6np"/>
                             <constraint firstItem="oQc-kW-Nhb" firstAttribute="top" secondItem="aj1-RF-ueB" secondAttribute="bottom" constant="9" id="fts-UL-U4v"/>
-                            <constraint firstItem="z8N-Yc-Z52" firstAttribute="leading" secondItem="9OH-ty-mEz" secondAttribute="leading" id="iAU-T3-6h1"/>
+                            <constraint firstItem="z8N-Yc-Z52" firstAttribute="leading" secondItem="9OH-ty-mEz" secondAttribute="leading" constant="3.5" id="iAU-T3-6h1"/>
                             <constraint firstItem="kqU-SO-8IE" firstAttribute="top" secondItem="b0U-Jb-iiw" secondAttribute="bottom" constant="8" id="kkY-gt-M4S"/>
                             <constraint firstItem="Vq1-gL-3Xl" firstAttribute="centerX" secondItem="9OH-ty-mEz" secondAttribute="centerX" id="lOq-db-UdA"/>
                             <constraint firstItem="aj1-RF-ueB" firstAttribute="centerY" secondItem="qeV-rx-Hd9" secondAttribute="centerY" id="qah-8d-BAB"/>
@@ -328,20 +328,37 @@
                                     <segue destination="Teu-rz-b6q" kind="embed" id="pOD-yC-E3e"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQb-Bx-FMH">
+                                <rect key="frame" x="609" y="63" width="48" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="qvX-EG-4UN"/>
+                                    <constraint firstAttribute="width" constant="48" id="rAM-8a-mAX"/>
+                                </constraints>
+                                <state key="normal" image="gimbal_normal"/>
+                                <state key="disabled" image="gimbal_disable"/>
+                                <state key="selected" image="gimbal_active"/>
+                                <state key="highlighted" image="gimbal_normal"/>
+                                <connections>
+                                    <action selector="gimbalSyncButtonTouchUpInside:" destination="uCj-Iv-bGd" eventType="touchUpInside" id="Abn-Sc-6DW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bFw-oa-uOy" firstAttribute="top" secondItem="QQb-Bx-FMH" secondAttribute="bottom" constant="-2" id="2K5-hK-Plo"/>
                             <constraint firstItem="bFw-oa-uOy" firstAttribute="centerY" secondItem="5Ki-ig-Sii" secondAttribute="centerY" id="53o-Av-HjS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QQb-Bx-FMH" secondAttribute="trailing" constant="-10" id="Jvx-H6-zhr"/>
                             <constraint firstAttribute="trailing" secondItem="bFw-oa-uOy" secondAttribute="trailing" constant="10" id="hSL-3b-y7a"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gimbalSyncButton" destination="QQb-Bx-FMH" id="4kl-AM-nZn"/>
                         <outlet property="returnButton" destination="CUJ-37-ydO" id="y7y-Wf-5XK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiC-Wa-JPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="1161"/>
+            <point key="canvasLocation" x="1216.6416791604199" y="1160.8"/>
         </scene>
         <!--PilotHMD View Controller-->
         <scene sceneID="1Oo-Mg-59m">
@@ -376,8 +393,11 @@
     </scenes>
     <resources>
         <image name="Flight Plan" width="50" height="50"/>
-        <image name="VR icon" width="50" height="50"/>
+        <image name="VR icon" width="75" height="75"/>
         <image name="Viewfinder" width="50" height="50"/>
+        <image name="gimbal_active" width="184" height="140"/>
+        <image name="gimbal_disable" width="184" height="140"/>
+        <image name="gimbal_normal" width="303" height="230"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fCS-Lr-uou"/>
