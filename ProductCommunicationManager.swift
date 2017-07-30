@@ -13,7 +13,7 @@ let ProductCommunicationManagerStateDidChange = "ProductCommunicationManagerStat
 class ProductCommunicationManager: NSObject {
 
     // Set this value to true to use the app with the Bridge and false to connect directly to the product
-    public let enableBridgeMode = true
+    public let enableBridgeMode = false
     
     // When enableBridgeMode is set to true, set this value to the IP of your bridge app.
     public let bridgeAppIP = "10.0.0.20"
