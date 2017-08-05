@@ -21,6 +21,10 @@ class HMDAltitudeStickLayer: CALayer {
     }
     
     func setup(){
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
     }
     
     func update(_ alti:CGFloat){

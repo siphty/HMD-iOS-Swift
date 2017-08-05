@@ -17,6 +17,10 @@ class HMDRemainingFlightTimeLabelLayer: CATextLayer {
     
     
     func setup() {
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
         switch operationMode {
         case .Camera, .Home:
             startUpdatingRemainingFlightTime()

@@ -47,7 +47,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/DroneModule/ADSBAeroChartViewController.swift"
-            timestampString = "523001471.172112"
+            timestampString = "523638556.681138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
@@ -79,11 +79,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/PilotMode/PilotHUDViewController.swift"
-            timestampString = "523066693.531518"
+            timestampString = "523065923.768902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329">
+            startingLineNumber = "754"
+            endingLineNumber = "754"
+            landmarkName = "arTrackingManager(_:didUpdateUserLocation:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -93,11 +95,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/PilotMode/PilotHUDViewController.swift"
-            timestampString = "523066693.532073"
+            timestampString = "523065923.769388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329">
+            startingLineNumber = "415"
+            endingLineNumber = "415"
+            landmarkName = "overlayFrame()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

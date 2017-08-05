@@ -48,5 +48,9 @@ class HMDHighAltitudeScaleLayer: CALayer {
                 
             }
         }
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
     }
 }

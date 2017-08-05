@@ -100,7 +100,7 @@ class HMDAltitudeRenderer: CALayer{
                                           y: (frame.height - radarAltiLabelHeight) / 2,
                                           width: frame.width.half() - 5,
                                           height: radarAltiLabelHeight)
-        radarAltitudeLabel.borderColor = UIColor.hmdGreen.cgColor
+        radarAltitudeLabel.borderColor = HMDColor.redScale
         radarAltitudeLabel.borderWidth = 1
         radarAltitudeLabel.contentsScale = UIScreen.main.scale
         radarAltitudeLabel.alignmentMode = kCAAlignmentCenter
@@ -139,7 +139,7 @@ class HMDAltitudeRenderer: CALayer{
                                      width: altitudeScale.frame.width * 2/8,
                                      height: altitudeScale.frame.height)
         altitudeStick.anchorPoint = CGPoint(x: 0.0, y: 0.0)
-        altitudeStick.borderColor = UIColor.green.cgColor
+        altitudeStick.borderColor = HMDColor.redScale
         altitudeStick.borderWidth = 1
         altitudeScale.addSublayer(altitudeStick)
         
@@ -174,7 +174,7 @@ class HMDAltitudeRenderer: CALayer{
     }
 
     func initAltitudeStick(){
-        altitudeStick.backgroundColor = UIColor.hmdGreen.cgColor
+        altitudeStick.backgroundColor = HMDColor.redScale
         preflightCheck()
     }
     
@@ -313,8 +313,8 @@ class HMDAltitudeRenderer: CALayer{
             altitudeStick.borderColor = UIColor.yellow.cgColor
         } else if AltitudeState.low ... AltitudeState.legal ~= altitude {
             newYInPixels = altitudeStick.frame.height * 3/4 - altitudeStick.frame.height * 2/4 * ((altitude - AltitudeState.low) / (AltitudeState.legal - AltitudeState.low))
-            altitudeStick.backgroundColor = UIColor.hmdGreen.cgColor
-            altitudeStick.borderColor = UIColor.hmdGreen.cgColor
+            altitudeStick.backgroundColor = HMDColor.redScale
+            altitudeStick.borderColor = HMDColor.redScale
         } else if AltitudeState.legal ... AltitudeState.max ~= altitude {
             newYInPixels = altitudeStick.frame.height * 1/4 - altitudeStick.frame.height * 1/4 * ((altitude - AltitudeState.legal) / (AltitudeState.max - AltitudeState.legal))
             altitudeStick.backgroundColor = UIColor.orange.cgColor

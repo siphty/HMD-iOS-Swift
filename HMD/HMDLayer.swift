@@ -88,7 +88,7 @@ class HMDLayer: CALayer, CALayerDelegate {
                                 width: losLayerFrameWidth,
                                 height: losLayerFrameHeight)
         losLayer.borderWidth = 1
-        losLayer.borderColor = HMDColor.scale
+        losLayer.borderColor = HMDColor.redScale
         losLayer.operationMode = operationMode
         losLayer.setup()
         addSublayer(losLayer)

@@ -17,6 +17,10 @@ class HMDGroundSpeedLabelLayer: CATextLayer {
     let aircraftVelocityKey = DJIFlightControllerKey(param: DJIFlightControllerParamVelocity)  // Speed
     
     func setup() {
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
         alignmentMode = kCAAlignmentRight
         switch operationMode {
         case .Camera, .Home:

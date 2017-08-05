@@ -14,7 +14,10 @@ class HMDVerticalVelocityCursorLayer: CAShapeLayer {
     func setup(){
         path = makeIndicatorPath().cgPath
         fillColor = UIColor.hmdGreen.cgColor
-        
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
     }
     
     func makeIndicatorPath() -> UIBezierPath{

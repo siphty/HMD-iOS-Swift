@@ -40,7 +40,7 @@ extension CALayer {
     
 //Draw Section
     func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int){
-        drawLine(fromPoint: start, toPoint: end, width: width, color: HMDColor.scale)
+        drawLine(fromPoint: start, toPoint: end, width: width, color: HMDColor.redScale)
     }
     
     func drawLine(fromPoint start: CGPoint, toPoint end:CGPoint, width: Int, color: CGColor){
@@ -52,7 +52,11 @@ extension CALayer {
         line.fillColor = nil
         line.opacity = 1.0
         line.lineWidth = CGFloat(width)
-        line.strokeColor = color
+        line.strokeColor = HMDColor.redScale
+        line.shadowColor = LayerShadow.Color
+        line.shadowOffset = LayerShadow.Offset
+        line.shadowRadius = LayerShadow.Radius
+        line.shadowOpacity = LayerShadow.Opacity
         addSublayer(line)
     }
     
@@ -65,7 +69,11 @@ extension CALayer {
         line.fillColor = nil
         line.opacity = 1.0
         line.lineWidth = CGFloat(width)
-        line.strokeColor = UIColor.green.cgColor
+        line.strokeColor = HMDColor.redScale
+        line.shadowColor = LayerShadow.Color
+        line.shadowOffset = LayerShadow.Offset
+        line.shadowRadius = LayerShadow.Radius
+        line.shadowOpacity = LayerShadow.Opacity
         if isDash {
             line.lineDashPattern = [4, 4]
         }
@@ -76,9 +84,13 @@ extension CALayer {
         let circleLayer = CAShapeLayer()
         circleLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height / 2).cgPath
         circleLayer.lineWidth = 0.6
-        circleLayer.strokeColor = UIColor.hmdGreen.cgColor
+        circleLayer.strokeColor = HMDColor.redScale
         circleLayer.backgroundColor = UIColor.clear.cgColor
         circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.shadowColor = LayerShadow.Color
+        circleLayer.shadowOffset = LayerShadow.Offset
+        circleLayer.shadowRadius = LayerShadow.Radius
+        circleLayer.shadowOpacity = LayerShadow.Opacity
         addSublayer(circleLayer)
     }
     

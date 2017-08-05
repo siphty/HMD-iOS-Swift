@@ -29,3 +29,10 @@ public struct StateColor{
     static let Caution = UIColor.yellow.cgColor
     static let Normal = UIColor.green.cgColor
 }
+
+public struct LayerShadow{
+    static let Color = UIColor.black.cgColor
+    static let Offset = CGSize(width: 0, height: 0)
+    static let Radius = CGFloat(0.0)
+    static let Opacity = Float(0.4)
+}

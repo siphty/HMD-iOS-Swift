@@ -33,7 +33,7 @@ class HMDLineOfSightRenderer: CALayer {
     var sightBoxOriginPosition: CGPoint?
     
     func setup() {
-        borderColor = HMDColor.scale
+        borderColor = HMDColor.redScale
         borderWidth = 2
 
         drawSightBox()
@@ -60,7 +60,7 @@ class HMDLineOfSightRenderer: CALayer {
         let sightBoxOriginX = bounds.width.middle()
         let sightBoxOriginY = 30.0 * heightPixelPerDegree + sightBoxFrameHeight.half()
         sightBox.bounds = CGRect(x: 0, y: 0, width: sightBoxFrameWidth, height: sightBoxFrameHeight)
-        sightBox.borderColor = HMDColor.scale
+        sightBox.borderColor = HMDColor.redScale
         sightBox.borderWidth = 1
         sightBox.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         sightBoxOriginPosition = sightBox.position
@@ -73,6 +73,10 @@ class HMDLineOfSightRenderer: CALayer {
         positionDot.borderWidth = 1
         positionDot.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         positionDot.position = CGPoint(x: sightBox.bounds.width.middle(), y: sightBox.bounds.height.middle())
+        positionDot.shadowColor = LayerShadow.Color
+        positionDot.shadowOffset = LayerShadow.Offset
+        positionDot.shadowRadius = LayerShadow.Radius
+        positionDot.shadowOpacity = LayerShadow.Opacity
         sightBox.addSublayer(positionDot)
         addSublayer(sightBox)
     }

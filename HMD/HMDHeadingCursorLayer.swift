@@ -41,6 +41,10 @@ class HMDHeadingCursorLayer: CAShapeLayer {
         lineJoin = kCALineJoinMiter
         strokeColor = UIColor.yellow.cgColor
         backgroundColor = UIColor.clear.cgColor
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
     }
     
     func makeIndicatorPath() -> UIBezierPath{

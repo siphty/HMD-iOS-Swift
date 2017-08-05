@@ -17,6 +17,10 @@ class HMDMissionTimeLabelLayer: CATextLayer {
     
     
     func setup() {
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
         switch operationMode {
         case .Camera, .Home:
             startUpdatingFlightTime()
@@ -54,7 +58,7 @@ class HMDMissionTimeLabelLayer: CATextLayer {
     
     func statusColor(by seconds: Int) -> CGColor {
         if seconds < 15 {
-            return HMDColor.scale
+            return HMDColor.redScale
         }else if seconds >= 15 && seconds < 20 {
             return UIColor.yellow.cgColor
         }else {

@@ -24,22 +24,22 @@ class HMDBankScaleLayer: CALayer {
         drawCircleScale(number: 1,
                         angle: 0.0,
                         length: pixelsForLongScale + 4,
-                        color: UIColor.green.cgColor)
+                        color: HMDColor.redScale)
         drawCircleScale(number: 7,
                         angle: 10.0,
                         length: pixelsForLongScale,
-                        color: UIColor.green.cgColor)
+                        color: HMDColor.redScale)
         drawCircleScale(number: 13,
                         angle: 5.0,
                         length: pixelsForShoreScale,
-                        color: UIColor.green.cgColor)
+                        color: HMDColor.redScale)
     }
     
     func drawCircleScale(number count: Int, angle degree: CGFloat, length lenth: CGFloat, color: CGColor) {
         let replicateScales = CAReplicatorLayer()
         replicateScales.frame = bounds
         replicateScales.instanceCount = count
-        replicateScales.instanceColor = UIColor.green.cgColor
+        replicateScales.instanceColor = HMDColor.redScale
         let degreeAngle = CGFloat(Double.pi * 2.0) * (degree/360.0)
         replicateScales.instanceTransform = CATransform3DMakeRotation(degreeAngle, 0.0, 0.0, 1.0)
         
@@ -47,6 +47,10 @@ class HMDBankScaleLayer: CALayer {
         let instanceLayer = CALayer()
         instanceLayer.frame = CGRect(x: midX, y: 0, width: 1, height: lenth)
         instanceLayer.backgroundColor = UIColor.white.cgColor
+        instanceLayer.shadowColor = LayerShadow.Color
+        instanceLayer.shadowOffset = LayerShadow.Offset
+        instanceLayer.shadowRadius = LayerShadow.Radius
+        instanceLayer.shadowOpacity = LayerShadow.Opacity
         replicateScales.addSublayer(instanceLayer)
         let spanAngle = CGFloat(count - 1) * (degree/360.0) * CGFloat(Double.pi * 2.0) * -1/2
         replicateScales.transform = CATransform3DMakeRotation(spanAngle , 0, 0, 1.0)

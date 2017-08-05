@@ -112,6 +112,10 @@ class HMDHeadingScaleLayer: CALayer {
                 }
                 label.alignmentMode = kCAAlignmentCenter
                 label.foregroundColor = scaleColor
+                label.shadowColor = LayerShadow.Color
+                label.shadowOffset = LayerShadow.Offset
+                label.shadowRadius = LayerShadow.Radius
+                label.shadowOpacity = LayerShadow.Opacity
                 addSublayer(label)
                 
             } else if (i % unitPerLabel) == 0 {
@@ -137,6 +141,10 @@ class HMDHeadingScaleLayer: CALayer {
                 }
                 label.alignmentMode = kCAAlignmentCenter
                 label.foregroundColor = scaleColor
+                label.shadowColor = LayerShadow.Color
+                label.shadowOffset = LayerShadow.Offset
+                label.shadowRadius = LayerShadow.Radius
+                label.shadowOpacity = LayerShadow.Opacity
                 addSublayer(label)
                 
             }

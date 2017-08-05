@@ -46,7 +46,11 @@ class HMDPitchLadderLayer: CALayer {
                                              height: labelHeight - 1)
                     leftLabel.string = String(Int(floor(Double(degree))))
                     leftLabel.alignmentMode = kCAAlignmentCenter
-                    leftLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    leftLabel.foregroundColor = HMDColor.redScale
+                    leftLabel.shadowColor = LayerShadow.Color
+                    leftLabel.shadowOffset = LayerShadow.Offset
+                    leftLabel.shadowRadius = LayerShadow.Radius
+                    leftLabel.shadowOpacity = LayerShadow.Opacity
                     addSublayer(leftLabel)
                     
                     sPoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half() - scaleWidth,
@@ -87,7 +91,11 @@ class HMDPitchLadderLayer: CALayer {
                                               height: labelHeight - 1)
                     rightLabel.string = String(Int(floor(Double(degree))))
                     rightLabel.alignmentMode = kCAAlignmentCenter
-                    rightLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    rightLabel.foregroundColor = HMDColor.redScale
+                    rightLabel.shadowColor = LayerShadow.Color
+                    rightLabel.shadowOffset = LayerShadow.Offset
+                    rightLabel.shadowRadius = LayerShadow.Radius
+                    rightLabel.shadowOpacity = LayerShadow.Opacity
                     addSublayer(rightLabel)
                     
                 }else if degree < 0 {
@@ -101,7 +109,11 @@ class HMDPitchLadderLayer: CALayer {
                                              height: labelHeight)
                     leftLabel.string = String(Int(floor(Double(degree))))
                     leftLabel.alignmentMode = kCAAlignmentCenter
-                    leftLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    leftLabel.foregroundColor = HMDColor.redScale
+                    leftLabel.shadowColor = LayerShadow.Color
+                    leftLabel.shadowOffset = LayerShadow.Offset
+                    leftLabel.shadowRadius = LayerShadow.Radius
+                    leftLabel.shadowOpacity = LayerShadow.Opacity
                     addSublayer(leftLabel)
                     
                     sPoint = CGPoint(x: ladderFrame.width.half() - gapWidth.half() - scaleWidth,
@@ -141,7 +153,11 @@ class HMDPitchLadderLayer: CALayer {
                                               height: labelHeight)
                     rightLabel.string = String(Int(floor(Double(degree))))
                     rightLabel.alignmentMode = kCAAlignmentCenter
-                    rightLabel.foregroundColor = UIColor.hmdGreen.cgColor
+                    rightLabel.foregroundColor = HMDColor.redScale
+                    rightLabel.shadowColor = LayerShadow.Color
+                    rightLabel.shadowOffset = LayerShadow.Offset
+                    rightLabel.shadowRadius = LayerShadow.Radius
+                    rightLabel.shadowOpacity = LayerShadow.Opacity
                     addSublayer(rightLabel)
                     
                 } else {

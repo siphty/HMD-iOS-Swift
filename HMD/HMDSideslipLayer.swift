@@ -63,8 +63,12 @@ class HMDSideslipLayer: CALayer {
                                       clockwise: true)
         sideslipCursor.path = circlePath.cgPath
         sideslipCursor.fillColor = UIColor.clear.cgColor
-        sideslipCursor.strokeColor = HMDColor.scale
+        sideslipCursor.strokeColor = HMDColor.redScale
         sideslipCursor.lineWidth = 2.0
+        sideslipCursor.shadowColor = LayerShadow.Color
+        sideslipCursor.shadowOffset = LayerShadow.Offset
+        sideslipCursor.shadowRadius = LayerShadow.Radius
+        sideslipCursor.shadowOpacity = LayerShadow.Opacity
         addSublayer(sideslipCursor)
     }
 }

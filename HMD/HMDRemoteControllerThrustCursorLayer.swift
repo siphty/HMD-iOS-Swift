@@ -12,11 +12,15 @@ class HMDRemoteControllerThrustCursorLayer: CAShapeLayer {
     
     func setup(){
         path = makeIndicatorPath().cgPath
-        strokeColor = UIColor.hmdGreen.cgColor
+        strokeColor = HMDColor.redScale
         lineWidth = 1
         lineJoin = kCALineJoinMiter
         fillColor = UIColor.clear.cgColor
         lineDashPattern = [1,1]
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
     }
     
     func makeIndicatorPath() -> UIBezierPath{

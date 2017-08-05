@@ -23,6 +23,10 @@ class HMDBatteryLabelLayer: CATextLayer {
         case .Cruise, .Hover, .Trans:
             startUpdatingBatteryRemain()
         }
+        shadowColor = LayerShadow.Color
+        shadowOffset = LayerShadow.Offset
+        shadowRadius = LayerShadow.Radius
+        shadowOpacity = LayerShadow.Opacity
     }
     
     
