@@ -54,7 +54,7 @@ class misc {
 
 public struct HMDColor {
     static let scale = UIColor.init(red: 35.0 / 255.0, green: 255.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
-    static let redScale = UIColor.red.cgColor
+    static let redScale = UIColor.green.cgColor
     static let normalIndicator = UIColor.init(red: 35.0 / 255.0, green: 255.0 / 255.0, blue: 35.0 / 255.0, alpha: 1).cgColor
 }
 

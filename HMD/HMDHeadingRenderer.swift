@@ -107,10 +107,10 @@ class HMDHeadingRenderer: CALayer {
         headingLabel.fontSize = labelFontSize
         headingLabel.contentsScale = UIScreen.main.scale
         headingLabel.frame = headingNumberFrame
-        headingLabel.borderColor = scaleColor
+        headingLabel.borderColor = HMDColor.redScale
         headingLabel.borderWidth = 1
         headingLabel.alignmentMode = kCAAlignmentCenter
-        headingLabel.foregroundColor = scaleColor
+        headingLabel.foregroundColor = HMDColor.redScale
         addSublayer(headingLabel)
         
         //Draw aircraft heading
@@ -130,7 +130,7 @@ class HMDHeadingRenderer: CALayer {
         homeCursor.fontSize = 9
         homeCursor.contentsScale = UIScreen.main.scale
         homeCursor.alignmentMode = kCAAlignmentCenter
-        homeCursor.foregroundColor = scaleColor
+        homeCursor.foregroundColor = HMDColor.redScale
         homeCursor.string = "H"
         homeCursor.withCircleFrame()
         
@@ -139,7 +139,7 @@ class HMDHeadingRenderer: CALayer {
         aircraftCursor.fontSize = 9
         aircraftCursor.contentsScale = UIScreen.main.scale
         aircraftCursor.alignmentMode = kCAAlignmentCenter
-        aircraftCursor.foregroundColor = scaleColor
+        aircraftCursor.foregroundColor = HMDColor.redScale
         aircraftCursor.string = "A"
         aircraftCursor.withCircleFrame()
         

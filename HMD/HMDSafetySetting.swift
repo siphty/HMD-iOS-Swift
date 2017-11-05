@@ -27,7 +27,7 @@ public struct StateColor{
     static let Danger = UIColor.red.cgColor
     static let Alert = UIColor.orange.cgColor
     static let Caution = UIColor.yellow.cgColor
-    static let Normal = UIColor.green.cgColor
+    static let Normal = HMDColor.redScale
 }
 
 public struct LayerShadow{

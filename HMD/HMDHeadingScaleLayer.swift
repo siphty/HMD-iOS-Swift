@@ -111,7 +111,7 @@ class HMDHeadingScaleLayer: CALayer {
                     label.string = ""
                 }
                 label.alignmentMode = kCAAlignmentCenter
-                label.foregroundColor = scaleColor
+                label.foregroundColor = HMDColor.redScale
                 label.shadowColor = LayerShadow.Color
                 label.shadowOffset = LayerShadow.Offset
                 label.shadowRadius = LayerShadow.Radius

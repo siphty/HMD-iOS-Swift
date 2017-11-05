@@ -39,7 +39,7 @@ class HMDAircraftRollCursorLayer: CAShapeLayer {
         path = makeIndicatorPath().cgPath
         lineWidth = 1
         lineJoin = kCALineJoinMiter
-        strokeColor = UIColor.yellow.cgColor
+        strokeColor = HMDColor.redScale
         fillColor = UIColor.clear.cgColor
         shadowColor = LayerShadow.Color
         shadowOffset = LayerShadow.Offset
