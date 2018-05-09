@@ -23,7 +23,7 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
 
     /**
      *  No positioning solution. This can be caused by an insufficient number of
-     *  satellites in view, insufficient  time to lock onto the satellites, or a loss in
+     *  satellites in view, insufficient time to lock onto the satellites, or a loss in
      *  communication link between the mobile station and base station.
      */
     DJIRTKPositioningSolutionNone,
@@ -75,8 +75,7 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
 
 /**
  *  `YES` if constellation is supported. The European and American versions of RTK
- *  support  GPS and GLONASS, while the Asia Pacific version supports GPS and
- *  BeiDou.
+ *  support GPS and GLONASS, while the Asia Pacific version supports GPS and BeiDou.
  */
 @property(nonatomic, readonly) BOOL isConstellationSupported;
 
@@ -166,7 +165,7 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
 
 /**
  *  Location information of the mobile station's receiver 1 antenna. This location
- *  information is relative to the  base station location and is in degrees.
+ *  information is relative to the base station location and is in degrees.
  */
 @property(nonatomic, readonly) CLLocationCoordinate2D mobileStationLocation;
 
@@ -176,6 +175,30 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
  *  Units are meters.
  */
 @property(nonatomic, readonly) float mobileStationAltitude;
+
+
+/**
+ *  The fusion location of the mobile station (in degrees). It is the combination of
+ *  GPS and RTK. The flight controller uses this location for navigation (e.g.
+ *  waypoint mission) when RTK is available.
+ */
+@property(nonatomic, readonly) CLLocationCoordinate2D mobileStationFusionLocation;
+
+
+/**
+ *  The fusion altitude of the mobile station. It is the combination of GPS, RTK and
+ *  the barometer. The flight controller uses this altitude for navigation (e.g.
+ *  waypoint mission) when RTK is available.
+ */
+@property(nonatomic, readonly) float mobileStationFusionAltitude;
+
+
+/**
+ *  The fusion heading of the mobile station. It is the combination of RTK and the
+ *  compass. The flight controller uses this heading for navigation (e.g. waypoint
+ *  mission) when RTK is available.
+ */
+@property(nonatomic, readonly) float mobileStationFusionHeading;
 
 
 /**
@@ -191,8 +214,8 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
 
 
 /**
- *  Heading relative to True Noth as defined by the vector formed from Antenna 2 to
- *  Antenna 1 on the mobile station.  Unit is degrees.
+ *  Heading relative to True North as defined by the vector formed from Antenna 2 to
+ *  Antenna 1 on the mobile station. Unit is degrees.
  */
 @property(nonatomic, readonly) float heading;
 
@@ -238,8 +261,8 @@ typedef NS_ENUM (NSInteger, DJIRTKPositioningSolution){
 
 /**
  *  Enables RTK positioning. Disable RTK when in poor signal environments, where
- *  incorrect positioning information  might make controlling the aircraft
- *  difficult. Can only be set when the motors are off.
+ *  incorrect positioning information might make controlling the aircraft difficult.
+ *  Can only be set when the motors are off.
  *  
  *  @param enabled `YES` to enable RTK positioning.
  *  @param completion Completion block that receives setter result.

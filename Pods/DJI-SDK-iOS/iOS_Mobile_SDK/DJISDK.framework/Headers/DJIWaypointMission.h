@@ -27,16 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
  *  the pitch joystick. If the stick is pushed up, the speed will increase. If  the
  *  stick is pushed down, the speed will slow down. The stick can be pushed down to
  *  stop the aircraft  and further pushed to start making the aircraft travel back
- *  along the path it came. When the aircraft  is traveling through waypoints in the
- *  reverse order, it will not execute waypoint actions at each  waypoint. If the
- *  stick is released, the aircraft will again travel through the waypoints in the
- *  original  order, and continue to execute waypoint actions (even if executed
+ *  along the path it came. When the aircraft  is travelling through waypoints in
+ *  the reverse order, it will not execute waypoint actions at each  waypoint. If
+ *  the stick is released, the aircraft will again travel through the waypoints in
+ *  the original  order, and continue to execute waypoint actions (even if executed
  *  previously). If the aircraft is pulled  back along the waypoint mission all the
  *  way to the first waypoint, then it will hover in place until the  stick is
  *  released enough for it to again progress through the mission from start to
- *  finish.
- *  It is not supported by Mavic Pro when using WiFi connection. It is not supported
- *  by Spark.
+ *  finish. It is not  supported by Mavic Pro when using WiFi connection. It is not
+ *  supported by Spark.
  */
 @interface DJIWaypointMission : DJIMission
 
@@ -85,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  While the aircraft is traveling between waypoints, you can offset its speed by
+ *  While the aircraft is travelling between waypoints, you can offset its speed by
  *  using the throttle joystick  on the remote controller. `maxFlightSpeed` is this
  *  offset when the joystick is pushed  to maximum deflection. For example, If
  *  maxFlightSpeed is 10 m/s, then pushing the throttle joystick all the  way up
@@ -209,7 +208,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  While the aircraft is traveling between waypoints, you can offset its speed by
+ *  While the aircraft is travelling between waypoints, you can offset its speed by
  *  using the throttle joystick on the remote controller. "maxFlightSpeed" is this
  *  offset when the joystick is pushed to maximum deflection. For example, If
  *  maxFlightSpeed is 10 m/s, then pushing the throttle joystick all the way up will
@@ -260,7 +259,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Determines the aircraft how to go to first waypoint frome current position.
+ *  Determines how the aircraft will reach first waypoint from current position.
  *  Default is `DJIWaypointMissionGotoWaypointSafely`.
  */
 @property(nonatomic, readwrite) DJIWaypointMissionGotoWaypointMode gotoFirstWaypointMode;

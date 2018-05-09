@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Gets the WiFi SSID.
  *  
- *  @param ssid The ssid string.
+ *  @param ssid The SSID string.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
@@ -120,7 +120,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Sets the WiFi frequency band.
+ *  It is not supported by Spark or Mavic Air. For these products, set different
+ *  channel  numbers to select the frequency band.
  *  
  *  @param frequencyBand WiFi frequency band to change to.
  *  @param completion Remote execution result error block.
@@ -130,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Gets the current WiFi frequency band.
+ *  Gets the current WiFi frequency band. It is not supported by Spark or Mavic Air.
  *  
  *  @param frequencyBand The value of `DJIWiFiFrequencyBand` Enum.
  *  @param error Error retrieving the value.
@@ -187,7 +188,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sets the WiFi data rate (throughput). Higher data rates increase the quality of
- *  video transmission, but can only be  used at shorter ranges.
+ *  video transmission, but can only be  used at shorter ranges. It is not supported
+ *  by Spark or Mavic Air.
  *  
  *  @param rate Data rate (throughput).
  *  @param completion The completion block with the returned execution result.
@@ -196,7 +198,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Gets the current data rate (throughput).
+ *  Gets the current data rate (throughput). It is not supported by Spark or Mavic
+ *  Air.
  *  
  *  @param rate The `DJIWiFiDataRate` object.
  *  @param error Error retrieving the value.

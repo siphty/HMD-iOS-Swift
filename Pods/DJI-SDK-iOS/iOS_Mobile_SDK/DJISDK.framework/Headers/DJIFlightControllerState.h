@@ -234,6 +234,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, readonly) BOOL hasReachedMaxFlightRadius;
 
+
+/**
+ *  `YES` if the battery is lower than the low battery warning threshold.
+ */
+@property(nonatomic, readonly) BOOL isLowerThanBatteryWarningThreshold;
+
+
+/**
+ *  `YES` if the battery is lower than the serious low battery warning threshold.
+ */
+@property(nonatomic, readonly) BOOL isLowerThanSeriousBatteryWarningThreshold;
+
+
+/**
+ *  Warning related to high winds.
+ */
+@property(nonatomic, readonly) DJIFlightWindWarning windWarning;
+
 @end
 
 NS_ASSUME_NONNULL_END

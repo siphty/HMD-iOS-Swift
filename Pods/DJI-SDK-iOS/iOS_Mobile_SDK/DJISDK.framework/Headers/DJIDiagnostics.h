@@ -113,7 +113,7 @@ typedef NS_ENUM (NSInteger, DJIDiagnosticsError){
 
 
     /**
-     *  Battery to hot during discharge.
+     *  Battery too hot during discharge.
      */
     DJIDiagnosticsErrorBatteryDischargeOverHeat = 3002,
 
@@ -311,7 +311,7 @@ typedef NS_ENUM (NSInteger, DJIDiagnosticsError){
 
 
     /**
-     *  Take-off faiure.
+     *  Take-off failure.
      */
     DJIDiagnosticsErrorFlightControllerTakeoffFailed = 8012,
 
@@ -383,6 +383,14 @@ typedef NS_ENUM (NSInteger, DJIDiagnosticsError){
  *  Product Diagnostics.
  */
 @interface DJIDiagnostics : NSObject
+
+
+/**
+ *  Component index of the diagnostics. It is valid when the diagnostics is related
+ *  to camera  or gimbal and the connected product has multiple gimbals and cameras
+ *  (e.g. M210).
+ */
+@property(nonatomic, readonly) NSUInteger componentIndex;
 
 
 /**

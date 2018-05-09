@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TY1-wy-6Mh">
-    <device id="retina4_7" orientation="landscape">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TY1-wy-6Mh">
+    <device id="retina5_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,32 +15,29 @@
         <scene sceneID="FAd-21-MEG">
             <objects>
                 <viewController id="TY1-wy-6Mh" customClass="ADSBAeroChartViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ff5-Lg-jxO"/>
-                        <viewControllerLayoutGuide type="bottom" id="a5W-kI-FtH"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rr8-1y-XC1">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Eo3-GK-kHX">
-                                <rect key="frame" x="0.0" y="-27" width="667" height="402"/>
+                                <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a5W-kI-FtH" firstAttribute="top" secondItem="Eo3-GK-kHX" secondAttribute="bottom" id="MHg-KO-7Lw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Eo3-GK-kHX" secondAttribute="trailing" constant="-20" id="YX1-6N-YhW"/>
-                            <constraint firstItem="Eo3-GK-kHX" firstAttribute="leading" secondItem="Rr8-1y-XC1" secondAttribute="leadingMargin" constant="-20" id="cmr-Q0-uHl"/>
-                            <constraint firstItem="Eo3-GK-kHX" firstAttribute="top" secondItem="Ff5-Lg-jxO" secondAttribute="bottom" constant="-27" id="kYs-Tf-YVj"/>
+                            <constraint firstItem="csk-r9-aum" firstAttribute="bottom" secondItem="Eo3-GK-kHX" secondAttribute="bottom" constant="-21" id="MHg-KO-7Lw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Eo3-GK-kHX" secondAttribute="trailing" constant="-64" id="YX1-6N-YhW"/>
+                            <constraint firstItem="Eo3-GK-kHX" firstAttribute="leading" secondItem="Rr8-1y-XC1" secondAttribute="leadingMargin" constant="-64" id="cmr-Q0-uHl"/>
+                            <constraint firstItem="Eo3-GK-kHX" firstAttribute="top" secondItem="csk-r9-aum" secondAttribute="top" id="kYs-Tf-YVj"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="csk-r9-aum"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzU-R3-ZYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306.29685157421289" y="172"/>
+            <point key="canvasLocation" x="-306.6502463054187" y="172"/>
         </scene>
     </scenes>
 </document>

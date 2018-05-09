@@ -30,7 +30,7 @@ typedef NS_ENUM (NSUInteger, DJIAppActivationAircraftBindingState) {
     /**
      *  The aircraft is not currently bound, and needs to be (as it is in China). In
      *  this state, the  aircraft will have 30m max flight height and 50m max flight
-     *  distance limitation. User should  finish the one-off binding process with DJI GO
+     *  distance limitation. User should  finish the one-off binding process with DJI Go
      *  to remove the flight limitation.
      */
     DJIAppActivationAircraftBindingStateUnbound,

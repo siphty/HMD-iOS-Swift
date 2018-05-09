@@ -17,13 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Thes class represents a Hotpoint mission. In a Hotpoint mission, the aircraft
- *  will  repeatedly fly circles of a  constant radius around a specified point
- *  called a Hot Point. The user can control  the aircraft to fly around the
- *  Hotpoint with a specific radius and altitude. During  execution, the user can
- *  also use the physical remote controller to modify its radius  and speed.
- *  It is not supported by Mavic Pro when using WiFi connection. It is not supported
- *  by Spark.
+ *  This class represents a Hotpoint mission. In a Hotpoint mission, the aircraft
+ *  will repeatedly fly circles of a constant radius around a specified point called
+ *  a Hot Point. The user can control the aircraft to fly around the Hotpoint with a
+ *  specific radius and altitude. During execution, the user can also use the
+ *  physical remote controller to modify its radius and speed. It is not supported
+ *  by Mavic Pro when using WiFi connection. It is not supported by Spark.
  */
 @interface DJIHotpointMission : DJIMission
 
@@ -78,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  point. The default value is 20 degrees/s. The maximum angular velocity allowed
  *  is relative to the orbit radius.
  */
-@property(nonatomic, assign) NSInteger angularVelocity;
+@property(nonatomic, assign) float angularVelocity;
 
 @end
 

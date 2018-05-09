@@ -5,9 +5,8 @@
 //  Copyright © 2016 DJI. All rights reserved.
 //
 
-#import "DULWidget.h"
+#import <DJIUILibrary/DULWidget.h>
 
-IB_DESIGNABLE
 
 /**
  *  Display:
@@ -21,7 +20,7 @@ IB_DESIGNABLE
 
 
 /**
- *  The horizonal veloctity in meters/second.
+ *  The horizontal velocity in meters/second.
  */
 @property (nonatomic, assign, readonly) CGFloat velocityValue;
 

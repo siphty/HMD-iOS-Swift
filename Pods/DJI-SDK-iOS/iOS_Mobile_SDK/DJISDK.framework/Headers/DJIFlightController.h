@@ -19,6 +19,7 @@
 @class DJIFlightAssistant;
 @class DJISimulator;
 @class DJIAirSenseSystemInformation;
+@class DJIOnboardSDKDevice;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -91,7 +92,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Called when the flight controller's current state data has been updated. This
- *  method is called 10 times  per second.
+ *  method is called 10 times per second.
  *  
  *  @param fc Instance of the flight controller for which the data will be updated.
  *  @param state Current state of the flight controller.
@@ -100,18 +101,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  Called when the data received from an external device (e.g. the onboard device)
- *  has been updated.
- *  
- *  @param fc Instance of the flight controller for which the data will be updated.
- *  @param data Data received from an external device. The size of the data will not be larger than 100 bytes.
- */
-- (void)flightController:(DJIFlightController *_Nonnull)fc didReceiveDataFromOnboardSDKDevice:(NSData *_Nonnull)data;
-
-
-/**
  *  Called when the flight controller pushes an IMU state update. The callback
- *  method would not be called  if the aircraft is flying.
+ *  method would not be called if the aircraft is flying.
  *  
  *  @param fc Instance of the flight controller for which the data will be updated.
  *  @param imuState DJIIMUState object.
@@ -189,6 +180,12 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  */
 @property(nonatomic, readonly) NSUInteger IMUCount;
 
+
+/**
+ *  The object representing the optional onboardsdk device.
+ */
+@property (nonatomic, readonly, nullable) DJIOnboardSDKDevice *onboardSDKDevice;
+
 /*********************************************************************************/
 #pragma mark Flight Limitation
 /*********************************************************************************/
@@ -201,7 +198,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param maxHeight Maximum height of the aircraft.
  *  @param completion Completion block.
  */
-- (void)setMaxFlightHeight:(float)maxHeight withCompletion:(DJICompletionBlock)completion;
+- (void)setMaxFlightHeight:(NSUInteger)maxHeight withCompletion:(DJICompletionBlock)completion;
 
 
 /**
@@ -211,7 +208,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
-- (void)getMaxFlightHeightWithCompletion:(void (^_Nonnull)(float height, NSError *_Nullable error))completion;
+- (void)getMaxFlightHeightWithCompletion:(void (^_Nonnull)(NSUInteger height, NSError *_Nullable error))completion;
 
 
 /**
@@ -222,7 +219,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param maxRadius Maximum flight radius of the aircraft.
  *  @param completion Completion block.
  */
-- (void)setMaxFlightRadius:(float)maxRadius withCompletion:(DJICompletionBlock)completion;
+- (void)setMaxFlightRadius:(NSUInteger)maxRadius withCompletion:(DJICompletionBlock)completion;
 
 
 /**
@@ -232,7 +229,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
-- (void)getMaxFlightRadiusWithCompletion:(void (^_Nonnull)(float radius, NSError *_Nullable error))completion;
+- (void)getMaxFlightRadiusWithCompletion:(void (^_Nonnull)(NSUInteger radius, NSError *_Nullable error))completion;
 
 
 /**
@@ -269,8 +266,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Starts aircraft takeoff. Takeoff is considered complete when the aircraft is
- *  hovering 1.2 meters (4 feet)  above the ground. Completion block is called when
- *  aircraft crosses 0.5 meters (1.6 feet). If the motors  are already on, this
+ *  hovering 1.2 meters (4 feet) above the ground. Completion block is called when
+ *  aircraft crosses 0.5 meters (1.6 feet). If the motors are already on, this
  *  command cannot be executed.
  *  
  *  @param completion Completion block.
@@ -280,8 +277,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Stops aircraft takeoff. If called before `startTakeoffWithCompletion` is
- *  complete, the aircraft will  cancel takeoff (`startTakeoffWithCompletion`
- *  completion block will return an error) and hover at the  current height.
+ *  complete, the aircraft will cancel takeoff (`startTakeoffWithCompletion`
+ *  completion block will return an error) and hover at the current height.
  *  
  *  @param completion Completion block.
  */
@@ -299,9 +296,9 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Stops auto-landing of the aircraft. If called before
- *  `startLandingWithCompletion` is complete, then the  auto landing will be
- *  canceled (`startLandingWithCompletion` completion block will return an error)
- *  and  the aircraft will hover at its current location.
+ *  `startLandingWithCompletion` is complete, then the auto landing will be canceled
+ *  (`startLandingWithCompletion` completion block will return an error) and the
+ *  aircraft will hover at its current location.
  *  
  *  @param completion Completion block.
  */
@@ -345,20 +342,20 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Sets the home location of the aircraft. The home location is where the aircraft
- *  returns when commanded  by `startGoHomeWithCompletion`, when its signal is lost
- *  or when the battery is below  the lowBatteryWarning threshold. The user should
- *  be careful setting a new home point location, as  sometimes the product will not
- *  be under user control when returning home. A home location  is valid if it is
- *  within 30m of one of the following:
+ *  returns when commanded by `startGoHomeWithCompletion`, when its signal is lost
+ *  or when the battery is below the lowBatteryWarning threshold. The user should be
+ *  careful setting a new home point location, as sometimes the product will not be
+ *  under user control when returning home. A home location is valid if it is within
+ *  30m of one of the following:
  *   - initial take-off location
  *   - aircraft's current location
  *   - current mobile location with at least kCLLocationAccuracyNearestTenMeters
  *  accuracy level
  *   - current remote controller's location as shown by RC GPS.
- *   Note: If setting home point around mobile location, before calling  this
- *  method, the locationServicesEnabled must be true in CLLocationManager, the
+ *   Note: If setting home point around mobile location, before calling this method,
+ *  the locationServicesEnabled must be true in CLLocationManager, the
  *  NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription key
- *  needs to be specified in the  applications Info.plist and the
+ *  needs to be specified in the applications Info.plist and the
  *  requestWhenInUseAuthorization or requestAlwaysAuthorization method of
  *  CLLocationManager object needs to be called to get the user's permission to
  *  access location services.
@@ -366,7 +363,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param homeLocation Home location latitude and longitude in degrees.
  *  @param completion Completion block.
  */
-- (void)setHomeLocation:(CLLocationCoordinate2D)homeLocation
+- (void)setHomeLocation:(CLLocation *)homeLocation
          withCompletion:(DJICompletionBlock)completion;
 
 
@@ -386,31 +383,31 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
-- (void)getHomeLocationWithCompletion:(void (^_Nonnull)(CLLocationCoordinate2D homeLocation, NSError *_Nullable error))completion;
+- (void)getHomeLocationWithCompletion:(void (^_Nonnull)(CLLocation *_Nullable homeLocation, NSError *_Nullable error))completion;
 
 
 /**
  *  Sets the minimum altitude, relative to where the aircraft took off, at which the
- *  aircraft must be before  going home. This can be useful when the user foresees
- *  obstacles in the aircraft's flight path. If the aircraft's  current altitude is
+ *  aircraft must be before going home. This can be useful when the user foresees
+ *  obstacles in the aircraft's flight path. If the aircraft's current altitude is
  *  higher than the minimum go home altitude, it will go home at its current
- *  altitude.  The valid range for the altitude is from 20m to 500m.
+ *  altitude. The valid range for the altitude is from 20m to 500m.
  *  
  *  @param height The aircraft's default go home altitude.
  *  @param completion Completion block.
  */
-- (void)setGoHomeHeightInMeters:(float)height withCompletion:(DJICompletionBlock)completion;
+- (void)setGoHomeHeightInMeters:(NSUInteger)height withCompletion:(DJICompletionBlock)completion;
 
 
 /**
  *  Gets the minimum altitude (relative to the take-off location in meters) at which
- *  the aircraft must be before  going home.
+ *  the aircraft must be before going home.
  *  
  *  @param height The minimum altitude.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
-- (void)getGoHomeHeightInMetersWithCompletion:(void (^_Nonnull)(float height, NSError *_Nullable error))completion;
+- (void)getGoHomeHeightInMetersWithCompletion:(void (^_Nonnull)(NSUInteger height, NSError *_Nullable error))completion;
 
 
 /**
@@ -436,73 +433,100 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  Checks if the onboard SDK device is available.
+ *  Returns if the Onboard SDK feature is available on the connected product.
  *  
  *  @return A boolean value.
  */
-- (BOOL)isOnboardSDKDeviceAvailable;
+- (BOOL)isOnboardSDKAvailable;
 
 
 /**
- *  If there is a device connected to the aircraft using the Onboard SDK, this
- *  method will send data to that  device. The size of the data cannot be greater
- *  than 100 bytes, and will be sent in 40 byte increments every  14ms. This method
- *  is only supported on products that support the Onboard SDK (Matrice 100, Matrice
- *  600, Matrice 600 Pro, A3, A3 Pro, and N3).
- *  
- *  @param data Data to be sent to the external device. The size of the data should not be larger than 100 bytes.
- *  @param completion Completion block.
- */
-- (void)sendDataToOnboardSDKDevice:(NSData *_Nonnull)data
-                    withCompletion:(DJICompletionBlock)completion;
-
-
-/**
- *  Sets the low battery go home percentage threshold. The percentage must be in the
- *  range [25, 50].
+ *  Sets the low battery warning threshold as a percentage. The percentage must be
+ *  in the range of [15, 50].
  *  
  *  @param percent Low battery warning percentage.
  *  @param completion Completion block.
  */
-- (void)setGoHomeBatteryThreshold:(uint8_t)percent
-                   withCompletion:(DJICompletionBlock)completion;
+- (void)setLowBatteryWarningThreshold:(uint8_t)percent
+                       withCompletion:(DJICompletionBlock)completion;
 
 
 /**
- *  Gets the go home battery percentage threshold. The value of the percent
- *  parameter must be in the range [25, 50].
+ *  Gets the low battery warning threshold as a percentage.
  *  
  *  @param percent The go home battery percentage threshold.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
-- (void)getGoHomeBatteryThresholdWithCompletion:(void (^_Nonnull)(uint8_t percent, NSError *_Nullable error))completion;
+- (void)getLowBatteryWarningThresholdWithCompletion:(void (^_Nonnull)(uint8_t percent, NSError *_Nullable error))completion;
 
 
 /**
- *  Sets the land immediately battery percentage threshold with range [10, 25].
+ *  Sets the serious low battery warning threshold as a percentage. The minimum
+ *  value is 10. The maximum value is value from
+ *  `getLowBatteryWarningThresholdWithCompletion` minus 5.
  *  
  *  @param percent Critically low battery warning percentage.
  *  @param completion Completion block.
  */
-- (void)setLandImmediatelyBatteryThreshold:(uint8_t)percent
-                            withCompletion:(DJICompletionBlock)completion;
+- (void)setSeriousLowBatteryWarningThreshold:(uint8_t)percent
+                              withCompletion:(DJICompletionBlock)completion;
 
 
 /**
- *  Gets the land immediately battery percentage threshold with range [10, 25].
+ *  Gets the serious low battery warning threshold in percentage.
  *  
  *  @param completion The completion block with the value returned
  *  @param percent Battery threshold percentage
  *  @param error Error message
  */
-- (void)getLandImmediatelyBatteryThresholdWithCompletion:(void (^_Nonnull)(uint8_t percent, NSError *_Nullable error))completion;
+- (void)getSeriousLowBatteryWarningThresholdWithCompletion:(void (^_Nonnull)(uint8_t percent, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables/disables Smart Return-To-Home (RTH) feature. When it is enabled,
+ *  aircraft will request to go home when remaining battery is only enough for
+ *  completing the go-home action.
+ *  
+ *  @param enabled `YES` to enable smart RTH.
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)setSmartReturnToHomeEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether Smart Return-To-Home (RTH) feature is enabled or not. When it
+ *  is enabled, aircraft will request to go home when remaining battery is only
+ *  enough for completing the go-home action.
+ *  
+ *  @param enabled `YES` if Smart RTH is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block that receives the setter execution result.
+ */
+- (void)getSmartReturnToHomeEnabledWithCompletion:(void (^)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Confirms or cancels the Smart Return-To-Home (RTH) request. When Smart RTH is
+ *  enabled, the aircraft will request to go home when the battery is only enough
+ *  for going home. Before executing the go-home action, the aircraft will wait for
+ *  the confirmation from users with 10 seconds count-down. If the "confirmed"
+ *  parameter is `NO`, the request is canceled and the aircraft will not execute go-
+ *  home action. Otherwise, go-home action will start. Smart RTH will be triggered
+ *  only once during the same flight. Flight controller with firmware version lower
+ *  than 3.0.0.0 does not support confirming the Smart RTH request. User can either
+ *  cancel the request or wait for the countdown to start go-home action.
+ *  
+ *  @param confirmed `YES` to confirm the request and the aircraft will start go-home immediately.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)confirmSmartReturnToHomeRequest:(BOOL)confirmed withCompletion:(DJICompletionBlock)completion;
 
 
 /**
  *  Starts IMU calibration. For aircraft with multiple IMUs, this method will start
- *  the calibration  of all IMUs. Keep the aircraft stationary and horizontal during
- *  calibration, which will take 5 to 10  minutes. The completion block will be
+ *  the calibration of all IMUs. Keep the aircraft stationary and horizontal during
+ *  calibration, which will take 5 to 10 minutes. The completion block will be
  *  called once the calibration is started. Use the
  *  `flightController:didUpdateIMUState` method to check the execution status of the
  *  IMU calibration.
@@ -514,10 +538,10 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Starts the calibration for IMU with a specific ID. Keep the aircraft stationary
- *  and horizontal during calibration, which will take 5 to 10  minutes. The
- *  completion block will be called once the calibration is started.  Use the
- *  `flightController:didUpdateIMUState` method to check the execution  status of
- *  the IMU calibration.
+ *  and horizontal during calibration, which will take 5 to 10 minutes. The
+ *  completion block will be called once the calibration is started. Use the
+ *  `flightController:didUpdateIMUState` method to check the execution status of the
+ *  IMU calibration.
  *  
  *  @param index The IMU with the specific ID to calibrate.
  *  @param completion Completion block to check if the calibration starts successfully.
@@ -527,9 +551,9 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Confirms continuation of landing action. When the clearance between the aircraft
- *  and the ground is less than  0.3m, the aircraft will pause landing and wait for
- *  user's confirmation. Can  use `isLandingConfirmationNeeded`  in
- *  `DJIFlightControllerState` to check if confirmation is needed. It is  supported
+ *  and the ground is less than 0.3m, the aircraft will pause landing and wait for
+ *  user's confirmation. Can use `isLandingConfirmationNeeded` in
+ *  `DJIFlightControllerState` to check if confirmation is needed. It is supported
  *  by flight controller firmware 3.2.0.0 and above.
  *  
  *  @param completion Completion block to check if confirm landing successful.
@@ -559,8 +583,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Sets the control mode of the flight controller. It is highly recommended you
- *  keep the default value  of `DJIFlightControllerControlModeSmart`. See
- *  `DJIFlightControllerControlMode` for details.  Only supported by stand-alone A3.
+ *  keep the default value of `DJIFlightControllerControlModeSmart`. See
+ *  `DJIFlightControllerControlMode` for details. Only supported by stand-alone A3.
  *  
  *  @param mode Control mode to set.
  *  @param completion Completion block that receives the setter execution result.
@@ -580,18 +604,18 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Enables/disables tripod mode. Tripod Mode drops the aircraft's maximum speed to
- *  2.2mph (3.6kph), and  significantly reduces the control stick sensitivity of the
- *  remote controller to give the user the  precision needed for accurate framing.
- *  When tripod mode is enabled, missions, terrain follow mode,  course lock, and
+ *  2.2mph (3.6kph), and significantly reduces the control stick sensitivity of the
+ *  remote controller to give the user the precision needed for accurate framing.
+ *  When tripod mode is enabled, missions, terrain follow mode, course lock, and
  *  home lock are not allowed. Tripod mode is not allowed if the aircraft is running
- *  a  mission. If GPS or vision positioning aren't available, tripod mode cannot be
- *  enabled. If the GPS  and/or the vision system is providing the flight controller
- *  with velocity information, the  aircraft will be able to automatically
- *  compensate for wind. If however, position information is not  available, manual
- *  intervention will be required. User should beware that any manual  compensation
- *  will be limited due to the reduced maximum velocity and sensitivity. If GPS and
- *  vision  position become unavailable while in tripod mode, it is advisable to
- *  alert the user and disable Tripod Mode.
+ *  a mission. If GPS or vision positioning aren't available, tripod mode cannot be
+ *  enabled. If the GPS and/or the vision system is providing the flight controller
+ *  with velocity information, the aircraft will be able to automatically compensate
+ *  for wind. If however, position information is not available, manual intervention
+ *  will be required. User should beware that any manual compensation will be
+ *  limited due to the reduced maximum velocity and sensitivity. If GPS and vision
+ *  position become unavailable while in tripod mode, it is advisable to alert the
+ *  user and disable Tripod Mode.
  *  
  *  @param enabled `YES` to enable tripod mode.
  *  @param completion Completion block that receives the setter result.
@@ -608,6 +632,29 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  @param completion Completion block to receive the result.
  */
 - (void)getTripodModeEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables/disables cinematic mode. In Cinematic Mode, you can shoot more stable
+ *  and smooth photos and videos. Aircraft yaw speed will be lower and braking
+ *  distance will be longer. It's only supported by Mavic Pro and Spark.
+ *  
+ *  @param enabled `YES` to enable cinematic mode.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)setCinematicModeEnabled:(BOOL)enabled
+                 withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets cinematic mode status (enabled/disabled). It's only supported by Mavic Pro
+ *  and Spark.
+ *  
+ *  @param enabled `YES` to enable cinematic mode.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getCinematicModeEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
 
 
 /**
@@ -634,8 +681,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Enable/disable Auto Quick Spin. When the gimbal reaches a yaw movement limit,
- *  the aircraft will  automatically rotate 360 degrees to unwind the gimbal,
- *  allowing it to continue moving  in the yaw direction. This method is only
+ *  the aircraft will automatically rotate 360 degrees to unwind the gimbal,
+ *  allowing it to continue moving in the yaw direction. This method is only
  *  available when the aircraft is flying at least 3m above the ground.
  *  
  *  @param enabled `YES` to enable Auto Quick Spin.
@@ -659,7 +706,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
  *  on the remote controller. Elements 0, 1, and 2 of the returned array map to
  *  `DJIRCFlightModeSwitchOne`, `DJIRCFlightModeSwitchTwo`, and
  *  `DJIRCFlightModeSwitchThree` of the `flightModeSwitch`. The value of each Enum
- *  item represents the  corresponding value of the
+ *  item represents the corresponding value of the
  *  `DJIFlightControllerRemoteControllerFlightMode` Enum representing the flight
  *  mode.
  *  The mapping is fixed for the Phantom series, Inspire series, Mavic Pro, and
@@ -696,13 +743,61 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
                                                                             NSError *_Nullable error))completion;
 
 
+/**
+ *  Enables/disables multiple-flight mode. When multiple-flight mode is enabled,
+ *  user can change the aircraft's mode to P/F/A/S mode by toggling the switch on
+ *  the remote controller. If it is disabled, the aircraft will be in P mode.
+ *  
+ *  @param enabled `YES` to enable multiple-flight mode.
+ *  @param completion Completion block that receives the execution result.
+ */
+- (void)setMultipleFlightModeEnabled:(BOOL)enabled
+                      withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether multiple-flight mode is enabled. When multiple-flight mode is
+ *  enabled, user can change the aircraft's mode to P/F/A/S mode by toggling the
+ *  switch on the remote controller. If it is disabled, the aircraft will be in P
+ *  mode.
+ *  
+ *  @param enabled `YES` if the multiple-flight mode is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block that receives the execution result.
+ */
+- (void)getMultipleFlightModeEnabledWithCompletion:(void (^)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables novice mode. When novice mode is enabled, the flight speed will become
+ *  slower and less responsive handling. For Phantom 4 Pro, enabling novice mode
+ *  will enable the infrared time-of-flight (TOF) sensors on the left and right.
+ *  
+ *  @param enabled `YES` to enable novice mode.
+ *  @param completion Completion block that receives the execution result.
+ */
+- (void)setNoviceModeEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether novice mode is enabled or not. If novice mode is enabled, the
+ *  flight speed is slower and less responsive handling. For Phantom 4 Pro, enabling
+ *  novice mode will enable the infrared time-of-flight (TOF) sensors on the left
+ *  and right.
+ *  
+ *  @param enabled `YES` if novice mode is enabled.
+ *  @param error Error if there is any.
+ *  @param completion Completion block that receives the execution result.
+ */
+- (void)getNoviceModeEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
 /*********************************************************************************/
 #pragma mark Virtual Stick Mode
 /*********************************************************************************/
 
 /**
  *  Indicates whether the virtual stick control interface can be used. Virtual stick
- *  mode  is only availablle when all of the follow requirements are met:
+ *  mode is only available when all of the follow requirements are met:
  *   - Virtual stick mode is enabled.
  *   - No waypoint, hotpoint, or follow-me mission is running.
  *   - `DJIFlightOrientationMode` is set to
@@ -717,8 +812,8 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Enables/disables virtual stick control mode. By enabling virtual stick control
- *  mode, the aircraft can be controlled  using
- *  `sendVirtualStickFlightControlData:withCompletion`. Not  supported by Mavic Pro
+ *  mode, the aircraft can be controlled using
+ *  `sendVirtualStickFlightControlData:withCompletion`. Not supported by Mavic Pro
  *  when using the WiFi connection.
  *  
  *  @param enabled `YES` to enable virtual stick mode.
@@ -740,11 +835,11 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Sends flight control data using virtual stick commands. The
- *  `isVirtualStickControlModeAvailable`  method must return `YES` to use virtual
- *  stick commands. Virtual stick commands  should be sent to the aircraft between 5
- *  Hz and 25 Hz. If virtual stick commands are not sent frequently  enough, the
+ *  `isVirtualStickControlModeAvailable` method must return `YES` to use virtual
+ *  stick commands. Virtual stick commands should be sent to the aircraft between 5
+ *  Hz and 25 Hz. If virtual stick commands are not sent frequently enough, the
  *  aircraft may regard the connection as broken, which will cause the aircraft to
- *  hover in place  until the next command comes through.
+ *  hover in place until the next command comes through.
  *  
  *  @param controlData Flight control data.
  *  @param completion Completion block.
@@ -754,25 +849,32 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 
 /**
- *  Returns current mode of `DJIVirtualStickVerticalControlMode`.
+ *  The vertical control mode for virtual stick. CAUTION: It will be reset to
+ *  `DJIVirtualStickVerticalControlModeVelocity` when the flight controller is
+ *  reconnected.
  */
 @property(nonatomic, assign) DJIVirtualStickVerticalControlMode verticalControlMode;
 
 
 /**
- *  Returns current mode of `DJIVirtualStickRollPitchControlMode`.
+ *  The roll and pitch control mode for virtual stick. CAUTION: It will be reset to
+ *  `DJIVirtualStickRollPitchControlModeAngle` when the flight controller is
+ *  reconnected.
  */
 @property(nonatomic, assign) DJIVirtualStickRollPitchControlMode rollPitchControlMode;
 
 
 /**
- *  Returns current mode of `DJIVirtualStickYawControlMode`.
+ *  The yaw control mode for virtual stick. CAUTION: It will be reset to
+ *  `DJIVirtualStickYawControlModeAngle` when the flight controller is reconnected.
  */
 @property(nonatomic, assign) DJIVirtualStickYawControlMode yawControlMode;
 
 
 /**
- *  Gets current mode of `DJIVirtualStickFlightCoordinateSystem`.
+ *  The coordinate system for virtual stick. CAUTION: It will be reset to
+ *  `DJIVirtualStickFlightCoordinateSystemGround` when the flight controller is
+ *  reconnected.
  */
 @property(nonatomic, assign) DJIVirtualStickFlightCoordinateSystem rollPitchCoordinateSystem;
 
@@ -780,13 +882,13 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 /**
  *  `YES` if Virtual Stick advanced mode is enabled. By default, it is `NO`.
  *  Assuming GPS signal is good, advanced mode will allow aircraft to compensate for
- *  wind when hovering.  For the Phantom 4, collision avoidance can be enabled for
- *  virtual stick  control if advanced mode is on, and collision avoidance is
- *  enabled in `DJIFlightAssistant`.  Only supported by flight controller firmware
- *  versions 3.1.x.x or above.
+ *  wind when hovering. For the Phantom 4, collision avoidance can be enabled for
+ *  virtual stick control if advanced mode is on, and collision avoidance is enabled
+ *  in `DJIFlightAssistant`. Only supported by flight controller firmware versions
+ *  3.1.x.x or above. CAUTION: It will be reset to `NO` when the flight controller
+ *  is reconnected.
  */
 @property(nonatomic, assign) BOOL isVirtualStickAdvancedModeEnabled;
-
 @end
 
 
@@ -800,10 +902,10 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Sets the aircraft flight orientation relative to the Aircraft Heading, Course
- *  Lock, or Home Lock. See the  <i>Flight Controller User Guide</i> for more
+ *  Lock, or Home Lock. See the <i>Flight Controller User Guide</i> for more
  *  information about flight orientation.
  *  
- *  @param type The orientaion mode.
+ *  @param type The orientation mode.
  *  @param completion Completion block.
  */
 - (void)setFlightOrientationMode:(DJIFlightOrientationMode)type
@@ -812,7 +914,7 @@ typedef NS_ENUM (uint8_t, DJIConnectionFailSafeBehavior){
 
 /**
  *  Locks the current heading of the aircraft as the Course Lock. Used when Flight
- *  Orientation Mode  is `DJIFlightOrientationModeCourseLock`.
+ *  Orientation Mode is `DJIFlightOrientationModeCourseLock`.
  *  
  *  @param completion Completion block.
  */

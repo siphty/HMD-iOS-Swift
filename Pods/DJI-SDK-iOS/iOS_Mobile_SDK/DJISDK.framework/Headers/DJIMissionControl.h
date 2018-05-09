@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Called after element execution, regardless of wether or not it was successful.
+ *  Called after element execution, regardless of whether or not it was successful.
  */
 @optional
 - (void)didRun;
@@ -109,8 +109,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  This protocol defines how timeline element may contact the mission control  to
- *  notify of their own execution. This protocol is not intended to be  implemented
+ *  This protocol defines how the timeline element may contact mission control  to
+ *  notify it of its own execution. This protocol is not intended to be  implemented
  *  by any other object and the use of a protocol is primarily  organizational.
  */
 @protocol DJIMissionControlTimelineElementFeedback <NSObject>
@@ -133,7 +133,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)element:(id <DJIMissionControlTimelineElement>)element failedStartingWithError:(NSError *)error;
 
 
-
 /**
  *  Used by elements to notify Mission Control of a progress in the execution.
  *  Additional information may be pulled by mission control depending on the
@@ -144,7 +143,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param error An optional error if something went wrong.
  */
 - (void)element:(id <DJIMissionControlTimelineElement>)element progressedWithError:(NSError * _Nullable)error;
-
 
 
 /**
@@ -163,7 +161,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param error A valid error object.
  */
 - (void)element:(id <DJIMissionControlTimelineElement>)element failedPausingWithError:(NSError *)error;
-
 
 
 /**
@@ -191,7 +188,15 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param element A previously scheduled element. Should also be the element running.
  *  @param error An optional error if the execution end was the result of it.
  */
-- (void)element:(id <DJIMissionControlTimelineElement>)element didFinishRunningWithError:(NSError * _Nullable)error ;
+- (void)element:(id <DJIMissionControlTimelineElement>)element didFinishRunningWithError:(NSError * _Nullable)error;
+
+
+/**
+ *  Used by elements to notify Mission Control of their successful manual stop.
+ *  
+ *  @param element A previously scheduled element. Should also be the element running.
+ */
+- (void)elementDidStopRunning:(id <DJIMissionControlTimelineElement>)element;
 
 
 /**
@@ -225,17 +230,70 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
     
 
     /**
-     *  Can't pause an element which is not pausbile.  This error doesn't is
-     *  informational and doesn't impact Timeline.
+     *  Can't pause an element which is not pausbile.
      */
-    DJIMissionControlTimelineErrorCantPauseUnpausableElement = 10001,
+    DJIMissionControlTimelineErrorCannotPauseUnpausableElement = 10001,
     
 
     /**
      *  Tried to schedule new element while the Timeline was running.
      */
-    DJIMissionControlTimelineErrorCantScheduleWhileRunning = 10002,
+    DJIMissionControlTimelineErrorCannotScheduleWhileRunning = 10002,
     
+
+    /**
+     *  Can't start a timeline whose marker is already at the end.
+     */
+    DJIMissionControlTimelineStartErrorAlreadyAtEnd = 10003,
+    
+
+    /**
+     *  Can't start a timeline which was already running.
+     */
+    DJIMissionControlTimelineStartErrorAlreadyRunning = 10004,
+    
+
+    /**
+     *  Can't start a paused timeline. Need to call resume instead.
+     */
+    DJIMissionControlTimelineStartErrorTimelineIsPaused = 10005,
+    
+
+    /**
+     *  Can't pause a timeline which is not running.
+     */
+    DJIMissionControlTimelinePauseErrorNotRunning = 10006,
+    
+
+    /**
+     *  Can't pause a timeline which is already paused.
+     */
+    DJIMissionControlTimelinePauseErrorAlreadyPaused = 10007,
+    
+
+    /**
+     *  Can't resume a timeline which is not running.
+     */
+    DJIMissionControlTimelineResumeErrorNotRunning = 10008,
+    
+
+    /**
+     *  Can't resume a timeline which is not paused.
+     */
+    DJIMissionControlTimelineResumeErrorNotPaused = 10009,
+    
+
+    /**
+     *  Can't resume an element which is not pausbile.
+     */
+    DJIMissionControlTimelineErrorCannotResumeUnpausableElement = 10010,
+    
+
+    /**
+     *  Can't resume a timeline which is not paused.
+     */
+    DJIMissionControlTimelineStopErrorNotRunning = 10011,
+        
 
     /**
      *  Element passed does not conform to DJIMissionControlTimelineElement protocol
@@ -255,6 +313,11 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
      */
     DJIMissionControlElementErrorInvalidPauseImplementation = 20003,
     
+
+    /**
+     *  Timeline trigger does not have an action implemented.
+     */
+    DJIMissionControlTimelineTriggerErrorActionNotImplemented = 30000,
 };
 
 
@@ -266,20 +329,22 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  *  has APIs to control the mission (e.g. start, stop, pause etc.) and provides
  *  mission state through listeners.
  *   Mission Control's Timeline is made up of a series of Timeline elements which
- *  can be Waypoint missions,  Hotpoint missions (through the Hotpoint action
+ *  can be Waypoint missions, Hotpoint missions (through the Hotpoint action
  *  `DJIHotpointAction`) or objects that follow the
  *  `DJIMissionControlTimelineElement` protocol. `DJIMissionAction` is a Timeline
- *  element, with  `DJIAircraftYawAction` and `DJIGimbalAttitudeAction` subclasses
- *  being examples of specific actions.  If a mission is being executed in a
- *  Timeline, the mission operator can still be used to get state  information of
- *  the mission as well as change mission execution parameters.
+ *  element, with `DJIAircraftYawAction` and `DJIGimbalAttitudeAction` subclasses
+ *  being examples of specific actions. If a mission is being executed in a
+ *  Timeline, the mission operator can still be used to get state information of the
+ *  mission as well as change mission execution parameters.
  *   Timeline elements can also have triggers (`DJIMissionTrigger`) associated with
  *  them. Triggers are separate objects that are run in parallel with a Timeline
  *  element. The trigger object is used to initiate actions if a set of criteria are
  *  met. For example, a trigger could be used to monitor battery level, and then
- *  initiate an action once a threshold is passed.
+ *  initiate an action once a threshold is passed. Mission Control's Timeline is
+ *  only supported by aircrafts. Handheld devices (e.g. OSMO) do not support this
+ *  feature.
  *   The listening mechanism for Mission Control is block based. To listen to an
- *  event, a listener  object and a block to execute when the event occurs is passed
+ *  event, a listener object and a block to execute when the event occurs is passed
  *  to Mission Control. The listener object is only used by Mission Control to keep
  *  track of whether it should execute the listener block or not. Mission Control
  *  would not execute the listener block if the listener object was removed from the
@@ -348,7 +413,7 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
 /**
  *  `YES` if the Timeline is running.
  */
-@property (readonly) BOOL isTimelineRunning;
+@property (nonatomic, readonly) BOOL isTimelineRunning;
 
 
 /**
@@ -361,7 +426,7 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
 /**
  *  `YES` if Timeline is paused.
  */
-@property (readonly) BOOL isTimelinePaused;
+@property (nonatomic, readonly) BOOL isTimelinePaused;
 
 
 /**
@@ -409,11 +474,11 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
 /**
  *  Adds an array of elements to the end of the Timeline.
  *  
- *  @param elementsArray An array of `DJIMissionControlTimelineElement` elements.
+ *  @param elements An array of `DJIMissionControlTimelineElement` elements.
  *  
  *  @return The first error if one occurred. <code>userInfo</code> will hold a dictionary with two keys: @"element" -> holding the elemnt involved in the error and @"index" -> the index in the array for the element.
  */
-- (NSError * _Nullable)scheduleElements:(NSArray <id <DJIMissionControlTimelineElement>> *)elementsArray;
+- (NSError * _Nullable)scheduleElements:(NSArray <id <DJIMissionControlTimelineElement>> *)elements;
 
 
 /**
@@ -422,7 +487,7 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  *  @param element A `DJIMissionControlTimelineElement` element
  *  @param index The element index to insert the new element before.
  *  
- *  @return The first error if one occured.
+ *  @return The first error if one occurred.
  */
 - (NSError * _Nullable)scheduleElement:(id <DJIMissionControlTimelineElement>)element atIndex:(NSUInteger)index;
 
@@ -460,6 +525,16 @@ typedef NS_ENUM(NSInteger, DJIMissionControlError) {
  *  @return Element count.
  */
 - (NSUInteger)scheduledElementsCount;
+
+
+/**
+ *  Gets the index of an element among the scheduled elements.
+ *  
+ *  @param element The element whose index is to be returned.
+ *  
+ *  @return The index of an element.
+ */
+- (NSUInteger)indexOfScheduledElement:(id <DJIMissionControlTimelineElement>)element;
 
 
 /**

@@ -90,16 +90,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Returns the index of the battery, especially useful when the aircraft has
- *  multiple batteries. Index starts at 0. Batteries in products with only one
- *  battery have an index of 0. For Matrice 600, there are printed numbers on the
- *  battery boxes. DJIBattery instance with index 0 corresponds to battery
- *  compartment number 1.
- */
-@property(nonatomic, readonly) NSUInteger index;
-
-
-/**
  *  Returns the number of battery cells.
  */
 @property(nonatomic, readonly) NSUInteger numberOfCells;
@@ -207,7 +197,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Smart batteries can be setup to automatically discharge over a custom period of
  *  time. This method sets the battery's self discharge period in days with range
- *  [1, 10]. Not supported by non-smart batteries and the Osmo series.
+ *  [1, 10]. For Inspire 2 and M200 series products, the max range value  can be 20.
+ *  Not supported by non-smart batteries, Spark and the Osmo series.
  *  
  *  @param days Day for self-discharge
  *  @param completion Asynchronous execution result block.
@@ -218,7 +209,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Smart batteries can be setup to automatically discharge over a custom period of
  *  time. This method gets the battery's self discharge period in days with range
- *  [1, 10].
+ *  [1, 10]. For Inspire 2 and M200 series products, the max range value  can be 20.
  *  Not supported by non-smart batteries and the Osmo series.
  *  
  *  @param completion Asynchronous execution result block that contains the number of days to discharge over.

@@ -62,14 +62,14 @@ extern NSString *const DJISupportedCameraSSDVideoResolutionRange;
 
 
 /**
- *  Number of photos using brust capture mode return a array of
+ *  Number of photos using burst capture mode return a array of
  *  `DJICameraPhotoBurstCount`.
  */
 extern NSString *const DJISupportedCameraBurstCaptureCountRange;
 
 
 /**
- *  Number of photos using RAWBrust capture mode return a array of
+ *  Number of photos using RAWBurst capture mode return a array of
  *  `DJICameraPhotoBurstCount`.
  */
 extern NSString *const DJISupportedCameraRAWBurstCaptureCountRange;
@@ -127,9 +127,9 @@ extern NSString *const DJISupportedCameraPictureStyleCustomContrastRange;
 
 
 /**
- *  Return a list contains digital filters supported.
+ *  Return a list contains camera color supported.
  */
-extern NSString *const DJISupportedCameraDigitalFilterRange;
+extern NSString *const DJISupportedCameraColorRange;
 
 
 /**
@@ -175,8 +175,8 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
 
 /**
  *  Some of the camera's parameters have dynamic ranges. The `DJICameraCapabilities`
- *  class allows you  to query the valid range for a parameter. Type-casting is
- *  required to get the corresponding enumerator value  for each range element.
+ *  class allows you to query the valid range for a parameter. Type-casting is
+ *  required to get the corresponding enumerator value for each range element.
  */
 @interface DJICameraCapabilities : NSObject
 
@@ -195,8 +195,6 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
 /**
  *  Returns the current valid range for camera mode (`DJICameraMode`). Returns `nil`
  *  if  current camera has no supported camera mode or the camera is disconnected.
- *  @return Array of NSNumber. Each element  represents one current supported camera
- *  mode.
  *  
  *  @return Array of NSNumber. Each element represents one current supported camera mode.
  */
@@ -217,7 +215,7 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
 /**
  *  Returns the current valid range for camera's ISO (see `DJICameraISO`). Returns
  *  `nil` if current camera does not support any ISO value or the camera is
- *  disconnected. @return Array  of NSNumber. Each element represent one current
+ *  disconnected. @return An NSNumber array. Each element represent one current
  *  supported ISO value.
  *  
  *  @return Array of NSNumber. Each element represent one current supported ISO value.
@@ -356,12 +354,12 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
 
 
 /**
- *  Returns the current valid camera digital filter range. Returns `nil` if current
- *  camera does not support any value or the camera is disconnected.
+ *  Returns the current valid camera color range. Returns `nil` if current camera
+ *  does not support any value  or the camera is disconnected.
  *  
- *  @return Array of NSNumber. Each element represent one current supported camera digital filter range.
+ *  @return Array of NSNumber. Each element represent one current supported camera color range.
  */
-- (nonnull NSArray<NSNumber *> *)digitalFilterRange;
+- (nonnull NSArray<NSNumber *> *)colorRange;
 
 
 /**
@@ -399,6 +397,7 @@ extern NSString *const DJISupportedCameraPhotoShootModeRange;
  *  @return Array of NSNumber. Each element represents one supported camera shoot photo mode.
  */
 - (nonnull NSArray<NSNumber *> *)photoShootModeRange;
+
 
 @end
 

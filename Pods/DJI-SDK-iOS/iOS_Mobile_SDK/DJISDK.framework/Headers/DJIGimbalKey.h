@@ -85,6 +85,10 @@ EXTERN_KEY NSString *const DJIGimbalParamPitchInvertedControlEnabled;
 EXTERN_KEY NSString *const DJIGimbalParamLandingGearProtectionEnabled;
 EXTERN_KEY NSString *const DJIGimbalParamStickControlMode;
 
+EXTERN_KEY NSString *const DJIGimbalParamPitchControllerMaxSpeed;
+EXTERN_KEY NSString *const DJIGimbalParamYawControllerMaxSpeed;
+
+EXTERN_KEY NSString *const DJIGimbalParamAttitudeSynchronizationEnabled;
 
 
 /**

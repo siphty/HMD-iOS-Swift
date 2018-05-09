@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, DJIGoToActionError) {
     
 
     /**
-     *  GPS Coordinates of the GoToAction Waypoint is not valid. Lattitude value should
+     *  GPS Coordinates of the GoToAction Waypoint is not valid. Latitude value should
      *  be in  the range [-90f, 90f] and longitude value should be in the range [-180f,
      *  180f].
      */

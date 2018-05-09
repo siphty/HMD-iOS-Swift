@@ -12,7 +12,6 @@
 @class DULDockView;
 @class DULContentView;
 
-IB_DESIGNABLE
 
 /**
  *  This is the view used by the DULDefaultLayoutViewController which is the
@@ -58,6 +57,14 @@ IB_DESIGNABLE
  *  or any other content. By default it shows the live video from the main camera.
  */
 @property (readonly, nullable) IBOutlet DULContentView *contentView;
+
+
+/**
+ *  PreviewView is the view which is shown as a small rectangle on the bottom right
+ *  side of the screen. It usually shows either the video feed from the camera or
+ *  the map widget.
+ */
+@property (readonly, nullable) IBOutlet DULContentView *previewView;
 
 
 @end

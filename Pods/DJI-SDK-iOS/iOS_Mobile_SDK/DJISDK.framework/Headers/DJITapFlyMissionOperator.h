@@ -22,8 +22,8 @@ typedef NS_ENUM(NSInteger, DJITapFlyMissionState) {
 
 
     /**
-     *  The state of the operator is unknown. This is the inital state when the operator
-     *  is  first created.
+     *  The state of the operator is unknown. This is the initial state when the
+     *  operator is  first created.
      */
     DJITapFlyMissionStateUnknown = -1,
 

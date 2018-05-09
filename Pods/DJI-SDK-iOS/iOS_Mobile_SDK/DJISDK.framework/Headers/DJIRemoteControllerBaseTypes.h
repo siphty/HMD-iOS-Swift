@@ -130,13 +130,19 @@ typedef NS_ENUM (uint8_t, DJIRCAircraftStickMappingTarget) {
     /**
      *  Controls Yaw
      */
-    DJIRCAircraftStickMappingTargetYaw
+    DJIRCAircraftStickMappingTargetYaw,
+
+
+	/**
+	 *  Unknown.
+	 */
+	DJIRCAircraftStickMappingUnknown = 0xEF,
 };
 
 
 /**
  *  A struct representing a mapping configuration which includes the particular
- *  control and wether or not it is reversed.
+ *  control and whether or not it is reversed.
  */
 typedef struct
 {
@@ -148,7 +154,7 @@ typedef struct
     
 
     /**
-     *  Wether or not the control is to be reversed.
+     *  whether or not the control is to be reversed.
      */
     BOOL isReversed;
 } DJIRCAircraftStickMapping;
@@ -224,7 +230,7 @@ typedef struct
     
 
     /**
-     *  Wether or not the control is to be reversed.
+     *  whether or not the control is to be reversed.
      */
     BOOL isReversed;
     
@@ -249,10 +255,10 @@ typedef NS_ENUM (uint8_t, DJIRCRequestGimbalControlResult) {
  
 
     /**
-     *  The master Remote Controller denies the slave's request. If the slave Remote
-     *  Controller wants to control the gimbal, it must send a request to the master
-     *  Remote Controller first. Then the master Remote Controller can decide to approve
-     *  or deny the request.
+     *  The master Remote Controller denies the slave's request. If the  slave Remote
+     *  Controller wants to control the gimbal, it must send  a request to the master
+     *  Remote Controller first. Then the master  Remote Controller can decide to
+     *  approve or deny the request.
      */
     DJIRCRequestGimbalControlResultRejected,
  
@@ -644,9 +650,9 @@ typedef NS_ENUM (uint8_t, DJIRCFlightModeSwitch){
     /**
      *  Position One. For all products except Mavic Pro, this is the left most position
      *  of the flight mode switch on a remote controller from the perspective of the
-     *  pilot. For example, on a Phantom 4 remote controller, Position One is labeled
-     *  "A". For the Mavic Pro, this is the position that is furthest away from the
-     *  pilot and labeled "Sport".
+     *  pilot. For example, on a Phantom 4 remote controller,  Position One is labeled
+     *  "A". For Mavic Pro, Spark and Mavic Air, this is  the position that is furthest
+     *  away from the pilot and labeled "Sport".
      */
     DJIRCFlightModeSwitchOne,
 
@@ -655,8 +661,8 @@ typedef NS_ENUM (uint8_t, DJIRCFlightModeSwitch){
      *  Position Two. For all products except Mavic Pro, this is the middle position of
      *  the flight mode switch on a remote controller from the perspective of the pilot.
      *  For example, on a Phantom 4 remote controller, Position Two is labeled "S". For
-     *  the Mavic Pro, this is the position that is closest to the pilot (the P
-     *  position).
+     *  Mavic Pro, Spark and Mavic Air, this is the position that is closest  to the
+     *  pilot (the P position).
      */
     DJIRCFlightModeSwitchTwo,
 
@@ -665,8 +671,8 @@ typedef NS_ENUM (uint8_t, DJIRCFlightModeSwitch){
      *  Position Three. For all products except Mavic Pro, this is the right most
      *  position of the flight mode switch on a remote controller from the perspective
      *  of the pilot. For example, on a Phantom 4 remote controller, Position Two is
-     *  labeled "P". The Mavic Pro does not have a third position for the flight mode
-     *  switch.
+     *  labeled "P". Mavic Pro, Spark or Mavic Air does not have  a third position for
+     *  the flight mode switch.
      */
     DJIRCFlightModeSwitchThree,
 };
@@ -853,9 +859,17 @@ typedef struct
     
 
     /**
-     *  Current state of custom button 2 (right Back Button).
+     *  Current state of custom button 2 (right Back Button). It is not supported by
+     *  remote controllers  for Mavic Pro, Spark or Mavic Air.
      */
     DJIRCButton c2Button;
+    
+
+    /**
+     *  Current state of fn button. It is only supported by remote controllers for Mavic
+     *  Pro, Spark  or Mavic Air.
+     */
+    DJIRCButton fnButton;
     
 
     /**
@@ -974,23 +988,22 @@ typedef NS_ENUM (uint8_t, DJIRCChargeMobileMode){
 
 /**
  *  Remote Controller's Remote Focus State. The focus product has one dial (focus
- *  control) that controls two  separate parts of the camera: focal length and
- *  aperture. However it can only control one of these at any  one time and is an
+ *  control) that controls two separate parts of the camera: focal length and
+ *  aperture. However it can only control one of these at any one time and is an
  *  absolute dial, meaning that a specific rotational position of the dial
- *  corresponds to  a specific focal length or aperture. This means that whenever
- *  the dial control mode is changed, the dial  first has to be reset to the new
- *  mode's previous dial position before the dial can be used to adjust the  setting
- *  of the new mode. Example workflow:<br/><ol> - Use dial to set an Aperture of
- *  f2.2
- *   - Change  dial control mode to focal length (set
+ *  corresponds to a specific focal length or aperture. This means that whenever the
+ *  dial control mode is changed, the dial first has to be reset to the new mode's
+ *  previous dial position before the dial can be used to adjust the setting of the
+ *  new mode. Example workflow:<br/><ol> - Use dial to set an Aperture of f2.2
+ *   - Change dial control mode to focal length (set
  *  `DJIRCFocusControllerControlType`)
- *  - Use the  dial to change the focal length
+ *  - Use the dial to change the focal length
  *  - Change dial control mode back to aperture
  *  -  set `DJIRCFocusControllerControlType`
  *   - `isWorking` will now be NO
  *  -  Adjust dial back to f2.2
- *  - `DJIRCFocusControllerDirection` is the direction  the dial should be rotated
- *  - `isWorking` will  become YES when set back to f2.2
+ *  - `DJIRCFocusControllerDirection` is the direction the dial should be rotated
+ *  - `isWorking` will become YES when set back to f2.2
  *  - Now the dial can be used to adjust the aperture.</ol>
  */
 typedef struct
@@ -1291,6 +1304,590 @@ typedef struct
 -(nullable instancetype)initWithC1ButtonTag:(NSNumber *_Nullable)c1ButtonTag
                              andC2ButtonTag:(NSNumber *_Nullable)c2ButtonTag;
 
+@end
+
+/*********************************************************************************/
+#pragma mark Customizable Buttons (Cendence)
+/*********************************************************************************/
+
+
+/**
+ *  Actions that can be assigned to a customizable button. Some of the actions are
+ *  reserved and the firmware will execute the corresponding actions even when the
+ *  application is not connected. Some of the actions are defined by the mobile
+ *  applications. The application is responsible for implementing the non firmware
+ *  actions. The definitions used in DJI Go are provided. It is usually recommended
+ *  to follow DJI Go's definitions for compability so if DJI Go is used at the same
+ *  time as the SDK application the actions will be expected in both applications.
+ */
+typedef NS_ENUM(NSUInteger, DJIRCButtonAction) {
+
+    /**
+     *  Custom action with value 0. In DJI Go, this value represents the action to
+     *  toggle the camera setting view.
+     */
+    DJIRCButtonActionCustom0                                = 0,
+
+    /**
+     *  Custom action with value 3. In DJI Go, this value represents the action to
+     *  switch the the live view and the map view.
+     */
+    DJIRCButtonActionCustom3                                = 3,
+
+    /**
+     *  Custom action with value 4. In DJI Go, this value represents the action to
+     *  clear the flight path in the map view.
+     */
+    DJIRCButtonActionCustom4                                = 4,
+
+    /**
+     *  Custom action with value 5. In DJI Go, this value represents the action to
+     *  toggle the battery setting view.
+     */
+    DJIRCButtonActionCustom5                                = 5,
+
+    /**
+     *  Custom action with value 7. In DJI Go, this value represents the action to
+     *  trigger central exposure metering.
+     */
+    DJIRCButtonActionCustom7                                = 7,
+
+    /**
+     *  Custom action with value 8. In DJI Go, this value represents the action to
+     *  toggle AE lock.
+     */
+    DJIRCButtonActionCustom8                                = 8,
+
+    /**
+     *  Custom action with value 9. In DJI Go, this value represents the action to
+     *  toggle the LEDs on the four arms.
+     */
+    DJIRCButtonActionCustom9                                = 9,
+
+    /**
+     *  Reset FPV gimbal attitude to the center. This action is handled by the firmware.
+     */
+    DJIRCButtonActionResetFPVGimbal                         = 12,
+
+    /**
+     *  Custom action with value 13. In DJI Go, this value represents the action to
+     *  expand  the live view from the FPV camera.
+     */
+    DJIRCButtonActionCustom13                               = 13,
+
+    /**
+     *  Trigger a Quick Spin. This action is handled by the firmware.
+     */
+    DJIRCButtonActionQuickSpin                              = 14,
+
+    /**
+     *  Custom action with value 16. In DJI Go, this value represents the  action to
+     *  toggle the playback view.
+     */
+    DJIRCButtonActionCustom16                               = 16,
+
+    /**
+     *  Custom action with value 17. In DJI Go, this value represents the  action to
+     *  trigger focusing at the center of the live view.
+     */
+    DJIRCButtonActionCustom17                               = 17,
+
+    /**
+     *  Custom action with value 23. In DJI Go, this value represents the action  to
+     *  request gimbal control (for the slave remote controller).
+     */
+    DJIRCButtonActionCustom23                               = 23,
+
+    /**
+     *  Custom action with value 24. In DJI Go, this value represents the action  to
+     *  toggle the modes of the gimbal.
+     */
+    DJIRCButtonActionCustom24                               = 24,
+
+    /**
+     *  Custom action with value 25. In DJI Go, this value represents the action  to
+     *  toggle the customizable button setting view.
+     */
+    DJIRCButtonActionCustom25                               = 25,
+
+    /**
+     *  Custom action with value 26. In DJI Go, this value represents the action  to
+     *  toggle AF and MF for camera.
+     */
+    DJIRCButtonActionCustom26                               = 26,
+
+    /**
+     *  Custom action with value 27. In DJI Go, this value represents the action to
+     *  dismiss the warning tips.
+     */
+    DJIRCButtonActionCustom27                               = 27,
+
+    /**
+     *  Custom action with value 28. In DJI Go, this value represents the action to
+     *  toggle the automatic movement  of the landing gear.
+     */
+    DJIRCButtonActionCustom28                               = 28,
+
+    /**
+     *  Custom action with value 29. In DJI Go, this value represents the action to
+     *  toggle the warning list view.
+     */
+    DJIRCButtonActionCustom29                               = 29,
+
+    /**
+     *  Switch frequency bands of the remote controller. This action is handled by the
+     *  firmware.
+     */
+    DJIRCButtonActionSwitchFrequency                        = 30,
+
+    /**
+     *  Trigger the camera focus. This action is handled by the firmware.
+     */
+    DJIRCButtonActionFocus                                  = 37,
+
+    /**
+     *  Custom action with value 41. In DJI Go, this value represents the action to
+     *  toggle the  composition mode for the Spotlight.
+     */
+    DJIRCButtonActionCustom41                               = 41,
+
+    /**
+     *  Custom action with value 43. In DJI Go, this value represents the action to
+     *  toggle the peak focus.
+     */
+    DJIRCButtonActionCustom43                               = 43,
+
+    /**
+     *  Custom action with value 44. In DJI Go, this value represents the action to
+     *  toggle the display of grid.
+     */
+    DJIRCButtonActionCustom44                               = 44,
+
+    /**
+     *  Custom action with value 45. In DJI Go, this value represents the action to
+     *  toggle the display of histogram.
+     */
+    DJIRCButtonActionCustom45                               = 45,
+
+    /**
+     *  Custom action with value 46. In DJI Go, this value represents the action to
+     *  switch the white balance settings.
+     */
+    DJIRCButtonActionCustom46                               = 46,
+
+    /**
+     *  Custom action with value 47. In DJI Go, this value represents the action to
+     *  toggle the over-exposure warning.
+     */
+    DJIRCButtonActionCustom47                               = 47,
+
+    /**
+     *  Custom action with value 52. In DJI Go, this value represents the action to
+     *  reset the gimbal yaw to align with the aircraft heading.
+     */
+    DJIRCButtonActionCustom52                               = 52,
+
+    /**
+     *  Retract or deploy the landing gear. This action is handled by the firmware.
+     */
+    DJIRCButtonActionToggleLandingGear                      = 54,
+
+    /**
+     *  Custom action with value 59. In DJI Go, this value represents the action to
+     *  toggle the radar map.
+     */
+    DJIRCButtonActionCustom59                               = 59,
+
+    /**
+     *  Custom action with value 60. In DJI Go, this value represents the action to
+     *  toggle the downward vision sensors.
+     */
+    DJIRCButtonActionCustom60                               = 60,
+
+    /**
+     *  Custom action with value 61. In DJI Go, this value represents the action to
+     *  toggle the forward obstacle avoidance.
+     */
+    DJIRCButtonActionCustom61                               = 61,
+
+    /**
+     *  Custom action with value 63. In DJI Go, this value represents the action to
+     *  toggle the full screen mode.
+     */
+    DJIRCButtonActionCustom63                               = 63,
+
+    /**
+     *  Custom action with value 100. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom100                              = 100,
+
+    /**
+     *  Custom action with value 101. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom101                              = 101,
+
+    /**
+     *  Custom action with value 102. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom102                              = 102,
+
+    /**
+     *  Custom action with value 103. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom103                              = 103,
+
+    /**
+     *  Custom action with value 104. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom104                              = 104,
+
+    /**
+     *  Custom action with value 105. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom105                              = 105,
+
+    /**
+     *  Custom action with value 106. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom106                              = 106,
+
+    /**
+     *  Custom action with value 107. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom107                              = 107,
+
+    /**
+     *  Custom action with value 108. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom108                              = 108,
+
+    /**
+     *  Custom action with value 109. This value is reserved for SDK applications.
+     */
+    DJIRCButtonActionCustom109                              = 109,
+
+    /**
+     *  Not defined. It is used to present that no action is bound to a button.
+     */
+    DJIRCButtonActionNotDefined                             = 110,
+};
+
+
+/**
+ *  The customizable buttons.
+ */
+typedef NS_ENUM(NSUInteger, DJIRCCustomizableButton) {
+
+	/**
+	 *  The button with C1 label.
+	 */
+	DJIRCCustomizableButtonC1,
+
+	/**
+	 *  The button with C2 label.
+	 */
+	DJIRCCustomizableButtonC2,
+
+	/**
+	 *  The button with C3 label.
+	 */
+	DJIRCCustomizableButtonC3,
+
+	/**
+	 *  The button with C4 label.
+	 */
+	DJIRCCustomizableButtonC4,
+
+	/**
+	 *  The button with BA label.
+	 */
+	DJIRCCustomizableButtonBA,
+
+	/**
+	 *  The button with BB label.
+	 */
+	DJIRCCustomizableButtonBB,
+
+	/**
+	 *  The button with BC label.
+	 */
+	DJIRCCustomizableButtonBC,
+
+	/**
+	 *  The button with BD label.
+	 */
+	DJIRCCustomizableButtonBD,
+
+	/**
+	 *  The button with BE label.
+	 */
+	DJIRCCustomizableButtonBE,
+
+	/**
+	 *  The button with BF label.
+	 */
+	DJIRCCustomizableButtonBF,
+
+	/**
+	 *  The button with BG label.
+	 */
+	DJIRCCustomizableButtonBG,
+
+	/**
+	 *  The button with BH label.
+	 */
+	DJIRCCustomizableButtonBH,
+
+	/**
+	 *  The button with TD label.
+	 */
+	DJIRCCustomizableButtonTD,
+
+	/**
+	 *  The button with MENU label.
+	 */
+	DJIRCCustomizableButtonMENU,
+
+	/**
+	 *  Unknown.
+	 */
+	DJIRCCustomizableButtonUnknown = 0xFF,
+};
+
+@class DJIMutableRCButtonConfiguration;
+
+
+/**
+ *  The configuration for the customizable buttons on the remote controller. The
+ *  configuration returned by SDK interfaces is immutable. Call `mutableCopy` to get
+ *  a mutable copy in class `DJIMutableRCButtonConfiguration` and change the
+ *  configuration.
+ */
+@interface DJIRCButtonConfiguration : NSObject <NSCopying, NSMutableCopying>
+
+
+/**
+ *  Action bound to the C1 button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction C1Action;
+
+
+/**
+ *  Action bound to the C2 button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction C2Action;
+
+
+/**
+ *  Action bound to the C3 button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction C3Action;
+
+
+/**
+ *  Action bound to the C4 button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction C4Action;
+
+
+/**
+ *  Action bound to the BA button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BAAction;
+
+
+/**
+ *  Action bound to the BB button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BBAction;
+
+
+/**
+ *  Action bound to the BC button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BCAction;
+
+
+/**
+ *  Action bound to the BD button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BDAction;
+
+
+/**
+ *  Action bound to the BE button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BEAction;
+
+
+/**
+ *  Action bound to the BF button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BFAction;
+
+
+/**
+ *  Action bound to the BG button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BGAction;
+
+
+/**
+ *  Action bound to the BH button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction BHAction;
+
+
+/**
+ *  Action bound to the TD button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction TDAction;
+
+
+/**
+ *  Action bound to the MENU button.
+ */
+@property (nonatomic, readonly) DJIRCButtonAction MENUAction;
+
+
+/**
+ *  A dictionary representing the mapping between a customizable button and its
+ *  action. The key is a `NSNumber` with value among `DJIRCCustomizableButton` and
+ *  the value is a `NSNumber` with value among `DJIRCButtonAction`.
+ */
+@property (nonatomic, readonly)  NSDictionary<NSNumber *, NSNumber *> *buttonActions;
+
+
+/**
+ *  Fetch a dictionary representing the mapping between a customizable button and
+ *  its action. The key is a `NSNumber` with value among `DJIRCCustomizableButton`
+ *  and the value is a `NSNumber` with value among `DJIRCButtonAction`.
+ *  
+ *  @return An NSDictionary of NSNumber objects.
+ */
++(NSDictionary<NSNumber *,NSNumber *> *)defaultButtonActions;
+
+
+/**
+ *  Gets the valid actions for a button. For the compatbility with DJI Go, there are
+ *  rules to follow when assigning an action to a button:
+ *   - `DJIRCButtonActionNotDefined` is valid for all buttons and it can be assigned
+ *  to multiple buttons.
+ *   - An action can be only assigned to one button.
+ *   - For Button TD, the possible valid actions include
+ *  `DJIRCButtonActionNotDefined`, `DJIRCButtonActionFocus` and the actions reserved
+ *  by SDK (e.g. `DJIRCButtonActionCustom100`).
+ *  
+ *  @param button The button to check.
+ *  
+ *  @return The list of valid actions for a button.
+ */
+- (NSArray *)getValidActionsForButton:(DJIRCCustomizableButton)button;
+
+@end
+
+
+/**
+ *  The mutable configuration for the customizable buttons on the remote controller.
+ *  For the compatibility with DJI Go, there are rules to follow when assigning an
+ *  action to a button. Refer to `getValidActionsForButton` for more detail.
+ */
+@interface DJIMutableRCButtonConfiguration : DJIRCButtonConfiguration
+
+
+/**
+ *  Action bound to the C1 button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction C1Action;
+
+
+/**
+ *  Action bound to the C2 button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction C2Action;
+
+
+/**
+ *  Action bound to the C3 button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction C3Action;
+
+
+/**
+ *  Action bound to the C4 button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction C4Action;
+
+
+/**
+ *  Action bound to the BA button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BAAction;
+
+
+/**
+ *  Action bound to the BB button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BBAction;
+
+
+/**
+ *  Action bound to the BC button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BCAction;
+
+
+/**
+ *  Action bound to the BD button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BDAction;
+
+
+/**
+ *  Action bound to the BE button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BEAction;
+
+
+/**
+ *  Action bound to the BF button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BFAction;
+
+
+/**
+ *  Action bound to the BG button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BGAction;
+
+
+/**
+ *  Action bound to the BH button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction BHAction;
+
+
+/**
+ *  Action bound to the TD button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction TDAction;
+
+
+/**
+ *  Action bound to the MENU button.
+ */
+@property (nonatomic, readwrite) DJIRCButtonAction MENUAction;
+
+
+/**
+ *  Configures a button with an action.
+ *  
+ *  @param button The button to configure.
+ *  @param action The action to be bound with the button.
+ *  
+ *  @return `YES` if the configuration succeeds.
+ */
+- (BOOL)configButton:(DJIRCCustomizableButton)button withAction:(DJIRCButtonAction)action;
 @end
 
 

@@ -171,7 +171,7 @@ typedef NS_ENUM (NSUInteger, DJIWaypointActionType){
  *  `DJIWaypointMissionHeadingUsingWaypointHeading`. A heading has a range of
  *  [-180, 180] degrees, where 0 represents True North.
  */
-@property(nonatomic, assign) float heading;
+@property(nonatomic, assign) NSInteger heading;
 
 
 /**
@@ -196,8 +196,11 @@ typedef NS_ENUM (NSUInteger, DJIWaypointActionType){
  *  `DJIWaypointMissionFlightPathCurved` the flight path near a waypoint will be  a
  *  curve (rounded corner) with radius [0.2,1000]. When there is a corner radius,
  *  the aircraft will never  go through the waypoint. By default, the radius is 0.2
- *  m. The radius should not be larger than the three  dimensional distance between
- *  any two of the three waypoints that comprise the corner.
+ *  m. If the corner is made of three adjacent waypoints (Short for A,B,C)  . Then
+ *  the radius of A(short for Ra) plus radius of B(short for Rb) must be smaller
+ *  than the distance between  A and B. The radius of the first and the last
+ *  waypoint in a mission does not affect the flight path and it should keep the
+ *  default value (0.2m).
  */
 @property(nonatomic, assign) float cornerRadiusInMeters;
 

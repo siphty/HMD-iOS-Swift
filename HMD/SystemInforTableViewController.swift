@@ -31,6 +31,7 @@ class SystemInforTableViewController: UITableViewController {
     }
     //Gimbal
     var gimbal: DJIGimbal?
+    var gimbalState = DJIGimbalState()
     
 //    var flightControl = DJIflig
     override func viewDidLoad() {
@@ -213,7 +214,7 @@ class SystemInforTableViewController: UITableViewController {
                 cell.details.text = "\(compassHeadingValue)"
             case FlightController.location.rawValue:
                 flightControl?.getHomeLocation(completion: { (location, error) in
-                print("location : \(location.latitude) : \(location.longitude)")
+                    print("location : \(location?.coordinate.latitude.description ?? " - ") : \(location?.coordinate.longitude.description ?? " - ")")
             })
                 cell.title.text = "Location"
                 guard let droneLocationKey = DJIFlightControllerKey(param: DJIFlightControllerParamAircraftLocation) else {
@@ -252,10 +253,10 @@ class SystemInforTableViewController: UITableViewController {
                     cell.details.text = "getValueFor(gimbalAttitudeKey)  has problem"
                     return cell
                 }
-                let gimbalAttitude = gimbalAttitudeValue.value as? DJIGimbalAttitude
-                let yaw = gimbal?.attitudeInDegrees.yaw ?? 0
-                let roll = gimbal?.attitudeInDegrees.roll ?? 0
-                let pitch = gimbal?.attitudeInDegrees.pitch ?? 0
+                let gimbalState = DJIGimbalState.init().attitudeInDegrees
+                let yaw = gimbalState.yaw
+                let roll = gimbalState.roll
+                let pitch = gimbalState.pitch
                 cell.details.text = "Pitch: \(pitch); Yaw: \(yaw); Roll: \(roll)"
 
                 
@@ -327,7 +328,7 @@ class SystemInforTableViewController: UITableViewController {
         if DJISDKManager.product() is DJIAircraft{
             aircraft = DJISDKManager.product() as? DJIAircraft
             gimbal = aircraft?.gimbal
-            print("pitch: \(gimbal?.attitudeInDegrees.pitch ?? 0.0)")
+            print("pitch: \(gimbalState.attitudeInDegrees.pitch)")
         }
         keyManager = DJISDKManager.keyManager()
         flightControlKey = DJIFlightControllerKey.init()

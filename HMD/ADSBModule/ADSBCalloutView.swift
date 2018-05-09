@@ -7,7 +7,6 @@
 //
 import UIKit
 import MapKit
-import SnapKit
 
 open class ADSBCalloutView: UIView {
     
@@ -68,14 +67,10 @@ open class ADSBCalloutView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(contentView)
-        contentView.snp.makeConstraints { (make) in
-            make.left.equalTo(inset.left / 2.0)
-            make.top.equalTo(inset.top / 2.0)
-            make.bottom.equalTo(-inset.bottom - inset.right / 2.0)
-            make.right.equalTo(-inset.right / 2.0)
-            make.width.greaterThanOrEqualTo(inset.left + inset.right)
-            make.height.greaterThanOrEqualTo(inset.top + inset.bottom)
-        }
+        contentView.topAnchor.constraint(equalTo: self.topAnchor, constant: inset.top / 2.0).isActive = true
+        contentView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: inset.left / 2.0).isActive = true
+        contentView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: inset.right / 2.0).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset.left / 2.0).isActive = true
         
         addBackgroundButton(to: contentView)
         
@@ -205,10 +200,12 @@ open class ADSBCalloutView: UIView {
         annotationView.addSubview(self)
         
         // constraints for this callout with respect to its superview
-        snp.makeConstraints { (make) in
-            make.bottom.equalTo(annotationView.snp.top).offset(annotationView.calloutOffset.y)
-            make.centerX.equalTo(annotationView).offset(annotationView.calloutOffset.x)
-        }
+//        snp.makeConstraints { (make) in
+//            make.bottom.equalTo(annotationView.snp.top).offset(annotationView.calloutOffset.y)
+//            make.centerX.equalTo(annotationView).offset(annotationView.calloutOffset.x)
+//        }
+        bottomAnchor.constraint(equalTo: annotationView.topAnchor, constant: annotationView.calloutOffset.y)
+        centerXAnchor.constraint(equalTo: annotationView.centerXAnchor, constant: annotationView.calloutOffset.x)
     }
 }
 extension ADSBCalloutView {
@@ -231,13 +228,10 @@ extension ADSBCalloutView {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(button)
-        button.snp.makeConstraints { (make) in
-            make.top.equalTo(view)
-            make.bottom.equalTo(view)
-            make.leading.equalTo(view)
-            make.trailing.equalTo(view)
-        }
-        
+        button.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        button.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        button.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         button.addTarget(self, action: #selector(didTouchUpInCallout(_:)), for: .touchUpInside)
     }
     

@@ -6,12 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DULWidgetCollectionViewProtocol.h"
-#import "DULWidgetProtocol.h"
+#import <DJIUILibrary/DULWidgetCollectionViewProtocol.h>
+#import <DJIUILibrary/DULWidgetProtocol.h>
 
 @class DULWidgetItem;
 
-IB_DESIGNABLE
 
 /**
  *  This subclass of UICollectionView is used as a base class for all predefined

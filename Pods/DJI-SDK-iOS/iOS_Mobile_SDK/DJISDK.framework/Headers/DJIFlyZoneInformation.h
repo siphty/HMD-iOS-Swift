@@ -18,24 +18,18 @@ NS_ASSUME_NONNULL_BEGIN
 extern NSString *const DJIFlyZoneInformationInvalidTimestamp;
 
 
-
 /**
  *  There are three types of fly zones, NFZ, GEO and Poly.
  */
 typedef NS_ENUM (uint8_t, DJIFlyZoneType){
 
     /**
-     *  The NFZ fly zone is a cylinder or truncated cone volume where flight is
-     *  restricted. Some NFZ fly zones also have a 4km buffer around them where flight
-     *  height is  restricted to 120m.
+     *  The circle fly zone is a cylinder or truncated cone volume (see `shape`)  with
+     *  one of the four restriction levels (see `category`). Some  restrictions can  be
+     *  unlocked while others cannot. Some fly zones also have a 4km buffer around them
+     *  where flight  height is restricted to 120m.
      */
-    DJIFlyZoneTypeNFZ,
-
-    /**
-     *  The GEO fly zone is a cylinder volume with four levels of restriction.  See
-     *  `DJIFlyZoneGEOCategory`. Some restrictions can  be unlocked while others cannot.
-     */
-    DJIFlyZoneTypeGEO,
+    DJIFlyZoneTypeCircle,
 
     /**
      *  The Poly fly zone consists of one or more sub fly zones that are cylinders or
@@ -55,7 +49,7 @@ typedef NS_ENUM (uint8_t, DJIFlyZoneType){
 /**
  *  An enum class represents the category of fly zone.
  */
-typedef NS_ENUM (uint8_t, DJIFlyZoneGEOCategory){
+typedef NS_ENUM (uint8_t, DJIFlyZoneCategory){
 
 
     /**
@@ -63,36 +57,36 @@ typedef NS_ENUM (uint8_t, DJIFlyZoneGEOCategory){
      *  a warning zone, users should be  prompted with a warning message describing the
      *  zone.
      */
-    DJIFlyZoneGEOCategoryWarning,
+    DJIFlyZoneCategoryWarning,
     
 
     /**
      *  Authorization zones restrict flight by default, but can be unlocked by a GEO
      *  authorized user.
      */
-    DJIFlyZoneGEOCategoryAuthorization,
+    DJIFlyZoneCategoryAuthorization,
     
 
     /**
      *  Restricted zones restrict flight by default and cannot be unlocked by a GEO
-     *  authorized user. Users should contact  flysafe@dji.com if they have
+     *  authorized user.  Users should contact flysafe@dji.com if they have
      *  authorization to fly in a restricted zone.
      */
-    DJIFlyZoneGEOCategoryRestricted,
+    DJIFlyZoneCategoryRestricted,
     
 
     /**
-     *  Enhanced warning zones restrict flight by default, and can be unlocked  using
-     *  `unlockFlyZones:withCompletion` without requiring the user to be logged into
-     *  their DJI account.
+     *  Enhanced warning zones do not restrict flight but are highly recommended to be
+     *  informational  to alert the user. In an enhanced warning zone, users should be
+     *  prompted with a warning message  describing the zone.
      */
-    DJIFlyZoneGEOCategoryEnhancedWarning,
+    DJIFlyZoneCategoryEnhancedWarning,
     
 
     /**
      *  Unknown.
      */
-    DJIFlyZoneGEOCategoryUnknown = 0xFF
+    DJIFlyZoneCategoryUnknown = 0xFF
 };
 
 
@@ -362,7 +356,7 @@ typedef NS_ENUM(NSUInteger, DJIFlyZoneDatabaseState) {
 
     /**
      *  Aircraft's database version is older than the latest one.  User should use DJI
-     *  GO or Assistant 2 to upgrade the firmware in order  to keep the database up to
+     *  Go or Assistant 2 to upgrade the firmware in order  to keep the database up to
      *  date.
      */
     DJIFlyZoneDatabaseStateOutOfDate,
@@ -520,17 +514,17 @@ typedef NS_ENUM(NSUInteger, DJIFlyZoneDatabaseState) {
 
 
 /**
- *  The category of the fly zone. This is only used for GEO fly zones.
+ *  The category of the fly zone.
  */
-@property(nonatomic, readonly) DJIFlyZoneGEOCategory category;
+@property(nonatomic, readonly) DJIFlyZoneCategory category;
 
 
 /**
- *  Information about the Sub fly zones.  If empty, then the fly zone is a GEO or
- *  NFZ fly zone. If populated, this fly zone is a Poly fly zone and the sub fly
- *  zone information  will take precedence over information in
- *  `DJIFlyZoneInformation`. `DJIFlyZoneInformation` should only be used for fly
- *  zone identifying information.
+ *  Information about the Sub fly zones. If empty, then the fly zone is a circle fly
+ *  zone. If  populated, this fly zone is a Poly fly zone and the sub fly zone
+ *  information will take  precedence over information in `DJIFlyZoneInformation`.
+ *  `DJIFlyZoneInformation` should only be used for fly zone identifying
+ *  information.
  *  
  *  @return An array of `DJISubFlyZoneInformation` objects.
  */
@@ -538,8 +532,10 @@ typedef NS_ENUM(NSUInteger, DJIFlyZoneDatabaseState) {
 
 
 /**
- *  When `isIndividualUnlockZoneSupported` is `YES`, unlocked fly zones  can be
- *  disabled. This is useful if the aircraft is shared between users.
+ *  Disables the unlocked fly zones. This is useful if the aircraft is shared
+ *  between users. It is not  supported by Inspire 1 series or Phatom 3 series. For
+ *  the other products, it is supported  when `isCustomUnlockZoneSupported` is
+ *  `YES`.
  *  
  *  @param enabled `YES` to enable the unlocked fly zone.
  *  @param completion `completion block` to receive the result.
@@ -548,8 +544,9 @@ typedef NS_ENUM(NSUInteger, DJIFlyZoneDatabaseState) {
 
 
 /**
- *  `YES` if the unlocked fly zone is enabled. This method can only be used when
- *  `isIndividualUnlockZoneSupported` is `YES`.
+ *  `YES` if the unlocked fly zone is enabled. It is not supported by Inspire 1
+ *  series or Phatom 3  series. For the other products, it is supported when
+ *  `isCustomUnlockZoneSupported` is `YES`.
  *  
  *  @param enabled `YES` if the visual stabilization is enabled.
  *  @param error Error retrieving the value.

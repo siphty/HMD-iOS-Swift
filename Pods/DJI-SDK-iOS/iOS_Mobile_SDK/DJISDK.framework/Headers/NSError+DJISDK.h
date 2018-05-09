@@ -65,7 +65,13 @@ FOUNDATION_EXPORT NSString *_Nonnull const DJISDKRegistrationErrorDomain;
 /**
  *  SDK GEO error domain.
  */
-FOUNDATION_EXPORT NSString *_Nonnull const DJISDKGEOErrorDomain;
+FOUNDATION_EXPORT NSString *_Nonnull const DJISDKFlySafeErrorDomain;
+
+
+/**
+ *  SDK FlightHub error domain.
+ */
+FOUNDATION_EXPORT NSString *_Nonnull const DJISDKFlightHubErrorDomain;
 
 /*********************************************************************************/
 #pragma mark DJISDKRegistrationError
@@ -99,17 +105,17 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  The attempt to copy metadata from another registered device to a device that is
-     *  currently connected is not  permitted. For example, if a developer has two
-     *  devices and the application is activated with the app key on  one of the devices
+     *  currently connected is not permitted. For example, if a developer has two
+     *  devices and the application is activated with the app key on one of the devices
      *  and if the other device is plugged in and tries to register the application,
-     *  this error  will occur.
+     *  this error will occur.
      */
     DJISDKRegistrationErrorDeviceDoesNotMatch = -4L,
 
 
     /**
      *  The bundle identifier of your application does not match the bundle identifier
-     *  you registered on the  developer website when you applied to obtain an
+     *  you registered on the developer website when you applied to obtain an
      *  application key.
      */
     DJISDKRegistrationErrorBundleIdDoesNotMatch = -5L,
@@ -117,15 +123,15 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  The application key is prohibited. This occurs when an application key that has
-     *  already been released by DJI  is revoked. Please contact DJI for assistance.
+     *  already been released by DJI is revoked. Please contact DJI for assistance.
      */
     DJISDKRegistrationErrorAppKeyProhibited = -6L,
 
 
     /**
      *  There is a maximum number of devices one application key can be used to
-     *  activate. The maximum number of  devices is given when an application is
-     *  registered on the DJI developer website. This error will occur  if the maximum
+     *  activate. The maximum number of devices is given when an application is
+     *  registered on the DJI developer website. This error will occur if the maximum
      *  number of activations has been reached.
      */
     DJISDKRegistrationErrorMaxActivationCountReached = -7L,
@@ -133,9 +139,9 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  This error occurs when an application key was given for a specific platform and
-     *  is trying to be used to  activate an application for another platform. For
-     *  instance, if an application key was given for an iOS  applicationa and is used
-     *  to activate an Android application, this error will occur.
+     *  is trying to be used to activate an application for another platform. For
+     *  instance, if an application key was given for an iOS application and is used to
+     *  activate an Android application, this error will occur.
      */
     DJISDKRegistrationErrorAppKeyInvalidPlatformError = -8L,
 
@@ -149,7 +155,7 @@ typedef NS_ENUM (NSInteger, DJISDKRegistrationError){
 
     /**
      *  There are two levels for the SDK framework, level 1 and level 2. If an
-     *  application key was given under one  level and is trying to be used to active an
+     *  application key was given under one level and is trying to be used to active an
      *  application using another level SDK framework, this error will occur.
      */
     DJISDKRegistrationErrorAppKeyLevelNotPermitted = -10L,
@@ -322,6 +328,24 @@ typedef NS_ENUM (NSInteger, DJISDKError){
      *  Operation is cancelled.
      */
     DJISDKErrorOperationCancelled = -1019L,
+
+
+    /**
+     *  The Internet is not reachable.
+     */
+    DJISDKErrorInternetNetworkIsNotReachable = -1020L,
+    
+
+    /**
+     *  Local Data Mode (LDM) is not supported in your context.
+     */
+    DJISDKErrorLDMIsNotSupported = -1021L,
+    
+
+    /**
+     *  There are no existing archived logs.
+     */
+    DJISDKErrorNoExistingArchiveLogs = -1022L,
 
 
     /**
@@ -671,9 +695,9 @@ typedef NS_ENUM (NSInteger, DJISDKMissionError){
 
     /**
      *  Cannot execute in the current mode. For products and flight controller firmware
-     *  versions that support 'F'  mode (e.g. Phantom 3 Professional, Inspire 1, A3 with
-     *  flight controller firmware version lower than  3.2.10.0, etc), please make sure
-     *  the remote controller's mode switch is in 'F' mode. For the others,  please make
+     *  versions that support 'F' mode (e.g. Phantom 3 Professional, Inspire 1, A3 with
+     *  flight controller firmware version lower than 3.2.10.0, etc), please make sure
+     *  the remote controller's mode switch is in 'F' mode. For the others, please make
      *  sure the remote controller's mode switch is in 'P' mode.
      */
     DJISDKMissionErrorModeError = -5000L,
@@ -1156,80 +1180,181 @@ typedef NS_ENUM (NSInteger, DJISDKMissionError){
 /**
  *  DJI SDK GEO Error.
  */
-typedef NS_ENUM(NSInteger, DJISDKGEOError){
+typedef NS_ENUM(NSInteger, DJISDKFlySafeError){
  
 
     /**
      *  User is not logged in.
      */
-    DJISDKGEOErrorNotLoggedIn = -6001L,
+    DJISDKFlySafeErrorNotLoggedIn = -6001L,
  
 
     /**
      *  The operation is cancelled.
      */
-    DJISDKGEOErrorOperationCancelled = -6002L,
+    DJISDKFlySafeErrorOperationCancelled = -6002L,
  
 
     /**
      *  Aircraft's location is not available.
      */
-    DJISDKGEOErrorAircraftLocationNotAvailable = -6003L,
+    DJISDKFlySafeErrorAircraftLocationNotAvailable = -6003L,
  
 
     /**
      *  Aircraft's serial number is not available.
      */
-    DJISDKGEOErrorAircraftSerialNumberNotAvailable = -6004L,
+    DJISDKFlySafeErrorAircraftSerialNumberNotAvailable = -6004L,
  
 
     /**
      *  The token is invalid.
      */
-    DJISDKGEOErrorInvalidToken = -6005L,
+    DJISDKFlySafeErrorInvalidToken = -6005L,
  
 
     /**
      *  User is not authorized.
      */
-    DJISDKGEOErrorNotAuthorized = -6006L,
+    DJISDKFlySafeErrorNotAuthorized = -6006L,
  
 
     /**
      *  Data returned by server is invalid.
      */
-    DJISDKGEOErrorInvalidServerData = -6007L,
+    DJISDKFlySafeErrorInvalidServerData = -6007L,
  
 
     /**
      *  The system is still initializing.
      */
-    DJISDKGEOErrorInitializationNotFinished = -6008L,
+    DJISDKFlySafeErrorInitializationNotFinished = -6008L,
  
 
     /**
      *  Aircraft's location does not support GEO.
      */
-    DJISDKGEOErrorNotSupportGEO = -6009L,
+    DJISDKFlySafeErrorNotSupportGEO = -6009L,
  
 
     /**
      *  This area is not eligible for unlocking.
      */
-    DJISDKGEOErrorAreaNotEligibleUnlock = -6010L,
+    DJISDKFlySafeErrorAreaNotEligibleUnlock = -6010L,
  
 
     /**
      *  The simulated aircraft location is not valid. During the simulation, a location
-     *  is valid if it is within  50km of (37.460484, -122.115312).
+     *  is valid if it is within 50km of (37.460484, -122.115312).
      */
-    DJISDKGEOErrorInvalidSimulatedLocation = -6011L,
+    DJISDKFlySafeErrorInvalidSimulatedLocation = -6011L,
     
 
     /**
      *  The Account login is out of date, Need login again.
      */
-    DJISDKGEOErrorTokenOutOfDate = -6012L,
+    DJISDKFlySafeErrorTokenOutOfDate = -6012L,
+};
+
+/*********************************************************************************/
+#pragma mark FlightHub Error
+/*********************************************************************************/
+
+
+/**
+ *  DJI SDK FlightHub Error.
+ */
+typedef NS_ENUM(NSInteger, DJISDKFlightHubError){
+
+	/**
+	 *  Server rejected the request because the signature is invalid.
+	 */
+	DJISDKFlightHubErrorSignatureInvalid = -7001L,
+
+	/**
+	 *  Server rejected the request because the user does not have the permission.
+	 */
+	DJISDKFlightHubErrorNoRightToAccess = -7002L,
+
+	/**
+	 *  Invalid parameter(s).
+	 */
+	DJISDKFlightHubErrorParametersInvalid = -7003L,
+
+	/**
+	 *  No authorization information found.
+	 */
+	DJISDKFlightHubErrorNoAuthorizationInformationFound = -7004L,
+
+	/**
+	 *  The account information is not found.
+	 */
+	DJISDKFlightHubErrorUserNotFoundInUserCenter = -7005L,
+
+	/**
+	 *  Authorization information has expired. Please authorize again.
+	 */
+	DJISDKFlightHubErrorAuthorizationExpired = -7006L,
+
+	/**
+	 *  User not found in DJI FlightHub system.
+	 */
+	DJISDKFlightHubErrorUserNotFoundInFlightHub = -7007L,
+
+	/**
+	 *  The service package has been expired.
+	 */
+	DJISDKFlightHubErrorServicePackageExpired = -7008L,
+
+	/**
+	 *  The service package has reached the limit of device numbers.
+	 */
+	DJISDKFlightHubErrorServicePackageLimitationReached = -7009L,
+
+	/**
+	 *  The service package does not have permission to access SDK service.
+	 */
+	DJISDKFlightHubErrorUserHasNoSDKPermissionForServicePackage = -7010L,
+
+	/**
+	 *  No team found.
+	 */
+	DJISDKFlightHubErrorNoTeamFound = -7011L,
+
+	/**
+	 *  No aircraft found.
+	 */
+	DJISDKFlightHubErrorNoAircraftFound = -7012L,
+
+	/**
+	 *  The aircraft has already been bound in the chosen team.
+	 */
+	DJISDKFlightHubErrorAircraftAlreadyBoundInTeamChosen = -7013L,
+
+	/**
+	 *  No record found.
+	 */
+	DJISDKFlightHubErrorNoRecordFound = -7014L,
+
+	/**
+	 *  No user is logged in.
+	 */
+	DJISDKFlightHubErrorNotLoggedIn = -7015L,
+
+	/**
+	 *  Aircraft's serial number is not available.
+	 */
+	DJISDKFlightHubErrorAircraftSerialNumberNotAvailable = -7016L,
+
+	/**
+	 *  The aircraft has already been bound in the other team. Please unbind it first.
+	 */
+	DJISDKFlightHubErrorAircraftAlreadyBoundInTeamChosenInOtherTeam = -7017L,
+
+	/**
+	 *  Bound device number has reached the limit of your service package.
+	 */
+	DJISDKFlightHubErrorBoundDeviceLimitationReached = -7018L,
 };
 
 
@@ -1290,13 +1415,24 @@ typedef NS_ENUM(NSInteger, DJISDKGEOError){
 
 
 /**
- *  Get DJISDKGEOError.
+ *  Get DJISDKFlySafeError.
  *  
- *  @param errorCode errorCode for `DJISDKGEOError`.
+ *  @param errorCode errorCode for `DJISDKFlySafeError`.
  *  
  *  @return An NSError object initialized with errorCode. If the errorCode was 0, returns nil.
  */
-+ (_Nullable instancetype)DJISDKGEOErrorForCode:(DJISDKGEOError)errorCode;
++ (_Nullable instancetype)DJISDKFlySafeErrorForCode:(DJISDKFlySafeError)errorCode;
+
+
+/**
+ *  Returns the specific error in the `DJISDKFlightHubError` according to the error
+ *  code.
+ *  
+ *  @param errorCode errorCode for `DJIFlightHubError`.
+ *  
+ *  @return An NSError object initialized with errorCode. If the errorCode was 0, returns nil.
+ */
++ (_Nullable instancetype)DJISDKFlightHubErrorForCode:(DJISDKFlightHubError)errorCode;
 
 
 /**

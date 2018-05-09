@@ -1,11 +1,12 @@
 PODS:
-  - Crashlytics (3.8.5):
-    - Fabric (~> 1.6.3)
-  - DJI-SDK-iOS (4.2.1)
-  - DJI-UILibrary-iOS (4.1.1)
-  - Fabric (1.6.11)
-  - NVActivityIndicatorView (3.6.1)
-  - SnapKit (3.2.0)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - DJI-SDK-iOS (4.5.1)
+  - DJI-UILibrary-iOS (4.4)
+  - Fabric (1.7.6)
+  - NVActivityIndicatorView (4.2.1):
+    - NVActivityIndicatorView/Presenter (= 4.2.1)
+  - NVActivityIndicatorView/Presenter (4.2.1)
 
 DEPENDENCIES:
   - Crashlytics
@@ -13,16 +14,22 @@ DEPENDENCIES:
   - DJI-UILibrary-iOS
   - Fabric
   - NVActivityIndicatorView
-  - SnapKit
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Crashlytics
+    - DJI-SDK-iOS
+    - DJI-UILibrary-iOS
+    - Fabric
+    - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
-  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
-  DJI-SDK-iOS: 7c7e3555d1a742770bf7bf1eadd50bcb5dec7c30
-  DJI-UILibrary-iOS: e5424bb3e38c6d7f1119f0897e0fa1cb64a980a2
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  DJI-SDK-iOS: b8a99d90efd59855f4f1319071917a32e5536cbe
+  DJI-UILibrary-iOS: a58b8dbb1734b9e2c5373817343b1bedb3a4b74b
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
 
-PODFILE CHECKSUM: 344e2d31c7b41eff56c932f280d563ba287ce9aa
+PODFILE CHECKSUM: 2e3cb3189000132af432747bc883daf270511aff
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.0

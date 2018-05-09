@@ -137,10 +137,13 @@ typedef NS_ENUM (NSUInteger, DJIWaypointMissionHeadingMode){
      *  Aircraft's heading will always be in the direction of flight.
      */
     DJIWaypointMissionHeadingAuto,
-    
+
 
     /**
-     *  Aircraft's heading will be set to the initial take-off heading.
+     *  Aircraft's heading will be set to the heading when reaching the first waypoint.
+     *  Before reaching the  first waypoint, the aircraft's heading can be controlled by
+     *  the remote controller. When the aircraft  reaches the first waypoint, its
+     *  heading will be fixed.
      */
     DJIWaypointMissionHeadingUsingInitialDirection,
     

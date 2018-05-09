@@ -41,7 +41,7 @@ typedef void (^DJIKeyedActionCompletionBlock)(BOOL finished, DJIKeyedValue * _Nu
 
 
 /**
- *  The completion block. called everytime the value behind a key is updated.
+ *  The completion block, called every time the value behind a key is updated.
  *  
  *  @param oldValue The old value. `nil` if no value was present before.
  *  @param newValue The new value. `nil` if the stored values are being flushed.
@@ -50,11 +50,15 @@ typedef void (^DJIKeyedListenerUpdateBlock)(DJIKeyedValue * _Nullable oldValue, 
 
 
 /**
- *  `DJIKeyManager` provides access to the keyed interface using  `DJIKey` and
- *  corresponding subclass objects. `DJIKeyManager` is accessed from `keyManager`
- *  in `DJISDKManager`.
+ *  `DJIKeyManager` provides access to the keyed interface using `DJIKey` and
+ *  corresponding subclass objects. `DJIKeyManager` is accessed from `keyManager` in
+ *  `DJISDKManager`.
  */
 @interface DJIKeyManager : NSObject
+
+- (instancetype)init OBJC_UNAVAILABLE("You must use the singleton");
+
++ (instancetype)new OBJC_UNAVAILABLE("You must use the singleton");
 
 
 /**
@@ -133,6 +137,16 @@ typedef void (^DJIKeyedListenerUpdateBlock)(DJIKeyedValue * _Nullable oldValue, 
  *  @param listener The listener object passed to `startListeningForChangesOnKey:withListener:andUpdateBlock`.
  */
 - (void)stopAllListeningOfListeners:(id)listener;
+
+
+/**
+ *  Determines if a key is supported by the connected product.
+ *  
+ *  @param key Key to be check on current product.
+ *  
+ *  @return `YES` if the key is supported.
+ */
+- (BOOL)isKeySupported:(DJIKey *)key;
 
 @end
 

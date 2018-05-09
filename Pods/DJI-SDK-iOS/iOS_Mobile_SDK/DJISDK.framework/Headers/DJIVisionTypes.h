@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "DJISDKFoundation.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -50,7 +51,14 @@ typedef NS_ENUM(NSUInteger, DJIVisionSensorPosition) {
 
 /**
  *  Distance warning returned by each sector of the front vision system. Warning
- *  Level 4 is the most serious level.
+ *  Level 6 is the most serious level. For different aircraft, the same warning
+ *  level will refer to different distances. Spark only supports the follow warning
+ *  levels:
+ *      - `DJIObstacleDetectionSectorWarningInvalid`
+ *      - `DJIObstacleDetectionSectorWarningLevel1`
+ *      - `DJIObstacleDetectionSectorWarningLevel2`
+ *      - `DJIObstacleDetectionSectorWarningLevel3`
+ *      - `DJIObstacleDetectionSectorWarningUnknown`
  */
 typedef NS_ENUM (NSInteger, DJIObstacleDetectionSectorWarning){
  
@@ -63,31 +71,69 @@ typedef NS_ENUM (NSInteger, DJIObstacleDetectionSectorWarning){
  
 
     /**
-     *  The distance between the obstacle detected by the sector and the aircraft is
-     *  over 4 meters.
+     *  Warning level 1.
+     *   - Phantom 4 and Mavic Pro: the distance between the obstacle detected by  the
+     *  sector and the aircraft is over 10 meters.
+     *   - Spark: the distance between the obstacle  detected by the sector and the
+     *  aircraft is over 4 meters.
+     *   - Others: the distance between  the obstacle detected by the sector and the
+     *  aircraft is over 20 meters.
      */
     DJIObstacleDetectionSectorWarningLevel1,
  
 
     /**
-     *  The distance between the obstacle detected by the sector and the aircraft is
-     *  between 3 - 4 meters.
+     *  Warning level 2.
+     *   - Phantom 4 and Mavic Pro: the distance between the obstacle detected by the
+     *  sector and the aircraft is between 8 - 10 meters.
+     *   - Spark: the distance between the obstacle  detected by the sector and the
+     *  aircraft is between 2 - 4 meters.
+     *   - Others: the distance between  the obstacle detected by the sector and the
+     *  aircraft is between 15 - 20 meters.
      */
     DJIObstacleDetectionSectorWarningLevel2,
 
 
     /**
-     *  The distance between the obstacle detected by the sector and the aircraft is
-     *  between 2 - 3 meters.
+     *  Warning level 3.
+     *   - Phantom 4 and Mavic Pro: the distance between the obstacle detected by the
+     *  sector  and the aircraft is between 6 - 8 meters.
+     *   - Spark: the distance between the obstacle detected by the  sector and the
+     *  aircraft is less than 2 meters.
+     *   - Others: the distance between the obstacle detected  by the sector and the
+     *  aircraft is between 10 - 15 meters.
      */
     DJIObstacleDetectionSectorWarningLevel3,
  
 
     /**
-     *  The distance between the obstacle detected by the sector and the aircraft is
-     *  less than 2 meters.
+     *  Warning level 4.
+     *   - Phantom 4 and Mavic Pro: the distance between the obstacle detected by the
+     *  sector and the  aircraft is between 4 - 6 meters.
+     *   - Others: the distance between the obstacle detected by the sector and the
+     *  aircraft is between 6 - 10 meters. Spark does not support this warning level.
      */
     DJIObstacleDetectionSectorWarningLevel4,
+    
+
+    /**
+     *  Warning level 5.
+     *   - Phantom 4 and Mavic Pro: the distance between the obstacle detected by the
+     *  sector and the  aircraft is between 2 - 4 meters.
+     *   - Others: the distance between the obstacle detected by the sector and the
+     *  aircraft is between 3 - 6 meters. Spark does not support this warning level.
+     */
+    DJIObstacleDetectionSectorWarningLevel5,
+    
+
+    /**
+     *  Warning level 6.
+     *   - Phantom 4 and Mavic Pro: the distance between the obstacle detected by the
+     *  sector and the  aircraft is less than 2 meters.
+     *   - Others: the distance between the obstacle detected by the sector and the
+     *  aircraft is less than 3 meters. Spark does not support this warning level.
+     */
+    DJIObstacleDetectionSectorWarningLevel6,
  
 
     /**
@@ -247,10 +293,10 @@ typedef NS_ENUM(NSUInteger, DJIVisionFaceAwareState) {
 
 /**
  *  This class gives state information about the product's vision sensors used for
- *  obstacle detection. The two  types of sensors used are dual camera sensors
- *  operating in the visible spectrum (dual-camera sensor) and  infrared time of
+ *  obstacle detection. The two types of sensors used are dual camera sensors
+ *  operating in the visible spectrum (dual-camera sensor) and infrared time of
  *  flight (TOF) sensors. Note, Inspire 2's upwards-facing infrared TOF sensor is
- *  not returned  in this state. It is accessed through `DJIVisionControlState`.
+ *  not returned in this state. It is accessed through `DJIVisionControlState`.
  */
 @interface DJIVisionDetectionState : NSObject
 
@@ -386,7 +432,194 @@ typedef NS_ENUM (NSInteger, DJIVisionLandingProtectionState){
  */
 @property (nonatomic, readonly) DJIVisionLandingProtectionState landingProtectionState;
 
+
+/**
+ *  `YES` if Advanced Pilot Assistance System (APAS) is active. When it is active,
+ *  the aircraft will change  flight path automatically to avoid obstacles.
+ */
+@property (nonatomic, readonly) BOOL isAdvancedPilotAssistanceSystemActive;
+
 @end
 
+
+/**
+ *  The system status of SmartCapture.
+ */
+typedef NS_ENUM(NSInteger, DJISmartCaptureSystemStatus) {
+
+    /**
+     *  SmartCapture is initializing.
+     */
+    DJISmartCaptureSystemStatusInitializing,
+
+    /**
+     *  The aircraft is not flying and detecting a human face in front of the camera.
+     */
+    DJISmartCaptureSystemStatusNotFlyingAndFaceAwareActivating,
+
+    /**
+     *  The aircraft is not flying and FaceAware has been activated. The aircraft will
+     *  push the dimension of the target through `targetRect`  of
+     *  `DJISmartCaptureState`.
+     */
+    DJISmartCaptureSystemStatusNotFlyingAndFaceAwareActivated,
+
+    /**
+     *  GestureLaunch is recognized and the aircraft is taking off.
+     */
+    DJISmartCaptureSystemStatusGestureLaunch,
+
+    /**
+     *  The aircraft is flying and detecting human faces in front of the camera.
+     */
+    DJISmartCaptureSystemStatusFlyingAndFaceAwareActivating,
+
+    /**
+     *  The aircraft is flying and detected one or more than one human faces in front of
+     *  the camera.  One of the detected human can raise a hand to confirm the control.
+     *  Then the SmartCapture  state will change to
+     *  `DJISmartCaptureSystemStatusFollowing`.
+     */
+    DJISmartCaptureSystemStatusFlyingAndFaceAwareActivated,
+
+    /**
+     *  The aircraft is following the target but not SmartCapture action is recognized.
+     */
+    DJISmartCaptureSystemStatusFollowing,
+
+    /**
+     *  The aircraft is executing PalmControl (controlling the position or the
+     *  distance).  See `action` of `DJISmartCaptureState` for more detail.
+     */
+    DJISmartCaptureSystemStatusPalmControl,
+
+    /**
+     *  The aircraft is executing camera related action (e.g. shoot photos).  See
+     *  `action` of `DJISmartCaptureState` for more detail.
+     */
+    DJISmartCaptureSystemStatusCameraCaptureAction,
+
+    /**
+     *  GestureLand is recognized and the aircraft is landing.
+     */
+    DJISmartCaptureSystemStatusGestureLand,
+
+    /**
+     *  Unknown.
+     */
+    DJISmartCaptureSystemStatusUnknown = 0xFF,
+};
+
+
+/**
+ *  Different actions supported by SmartCapture.
+ */
+typedef NS_ENUM(NSInteger, DJISmartCaptureAction) {
+
+    /**
+     *  No action is being executed.
+     */
+    DJISmartCaptureActionNone,
+
+    /**
+     *  The user is adjusting the aircraft's position. Move the palm up  or down slowly
+     *  to control the aircraft's altitude. Move the arm  left or right to control the
+     *  aircraft's orientation.
+     */
+    DJISmartCaptureActionAdjustingPosition,
+
+    /**
+     *  The user is adjusting distance between the aircraft and the user.  Move two
+     *  hands apart and the aircraft will fly away from the user.  The maximum distance
+     *  is 19.7ft (6m). Move two hands together and  the aircraft will fly towards the
+     *  user. The minimum distance is 6.6ft (2m).
+     */
+    DJISmartCaptureActionAdjustingDistance,
+
+    /**
+     *  The control of the aircraft is being switched from one person to the other.  The
+     *  current user drops hand towards the floor. The Front LEDs will turn solid green.
+     *  The person who would like to control the aircraft raise palm in front of the
+     *  aircraft.  When the Front LEDs blinks green slowly, it indicates the control is
+     *  switched successfully.
+     */
+    DJISmartCaptureActionSwitchingControl,
+
+    /**
+     *  The camera is shooting photos. Make a V gesture with one hand to trigger the
+     *  action. Once the  gesture is recognized, two-second countdown will begin
+     *  (`photoCountdown`  of `DJISmartCaptureState`).
+     */
+    DJISmartCaptureShootingPhoto,
+
+    /**
+     *  The camera is recording video. To start this, make a frame gesture with fingers
+     *  from both hands.  Once the gesture is recognized, the aircraft's front LEDs will
+     *  turn off and the camera will start  recording. After five seconds, use the same
+     *  gesture to stop the recording.
+     */
+    DJISmartCaptureActionRecordingVideo,
+
+    /**
+     *  Unknown.
+     */
+    DJISmartCaptureActionUnknown = 0xFF,
+};
+
+
+/**
+ *  Different following modes of SmartCapture.
+ */
+typedef NS_ENUM(NSInteger, DJISmartCaptureFollowingMode) {
+
+    /**
+     *  Aircraft follows the target at constant distance.
+     */
+    DJISmartCaptureFollowingModeTrace,
+
+    /**
+     *  Aircraft follows the target at constant angle and distance from the side.
+     */
+    DJISmartCaptureFollowingModeProfile,
+
+    /**
+     *  Unknown.
+     */
+    DJISmartCaptureFollowingModeUnknown = 0xFF,
+};
+
+
+/**
+ *  The object includes all information related to SmartCapture.
+ */
+@interface DJISmartCaptureState : NSObject
+
+/**
+ *  The system status of SmartCapture.
+ */
+@property (nonatomic, readonly) DJISmartCaptureSystemStatus systemStatus;
+
+/**
+ *  The executing SmartCapture action.
+ */
+@property (nonatomic, readonly) DJISmartCaptureAction action;
+
+/**
+ *  The following mode of SmartCapture.
+ */
+@property (nonatomic, readonly) DJISmartCaptureFollowingMode followingMode;
+
+/**
+ *  The countdown for shooting photo.
+ */
+@property (nonatomic, readonly) NSTimeInterval photoCountdown;
+
+/**
+ *  The dimension of the detected target. It is `CGRectNull` when the target is
+ *  invalid.
+ */
+@property (nonatomic, readonly) CGRect targetRect;
+
+@end
 
 NS_ASSUME_NONNULL_END

@@ -57,7 +57,7 @@ typedef NS_ENUM (uint8_t, DJIWiFiFrequencyBand){
 
 
 /**
- *  WiFi magnetic interferrence - as measured by Osmo, Phantom 3 4K and Phantom 3
+ *  WiFi magnetic interference - as measured by Osmo, Phantom 3 4K and Phantom 3
  *  Standard.
  */
 typedef NS_ENUM (uint8_t, DJIWiFiMagneticInterferenceLevel) {
@@ -309,7 +309,7 @@ typedef NS_ENUM (uint8_t, DJILightbridgeSecondaryVideoDisplayMode) {
     /**
      *  Displays video from Source 2 only. When the current encode mode is single, the
      *  secondary output will display  video from HD Gimbal camera. When the current
-     *  encode mode is dual, the secondary output will display video from  HDMI input.
+     *  encode mode is dual, the secondary output will display video from  AV input.
      */
     DJILightbridgeSecondaryVideoDisplayModeSource2Only,
 

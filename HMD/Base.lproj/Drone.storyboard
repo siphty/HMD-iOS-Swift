@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SU0-NX-vDc">
-    <device id="retina4_7" orientation="landscape">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SU0-NX-vDc">
+    <device id="retina5_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,14 +20,11 @@
         <scene sceneID="3hY-1c-o3A">
             <objects>
                 <viewController storyboardIdentifier="CameraExposureSettingsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n0s-Jo-FTW" customClass="DULExposureSettingsController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CpM-bj-wGg"/>
-                        <viewControllerLayoutGuide type="bottom" id="hm3-Pl-sbh"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gyi-VV-zuO">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Ull-OI-bgZ"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="50"/>
@@ -39,16 +37,12 @@
         <scene sceneID="dHM-50-nqJ">
             <objects>
                 <viewController id="SU0-NX-vDc" customClass="DroneCockpitViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="42b-VU-wMp"/>
-                        <viewControllerLayoutGuide type="bottom" id="kqU-SO-8IE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I8p-eO-6ER">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8N-Yc-Z52">
-                                <rect key="frame" x="17.5" y="205" width="46" height="35"/>
+                                <rect key="frame" x="17" y="205" width="46" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="iV3-MS-GTE"/>
                                 </constraints>
@@ -97,8 +91,8 @@
                                     <constraint firstAttribute="height" constant="91" id="By1-rI-E8s"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aj1-RF-ueB">
-                                <rect key="frame" x="83" y="0.0" width="584" height="37"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aj1-RF-ueB">
+                                <rect key="frame" x="105" y="0.0" width="562" height="37"/>
                             </containerView>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeV-rx-Hd9">
                                 <rect key="frame" x="0.0" y="0.0" width="97" height="37"/>
@@ -139,33 +133,34 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="b0U-Jb-iiw" secondAttribute="trailing" constant="43" id="0qc-k5-UGW"/>
-                            <constraint firstItem="aj1-RF-ueB" firstAttribute="leading" secondItem="I8p-eO-6ER" secondAttribute="leading" constant="83" id="235-g6-DqF"/>
-                            <constraint firstItem="qeV-rx-Hd9" firstAttribute="top" secondItem="42b-VU-wMp" secondAttribute="bottom" id="2br-2u-Djq"/>
+                            <constraint firstItem="ms5-Io-2ey" firstAttribute="trailing" secondItem="b0U-Jb-iiw" secondAttribute="trailing" constant="43" id="0qc-k5-UGW"/>
+                            <constraint firstItem="aj1-RF-ueB" firstAttribute="leading" secondItem="ms5-Io-2ey" secondAttribute="leading" constant="83" id="235-g6-DqF"/>
+                            <constraint firstItem="qeV-rx-Hd9" firstAttribute="top" secondItem="ms5-Io-2ey" secondAttribute="top" id="2br-2u-Djq"/>
                             <constraint firstItem="9OH-ty-mEz" firstAttribute="centerX" secondItem="z8N-Yc-Z52" secondAttribute="centerX" id="4VL-PP-rnR"/>
                             <constraint firstItem="lg5-wY-ZE2" firstAttribute="centerX" secondItem="z8N-Yc-Z52" secondAttribute="centerX" id="5Ls-PN-SKG"/>
-                            <constraint firstAttribute="trailing" secondItem="aj1-RF-ueB" secondAttribute="trailing" id="AKT-gc-53L"/>
-                            <constraint firstItem="lg5-wY-ZE2" firstAttribute="leading" secondItem="I8p-eO-6ER" secondAttribute="leading" constant="11" id="F0q-yb-tpk"/>
+                            <constraint firstItem="ms5-Io-2ey" firstAttribute="trailing" secondItem="aj1-RF-ueB" secondAttribute="trailing" id="AKT-gc-53L"/>
+                            <constraint firstItem="lg5-wY-ZE2" firstAttribute="leading" secondItem="ms5-Io-2ey" secondAttribute="leading" constant="11" id="F0q-yb-tpk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oQc-kW-Nhb" secondAttribute="trailing" constant="50" id="Hfc-gj-fLX"/>
                             <constraint firstItem="qeV-rx-Hd9" firstAttribute="leading" secondItem="I8p-eO-6ER" secondAttribute="leadingMargin" constant="-20" id="IDo-So-Bmg"/>
                             <constraint firstItem="oQc-kW-Nhb" firstAttribute="leading" secondItem="WYK-Lc-SEJ" secondAttribute="trailing" constant="22" id="ITi-nv-Tic"/>
-                            <constraint firstItem="aj1-RF-ueB" firstAttribute="top" secondItem="42b-VU-wMp" secondAttribute="bottom" id="JaN-TH-mq6"/>
-                            <constraint firstItem="kqU-SO-8IE" firstAttribute="top" secondItem="Vq1-gL-3Xl" secondAttribute="bottom" constant="29" id="K1b-Wa-xDw"/>
+                            <constraint firstItem="aj1-RF-ueB" firstAttribute="top" secondItem="ms5-Io-2ey" secondAttribute="top" id="JaN-TH-mq6"/>
+                            <constraint firstItem="ms5-Io-2ey" firstAttribute="bottom" secondItem="Vq1-gL-3Xl" secondAttribute="bottom" constant="29" id="K1b-Wa-xDw"/>
                             <constraint firstItem="WYK-Lc-SEJ" firstAttribute="leading" secondItem="I8p-eO-6ER" secondAttribute="leadingMargin" constant="112" id="LTu-zm-Das"/>
                             <constraint firstItem="WYK-Lc-SEJ" firstAttribute="top" secondItem="oQc-kW-Nhb" secondAttribute="top" id="NT6-Qp-c7G"/>
                             <constraint firstItem="Vq1-gL-3Xl" firstAttribute="top" secondItem="9OH-ty-mEz" secondAttribute="bottom" constant="10" id="Nfj-GO-x87"/>
                             <constraint firstItem="7W4-H9-HnH" firstAttribute="centerY" secondItem="I8p-eO-6ER" secondAttribute="centerY" id="PiN-SR-V6I"/>
                             <constraint firstItem="9OH-ty-mEz" firstAttribute="top" secondItem="z8N-Yc-Z52" secondAttribute="bottom" constant="11" id="Wxt-2k-Ofy"/>
-                            <constraint firstAttribute="trailing" secondItem="7W4-H9-HnH" secondAttribute="trailing" constant="10" id="bmt-10-gzx"/>
+                            <constraint firstItem="ms5-Io-2ey" firstAttribute="trailing" secondItem="7W4-H9-HnH" secondAttribute="trailing" constant="10" id="bmt-10-gzx"/>
                             <constraint firstItem="b0U-Jb-iiw" firstAttribute="leading" secondItem="Vq1-gL-3Xl" secondAttribute="trailing" constant="20" id="ccq-Kf-6np"/>
                             <constraint firstItem="oQc-kW-Nhb" firstAttribute="top" secondItem="aj1-RF-ueB" secondAttribute="bottom" constant="9" id="fts-UL-U4v"/>
                             <constraint firstItem="z8N-Yc-Z52" firstAttribute="leading" secondItem="9OH-ty-mEz" secondAttribute="leading" constant="3.5" id="iAU-T3-6h1"/>
-                            <constraint firstItem="kqU-SO-8IE" firstAttribute="top" secondItem="b0U-Jb-iiw" secondAttribute="bottom" constant="8" id="kkY-gt-M4S"/>
+                            <constraint firstItem="ms5-Io-2ey" firstAttribute="bottom" secondItem="b0U-Jb-iiw" secondAttribute="bottom" constant="8" id="kkY-gt-M4S"/>
                             <constraint firstItem="Vq1-gL-3Xl" firstAttribute="centerX" secondItem="9OH-ty-mEz" secondAttribute="centerX" id="lOq-db-UdA"/>
                             <constraint firstItem="aj1-RF-ueB" firstAttribute="centerY" secondItem="qeV-rx-Hd9" secondAttribute="centerY" id="qah-8d-BAB"/>
                             <constraint firstItem="WYK-Lc-SEJ" firstAttribute="height" secondItem="oQc-kW-Nhb" secondAttribute="height" id="tsZ-2k-gIx"/>
-                            <constraint firstItem="lg5-wY-ZE2" firstAttribute="top" secondItem="42b-VU-wMp" secondAttribute="bottom" constant="45" id="wJk-3J-xzC"/>
+                            <constraint firstItem="lg5-wY-ZE2" firstAttribute="top" secondItem="ms5-Io-2ey" secondAttribute="top" constant="45" id="wJk-3J-xzC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ms5-Io-2ey"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -178,20 +173,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFh-Ig-3G7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="505.99700149925042" y="613.60000000000002"/>
+            <point key="canvasLocation" x="167" y="534"/>
         </scene>
         <!--Trailing Bar View Controller-->
         <scene sceneID="sdx-iL-u3a">
             <objects>
                 <viewController id="Teu-rz-b6q" customClass="DULTrailingBarViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1Wn-H7-xG5"/>
-                        <viewControllerLayoutGuide type="bottom" id="PSF-I4-4VY"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Uby-Ya-PgD">
                         <rect key="frame" x="0.0" y="0.0" width="60" height="256"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="aB7-c9-YkG"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5h-O6-m59" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,14 +194,11 @@
         <scene sceneID="bC8-vx-CS8">
             <objects>
                 <viewController storyboardIdentifier="CameraSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gZK-ZL-czf" customClass="DULCameraSettingsController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="skP-4x-CrY"/>
-                        <viewControllerLayoutGuide type="bottom" id="1vg-Fz-WJN"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fKP-db-3hK">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="F7s-wd-FFt"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="50"/>
@@ -222,14 +211,11 @@
         <scene sceneID="b0V-tG-yxU">
             <objects>
                 <viewController storyboardIdentifier="PreflightChecklistVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VwR-Vc-28Y" customClass="DULPreflightChecklistController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JYb-pR-SjM"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZzY-JV-TdX"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hBb-nJ-3lU">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="QrR-Ef-eA0"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="50"/>
@@ -242,25 +228,22 @@
         <scene sceneID="Iiv-h6-bdm">
             <objects>
                 <viewController storyboardIdentifier="AeroChartVC" id="Gq1-3q-319" customClass="DroneAeroChartViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hhY-eX-Q6R"/>
-                        <viewControllerLayoutGuide type="bottom" id="pQo-1u-8Zg"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ji5-FC-dWJ">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KYN-h7-syB" customClass="ADSBMapView" customModule="HMD" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
+                                <rect key="frame" x="44" y="0.0" width="62" height="69"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pQo-1u-8Zg" firstAttribute="top" secondItem="KYN-h7-syB" secondAttribute="bottom" id="5XV-BP-rp2"/>
-                            <constraint firstItem="KYN-h7-syB" firstAttribute="leading" secondItem="ji5-FC-dWJ" secondAttribute="leading" id="Drd-ut-L9i"/>
-                            <constraint firstAttribute="trailing" secondItem="KYN-h7-syB" secondAttribute="trailing" id="fhK-2h-hgn"/>
+                            <constraint firstItem="SNQ-YJ-Rjd" firstAttribute="bottom" secondItem="KYN-h7-syB" secondAttribute="bottom" id="5XV-BP-rp2"/>
+                            <constraint firstItem="KYN-h7-syB" firstAttribute="leading" secondItem="SNQ-YJ-Rjd" secondAttribute="leading" id="Drd-ut-L9i"/>
+                            <constraint firstItem="SNQ-YJ-Rjd" firstAttribute="trailing" secondItem="KYN-h7-syB" secondAttribute="trailing" id="fhK-2h-hgn"/>
                             <constraint firstItem="KYN-h7-syB" firstAttribute="top" secondItem="ji5-FC-dWJ" secondAttribute="top" id="h3E-fm-MQV"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="SNQ-YJ-Rjd"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="150" height="90"/>
@@ -276,14 +259,11 @@
         <scene sceneID="HSm-lI-yWo">
             <objects>
                 <viewController id="5gp-wS-Gve" customClass="DULLeadingBarViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ccJ-xW-k4g"/>
-                        <viewControllerLayoutGuide type="bottom" id="hM8-Dy-Whj"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WOb-00-ace">
                         <rect key="frame" x="0.0" y="0.0" width="59" height="162"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Vcr-6p-qIx"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDq-jS-Q6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -296,22 +276,18 @@
                 <viewControllerPlaceholder storyboardName="ADS-B" id="hFH-Uq-ZOs" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Yx-Bt-sa4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="542"/>
+            <point key="canvasLocation" x="491" y="98"/>
         </scene>
         <!--PilotHUD View Controller-->
         <scene sceneID="HS0-oG-Voi">
             <objects>
                 <viewController id="uCj-Iv-bGd" customClass="PilotHUDViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6Mi-yE-tZy"/>
-                        <viewControllerLayoutGuide type="bottom" id="JnS-Wt-B7V"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Ki-ig-Sii">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUJ-37-ydO">
-                                <rect key="frame" x="0.0" y="0.0" width="601" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="671" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <connections>
@@ -319,7 +295,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-oa-uOy">
-                                <rect key="frame" x="609" y="97" width="48" height="181"/>
+                                <rect key="frame" x="720" y="97" width="48" height="181"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="MFP-BJ-oOU"/>
                                     <constraint firstAttribute="height" constant="181" id="osg-xk-l7A"/>
@@ -329,7 +305,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQb-Bx-FMH">
-                                <rect key="frame" x="609" y="63" width="48" height="36"/>
+                                <rect key="frame" x="710" y="63" width="48" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="qvX-EG-4UN"/>
                                     <constraint firstAttribute="width" constant="48" id="rAM-8a-mAX"/>
@@ -348,8 +324,9 @@
                             <constraint firstItem="bFw-oa-uOy" firstAttribute="top" secondItem="QQb-Bx-FMH" secondAttribute="bottom" constant="-2" id="2K5-hK-Plo"/>
                             <constraint firstItem="bFw-oa-uOy" firstAttribute="centerY" secondItem="5Ki-ig-Sii" secondAttribute="centerY" id="53o-Av-HjS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QQb-Bx-FMH" secondAttribute="trailing" constant="-10" id="Jvx-H6-zhr"/>
-                            <constraint firstAttribute="trailing" secondItem="bFw-oa-uOy" secondAttribute="trailing" constant="10" id="hSL-3b-y7a"/>
+                            <constraint firstItem="Q25-ZW-bld" firstAttribute="trailing" secondItem="bFw-oa-uOy" secondAttribute="trailing" id="hSL-3b-y7a"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q25-ZW-bld"/>
                     </view>
                     <connections>
                         <outlet property="gimbalSyncButton" destination="QQb-Bx-FMH" id="4kl-AM-nZn"/>
@@ -358,18 +335,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiC-Wa-JPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1216.6416791604199" y="1160.8"/>
+            <point key="canvasLocation" x="1216.2561576354681" y="1160.8"/>
         </scene>
         <!--PilotHMD View Controller-->
         <scene sceneID="1Oo-Mg-59m">
             <objects>
                 <viewController id="i2y-dr-3Xn" customClass="PilotHMDViewController" customModule="HMD" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Z2g-nL-R8o"/>
-                        <viewControllerLayoutGuide type="bottom" id="hJ0-Tg-LNi"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gag-l9-vpp">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7w-Mh-G4Y">
@@ -381,6 +354,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="mB4-V0-ywK"/>
                     </view>
                     <connections>
                         <outlet property="returnButton" destination="y7w-Mh-G4Y" id="5v9-yM-EAw"/>

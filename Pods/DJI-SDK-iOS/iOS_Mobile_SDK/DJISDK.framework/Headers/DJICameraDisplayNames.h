@@ -115,4 +115,15 @@ extern NSString *const DJICameraDisplayNamePhantom4AdvancedCamera;
 extern NSString *const DJICameraDisplayNameSparkCamera;
 
 
+/**
+ *  The display name for X7 camera.
+ */
+extern NSString *const DJICameraDisplayNameX7;
+
+
+/**
+ *  The display name for Mavic Air camera.
+ */
+extern NSString *const DJICameraDisplayNameMavicAirCamera;
+
 #endif /* DJICameraDisplayNames_h */

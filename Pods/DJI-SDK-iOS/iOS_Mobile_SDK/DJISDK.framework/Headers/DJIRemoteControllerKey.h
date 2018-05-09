@@ -66,6 +66,8 @@ EXTERN_KEY NSString *const DJIRemoteControllerParamCustomButton2Down;
 
 EXTERN_KEY NSString *constDJIRemoteControllerParamIsNewMasterSlaveModeSupported;
 
+EXTERN_KEY NSString *const DJIRemoteControllerParamControllingGimbalIndex;
+
 
 /**
  *  `DJIRemoteControllerKey` provides dedicated access to remote controller

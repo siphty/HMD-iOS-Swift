@@ -5,9 +5,7 @@
 //  Copyright © 2016 DJI. All rights reserved.
 //
 
-#import "DULWidget.h"
-
-IB_DESIGNABLE
+#import <DJIUILibrary/DULWidget.h>
 
 
 /**

@@ -5,7 +5,7 @@
 //  Copyright © 2016 DJI. All rights reserved.
 //
 
-#import "DULWidget.h"
+#import <DJIUILibrary/DULWidget.h>
 
 // ICR: Remove None or 0. (Same as DULRemoteSignalStrength)
 
@@ -50,7 +50,6 @@ typedef NS_ENUM(NSUInteger, DULVideoSignalStrength) {
     DULVideoSignalStrengthNone
 };
 
-IB_DESIGNABLE
 
 /**
  *  Display:

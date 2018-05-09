@@ -10,7 +10,6 @@
 @class DJIHotpointMission;
 
 
-
 /**
  *  This class represents a hotpoint action used as an element in a Timeline
  *  mission. By creating an object of this class and adding it to Mission Control's
@@ -28,6 +27,12 @@
 
 
 /**
+ *  The hotpoint mission which is associated with this action.
+ */
+@property(nonatomic, readonly) DJIHotpointMission *mission;
+
+
+/**
  *  Initialize with hotpoint mission. The Hotpoint action  will automatically stop
  *  after one complete orbit (360 degrees).
  *  
@@ -37,7 +42,7 @@
 
 
 /**
- *  Initialize with a hotpoint mission and  the angular distance the aircraft should
+ *  Initialize with a hotpoint mission and the angular distance the  aircraft should
  *  travel within the orbit.
  *  
  *  @param mission An object of `DJIHotpointMission`.

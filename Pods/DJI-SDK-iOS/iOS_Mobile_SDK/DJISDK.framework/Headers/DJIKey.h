@@ -27,13 +27,13 @@ EXTERN_KEY NSString *const DJIParamConnection;
 
 
 /**
- *  Defines wether or not the key is to be used with components of the  product
+ *  Defines whether or not the key is to be used with components of the  product
  */
 @property (nonatomic) BOOL isComponentKey;
 
 
 /**
- *  Defines wether or not the key is to be used with missions. (Mission Control
+ *  Defines whether or not the key is to be used with missions. (Mission Control
  *  only)
  */
 @property (nonatomic) BOOL isMissionKey;
@@ -46,12 +46,27 @@ EXTERN_KEY NSString *const DJIParamConnection;
 
 
 /**
+ *  The component index of the key. Index is zero based. A component will have an
+ *  index greater than  zero when there are multiple components of the same type on
+ *  the DJI product, and one of the  components already has the index 0.
+ */
+@property (readonly, nonatomic) NSInteger index;
+
+
+/**
+ *  The sub-component index of the key. Index is zero based. Currently, no product
+ *  supports multiple  sub-components of the same type, so it is always 0.
+ */
+@property (readonly, nonatomic) NSInteger subIndex;
+
+
+/**
  *  Convenience creator of a key by only specifying the param to be used.
  *   This is mostly useful in DJIKey subclasses.
  *  
  *  @param param A valid String-formatted key as defined in DJIKey's subclasses headers
  *  
- *  @return A valid key object or `nil` if an error occured.
+ *  @return A valid key object or `nil` if an error occurred.
  */
 + (nullable instancetype)keyWithParam:(nonnull NSString *)param;
 
@@ -63,7 +78,7 @@ EXTERN_KEY NSString *const DJIParamConnection;
  *  @param index the index of the element. In the case of multiple components these would refer to their index.
  *  @param param A valid string-formatted key as defined in DJIKey's subclasses headers.
  *  
- *  @return A valid key object or nil if an error occured.
+ *  @return A valid key object or nil if an error occurred.
  */
 + (nullable instancetype)keyWithIndex:(NSInteger)index
                              andParam:(nonnull NSString *)param;
@@ -76,7 +91,7 @@ EXTERN_KEY NSString *const DJIParamConnection;
  *  @param subIndex The sub element index.
  *  @param param The string-formatted key as defined in DJIKey's subclasses headers.
  *  
- *  @return A valid key object or nil if an error occured.
+ *  @return A valid key object or nil if an error occurred.
  */
 + (nullable instancetype)keyWithIndex:(NSInteger)index
                            subElement:(nonnull NSString *)subElement

@@ -17,7 +17,8 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
 
     /**
      *  The video feed is from the main camera. It is the physical source used by most
-     *  of DJI products.
+     *  of DJI products.  For M210 and M210 RTK, `DJIVideoFeedPhysicalSourceLeftCamera`
+     *  and `DJIVideoFeedPhysicalSourceRightCamera` are used instead.
      */
     DJIVideoFeedPhysicalSourceMainCamera,
     
@@ -30,8 +31,8 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
 
     /**
      *  The video feed is from one of the LB ports (AV or HDMI) while EXT Port is
-     *  enabled.  It is only used for Lightbridge 2 or aircrafts with Lightbridge 2
-     *  (e.g. M600).
+     *  enabled.  It is only used for stand-alone Lightbridge 2 or aircraft with stand-
+     *  alone Lightbridge 2 modules (e.g. M600).
      */
     DJIVideoFeedPhysicalSourceLB,
 
@@ -44,17 +45,32 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
 
 
     /**
-     *  The video feed is from HDMI port while EXT port is disabled. It is only used for
-     *  Lightbridge 2 or aircrafts with Lightbridge 2 (e.g. M600).
+     *  The video feed is from the HDMI port while EXT port is disabled.  It is only
+     *  used for stand-alone Lightbridge 2 or aircraft with stand-alone Lightbridge 2
+     *  modules.
      */
     DJIVideoFeedPhysicalSourceHDMI,
 
 
     /**
      *  The video feed is from AV port while EXT port is disabled. It is only used for
-     *  Lightbridge 2 or aircrafts with Lightbridge 2 (e.g. M600).
+     *  stand-alone Lightbridge 2 or aircraft with stand-alone Lightbridge 2 modules.
      */
     DJIVideoFeedPhysicalSourceAV,
+    
+
+    /**
+     *  The video feed is from the port (left) main camera. It is only used for M210 and
+     *  M210 RTK.
+     */
+    DJIVideoFeedPhysicalSourceLeftCamera,
+
+
+    /**
+     *  The video feed is from the starboard (right) main camera. It is only used for
+     *  M210 and M210 RTK.
+     */
+    DJIVideoFeedPhysicalSourceRightCamera,
 
     /**
      *  Unknown video physical source.
@@ -138,27 +154,58 @@ typedef NS_ENUM(NSInteger, DJIVideoFeedPhysicalSource) {
 
 
 /**
- *  Class that manage live video feed from DJI products to the mobile device.
+ *  Class that manages live video feed from DJI products to the mobile device.
  */
 @interface DJIVideoFeeder : NSObject
+
+- (instancetype)init OBJC_UNAVAILABLE("You must use the singleton");
+
++ (instancetype)new OBJC_UNAVAILABLE("You must use the singleton");
 
 
 /**
  *  The primary video feed.
- *   The possilbe physical sources for the primary video feed include:
+ *   The possible physical sources for the primary video feed include:
  *   - `DJIVideoFeedPhysicalSourceMainCamera`
  *   -  `DJIVideoFeedPhysicalSourceLB`
  *   -  `DJIVideoFeedPhysicalSourceHDMI`
+ *   -  `DJIVideoFeedPhysicalSourceLeftCamera`
+ *   -  `DJIVideoFeedPhysicalSourceRightCamera`
+ *   For M210 and M210 RTK, the  physical sources are controlled by the bandwidth
+ *  allocation between the port (left) and starboard  (right) main cameras
+ *  (`setBandwidthAllocationForLeftCamera:withCompletion`):
+ *   - When bandwidth  is 100% on the left camera, the primary source is
+ *  `DJIVideoFeedPhysicalSourceLeftCamera` and the secondary source is
+ *  `DJIVideoFeedPhysicalSourceFPVCamera`.
+ *   - When bandwidth is 0%  on the left camera, the primary source is
+ *  `DJIVideoFeedPhysicalSourceRightCamera`  and the secondary source is
+ *  `DJIVideoFeedPhysicalSourceFPVCamera`.
+ *   - When  bandwidth is neither 0% nor 100% on the left camera, the primary source
+ *  is  `DJIVideoFeedPhysicalSourceLeftCamera` and the secondary source is
+ *  `DJIVideoFeedPhysicalSourceRightCamera`.
  */
 @property (nonatomic, strong, nonnull) DJIVideoFeed *primaryVideoFeed;
 
 
 /**
  *  The secondary video feed.
- *   The possilbe physical sources for the secondary video feed include:
+ *   The possible physical sources for the secondary video feed include:
  *   - `DJIVideoFeedPhysicalSourceFPVCamera`
  *   -  `DJIVideoFeedPhysicalSourceEXT`
  *   -  `DJIVideoFeedPhysicalSourceAV`
+ *   - `DJIVideoFeedPhysicalSourceRightCamera`. For M210 and M210 RTK, the physical
+ *  sources are controlled by the bandwidth allocation between the port (left) and
+ *  starboard (right) main cameras
+ *  (`setBandwidthAllocationForLeftCamera:withCompletion`):
+ *   - When bandwidth is 100% on the left camera, the primary  source is
+ *  `DJIVideoFeedPhysicalSourceLeftCamera` and the secondary source is
+ *  `DJIVideoFeedPhysicalSourceFPVCamera`.
+ *   - When bandwidth is 0% on the left camera,  the primary source is
+ *  `DJIVideoFeedPhysicalSourceRightCamera` and the secondary source is
+ *  `DJIVideoFeedPhysicalSourceFPVCamera`.
+ *   - When bandwidth is neither 0% nor 100% on  the left camera, the primary source
+ *  is `DJIVideoFeedPhysicalSourceLeftCamera` and the  secondary source is
+ *  `DJIVideoFeedPhysicalSourceRightCamera`.
  */
 @property (nonatomic, strong, nonnull) DJIVideoFeed *secondaryVideoFeed;
 

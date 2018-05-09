@@ -253,7 +253,7 @@ typedef NS_ENUM (NSUInteger, DJIIMUSensorState) {
 
 
 /**
- *  The accelerometors sensor state value.
+ *  The accelerometers sensor state value.
  */
 @property(nonatomic, readonly) DJIIMUSensorState accelerometerState;
 

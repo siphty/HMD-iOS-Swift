@@ -9,7 +9,7 @@
 
 
 /**
- *  The base classe for keys to be used with Missions
+ *  The base class for keys to be used with Missions
  */
 @interface DJIMissionKey : DJIKey
 

@@ -385,17 +385,17 @@ typedef NS_ENUM (uint8_t, DJIVirtualStickVerticalControlMode){
  
 
     /**
-     *  Sets the virtual stick vertical control values to be a vertical  velocity.
+     *  Sets the virtual stick vertical control values to be a vertical velocity.
      *  Positive and negative vertical velocity is for the aircraft ascending and
-     *  descending respectively.  Maximum vertical velocity is defined as 4 m/s.
-     *  Minimum vertical velocity is defined as -4 m/s.
+     *  descending respectively. Maximum vertical velocity is defined as 4 m/s. Minimum
+     *  vertical velocity is defined as -4 m/s.
      */
     DJIVirtualStickVerticalControlModeVelocity,
  
 
     /**
-     *  Sets the virtual stick vertical control values to be an altitude.  Maximum
-     *  position is defined as 500 m. Minimum  position is defined as 0 m.
+     *  Sets the virtual stick vertical control values to be an altitude. Maximum
+     *  position is defined as 500 m. Minimum position is defined as 0 m.
      */
     DJIVirtualStickVerticalControlModePosition,
 };
@@ -413,14 +413,14 @@ typedef NS_ENUM (uint8_t, DJIVirtualStickRollPitchControlMode){
 
     /**
      *  Sets the roll and pitch values to be an angle relative to a level aircraft. In
-     *  the body coordinate system,  positive and negative pitch angle is for the
-     *  aircraft rotating about the y-axis in the positive direction  or negative
+     *  the body coordinate system, positive and negative pitch angle is for the
+     *  aircraft rotating about the y-axis in the positive direction or negative
      *  direction, respectively. Positive and negative roll angle is the positive
-     *  direction or negative  direction rotation angle about the x-axis, respectively.
-     *  However in the ground coordinate system, positive  and negative pitch angle is
+     *  direction or negative direction rotation angle about the x-axis, respectively.
+     *  However in the ground coordinate system, positive and negative pitch angle is
      *  the angle value for the aircraft moving south and north, respectively. Positive
      *  and negative roll angle is the angle when the aircraft is moving east and west,
-     *  respectively. Maximum angle  is defined as 30 degrees. Minimum angle is defined
+     *  respectively. Maximum angle is defined as 30 degrees. Minimum angle is defined
      *  as -30 degrees.
      */
     DJIVirtualStickRollPitchControlModeAngle,
@@ -428,14 +428,14 @@ typedef NS_ENUM (uint8_t, DJIVirtualStickRollPitchControlMode){
 
     /**
      *  Sets the roll and pitch values to be a velocity. In the body coordinate system,
-     *  positive and negative pitch  velocity is for the aircraft moving towards the
-     *  positive direction or negative direction along the pitch  axis and y-axis,
+     *  positive and negative pitch velocity is for the aircraft moving towards the
+     *  positive direction or negative direction along the pitch axis and y-axis,
      *  respectively. Positive and negative roll velocity is when the aircraft is moving
-     *  towards  the positive direction or negative direction along the roll axis and
-     *  x-axis, respectively. However, in the  ground coordinate system, positive and
-     *  negative pitch velocity is for the aircraft moving east and west,  respectively.
+     *  towards the positive direction or negative direction along the roll axis and
+     *  x-axis, respectively. However, in the ground coordinate system, positive and
+     *  negative pitch velocity is for the aircraft moving east and west, respectively.
      *  Positive and negative roll velocity is when the aircraft is moving north and
-     *  south,  respectively. Maximum velocity is defined as 15 meters/s.  Minimum
+     *  south, respectively. Maximum velocity is defined as 15 meters/s. Minimum
      *  velocity is defined as -15 meters/s.
      */
     DJIVirtualStickRollPitchControlModeVelocity,
@@ -454,18 +454,18 @@ typedef NS_ENUM (uint8_t, DJIVirtualStickYawControlMode){
 
     /**
      *  Sets the yaw values to be an angle relative to the front of the aircraft.
-     *  Positive and negative yaw angle is  for the aircraft rotating clockwise and
-     *  counterclockwise, respectively. Maximum yaw angle is defined  as 180 degrees.
-     *  Minimum yaw angle is defined  as -180 degrees.
+     *  Positive and negative yaw angle is for the aircraft rotating clockwise and
+     *  counterclockwise, respectively. Maximum yaw angle is defined as 180 degrees.
+     *  Minimum yaw angle is defined as -180 degrees.
      */
     DJIVirtualStickYawControlModeAngle,
  
 
     /**
      *  Sets the yaw values to be an angular velocity. Positive and negative angular
-     *  velocity is for the aircraft  rotating clockwise and counterclockwise,
-     *  respectively. Maximum yaw angular velocity is defined  as 100 degrees/s. Minimum
-     *  yaw angular velocity is  defined as -100 degrees/s.
+     *  velocity is for the aircraft rotating clockwise and counterclockwise,
+     *  respectively. Maximum yaw angular velocity is defined as 100 degrees/s. Minimum
+     *  yaw angular velocity is defined as -100 degrees/s.
      */
     DJIVirtualStickYawControlModeAngularVelocity,
 };
@@ -500,7 +500,7 @@ typedef NS_ENUM (uint8_t, DJIVirtualStickFlightCoordinateSystem){
 
 /**
  *  Control mode of the flight controller. It determines how the pilot can control
- *  the aircraft.  By default, it is in smart control mode.
+ *  the aircraft. By default, it is in smart control mode.
  */
 typedef NS_ENUM(uint8_t, DJIFlightControllerControlMode) {
  
@@ -514,9 +514,9 @@ typedef NS_ENUM(uint8_t, DJIFlightControllerControlMode) {
 
     /**
      *  Manual control mode. The aircraft will not stabilize its altitude and attitude
-     *  in manual mode. This mode is  for advanced pilots only, and should only be used
-     *  when the pilot understands the risk of operating in this  mode. Any damage to
-     *  the product when operating in this mode will not be covered under warranty.
+     *  in manual mode. This mode is for advanced pilots only, and should only be used
+     *  when the pilot understands the risk of operating in this mode. Any damage to the
+     *  product when operating in this mode will not be covered under warranty.
      */
     DJIFlightControllerControlModeManual,
  
@@ -597,6 +597,44 @@ typedef NS_ENUM(uint8_t, DJIFlightControllerRemoteControllerFlightMode) {
 #pragma mark DJIFlightControllerGoHomeAssessment
 /*********************************************************************************/
 
+/**
+ *  State of Smart Return-To-Home (RTH). It is only used when Smart RTH is enabled.
+ */
+typedef NS_ENUM(uint8_t, DJIFlightControllerSmartRTHState) {
+
+    /**
+     *  Smart RTH is not triggered yet in the current flight. The Smart RTH state will
+     *  be reset to this value when the aircraft lands.
+     */
+    DJIFlightControllerSmartRTHStateIdle = 0,
+
+    /**
+     *  Smart RTH is triggered and the aircraft is counting down. If no response is
+     *  received within 10 seconds or the user confirms the request, the aircraft will
+     *  start to go home and the state will change to
+     *  `DJIFlightControllerSmartRTHStateExecuted`. If user cancels the request, the
+     *  state will change to `DJIFlightControllerSmartRTHStateCancelled`.
+     */
+    DJIFlightControllerSmartRTHStateCountingDown,
+
+    /**
+     *  Smart RTH is already executed in the current flight. The state will not be reset
+     *  until the aircraft lands.
+     */
+    DJIFlightControllerSmartRTHStateExecuted,
+
+    /**
+     *  Smart RTH request is cancelled by the user. The state will not be reset until
+     *  the aircraft lands.
+     */
+    DJIFlightControllerSmartRTHStateCancelled,
+
+    /**
+     *  Unknown.
+     */
+    DJIFlightControllerSmartRTHStateUnknown = 0xFF,
+};
+
 
 /**
  *  The Flight Controller Smart Go Home Status
@@ -644,7 +682,7 @@ typedef struct
     /**
      *  The maximum radius, in meters, an aircraft can fly from its home location and
      *  still make it all the way back home, based on altitude, distance, battery, etc.
-     *  If the aircraft goes out farther than the max radius, it will fly as far back
+     *  If the  aircraft goes out farther than the max radius, it will fly as far back
      *  home as it can and land. If the aircraft is using the simulator, this value will
      *  be 0.
      */
@@ -652,19 +690,18 @@ typedef struct
 
 
     /**
-     *  Returns whether the aircraft is requesting to go home. If the value  of
-     *  `isAircraftRequestingToGoHome`  is `YES` and the user does not respond after 10
-     *  seconds, the  aircraft will automatically go back to its home location. This can
-     *  be cancelled at any time with the `cancelGoHomeWithCompletion`  method (which
-     *  will also clear  `isAircraftRequestingToGoHome`).  It is recommended that an
-     *  alert view is shown to the user when  `isAircraftRequestingToGoHome`  returns
-     *  `YES`. During this time, the Remote Controller will beep.  The flight controller
-     *  calculates whether the aircraft should go home  based on the aircraft's
-     *  altitude, distance, battery, etc. The two  main situations in which
-     *  `isAircraftRequestingToGoHome`  will return `YES` are if the aircraft's battery
-     *  is too low or if  the aircraft has flown too far away.
+     *  The Smart Return-To-Home (RTH) state for the current flight.
      */
-    BOOL isAircraftRequestingToGoHome;
+    DJIFlightControllerSmartRTHState smartRTHState;
+
+
+    /**
+     *  The countdown (in seconds) for the Smart Return-To-Home (RTH). Once the
+     *  countdown reaches 0, the aircraft will  execute an automatic go-home procedure.
+     *  It is only valid when  `smartRTHState`  is
+     *  `DJIFlightControllerSmartRTHStateCountingDown`.
+     */
+    NSInteger smartRTHCountdown;
 } DJIFlightControllerGoHomeAssessment;
 
 /*********************************************************************************/
@@ -704,7 +741,7 @@ typedef NS_ENUM (uint8_t, DJIBatteryThresholdBehavior){
 
 /**
  *  Tells the aircraft how to interpret flight commands for forward, backward, left
- *  and right. See the <i>Flight  Controller User Guide</i> for more information.
+ *  and right. See the <i>Flight Controller User Guide</i> for more information.
  */
 typedef NS_ENUM (uint8_t, DJIFlightOrientationMode){
 
@@ -725,6 +762,38 @@ typedef NS_ENUM (uint8_t, DJIFlightOrientationMode){
      *  The aircraft should move relative to the front of the aircraft.
      */
     DJIFlightOrientationModeAircraftHeading,
+};
+
+/*********************************************************************************/
+#pragma mark - DJIFlightWindWarning
+/*********************************************************************************/
+
+/**
+ *  Warning caused by the strong wind.
+ */
+typedef NS_ENUM(NSUInteger, DJIFlightWindWarning) {
+
+    /**
+     *  No wind warning.
+     */
+    DJIFlightWindWarningLevel0,
+
+    /**
+     *  The wind speed is high. Fly with caution and ensure the aircraft remains within
+     *  the line of sight.
+     */
+    DJIFlightWindWarningLevel1,
+
+    /**
+     *  Strong Wind. Fly with caution and ensure the aircraft remains within line of
+     *  sight. It is more serious than `DJIFlightWindWarningLevel1`.
+     */
+    DJIFlightWindWarningLevel2,
+
+    /**
+     *  Unknown.
+     */
+    DJIFlightWindWarningUnknown = 0xFF,
 };
 
 #endif /* DJIFlightControllerBaseTypes_h */

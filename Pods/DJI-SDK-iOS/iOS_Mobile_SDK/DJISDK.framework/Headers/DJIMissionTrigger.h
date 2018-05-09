@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Mission Triggers can be used to trigger an action during the execution of a
  *  Timeline element if a set of criteria is met. The subclass of
  *  `DJIMissionTrigger` should implement the logic for collecting and judging the
- *  criteria, and then executing the action. Mission Triggers are  used in the
+ *  criteria, and then executing the action. Mission Triggers are used in the
  *  Timeline element `DJIMissionControlTimelineElement`.
  *   Trigger actions can be listened to, so when subclassing this class,
  *  `notifyListenersOfEvent:error` should be used to notify listeners of trigger
@@ -42,10 +42,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Ends all trigger activity including monitoring the criteria required to  trigger
- *  the action. When subclassing, [super stop]  should be called at the end.
+ *  Ends all trigger activities including monitoring the criteria required to
+ *  trigger the action. When subclassing, [super stop]  should be called at the end.
  */
 - (void)stop;
+
+
+/**
+ *  Method which checks whether the action block is not null and executes it. It
+ *  also notifies  the listeners about the success / failure (in the case of a null
+ *  action block) of the action.  When subclassing, [super triggerAction] should be
+ *  called at the end.
+ */
+- (void)triggerAction;
 
 
 /**
@@ -55,16 +64,8 @@ typedef void (^DJIMissionTriggerAction)();
 
 
 /**
- *  The action to execute. It is up to the trigger's implementation to decide when
- *  to call this action. The action should never be called by anything but the
- *  trigger. Actions can be implemented without using this property, but in addition
- *  `notifyListenersOfEvent:error` needs to be used to notify any listeners of the
- *  Trigger that an action was executed.
- *   In future subclasses of this property to be provided, this action  block will
- *  be used to give developers control of an action when a  set of criteria has been
- *  met. For example, a subclass of this may  be a battery threshold trigger. Once
- *  the battery passes some threshold developers will be able to define the action
- *  they want to trigger.
+ *  The action to execute. The action should never be called explicitly by the
+ *  trigger,  instead call the triggerAction method.
  */
 @property (copy, nonatomic) DJIMissionTriggerAction action;
 

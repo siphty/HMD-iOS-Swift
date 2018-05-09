@@ -11,7 +11,7 @@
 
 /**
  *  This class contains the information about camera's Solid State Drive (SSD)
- *  information, including state,  whether it is connected, its capacity, video size
+ *  information, including state, whether it is connected, its capacity, video size
  *  and rate, etc.
  */
 @interface DJICameraSSDState : NSObject
@@ -24,7 +24,7 @@
 
 
 /**
- *  `YES` if the SSD is connected. Note, if the camera is disconnected,  the values
+ *  `YES` if the SSD is connected. Note, if the camera is disconnected, the values
  *  for other properties in `DJICameraSSDState` are undefined.
  */
 @property (nonatomic, readonly) BOOL isConnected;

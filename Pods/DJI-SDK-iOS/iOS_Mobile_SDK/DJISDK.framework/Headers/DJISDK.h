@@ -37,6 +37,17 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIUserAccountManager.h>
 
 /*********************************************************************************/
+#pragma mark - LDM
+/*********************************************************************************/
+#import <DJISDK/DJILDMManager.h>
+
+/*********************************************************************************/
+#pragma mark - FlightHub
+/*********************************************************************************/
+#import <DJISDK/DJIFlightHubManager.h>
+#import <DJISDK/DJIFlightHubBaseTypes.h>
+
+/*********************************************************************************/
 #pragma mark - Products
 /*********************************************************************************/
 #import <DJISDK/DJIAircraft.h>
@@ -79,6 +90,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIFlightControllerBaseTypes.h>
 #import <DJISDK/DJISimulatorState.h>
 #import <DJISDK/DJIAirSenseSystemInformation.h>
+#import <DJISDK/DJIOnboardSDKDevice.h>
 
 //-----------------------------------------------------------------
 #pragma mark RemoteController
@@ -95,7 +107,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJICameraPlaybackState.h>
 #import <DJISDK/DJICameraSystemState.h>
 #import <DJISDK/DJICameraFocusState.h>
-#import <DJISDK/DJICameraSDCardState.h>
+#import <DJISDK/DJICameraStorageState.h>
 #import <DJISDK/DJICameraSSDState.h>
 #import <DJISDK/DJICameraDisplayNames.h>
 #import <DJISDK/DJICameraCapabilities.h>
@@ -153,6 +165,9 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #pragma mark Mission Triggers
 //-----------------------------------------------------------------
 #import <DJISDK/DJIMissionTrigger.h>
+#import <DJISDK/DJIAircraftLandedMissionTrigger.h>
+#import <DJISDK/DJIBatteryLevelMissionTrigger.h>
+#import <DJISDK/DJIWaypointReachedMissionTrigger.h>
 
 //-----------------------------------------------------------------
 #pragma mark Mission Actions
@@ -166,6 +181,7 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJIShootPhotoAction.h>
 #import <DJISDK/DJITakeOffAction.h>
 #import <DJISDK/DJIHotpointAction.h>
+#import <DJISDK/DJILandAction.h>
 
 //-----------------------------------------------------------------
 #pragma mark Waypoint
@@ -203,12 +219,6 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #import <DJISDK/DJITapFlyMission.h>
 
 //-----------------------------------------------------------------
-#pragma mark ActiveTrack
-//-----------------------------------------------------------------
-#import <DJISDK/DJIActiveTrackMissionOperator.h>
-#import <DJISDK/DJIActiveTrackMission.h>
-
-//-----------------------------------------------------------------
 #pragma mark TayFly
 //-----------------------------------------------------------------
 #import <DJISDK/DJITapFlyMission.h>
@@ -224,7 +234,8 @@ FOUNDATION_EXPORT const unsigned char DJISDKVersionString[];
 #pragma mark - GEO
 /*********************************************************************************/
 #import <DJISDK/DJIFlyZoneInformation.h>
-#import <DJISDK/DJIIndividualUnlockZone.h>
+#import <DJISDK/DJICustomUnlockZone.h>
+#import <DJISDK/DJIUnlockedZoneGroup.h>
 #import <DJISDK/DJIFlyZoneManager.h>
 /*********************************************************************************/
 #pragma mark - Categories

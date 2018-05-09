@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Updated signal quality in percent for the wireless uplink (from remote
  *  controller to  aircraft). This link transfers all information from the remote
- *  controller to to the  aircraft, which is predominantly control information.
+ *  controller to the  aircraft, which is predominantly control information.
  *  
  *  @param airLink The air link from remote controller to aircraft.
  *  @param quality The signal quality in percent with range [0, 100], where 100 is the best quality.

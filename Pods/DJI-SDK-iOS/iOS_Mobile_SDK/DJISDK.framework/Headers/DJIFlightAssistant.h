@@ -65,6 +65,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)flightAssistant:(DJIFlightAssistant *)assistant didUpdateVisionPalmControlState:(DJIVisionPalmControlState)state;
 
+
+/**
+ *  Callback function that updates the SmartCapture state. It is only supported by
+ *  Mavic Air.
+ *  
+ *  @param assistant Flight assistant that has the updated state.
+ *  @param state The SmartCapture state.
+ */
+- (void)flightAssistant:(DJIFlightAssistant *)assistant didUpdateVisionSmartCaptureState:(DJISmartCaptureState *)state;
+
 @end
 
 
@@ -104,10 +114,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Enables/disables precision landing. When enabled, the aircraft will record its
- *  take-off location visually  (as well as with GPS). On a Return-To-Home action
- *  the aircraft will attempt to perform a precision landing  using the additional
- *  visual information. This method only works on a Return-To-Home action when the
- *  home  location is successfully recorded during take-off, and not changed during
+ *  take-off location visually (as well as with GPS). On a Return-To-Home action the
+ *  aircraft will attempt to perform a precision landing using the additional visual
+ *  information. This method only works on a Return-To-Home action when the home
+ *  location is successfully recorded during take-off, and not changed during
  *  flight.
  *  
  *  @param enabled `YES` to enable the precise landing.
@@ -128,9 +138,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Enables/disables landing protection. During auto-landing, the downwards facing
- *  vision sensor will check if  the ground surface is flat enough for a safe
- *  landing. If it is not and landing protection is enabled, then  landing will
- *  abort and need to be manually performed by the user.
+ *  vision sensor will check if the ground surface is flat enough for a safe
+ *  landing. If it is not and landing protection is enabled, then landing will abort
+ *  and need to be manually performed by the user.
  *  
  *  @param enabled `YES` to enable the landing protection.
  *  @param completion Completion block<<>android:Callback> that receives the setter result.
@@ -150,9 +160,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Enables/disables active obstacle avoidance. When enabled, and an obstacle is
- *  moving toward the aircraft,  the aircraft will actively fly away from it. If
- *  while actively avoiding a moving obstacle, the aircraft  detects another
- *  obstacle in its avoidance path, it will  stop.
+ *  moving toward the aircraft, the aircraft will actively fly away from it. If
+ *  while actively avoiding a moving obstacle, the aircraft detects another obstacle
+ *  in its avoidance path, it will stop.
  *  `setCollisionAvoidanceEnabled:withCompletion` must also be enabled.
  *  
  *  @param enabled `YES` to enable the active avoidance.
@@ -173,8 +183,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Enables/disables upward avoidance. When the Inspire 2's upwards-facing infrared
- *  sensor detects an obstacle, the  aircraft will slow its ascent and maintain a
- *  minimum distance of 1 meter from the obstacle. The  sensor has a 10-degree
+ *  sensor detects an obstacle, the aircraft will slow its ascent and maintain a
+ *  minimum distance of 1 meter from the obstacle. The sensor has a 10-degree
  *  horizontal field of view (FOV) and 10-degree vertical FOV. The maximum detection
  *  distance is 5m.
  *  
@@ -196,15 +206,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Enables/disables advanced gesture control. When enabled, users can use
- *  PalmLaunch, PalmLand, PalmControl  and Beckon. When enabled, the various modes
+ *  PalmLaunch, PalmLand, PalmControl and Beckon. When enabled, the various modes
  *  can be initiated by the user. In summary:
  *   - Aircraft starts idle on users hand
- *   - User double clicks the power button and  FaceAware becomes active
- *   - Once a face is regonized, PalmLaunch will happen
- *   -  When flying, the user can control the aircraft position by moving their palm
- *   - If the  user waves one hand, the aircraft will fly up and backwards and start
+ *   - User double clicks the power button and FaceAware becomes active
+ *   - Once a face is recogized, PalmLaunch will happen
+ *   - When flying, the user can control the aircraft position by moving their palm
+ *   - If the user waves one hand, the aircraft will fly up and backwards and start
  *  following the user.
- *   - If the user waves both hands, the aircraft will execute Bekon and return to
+ *   - If the user waves both hands, the aircraft will execute Beckon and return to
  *  the user.
  *   It is only supported by Spark.
  *  
@@ -215,14 +225,98 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  Gets if advanced gesture control is enabled. When enabled, users can use
- *  PalmLaunch, PalmLand,  PalmControl and Beckon. It is only supported by Spark.
+ *  Determines whether advanced gesture control is enabled. When enabled, users can
+ *  use PalmLaunch, PalmLand, PalmControl and Beckon. It is only supported by Spark.
  *  
  *  @param enabled `YES` to enable advanced gesture control.
  *  @param error Error retrieving the value.
  *  @param completion Completion block to receive the result.
  */
 - (void)getAdvancedGestureControlEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Determines if SmartCapture is supported. This feature is only supported by Mavic
+ *  Air.
+ *  
+ *  @return `YES` if Smart Capture is supported.
+ */
+- (BOOL)isSmartCaptureSupported;
+
+
+/**
+ *  Enables/disables SmartCapture. When enabled, deep learning gesture recognition
+ *  allows the user to take selfies,  record videos, and control the aircraft
+ *  (GestureLaunch, Follow and GestureLand) using simple hand gestures.  It is only
+ *  supported when `isSmartCaptureSupported` returns `YES`.
+ *  
+ *  @param enabled `YES` to enable SmartCapture.
+ *  @param completion Completion block with the returned execution result.
+ */
+- (void)setSmartCaptureEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether SmartCapture is enabled. When enabled, users can When
+ *  enabled, deep learning gesture  recognition allows the user to take selfies,
+ *  record videos, and control the aircraft (GestureLaunch,  Follow and GestureLand)
+ *  using simple hand gestures. It is only supported  when `isSmartCaptureSupported`
+ *  returns `YES`.
+ *  
+ *  @param enabled `YES` if SmartCapture is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getSmartCaptureEnabledEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
+
+
+/**
+ *  Sets the following mode for SmartCapture. It is only valid when SmartCapture is
+ *  enabled.
+ *  
+ *  @param mode The following mode to set.
+ *  @param completion The completion block with the returned execution result.
+ */
+- (void)setSmartCaptureFollowingMode:(DJISmartCaptureFollowingMode)mode withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Gets the following mode for SmartCapture. It is only valid when SmartCapture is
+ *  enabled.
+ *  
+ *  @param mode The following mode for SmartCapture.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getSmartCaptureFollowingModeWithCompletion:(void (^_Nonnull)(DJISmartCaptureFollowingMode mode, NSError *_Nullable error))completion;
+
+
+/**
+ *  Enables the Advanced Pilot Assistance System (APAS). When APAS is enabled, the
+ *  aircraft  continues to respond to user commands and plans its path according to
+ *  both control stick  inputs and the flight environment. APAS makes it easier to
+ *  avoid obstacles and obtain  smoother footage, and gives a better fly
+ *  experiences. It is only valid when the aircraft  is in P-mode. It is only
+ *  supported by Mavic Air.
+ *  
+ *  @param enabled `YES` to enable APAS.
+ *  @param completion Completion block with the returned execution result.
+ */
+- (void)setAdvancedPilotAssistanceSystemEnabled:(BOOL)enabled withCompletion:(DJICompletionBlock)completion;
+
+
+/**
+ *  Determines whether the Advanced Pilot Assistance System (APAS) is enabled or
+ *  not. When  APAS is enabled, the aircraft continues to respond to user commands
+ *  and plans its path  according to both control stick inputs and the flight
+ *  environment. APAS makes it easier  to avoid obstacles and obtain smoother
+ *  footage, and gives a better fly experiences. It  is only supported by Mavic Air.
+ *  
+ *  @param enabled `YES` if APAS is enabled.
+ *  @param error Error retrieving the value.
+ *  @param completion Completion block to receive the result.
+ */
+- (void)getAdvancedPilotAssistanceSystemEnabledWithCompletion:(void (^_Nonnull)(BOOL enabled, NSError *_Nullable error))completion;
 
 @end
 

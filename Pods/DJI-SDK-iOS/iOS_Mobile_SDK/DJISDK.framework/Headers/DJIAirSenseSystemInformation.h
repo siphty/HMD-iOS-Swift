@@ -14,38 +14,38 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The warning level determined by the DJI AirSense system. The warning level is
- *  based on the  distance between the airplane and the DJI aircraft, and the
- *  heading of the airplane.
+ *  based on the distance between the airplane and the DJI aircraft, and the heading
+ *  of the airplane.
  */
 typedef NS_ENUM(NSUInteger, DJIAirSenseWarningLevel) {
 
     /**
      *  The system detects the airplane but the DJI aircraft is either far away from the
-     *  airplane  or is in the opposite direction of the airplane's heading.
+     *  airplane or is in the opposite direction of the airplane's heading.
      */
     DJIAirSenseWarningLevel0,
 
     /**
      *  The system detects the airplane. The probability that it will pass through the
-     *  location  of the DJI aircraft is considered low.
+     *  location of the DJI aircraft is considered low.
      */
     DJIAirSenseWarningLevel1,
 
     /**
      *  The system detects the airplane. The probability that it will pass through the
-     *  location  of the DJI aircraft is considered medium.
+     *  location of the DJI aircraft is considered medium.
      */
     DJIAirSenseWarningLevel2,
 
     /**
      *  The system detects the airplane. The probability that it will pass through the
-     *  location  of the DJI aircraft is considered high.
+     *  location of the DJI aircraft is considered high.
      */
     DJIAirSenseWarningLevel3,
 
     /**
      *  The system detects the airplane. The probability that it will pass through the
-     *  location  of the DJI aircraft is very high.
+     *  location of the DJI aircraft is very high.
      */
     DJIAirSenseWarningLevel4,
 
@@ -110,27 +110,26 @@ typedef NS_ENUM(NSUInteger, DJIAirSenseDirection) {
 
 /**
  *  The AirSense state of an airplane.
- *  DJI AirSense only sends out warnings of nearby  civil aircraft under certain
- *  circumstances; it will NOT control DJI aircraft to avoid other  aircraft
+ *  DJI AirSense only sends out warnings of nearby civil aircraft under certain
+ *  circumstances; it will NOT control DJI aircraft to avoid other aircraft
  *  automatically. Make sure to fly with your aircraft within visual line of sight
- *  at  all times, and always fly with caution. After receiving warnings, lower your
- *  aircraft to a  safe height. In addition, DJI AirSense has the following
+ *  at all times, and always fly with caution. After receiving warnings, lower your
+ *  aircraft to a safe height. In addition, DJI AirSense has the following
  *  limitations:
- *  1. DJI AirSense  can only receive messages sent from civil aircraft equipped
- *  with an ADS-B out device under  1090ES (RTCA DO-260) or UAT (RTCA Do-282)
- *  standards. For civil aircraft without ADS-B outs or  with malfunctioning ADS-B
- *  outs, DJI AirSense cannot receive related broadcasted messages or  send out
- *  warnings.
- *  2. When there are obstacles in between a civil aircraft and DJI  aircraft, DJI
- *  AirSense will fail to receive ADS-B messages sent from civil aircraft or to
- *  send out warnings.
- *  3. DJI AirSense may fail to receive ADS-B messages sent from  civil aircraft or
- *  send out warnings due to ever changing circumstances and interference.  It is
+ *  1. DJI AirSense can only receive messages sent from civil aircraft equipped with
+ *  an ADS-B out device under 1090ES (RTCA DO-260) or UAT (RTCA Do-282) standards.
+ *  For civil aircraft without ADS-B outs or with malfunctioning ADS-B outs, DJI
+ *  AirSense cannot receive related broadcasted messages or send out warnings.
+ *  2. When there are obstacles in between a civil aircraft and DJI aircraft, DJI
+ *  AirSense will fail to receive ADS-B messages sent from civil aircraft or to send
+ *  out warnings.
+ *  3. DJI AirSense may fail to receive ADS-B messages sent from civil aircraft or
+ *  send out warnings due to ever changing circumstances and interference. It is
  *  highly recommended to fly with caution and stay aware of your surroundings
  *  during flight.
  *  4. DJI AirSense cannot send out warnings when the DJI aircraft cannot accurately
  *  determine its location.
- *  5. DJI AirSense cannot receive ADS-B messages sent from civil  aircraft or send
+ *  5. DJI AirSense cannot receive ADS-B messages sent from civil aircraft or send
  *  out warnings when it is disabled or misconfigured.
  */
 @interface DJIAirSenseAirplaneState : NSObject
@@ -166,7 +165,7 @@ typedef NS_ENUM(NSUInteger, DJIAirSenseDirection) {
 
 
 /**
- *  The state of DJI AirSense system. It contains the overall warning level and  the
+ *  The state of DJI AirSense system. It contains the overall warning level and the
  *  detailed state of each detected airplane.
  */
 @interface DJIAirSenseSystemInformation : NSObject

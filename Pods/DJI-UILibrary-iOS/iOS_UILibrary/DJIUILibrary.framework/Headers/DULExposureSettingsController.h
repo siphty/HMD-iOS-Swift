@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIImage+Assets.h"
+#import <DJIUILibrary/UIImage+Assets.h>
 
 
 
@@ -18,7 +18,7 @@
  *  shutter speed and exposure compensation value can also be set.
  *  
  *  Interaction:
- *  All the settings are presented in ListView hierachy.
+ *  All the settings are presented in ListView hierarchy.
  */
 @interface DULExposureSettingsController : UIViewController
 

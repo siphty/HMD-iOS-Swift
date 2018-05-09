@@ -163,7 +163,8 @@ typedef NS_ENUM (uint8_t, DJIBatteryPairingState){
 /**
  *  Returns the battery's remaining lifetime as a percentage, with range [0, 100]. A
  *  new battery will be close to 100%. As a battery experiences charge/discharge
- *  cycles, the value will go down.
+ *  cycles, the value will go down. In unsupported products, this value will always
+ *  be 0.  These products are Phantom 4 Pro, Inspire 2, and Phantom 4 Advanced.
  */
 @property(nonatomic, readonly) NSUInteger lifetimeRemaining;
 

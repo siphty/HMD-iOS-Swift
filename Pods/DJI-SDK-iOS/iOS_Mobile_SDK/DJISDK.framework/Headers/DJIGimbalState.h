@@ -5,7 +5,7 @@
 //  Copyright © 2016, DJI. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DJISDKFoundation.h"
 #import "DJIGimbalBaseTypes.h"
 
 
@@ -17,7 +17,7 @@
 
 /**
  *  The current gimbal attitude in degrees. Roll, pitch and yaw are 0 if the gimbal
- *  is level with the  aircraft and points in the forward direction of North Pole.
+ *  is level with the aircraft and points in the forward direction of North Pole.
  */
 @property(nonatomic, readonly) DJIGimbalAttitude attitudeInDegrees;
 
@@ -29,21 +29,30 @@
 
 
 /**
- *  Returns the gimbal's roll fine-tune value. The range for the fine-tuned value is
- *  [-10, 10] degrees.  If the fine-tune value is negative, the gimbal will be fine-
- *  tuned to the specified number of degrees in  the counterclockwise direction.
+ *  Returns the gimbal's roll fine-tuned value. The range for the fine-tuned value
+ *  is [-10, 10] degrees. If the fine-tune value is negative, the gimbal will be
+ *  fine- tuned to the specified number of degrees in the counterclockwise
+ *  direction.
  */
-@property(nonatomic, readonly) float rollFineTuneInDegrees;
+@property(nonatomic, readonly) float fineTunedRoll;
 
 
 /**
- *  Returns the gimbal's pitch fine-tune value. The range for the fine-tuned value
- *  is [-10, 10] degrees.  If the fine-tune value is negative, the gimbal will be
- *  fine- tuned to the specified number of degrees  in the downward direction. It is
+ *  Returns the gimbal's pitch fine-tuned value. The range for the fine-tuned value
+ *  is [-10, 10] degrees. If the fine-tune value is negative, the gimbal will be
+ *  fine-tuned to the specified number of degrees in the downward direction. It is
  *  only supported by Spark.
  */
-@property(nonatomic, readonly) float pitchFineTuneInDegrees;
+@property(nonatomic, readonly) float fineTunedPitch;
 
+
+/**
+ *  Returns the gimbal's yaw fine-tuned value. The range for the fine-tuned value is
+ *  [-10, 10] degrees. If the fine-tune value is negative, the gimbal will be fine-
+ *  tuned to the specified number of degrees in the port (left) direction. Only
+ *  supported by DJI Mavic Air.
+ */
+@property(nonatomic, readonly) float fineTunedYaw;
 
 
 /**
@@ -51,12 +60,12 @@
  */
 @property(nonatomic, readonly) DJIGimbalMode mode;
 
-
 /**
  *  `YES` if the attitude has been reset. If the gimbal is not in the original
  *  position, this value will return `NO`.
+ *  @deprecated Not supported by firmware any more.
  */
-@property(nonatomic, readonly) BOOL isAttitudeReset;
+@property(nonatomic, readonly) BOOL isAttitudeReset DJI_API_DEPRECATED("Not supported by firmware any more. ");
 
 
 /**
@@ -114,6 +123,12 @@
 
 
 /**
+ *  Returns the yaw axis balance test result.
+ */
+@property(nonatomic, readonly) DJIGimbalBalanceTestResult yawBalanceTestResult;
+
+
+/**
  *  `YES` if the mobile device is mounted on the gimbal.
  */
 @property(nonatomic, readonly) BOOL isMobileDeviceMounted;
@@ -129,5 +144,12 @@
  *  Returns the balance status of the gimbal.
  */
 @property(nonatomic, readonly) DJIGimbalBalanceState balanceState;
+
+
+/**
+ *  `YES` if the gimbal is mounted upwards on the aircraft. It is only supported by
+ *  M210 and M210 RTK.
+ */
+@property(nonatomic, readonly) BOOL isMountedUpwards;
 
 @end

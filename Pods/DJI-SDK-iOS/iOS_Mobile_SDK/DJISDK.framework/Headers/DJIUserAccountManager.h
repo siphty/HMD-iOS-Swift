@@ -70,7 +70,7 @@ typedef void (^_Nullable DJIAccountStateCompletionBlock)(DJIUserAccountState sta
 
 
 /**
- *  The name of the currently logged in user account.  It is "nil"  if
+ *  The name of the currently logged in user account.  It is `nil`  if
  *  `getUserAccountState` is either:   `DJIUserAccountStateNotLoggedIn`,
  *  `DJIUserAccountStateTokenOutOfDate`  or `DJIUserAccountStateUnknown`.
  */

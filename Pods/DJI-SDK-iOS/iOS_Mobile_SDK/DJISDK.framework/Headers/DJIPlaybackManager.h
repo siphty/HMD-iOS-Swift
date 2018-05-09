@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param fileName File name.
  *  @param fileType Type of file.
  *  @param fileSize Size of file.
- *  @param skip Can be set to decide wether or not to skip the file.
+ *  @param skip Can be set to decide whether or not to skip the file.
  */
 typedef void (^_Nullable DJIFileDownloadPreparingBlock)(NSString *_Nullable fileName, DJIDownloadFileType fileType, NSUInteger fileSize, BOOL *skip);
 
@@ -72,7 +72,7 @@ typedef void (^_Nullable DJIFileDownloadCompletionBlock)();
 
 /**
  *  The playback manager is used to interact with the playback system of the camera.
- *  By using the playback manager,  the user can control the playback system.
+ *  By using the playback manager, the user can control the playback system.
  */
 @interface DJIPlaybackManager : NSObject
 

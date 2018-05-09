@@ -5,7 +5,7 @@
 //  Copyright © 2016 DJI. All rights reserved.
 //
 
-#import "DULWidget.h"
+#import <DJIUILibrary/DULWidget.h>
 
 
 /**
@@ -44,7 +44,6 @@ typedef NS_ENUM(NSUInteger, DULRemoteSignalBars) {
     DULRemoteSignalBarsLevel5
 };
 
-IB_DESIGNABLE
 
 /**
  *  Display:

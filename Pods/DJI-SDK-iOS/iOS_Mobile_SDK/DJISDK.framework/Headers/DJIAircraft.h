@@ -136,9 +136,28 @@ extern NSString *const DJIAircraftModelNameSpark;
 
 
 /**
+ *  The aircraft's model name is Matrice 210.
+ */
+extern NSString *const DJIAircraftModelNameMatrice210;
+
+
+/**
+ *  The aircraft's model name is Matrice 210 RTK.
+ */
+extern NSString *const DJIAircraftModelNameMatrice210RTK;
+
+
+/**
+ *  The aircraft's model name is Mavic Air.
+ */
+extern NSString *const DJIAircraftModelNameMavicAir;
+
+
+
+/**
  *  Aircraft product class, which includes basic product information and access to
  *  all components (such as flight controller, battery etc.). This object is
- *  accessed  from `product` in `DJISDKManager`. Aircraft components are defined in
+ *  accessed from `product` in `DJISDKManager`. Aircraft components are defined in
  *  both `DJIAircraft` and its parent `DJIBaseProduct`.
  */
 @interface DJIAircraft : DJIBaseProduct
@@ -159,14 +178,38 @@ extern NSString *const DJIAircraftModelNameSpark;
 
 
 /**
+ *  Retrieves instances of the product's cameras. This is used when the aircraft has
+ *  multiple DJI cameras, e.g. M210 and  M210 RTK. Note, when two cameras do exist,
+ *  camera order within the array will not always the same. For example: On the
+ *  M210, the port side (left) camera will have property `index` to be 0 and the
+ *  starboard side (right)  camera will have `index` to be 1. However, the first
+ *  object of `cameras` will not  necessarily always be the camera with `index` of
+ *  0.
+ */
+@property(nonatomic, readonly) NSArray<DJICamera *> *_Nullable cameras;
+
+
+/**
+ *  Retrieves instances of the product's gimbals. This is used when the aircraft has
+ *  multiple DJI gimbals, e.g. M210  and M210 RTK. Note, when two gimbals do exist,
+ *  gimbal order within the array will not always the same. For example:  On the
+ *  M210, the port side (left) gimbal will have property `index` to be 0 and the
+ *  starboard  side (right) gimbal will have `index` to be 1. However, the first
+ *  object of `gimbals`  will not necessarily always be the gimbal with `index` of
+ *  0.
+ */
+@property(nonatomic, readonly) NSArray<DJIGimbal *> *_Nullable gimbals;
+
+
+/**
  *  Returns an instance of the aircraft's remote controller.
  */
 @property(nonatomic, readonly) DJIRemoteController *_Nullable remoteController;
 
 
 /**
- *  A simulated remote controller on the mobile device. It is supported only by
- *  Mavic Pro using WiFi.
+ *  A simulated remote controller on the mobile device. It is supported by Mavic Pro
+ *  and Spark using WiFi.
  */
 @property(nonatomic, readonly) DJIMobileRemoteController *_Nullable mobileRemoteController;
 

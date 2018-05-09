@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import SnapKit
 import NVActivityIndicatorView
 
 class ADSBAnnotationCalloutView: ADSBCalloutView {
@@ -140,7 +139,6 @@ class ADSBAnnotationCalloutView: ADSBCalloutView {
             "H:|[altitudeLabel]|"
         ]
         
-        
         for vfl in vflStrings {
             contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vfl, metrics: nil, views: views))
         }
@@ -153,9 +151,11 @@ class ADSBAnnotationCalloutView: ADSBCalloutView {
                                                    color: #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1),
                                                    padding: 0)
         contentView.addSubview(loadingIndicator)
-        loadingIndicator.snp.makeConstraints { (make) in
-            make.center.equalTo(contentView)
-        }
+//        loadingIndicator.snp.makeConstraints { (make) in
+//            make.center.equalTo(contentView)
+//        }
+        loadingIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        loadingIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
     
     override func didTouchUpInCallout(_ sender: Any) {
