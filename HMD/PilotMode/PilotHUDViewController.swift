@@ -11,7 +11,7 @@ import CoreLocation
 import CoreMotion
 import DJISDK
 import VideoPreviewer
-import DJIUILibrary
+import DJIUXSDK
 
 //MARK:-
 //MARK: UIViewController
@@ -20,7 +20,7 @@ class PilotHUDViewController: UIViewController {
     var hmdLayer = HMDLayer()
     var isSettingMode:Bool = false
     var previewerAdapter = VideoPreviewerSDKAdapter()
-    let trailingBarViewController = DULTrailingBarViewController()
+    let trailingBarViewController = DUXTrailingBarViewController()
     let motionManager = CMMotionManager()
     var coreMotionTimer: Timer!
     var orientationAttitude: CMAttitude?
@@ -302,9 +302,9 @@ extension PilotHUDViewController {
     func initialTrailingBarView() {
         // Trailing Bar View
         for childViewController in childViewControllers {
-            if childViewController is DULTrailingBarViewController {
-                let trailingBarViewController = childViewController as! DULTrailingBarViewController
-                guard let djiExposureSettignsWidget = trailingBarViewController.widget(with: DULExposureSettingsMenu.self) as? DULExposureSettingsMenu else{
+            if childViewController is DUXTrailingBarViewController {
+                let trailingBarViewController = childViewController as! DUXTrailingBarViewController
+                guard let djiExposureSettignsWidget = trailingBarViewController.widget(with: DUXExposureSettingsMenu.self) as? DUXExposureSettingsMenu else{
                 return
                 }
                 djiExposureSettignsWidget.action = {
@@ -316,7 +316,7 @@ extension PilotHUDViewController {
     }
     
     func exposureSettingsWidgetTouchUpInside(){
-        let exposureSettingsVC = storyboard?.instantiateViewController(withIdentifier: "CameraExposureSettingsVC") as! DULExposureSettingsController
+        let exposureSettingsVC = storyboard?.instantiateViewController(withIdentifier: "CameraExposureSettingsVC") as! DUXExposureSettingsController
         self.popoverChildViewController(exposureSettingsVC)
         exposureSettingsVC.view.translatesAutoresizingMaskIntoConstraints = false
         exposureSettingsVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 15).isActive = true

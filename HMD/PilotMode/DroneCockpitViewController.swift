@@ -9,7 +9,7 @@
 import UIKit
 import DJISDK
 import VideoPreviewer
-import DJIUILibrary
+import DJIUXSDK
 
 class DroneCockpitViewController: UIViewController {
     var isRecording : Bool!
@@ -17,13 +17,13 @@ class DroneCockpitViewController: UIViewController {
     var isSettingMode = false
     var previewerAdapter            = VideoPreviewerSDKAdapter()
     
-    let statusBarViewController     = DULStatusBarViewController()
-    let dockViewController          = DULDockViewController()
-    let sideBarViewController       = DULSideBarViewController()
-    let leadingBarViewController    = DULLeadingBarViewController()
-    let trailingBarViewController   = DULTrailingBarViewController()
-    let preflightCheckViewController = DULPreflightChecklistController()
-    let cameraMenuViewController    = DULCameraSettingsController()
+    let statusBarViewController     = DUXStatusBarViewController()
+    let dockViewController          = DUXDockViewController()
+    let sideBarViewController       = DUXSideBarViewController()
+    let leadingBarViewController    = DUXLeadingBarViewController()
+    let trailingBarViewController   = DUXTrailingBarViewController()
+    let preflightCheckViewController = DUXPreflightChecklistController()
+    let cameraMenuViewController    = DUXCameraSettingsController()
     let mapThumbnailView            = MKMapView()
     var AeroChartVC                 = DroneAeroChartViewController()
 //    var preflightChecklistController = DUL
@@ -99,7 +99,7 @@ class DroneCockpitViewController: UIViewController {
     
     func initialCockpitViewControllers(){
         // Status Top Bar
-        statusBarViewController.widget(with: DULPreFlightStatusWidget.self)
+        statusBarViewController.widget(with: DUXPreFlightStatusWidget.self)
         addChildViewController(statusBarViewController)
         statusBarContainingView.addSubview(statusBarViewController.view)
         statusBarViewController.view.translatesAutoresizingMaskIntoConstraints = false;
@@ -113,7 +113,7 @@ class DroneCockpitViewController: UIViewController {
         }
         self.statusBarViewController.removeWidget(djiLogoWidget)
         
-        guard let djiPreflightStatusWidget: DULWidget = statusBarViewController.widget(with: DULPreFlightStatusWidget.self) as? DULWidget else {
+        guard let djiPreflightStatusWidget: DUXWidget = statusBarViewController.widget(with: DUXPreFlightStatusWidget.self) as? DUXWidget else {
             return
         }
         djiPreflightStatusWidget.action =  {
@@ -122,15 +122,15 @@ class DroneCockpitViewController: UIViewController {
         
         // Trailing Bar View
         for childViewController in childViewControllers {
-            if childViewController is DULTrailingBarViewController {
-                let trailingBarViewController = childViewController as! DULTrailingBarViewController
-                guard let djiExposureSettignsWidget = trailingBarViewController.widget(with: DULExposureSettingsMenu.self) as? DULExposureSettingsMenu else{
+            if childViewController is DUXTrailingBarViewController {
+                let trailingBarViewController = childViewController as! DUXTrailingBarViewController
+                guard let djiExposureSettignsWidget = trailingBarViewController.widget(with: DUXExposureSettingsMenu.self) as? DUXExposureSettingsMenu else{
                     return
                 }
                 djiExposureSettignsWidget.action = {
                     self.exposureSettingsWidgetTouchUpInside()
                 }
-                guard let djiCameraSettingsWidget = trailingBarViewController.widget(with: DULCameraSettingsMenu.self) as? DULCameraSettingsMenu else{
+                guard let djiCameraSettingsWidget = trailingBarViewController.widget(with: DUXCameraSettingsMenu.self) as? DUXCameraSettingsMenu else{
                     return
                 }
                 djiCameraSettingsWidget.action = {
@@ -147,12 +147,12 @@ class DroneCockpitViewController: UIViewController {
         dockViewController.view.bottomAnchor.constraint(equalTo: dockContainingView.bottomAnchor).isActive = true
         dockViewController.view.leadingAnchor.constraint(equalTo: dockContainingView.leadingAnchor).isActive = true
         dockViewController.view.trailingAnchor.constraint(equalTo: dockContainingView.trailingAnchor).isActive = true
-        guard let djiDushboardWidget = dockViewController.widget(with: DULDashboardWidget.self) as? DULDashboardWidget else {
+        guard let djiDushboardWidget = dockViewController.widget(with: DUXDashboardWidget.self) as? DUXDashboardWidget else {
             return
         }
         for subview in djiDushboardWidget.subviews{
-            if subview is DULCompassWidget {
-                guard let djiCompassWidget = subview as? DULCompassWidget else{
+            if subview is DUXCompassWidget {
+                guard let djiCompassWidget = subview as? DUXCompassWidget else{
                     return
                 }
                 djiCompassWidget.action = {
@@ -171,7 +171,7 @@ class DroneCockpitViewController: UIViewController {
     }
     
     func preflightStatusWidgetTouchUpInside(){
-        let checklistVC = storyboard?.instantiateViewController(withIdentifier: "PreflightChecklistVC") as! DULPreflightChecklistController
+        let checklistVC = storyboard?.instantiateViewController(withIdentifier: "PreflightChecklistVC") as! DUXPreflightChecklistController
         self.popoverChildViewController(checklistVC)
         checklistVC.view.translatesAutoresizingMaskIntoConstraints = false
         checklistVC.view.topAnchor.constraint(equalTo: statusBarContainingView.bottomAnchor).isActive = true
@@ -218,7 +218,7 @@ class DroneCockpitViewController: UIViewController {
     }
     
     func exposureSettingsWidgetTouchUpInside(){
-        let exposureSettingsVC = storyboard?.instantiateViewController(withIdentifier: "CameraExposureSettingsVC") as! DULExposureSettingsController
+        let exposureSettingsVC = storyboard?.instantiateViewController(withIdentifier: "CameraExposureSettingsVC") as! DUXExposureSettingsController
         self.popoverChildViewController(exposureSettingsVC)
         exposureSettingsVC.view.translatesAutoresizingMaskIntoConstraints = false
         exposureSettingsVC.view.topAnchor.constraint(equalTo: statusBarContainingView.bottomAnchor, constant: 4).isActive = true
@@ -229,7 +229,7 @@ class DroneCockpitViewController: UIViewController {
 
 
     func cameraSettingsManuWidgetTouchUpInside() {
-        let cameraManuVC = storyboard?.instantiateViewController(withIdentifier: "CameraSettingsViewController") as! DULCameraSettingsController
+        let cameraManuVC = storyboard?.instantiateViewController(withIdentifier: "CameraSettingsViewController") as! DUXCameraSettingsController
         self.popoverChildViewController(cameraManuVC)
         cameraManuVC.view.translatesAutoresizingMaskIntoConstraints = false
         cameraManuVC.view.topAnchor.constraint(equalTo: statusBarContainingView.bottomAnchor, constant: 4).isActive = true

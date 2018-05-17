@@ -79,13 +79,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/PilotMode/PilotHUDViewController.swift"
-            timestampString = "523065923.768902"
+            timestampString = "548254694.383404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "754"
-            endingLineNumber = "754"
-            landmarkName = "arTrackingManager(_:didUpdateUserLocation:)"
-            landmarkType = "7">
+            startingLineNumber = "330"
+            endingLineNumber = "330">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -95,13 +93,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/PilotMode/PilotHUDViewController.swift"
-            timestampString = "523065923.769388"
+            timestampString = "548254694.383847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
-            landmarkName = "overlayFrame()"
-            landmarkType = "7">
+            startingLineNumber = "330"
+            endingLineNumber = "330">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -111,11 +107,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/ADSBModule/ADSBCalloutView.swift"
-            timestampString = "547471663.370182"
+            timestampString = "547568902.434175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "add(to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -127,11 +123,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/ADSBModule/ADSBCalloutView.swift"
-            timestampString = "547471664.045391"
+            timestampString = "547568902.4342591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "add(to:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -143,11 +139,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HMD/ADSBModule/ADSBAnnotationCalloutView.swift"
-            timestampString = "547471675.587693"
+            timestampString = "547568902.43432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "configure()"
             landmarkType = "7">
          </BreakpointContent>

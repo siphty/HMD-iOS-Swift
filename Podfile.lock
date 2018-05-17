@@ -2,7 +2,7 @@ PODS:
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - DJI-SDK-iOS (4.5.1)
-  - DJI-UILibrary-iOS (4.4)
+  - DJI-UXSDK-iOS (4.5.1)
   - Fabric (1.7.6)
   - NVActivityIndicatorView (4.2.1):
     - NVActivityIndicatorView/Presenter (= 4.2.1)
@@ -11,7 +11,7 @@ PODS:
 DEPENDENCIES:
   - Crashlytics
   - DJI-SDK-iOS
-  - DJI-UILibrary-iOS
+  - DJI-UXSDK-iOS
   - Fabric
   - NVActivityIndicatorView
 
@@ -19,17 +19,17 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Crashlytics
     - DJI-SDK-iOS
-    - DJI-UILibrary-iOS
+    - DJI-UXSDK-iOS
     - Fabric
     - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   DJI-SDK-iOS: b8a99d90efd59855f4f1319071917a32e5536cbe
-  DJI-UILibrary-iOS: a58b8dbb1734b9e2c5373817343b1bedb3a4b74b
+  DJI-UXSDK-iOS: 9234ccb663dde92a88c4e3836c313e982d488afd
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
   NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
 
-PODFILE CHECKSUM: 2e3cb3189000132af432747bc883daf270511aff
+PODFILE CHECKSUM: 53c4f7eab3845536da89a65373eb37172f672672
 
 COCOAPODS: 1.5.0
